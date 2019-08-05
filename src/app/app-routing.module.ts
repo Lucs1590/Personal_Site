@@ -5,6 +5,7 @@ import { MHomeComponent } from './m-home/m-home.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'm_home', component: MHomeComponent },
 ];
