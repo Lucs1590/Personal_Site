@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  trasnlate() {
+  translate() {
     if (this.TEXT_TRANS.match('pt')) {
       this.TEXT_TRANS = 'en';
     } else {

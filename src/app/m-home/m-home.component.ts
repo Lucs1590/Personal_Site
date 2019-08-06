@@ -16,7 +16,7 @@ export class MHomeComponent implements OnInit {
     }
   }
 
-  trasnlate() {
+  translate() {
     if (this.TEXT_TRANS.match('pt')) {
       this.TEXT_TRANS = 'en';
     } else {
