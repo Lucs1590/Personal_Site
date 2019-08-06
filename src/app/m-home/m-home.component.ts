@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./m-home.component.css']
 })
 export class MHomeComponent implements OnInit {
-
+  TEXT_TRANS = 'en';
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -16,4 +16,11 @@ export class MHomeComponent implements OnInit {
     }
   }
 
+  trasnlate() {
+    if (this.TEXT_TRANS.match('pt')) {
+      this.TEXT_TRANS = 'en';
+    } else {
+      this.TEXT_TRANS = 'pt';
+    }
+  }
 }

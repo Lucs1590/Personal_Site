@@ -7,13 +7,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  idade: number;
+  idade = new Date().getFullYear() - 1999;
+  TEXT_TRANS = 'en';
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.idade = new Date().getFullYear() - 1999;
     if (window.innerWidth <= 991) {
       this.router.navigate(['m_home']);
+    }
+  }
+
+  trasnlate() {
+    if (this.TEXT_TRANS.match('pt')) {
+      this.TEXT_TRANS = 'en';
+    } else {
+      this.TEXT_TRANS = 'pt';
     }
   }
 
