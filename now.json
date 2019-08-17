@@ -1,0 +1,16 @@
+{
+    "name": "personal-site",
+    "version": 2,
+    "alias": "lucasbrito.now.sh",
+    "routes": [
+        {
+            "src": "/home",
+            "dest": "/index.html",
+            "status": 404
+        }
+    ],
+    "regions": [
+        "gru1",
+        "iad1"
+    ]
+}
