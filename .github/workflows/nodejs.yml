@@ -27,11 +27,10 @@ jobs:
         npm build
         
     - name: Deploy to now!
-      uses: actions/setup-node@v1
       env:
         EMAIL: lucasbsilva29@gmail.com
         SENHA: Mona
-      - run: echo $EMAIL $SENHA
+      run: echo $EMAIL $SENHA
       
       env:
         CI: true
