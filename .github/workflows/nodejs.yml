@@ -25,7 +25,6 @@ jobs:
       run: |
         npm install
         npm run build
-        - name: Print a greeting
         
     - name: Install now!
       uses: actions/setup-node@v1
@@ -36,9 +35,7 @@ jobs:
       env:
         EMAIL: lucasbsilva29@gmail.com
         SENHA: Mona
-      run: |
-        now dist/personal-site/
-        now dist/personal-site/ --prod
+      run: echo $EMAIL $SENHA
       
       env:
         CI: true
