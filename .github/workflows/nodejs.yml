@@ -24,11 +24,7 @@ jobs:
     - name: npm install and build
       run: |
         npm install
-        npm run build
-        
-    - name: Install now!
-      uses: actions/setup-node@v1
-      run: npm i -g now
+        npm build
         
     - name: Deploy to now!
       uses: actions/setup-node@v1
