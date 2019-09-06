@@ -1,0 +1,44 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  installs:
+    name: Install dependencies
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+     
+    - name: npm install and build
+      run: |
+        npm install
+        npm run build
+        - name: Print a greeting
+        
+    - name: Install now!
+      uses: actions/setup-node@v1
+      run: npm i -g now
+        
+    - name: Deploy to now!
+      uses: actions/setup-node@v1
+      env:
+        EMAIL: lucasbsilva29@gmail.com
+        SENHA: Mona
+      run: |
+        now dist/personal-site/
+        now dist/personal-site/ --prod
+      
+      env:
+        CI: true
