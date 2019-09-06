@@ -30,8 +30,7 @@ jobs:
     - name: Deploy to now!
       env:
         EMAIL: lucasbsilva29@gmail.com
-        SENHA: Mona
-      run: echo $EMAIL $SENHA
-      
-      env:
+        SENHA: lucas
         CI: true
+      run: echo $EMAIL $SENHA
+        
