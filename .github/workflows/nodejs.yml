@@ -31,7 +31,7 @@ jobs:
       env:
         EMAIL: lucasbsilva29@gmail.com
         SENHA: Mona
-      run: echo $EMAIL $SENHA
+      - run: echo $EMAIL $SENHA
       
       env:
         CI: true
