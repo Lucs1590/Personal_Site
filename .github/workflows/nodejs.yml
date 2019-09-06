@@ -26,6 +26,7 @@ jobs:
         npm install
         npm build
         
+    - uses: actions/checkout@v1
     - name: Deploy to now!
       env:
         EMAIL: lucasbsilva29@gmail.com
