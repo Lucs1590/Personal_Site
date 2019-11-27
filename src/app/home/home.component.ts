@@ -14,12 +14,6 @@ export class HomeComponent implements OnInit {
     translate.setDefaultLang('en');
   } */
 
-  ngOnInit() {
-    if (window.innerWidth <= 991) {
-      // this.router.navigate(['m_home']);
-    }
-  }
-
   /*   useLanguage(language: string) {
       this.translate.use(language);
     } */
