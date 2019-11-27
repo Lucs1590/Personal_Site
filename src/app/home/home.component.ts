@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
     translate.setDefaultLang('en');
   } */
 
+  ngOnInit() {
+  }
+
   /*   useLanguage(language: string) {
       this.translate.use(language);
     } */
