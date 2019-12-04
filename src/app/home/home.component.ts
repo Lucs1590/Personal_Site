@@ -9,24 +9,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
   idade = new Date().getFullYear() - 1999;
-  TEXT_TRANS = 'en';
-  constructor() { }/* private translate: TranslateService) {
-    translate.setDefaultLang('en');
-  } */
+  CURRENT_LANG = 'pt';
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('pt');
+  }
 
   ngOnInit() {
   }
 
-  /*   useLanguage(language: string) {
-      this.translate.use(language);
-    } */
-
-  translate() {
-    if (this.TEXT_TRANS.match('pt')) {
-      this.TEXT_TRANS = 'en';
+  useLanguage() {
+    if (this.CURRENT_LANG.match('pt')) {
+      this.CURRENT_LANG = 'en';
+      this.translate.use(this.CURRENT_LANG);
     } else {
-      this.TEXT_TRANS = 'pt';
+      this.CURRENT_LANG = 'pt';
+      this.translate.use(this.CURRENT_LANG);
     }
   }
-
 }
