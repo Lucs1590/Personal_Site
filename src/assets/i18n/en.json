@@ -1,5 +1,6 @@
 {
-    "demo.title": "Translation demo",
-    "demo.text": "This is a simple demonstration app for ngx-translate",
-    "demo.greeting": "Hello {{name}}!"
+    "home.lang": "pt",
+    "home.sub_title": "Big Data in Agribusiness Student",
+    "home.about": "About me",
+    "home.description": "Hi, welcome to my web site, my name is Lucas de Brito Silva and I'm {{idade}} years old. I consider myself an enthusiastic in Technology and I'm motivated by my dreams, and to accomplish them I sought to get qualified with Computer Technician course at ETEC Professor Massuyuki Kawano and I am currently enrolled to Big Data in Agribusiness course, being the first class to graduate in Brazil. I hope you enjoy my site, here we go!"
 }
