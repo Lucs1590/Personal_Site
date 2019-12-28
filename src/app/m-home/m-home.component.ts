@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-m-home',
+  templateUrl: './m-home.component.html',
+  styleUrls: ['./m-home.component.css']
 })
-export class HomeComponent implements OnInit {
-  idade = new Date().getFullYear() - 1999;
+export class MHomeComponent implements OnInit {
   CURRENT_LANG = 'pt';
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('pt');

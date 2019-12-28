@@ -11,11 +11,15 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SeparadorComponent } from './separador/separador.component';
+import { MHomeComponent } from './m-home/m-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    SeparadorComponent,
+    MHomeComponent,
   ],
   imports: [
     BrowserModule,
