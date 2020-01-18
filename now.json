@@ -7,9 +7,5 @@
             "status": 404,
             "dest": "index.html"
         }
-    ],
-    "regions": [
-        "gru1",
-        "iad1"
     ]
 }
