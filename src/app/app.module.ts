@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { MHomeComponent } from './m-home/m-home.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFontAwesomeModule,
+    // AngularFontAwesomeModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -33,7 +34,9 @@ import { MHomeComponent } from './m-home/m-home.component';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    HammerModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
