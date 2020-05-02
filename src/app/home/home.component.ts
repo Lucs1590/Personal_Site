@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
     const image2 = 'url("../../assets/img/principal-min.jpg")';
     const elemento = document.getElementsByClassName('imgPrincipal') as HTMLCollectionOf<HTMLElement>;
     elemento[0].style['background-image'] = window.innerWidth >= 1350 ? image1 : image2;
+    elemento[0].classList.add('animated', 'fadeInUp');
   }
 
   useLanguage() {
