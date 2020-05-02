@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
     const title = document.getElementById('title_name');
     const subtitle = document.getElementById('sub_title')
-
     const elemento = document.getElementsByClassName('imgPrincipal') as HTMLCollectionOf<HTMLElement>;
+
     elemento[0].style['background-image'] = window.innerWidth >= 1350 ? image1 : image2;
     elemento[0].classList.add('animated', 'fadeInUp');
     title.classList.add('animated', 'fadeInLeft');
