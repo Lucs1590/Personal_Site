@@ -11,11 +11,7 @@ export class SeparadorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (window.innerWidth <= 991) {
-      this.mobile = true;
-    } else {
-      this.mobile = false;
-    }
+    this.mobile = window.innerWidth <= 991 ? true : false;
   }
 
 }
