@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
     elemento[0].classList.add('animated', 'fadeInUp');
     title.classList.add('animated', 'fadeInLeft');
     subtitle.classList.add('animated', 'fadeInLeft');
-    
   }
 
   useLanguage() {
