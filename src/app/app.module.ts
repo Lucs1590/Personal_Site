@@ -14,6 +14,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconesComponent } from './icones/icones.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeComponent,
     SeparadorComponent,
     MHomeComponent,
+    IconesComponent,
   ],
   imports: [
     BrowserModule,
