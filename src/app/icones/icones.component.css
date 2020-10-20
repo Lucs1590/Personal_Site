@@ -1,3 +1,9 @@
 .icons_div{
     margin-top: 10rem;
 }
+
+.icon:hover{
+    transform: scale(1.25);
+    transition-duration: 0.5s;
+    color:#E69C24 !important;
+}
