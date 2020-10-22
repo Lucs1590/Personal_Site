@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+declare var particlesJS: any;
+
 @Component({
   selector: 'app-m-home',
   templateUrl: './m-home.component.html',
@@ -13,6 +15,7 @@ export class MHomeComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
+    particlesJS.load('particles-js', '../assets/particlesjs-config.json');
   }
 
   ngAfterContentInit(): void {
