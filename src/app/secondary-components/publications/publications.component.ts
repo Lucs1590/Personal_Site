@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Publication } from 'src/app/models/publication.model';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-publications',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publications.component.css']
 })
 export class PublicationsComponent implements OnInit {
+  publications: Publication[];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.getPublications();
+  }
+
+  async getPublications() {
+    const publications = await this.apiService.getAllPublications().toPromise();
+    this.publications = publications;
   }
 
 }
