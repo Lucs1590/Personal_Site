@@ -18,7 +18,7 @@ export class PublicationsComponent implements OnInit {
 
   async getPublications() {
     const publications = await this.apiService.getAllPublications().toPromise();
-    this.publications = publications;
+    this.publications = publications.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
 }
