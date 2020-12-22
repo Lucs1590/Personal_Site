@@ -22,7 +22,8 @@ export class Publication implements Deserializable {
     }): this {
         Object.assign(this, {});
         this.title = input.title;
-        this.description = input.description;
+        this.description = input.description.
+            slice(input.description.indexOf('<p>'), input.description.indexOf('</p>') + 4).concat('...');
         this.image = input.thumbnail;
         this.publicationDate = new Date(input.pubDate);
         this.url = input.link;
