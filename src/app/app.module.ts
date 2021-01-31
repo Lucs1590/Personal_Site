@@ -16,6 +16,7 @@ import { MHomeComponent } from './m-home/m-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
+import { TechnologiesComponent } from './technologies/technologies.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PublicationsComponent } from './secondary-components/publications/publi
     MHomeComponent,
     IconesComponent,
     PublicationsComponent,
+    TechnologiesComponent,
   ],
   imports: [
     BrowserModule,
