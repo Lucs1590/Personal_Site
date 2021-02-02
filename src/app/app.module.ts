@@ -16,7 +16,8 @@ import { MHomeComponent } from './m-home/m-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
-import { TechnologiesComponent } from './technologies/technologies.component';
+import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
+import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TechnologiesComponent } from './technologies/technologies.component';
     IconesComponent,
     PublicationsComponent,
     TechnologiesComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,
