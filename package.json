@@ -35,7 +35,7 @@
     "jszip": "^3.4.0",
     "normalize.css": "^8.0.1",
     "particles.js": "^2.0.0",
-    "rxjs": "^6.5.5",
+    "rxjs": "^6.6.3",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
