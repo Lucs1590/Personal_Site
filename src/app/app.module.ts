@@ -18,6 +18,7 @@ import { IconesComponent } from './secondary-components/icones/icones.component'
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { RecommendationsComponent } from './secondary-components/recommendations
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     // AngularFontAwesomeModule,
