@@ -5,11 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Chrome Debugger",
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:4200",
-            "webRoot": "${workspaceFolder}"
+            "runtimeExecutable": "/usr/bin/chromium-browser",
+            "url": "http://localhost:4200/",
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}",
+            "port": 9222,
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+            ]
         }
     ]
 }
