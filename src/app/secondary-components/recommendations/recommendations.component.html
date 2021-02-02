@@ -1,8 +1,13 @@
 <div class="row bg-dark" style="min-height:100%; overflow-y: auto;">
-	<div id="carouselControls" class="carousel slide" data-ride="carousel">
+	<div class="d-flex align-items-start ml-5 mr-3">
+		<h5 translate>recommendations.title</h5>
+	</div>
+	<div id="carouselControls" class="carousel slide carousel-fade w-100" data-ride="carousel">
 		<div class="carousel-inner">
-			<div class="carousel-item" *ngFor="let recommendation of recommendations">
-				recommendation.author
+			<div [ngClass]="i == 0 ? 'carousel-item active': 'carousel-item'"
+				*ngFor="let recommendation of recommendations; let i = index" data-interval="5000">
+				<img class="imgAuthors" src="{{recommendation.authorImage}}" alt="author-image">
+				{{recommendation.author}}
 			</div>
 		</div>
 
