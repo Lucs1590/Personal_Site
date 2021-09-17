@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -32,7 +31,6 @@ import { TechnologiesComponent } from './technologies/technologies.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // AngularFontAwesomeModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
