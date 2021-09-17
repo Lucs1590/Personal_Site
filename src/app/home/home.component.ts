@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,14 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterContentInit {
+export class HomeComponent implements AfterContentInit {
   idade = new Date().getFullYear() - 1999;
   CURRENT_LANG = 'pt';
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('pt');
-  }
-
-  ngOnInit() {
   }
 
   ngAfterContentInit(): void {
