@@ -1,4 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 import { MHomeComponent } from './m-home.component';
 
@@ -6,11 +8,20 @@ describe('MHomeComponent', () => {
   let component: MHomeComponent;
   let fixture: ComponentFixture<MHomeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MHomeComponent ]
+      declarations: [MHomeComponent],
+      imports: [
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useClass: TranslateFakeLoader
+          }
+        })
+      ],
+      providers: [TranslateService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

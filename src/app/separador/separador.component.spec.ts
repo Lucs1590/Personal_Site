@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SeparadorComponent } from './separador.component';
 
@@ -6,7 +6,7 @@ describe('SeparadorComponent', () => {
   let component: SeparadorComponent;
   let fixture: ComponentFixture<SeparadorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SeparadorComponent ]
     })

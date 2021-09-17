@@ -1,21 +1,15 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
-declare var particlesJS: any;
 
 @Component({
   selector: 'app-m-home',
   templateUrl: './m-home.component.html',
   styleUrls: ['./m-home.component.css']
 })
-export class MHomeComponent implements OnInit, AfterContentInit {
+export class MHomeComponent implements AfterContentInit {
   CURRENT_LANG = 'pt';
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('pt');
-  }
-
-  ngOnInit() {
-    particlesJS.load('particles-js', '../assets/particlesjs-config.json');
   }
 
   ngAfterContentInit(): void {
