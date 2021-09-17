@@ -30,7 +30,9 @@
               "./node_modules/font-awesome/css/font-awesome.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/popper.js/dist/popper.min.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -101,7 +103,10 @@
               "./node_modules/particles.js/particles.js",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/popper.js/dist/popper.min.js",
+              "./node_modules/particles.js/particles.js"
+            ],
             "assets": [
               "src/icon.ico",
               "src/assets"
