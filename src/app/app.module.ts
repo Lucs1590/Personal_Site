@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -49,9 +50,8 @@ import { TechnologiesComponent } from './technologies/technologies.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(faConfig: FaConfig, library: FaIconLibrary) {
-    faConfig.defaultPrefix = 'fas';
-    library.addIconPacks(fas, far);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far, fab);
   }
 }
 
