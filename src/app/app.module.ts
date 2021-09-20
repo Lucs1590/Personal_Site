@@ -20,6 +20,7 @@ import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { TechnologiesComponent } from './technologies/technologies.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TechnologiesComponent } from './technologies/technologies.component';
     IconesComponent,
     PublicationsComponent,
     TechnologiesComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
