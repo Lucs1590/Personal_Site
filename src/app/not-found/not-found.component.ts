@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class NotFoundComponent {
 
-  constructor() { }
+  constructor(
+    public utils: UtilsService
+  ) { }
 
 }
