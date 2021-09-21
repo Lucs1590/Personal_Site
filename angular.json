@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/personal-site",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,16 +24,22 @@
             ],
             "styles": [
               "./node_modules/normalize.css/normalize.css",
-              "./node_modules/jquery/dist/jquery.js",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/animate.css/animate.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
               "src/styles.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/popper.js/dist/popper.min.js",
+              "./node_modules/particles.js/particles.js"
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -48,7 +53,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -64,7 +68,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -92,16 +97,15 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "./node_modules/normalize.css/normalize.css",
-              "./node_modules/jquery/dist/jquery.js",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/animate.css/animate.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/particles.js/particles.js",
               "src/styles.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/popper.js/dist/popper.min.js",
+              "./node_modules/particles.js/particles.js"
             ],
             "assets": [
               "src/icon.ico",

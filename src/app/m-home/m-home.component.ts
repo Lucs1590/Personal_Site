@@ -1,22 +1,16 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
-declare var particlesJS: any;
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-m-home',
   templateUrl: './m-home.component.html',
   styleUrls: ['./m-home.component.css']
 })
-export class MHomeComponent implements OnInit, AfterContentInit {
-  CURRENT_LANG = 'pt';
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('pt');
-  }
-
-  ngOnInit() {
-    particlesJS.load('particles-js', '../assets/particlesjs-config.json');
-  }
+export class MHomeComponent implements AfterContentInit {
+  constructor(
+    public utils: UtilsService
+  ) { }
 
   ngAfterContentInit(): void {
     const title = document.getElementById('title_name');
@@ -24,15 +18,5 @@ export class MHomeComponent implements OnInit, AfterContentInit {
 
     title.classList.add('animated', 'zoomIn');
     subtitle.classList.add('animated', 'zoomIn');
-  }
-
-  useLanguage() {
-    if (this.CURRENT_LANG.match('pt')) {
-      this.CURRENT_LANG = 'en';
-      this.translate.use(this.CURRENT_LANG);
-    } else {
-      this.CURRENT_LANG = 'pt';
-      this.translate.use(this.CURRENT_LANG);
-    }
   }
 }
