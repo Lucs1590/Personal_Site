@@ -15,7 +15,7 @@ export class HomeComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     const image1 = 'url("../../assets/img/perfil_site.png")';
-    const image2 = 'url("../../assets/img/principal-min.jpg")';
+    const image2 = 'url("../../assets/img/principal-min.png")';
 
     const title = document.getElementById('title_name');
     const subtitle = document.getElementById('sub_title');
