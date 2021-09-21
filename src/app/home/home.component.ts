@@ -1,5 +1,5 @@
 import { Component, AfterContentInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements AfterContentInit {
   idade = new Date().getFullYear() - 1999;
-  CURRENT_LANG = 'pt';
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('pt');
+  constructor(
+    public utils: UtilsService
+    ) {
   }
 
   ngAfterContentInit(): void {
@@ -25,15 +25,5 @@ export class HomeComponent implements AfterContentInit {
     elemento[0].classList.add('animated', 'fadeInUp');
     title.classList.add('animated', 'fadeInLeft');
     subtitle.classList.add('animated', 'fadeInLeft');
-  }
-
-  useLanguage() {
-    if (this.CURRENT_LANG.match('pt')) {
-      this.CURRENT_LANG = 'en';
-      this.translate.use(this.CURRENT_LANG);
-    } else {
-      this.CURRENT_LANG = 'pt';
-      this.translate.use(this.CURRENT_LANG);
-    }
   }
 }

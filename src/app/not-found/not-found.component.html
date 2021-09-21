@@ -1,0 +1,22 @@
+<div class="container-xxl bg-dark text-white">
+    <div class="d-flex justify-content-left ml-1 mt-1">
+        <a translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utils.useLanguage()">home.lang</a>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <p class="glitch-text">
+            <span aria-hidden="true">404</span>
+            404
+            <span aria-hidden="true">404</span>
+        </p>
+    </div>
+    <div class="row justify-content-center mt-3" *ngIf="utils.currentLang == 'en'">
+        <h3 translate>not_found.sub</h3>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <h3 translate>not_found.sub_2</h3>
+    </div>
+    <div class="row justify-content-center mt-2">
+        <button translate type="button" class="btn btn-outline-secondary rounded-pill"
+            (click)="utils.goHome()">not_found.back_button</button>
+    </div>
+</div>
