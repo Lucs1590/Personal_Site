@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Icon } from 'src/app/models/icon.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Icon } from 'src/app/models/icon.model';
   templateUrl: './icones.component.html',
   styleUrls: ['./icones.component.css']
 })
-export class IconesComponent implements OnInit {
+export class IconesComponent {
 
   constructor() { }
 
@@ -56,10 +56,6 @@ export class IconesComponent implements OnInit {
       link: 'https://www.instagram.com/_lucasbritoo',
       active: true
     }
-  ]
-
-  ngOnInit(): void {
-    this.iconList?.map(icon => new Icon().deserialize(icon));
-  }
+  ].map(icon => new Icon().deserialize(icon));
 
 }
