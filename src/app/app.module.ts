@@ -39,6 +39,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
+      defaultLanguage: 'pt',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
