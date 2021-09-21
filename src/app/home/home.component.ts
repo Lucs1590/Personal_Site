@@ -1,5 +1,4 @@
 import { Component, AfterContentInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../services/utils.service';
 
 @Component({
