@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   itemsList = [
     {
       name: 'Publications',
-      ref: ['/404'],
+      ref: ['/publications'],
       mobile: false,
       desktop: true
     },
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
       name: 'Portfolio',
       ref: '',
       mobile: false,
-      desktop: true
+      desktop: false
     },
   ]
 
