@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
@@ -6,8 +7,31 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  mobile: boolean = false;
+  itemsList = [
+    {
+      name: 'Publications',
+      ref: ['/404'],
+      mobile: false,
+      desktop: true
+    },
+    {
+      name: 'Portfolio',
+      ref: '',
+      mobile: false,
+      desktop: true
+    },
+  ]
 
-  constructor(public utils: UtilsService) { }
+  constructor(
+    public utils: UtilsService,
+    private translate: TranslateService
+  ) { }
+
+  ngOnInit(): void {
+    this.mobile = window.innerWidth <= 991 ? true : false;
+    this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+  }
 
 }
