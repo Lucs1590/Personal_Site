@@ -24,7 +24,11 @@ export class Publication implements Deserializable {
     this.title = input?.title;
     this.description = input?.description
       .slice(input?.description.indexOf('<p>'), input?.description.indexOf('</p>'))
-      .concat('..</p>');
+      .replace(new RegExp('<\s*a[^>]*>', 'g'), '')
+      .replace(new RegExp('<\s*/\s*a>', 'g'), '')
+      .replace(new RegExp('<strong>', 'g'), '')
+      .replace(new RegExp('</strong>', 'g'), '')
+      .concat('..</p>'); // 210 chars or until the end.
     this.image = input?.thumbnail;
     this.publicationDate = new Date(input?.pubDate);
     this.url = input?.link;
