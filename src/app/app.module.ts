@@ -23,6 +23,7 @@ import { TechnologiesComponent } from './secondary-components/technologies/techn
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
+import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './secondary-components/not-found/not-found.co
     TechnologiesComponent,
     RecommendationsComponent,
     NotFoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
