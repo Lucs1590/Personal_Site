@@ -21,24 +21,7 @@ hr{
     border-top: 0.25rem solid rgba(0,0,0,.1)
 }
 
-.sobre_text, a {
+.sobre_text {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     color: white;
-}
-
-.itemnav {
-  text-decoration: underline 0.17rem rgba(0, 0, 0, 0);
-  transition: text-decoration-color 700ms;
-}
-
-.itemnav:hover {
-  text-decoration-color: #E69C24;
-  color:#E69C24 !important;
-  transition-duration: 700ms;
-  display: inline-block;
-  transform: scale(1.15);
-  -webkit-transform: scale(1.15); /* Safari and Chrome */
-  -moz-transform: scale(1.15); /* Firefox */
-  -ms-transform: scale(1.15); /* IE 9+ */
-  -o-transform: scale(1.15); /* Opera */
 }
