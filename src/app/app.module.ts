@@ -22,7 +22,7 @@ import { PublicationsComponent } from './secondary-components/publications/publi
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
