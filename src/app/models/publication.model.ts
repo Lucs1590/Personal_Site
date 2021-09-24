@@ -22,10 +22,14 @@ export class Publication implements Deserializable {
   }): this {
     Object.assign(this, {});
     this.title = input?.title;
-    this.description = input?.description
-      .slice(input?.description.indexOf('<p>'), input?.description.indexOf('</p>'))
-      .replace(new RegExp('<.+?>', 'g'), '')
-      .concat('..</p>'); // 210 chars or until the end.
+
+    this.description = '<p>'.concat(
+      input?.description
+        .slice(input?.description.indexOf('<p>'), input?.description.indexOf('</p>'))
+        .replace(new RegExp('<.+?>', 'g'), '')
+        .slice(0, 210),
+      '..</p>');
+
     this.image = input?.thumbnail;
     this.publicationDate = new Date(input?.pubDate);
     this.url = input?.link;
