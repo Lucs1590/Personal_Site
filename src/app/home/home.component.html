@@ -1,6 +1,6 @@
 <div class="row bg-dark" style="min-height:100%; overflow-y: auto;">
   <div class="col-lg-7 text-light bg-dark mh-100">
-    <div class="d-flex justify-content-left ml-2 mt-2 text-white navnav">
+    <div class="d-flex justify-content-left ml-2 mt-2 text-white">
       <a translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utils.useLanguage()">lang</a>
       <div class="ml-5 mt-1">
         <a [routerLink]="['/']" class="ml-3 itemnav">Resume</a>
@@ -17,7 +17,8 @@
     <div class="d-flex align-items-start ml-3 mr-3 mt-5">
       <h5 translate>home.about</h5>
     </div>
-    <div translate class="d-flex align-items-start ml-4 mr-4 sobre_text" [translateParams]="{idade: idade}">home.description</div>
+    <div translate class="d-flex align-items-start ml-4 mr-4 sobre_text" [translateParams]="{idade: idade}">
+      home.description</div>
 
     <app-icones></app-icones>
 
