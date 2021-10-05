@@ -11,11 +11,4 @@ a {
 .itemnav:hover {
     text-decoration-color: #E69C24;
     color:#E69C24 !important;
-    transition-duration: 700ms;
-    display: inline-block;
-    transform: scale(1.15);
-    -webkit-transform: scale(1.15); /* Safari and Chrome */
-    -moz-transform: scale(1.15); /* Firefox */
-    -ms-transform: scale(1.15); /* IE 9+ */
-    -o-transform: scale(1.15); /* Opera */
 }
