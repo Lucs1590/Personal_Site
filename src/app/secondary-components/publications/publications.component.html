@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="row pl-5 pt-5 mt-5">
-    <h3>Ultimas Publicações</h3>
+    <h2>Ultimas Publicações</h2>
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-12	col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
@@ -15,13 +15,14 @@
 
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
 
-    <div class="card mt-5" *ngFor="let pub of publications">
+    <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0" *ngFor="let pub of publications">
         <div class="card-body">
+            <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
             <h4 class="card-title">{{ pub.title }}</h4>
             <div class="card-text" [innerHTML]=pub.description></div>
-            <div class="row">
+            <div class="row w-100 foot-card">
                 <div class="col">
-                    <a [href]=pub.url>
+                    <a [href]=pub.url class="read-more">
                         <fa-icon icon="link"></fa-icon> Leia Mais
                     </a>
                 </div>
