@@ -1,0 +1,46 @@
+.card {
+    width: 25rem;
+    height: 20rem;
+    border-width: 3px 0 3px 0;
+    transition-duration: 700ms;
+}
+
+.card:hover{
+    display: inline-block;
+    transform: scale(1.15);
+    transition-duration: 700ms;
+    -webkit-transform: scale(1.15); /* Safari and Chrome */
+    -moz-transform: scale(1.15); /* Firefox */
+    -ms-transform: scale(1.15); /* IE 9+ */
+    -o-transform: scale(1.15); /* Opera */
+}
+
+.thumb {
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    float: left;
+}
+
+.read-more {
+    color:#E69C24
+}
+
+.foot-card {
+    position: absolute;
+    bottom: 1rem;
+}
+
+h2{
+    font-family: 'Anton', 'Poppins', sans-serif;
+}
+
+.sobre_text {
+    font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+}
+
+.icon:hover{
+    transform: scale(1.25);
+    transition-duration: 0.5s;
+    color:#E69C24 !important;
+}

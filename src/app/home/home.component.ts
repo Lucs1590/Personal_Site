@@ -1,5 +1,4 @@
 import { Component, AfterContentInit } from '@angular/core';
-import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +7,6 @@ import { UtilsService } from '../services/utils.service';
 })
 export class HomeComponent implements AfterContentInit {
   idade = new Date().getFullYear() - 1999;
-  constructor(
-    public utils: UtilsService
-    ) {
-  }
 
   ngAfterContentInit(): void {
     const image1 = 'url("../../assets/img/perfil_site.png")';

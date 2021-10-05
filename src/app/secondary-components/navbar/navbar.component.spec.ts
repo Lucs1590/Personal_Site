@@ -1,17 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
+import { NavbarComponent } from './navbar.component';
 
-import { MHomeComponent } from './m-home.component';
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
-describe('MHomeComponent', () => {
-  let component: MHomeComponent;
-  let fixture: ComponentFixture<MHomeComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [MHomeComponent],
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [NavbarComponent],
       imports: [
         RouterTestingModule,
         TranslateModule.forRoot({
@@ -20,14 +19,13 @@ describe('MHomeComponent', () => {
             useClass: TranslateFakeLoader
           }
         })
-      ],
-      providers: [TranslateService]
+      ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MHomeComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
