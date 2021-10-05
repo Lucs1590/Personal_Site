@@ -1,29 +1,32 @@
 <app-navbar></app-navbar>
 <div class="row pl-5 pt-5 mt-5">
-    <h2>Ultimas Publicações</h2>
+    <h2 translate>publi.title</h2>
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-12	col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+    <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">publi.description
+        <div class="row" style="font-size: 2rem;">
+            <a href="https://lucasbsilva29.medium.com/" class="text-white ml-3 mt-2 icon">
+                <fa-icon [icon]="['fab', 'medium']"></fa-icon>
+            </a>
+            <a href="https://dev.to/lucs1590" class="text-white ml-2 mt-2 icon">
+                <fa-icon [icon]="['fab', 'dev']"></fa-icon>
+            </a>
+        </div>
     </div>
 </div>
 
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
 
-    <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0" *ngFor="let pub of publications">
+    <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
+        *ngFor="let pub of publications">
         <div class="card-body">
             <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
             <h4 class="card-title">{{ pub.title }}</h4>
             <div class="card-text" [innerHTML]=pub.description></div>
             <div class="row w-100 foot-card">
                 <div class="col">
-                    <a [href]=pub.url class="read-more">
-                        <fa-icon icon="link"></fa-icon> Leia Mais
+                    <a translate [href]=pub.url class="read-more">
+                        <fa-icon icon="link"></fa-icon> publi.read-more
                     </a>
                 </div>
                 <div class="col">

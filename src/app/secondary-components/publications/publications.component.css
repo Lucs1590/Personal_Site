@@ -38,3 +38,9 @@ h2{
 .sobre_text {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
 }
+
+.icon:hover{
+    transform: scale(1.25);
+    transition-duration: 0.5s;
+    color:#E69C24 !important;
+}
