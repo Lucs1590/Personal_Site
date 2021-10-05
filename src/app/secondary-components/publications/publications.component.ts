@@ -20,7 +20,7 @@ export class PublicationsComponent implements OnInit {
     const publications = await this.apiService.getAllPublications().toPromise();
     this.publications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
-      .splice(0, 9);
+      .splice(0, 8);
   }
 
 }
