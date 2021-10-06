@@ -20,6 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/icon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/assets"
             ],
             "styles": [
@@ -109,6 +111,8 @@
             ],
             "assets": [
               "src/icon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/assets"
             ]
           }
