@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.defineMenu();
+      this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
     });
   }
 
@@ -31,13 +32,13 @@ export class NavbarComponent implements OnInit {
       {
         name: this.translate.get('nav.home').toPromise() as Promise<string>,
         ref: ['/'],
-        mobile: false,
+        mobile: true,
         desktop: true
       },
       {
         name: this.translate.get('nav.publications').toPromise(),
         ref: ['/publications'],
-        mobile: false,
+        mobile: true,
         desktop: true
       },
       {
