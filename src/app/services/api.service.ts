@@ -23,8 +23,8 @@ export class ApiService {
       .pipe(
         map(publication =>
           publication.items
-            .filter(_publication => _publication.categories.length > 0)
-            .map(_publication => new Publication().deserialize(_publication))),
+            .filter(item => item.categories.length > 0)
+            .map(item => new Publication().deserialize(item))),
         catchError(() => throwError('Problem with publications')));
   }
 }
