@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Lucas Brito")
+    this.title.setTitle('Lucas Brito');
     const date = new Date(Date.now());
-    let formatedData = ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
+    const formatedData = ((date.getDate())) + '/' + ((date.getMonth() + 1)) + '/' + date.getFullYear();
     this.meta.addTags([
       { name: 'description', content: 'Lucas Brito homepage.' },
       { name: 'author', content: 'Lucs1590' },
