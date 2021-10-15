@@ -25,6 +25,6 @@ export class ApiService {
           publication.items
             .filter(_publication => _publication.categories.length > 0)
             .map(_publication => new Publication().deserialize(_publication))),
-        catchError(() => throwError('Problem with publications')))
+        catchError(() => throwError('Problem with publications')));
   }
 }

@@ -1,7 +1,7 @@
 .card {
     width: 25rem;
     height: 20rem;
-    border-width: 3px 0 3px 0;
+    border-width: 3px 0;
     transition-duration: 700ms;
 }
 

@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  mobile: boolean = false;
+  mobile = false;
   itemsList: { name: Promise<string> | string; ref: string[]; mobile: boolean; desktop: boolean }[];
 
   constructor(
