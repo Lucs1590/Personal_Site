@@ -24,6 +24,7 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NavbarComponent } from './secondary-components/navbar/navbar.component'
       }
     }),
     HammerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
