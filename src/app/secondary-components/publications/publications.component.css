@@ -5,7 +5,7 @@
     transition-duration: 700ms;
 }
 
-.card:hover{
+.real-card:hover{
     display: inline-block;
     transform: scale(1.15);
     transition-duration: 700ms;
