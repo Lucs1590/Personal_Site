@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     RecommendationsComponent,
     NotFoundComponent,
     NavbarComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,
