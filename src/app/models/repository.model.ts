@@ -18,7 +18,7 @@ export class Repository implements Deserializable {
         this.stars = input?.stargazers_count;
         this.forks = input?.forks_count;
         this.issues = input?.open_issues_count;
-        this.url = input?.url;
+        this.url = input?.html_url;
         this.topics = input?.topics;
         this.language = input?.language;
         this.description = input?.description;
