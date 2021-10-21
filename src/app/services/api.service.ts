@@ -29,8 +29,8 @@ export class ApiService {
         catchError(() => throwError('Problem with publications request')));
   }
 
-  getAllRepositories(): Observable<Repository[]> {
-    return this.httpService.get<Repository[]>('https://api.github.com/users/Lucs1590/repos', this.httpOptions)
+  getAllRepositories(username: string): Observable<Repository[]> {
+    return this.httpService.get<Repository[]>(`https://api.github.com/users/${username}/repos`, this.httpOptions)
       .pipe(
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
         catchError(() => throwError('Problem with publications')));

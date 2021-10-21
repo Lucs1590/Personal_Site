@@ -16,7 +16,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   async getRepositories() {
-    const repositories = await this.apiService.getAllRepositories().toPromise();
+    const repositories = await this.apiService.getAllRepositories('Lucs1590').toPromise();
     this.repos = repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
       .filter(repo => repo.private === false);
