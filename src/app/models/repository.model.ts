@@ -1,17 +1,17 @@
 import { Deserializable } from './deserializable.model';
 
 export class Repository implements Deserializable {
-    public name: string;
-    public stars: number;
-    public forks: number;
-    public issues: number;
-    public url: string;
-    public topics: string[];
-    public language: string;
-    public description: string;
-    public created_at: Date;
-    public updateDate: Date;
-    public private: boolean;
+    public name?: string;
+    public stars?: number;
+    public forks?: number;
+    public issues?: number;
+    public url?: string;
+    public topics?: string[];
+    public language?: string;
+    public description?: string;
+    public created_at?: Date;
+    public updateDate?: Date;
+    public private?: boolean;
 
     deserialize(input: any): this {
         this.name = input?.name;
