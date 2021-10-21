@@ -16,9 +16,11 @@ export class PortfolioComponent implements OnInit {
   }
 
   async getRepositories() {
-    const repositories = await this.apiService.getAllRepositories();
-    this.repos = repositories;
-    // .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
-    // .splice(0, 8);
+    const repositories = await this.apiService.getAllRepositories().toPromise();
+    this.repos = repositories
+      .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
+      .filter(repo => repo.private === false);
   }
+
+  // https://gitstalk.netlify.app/lucs1590 --> Gitstalk link
 }
