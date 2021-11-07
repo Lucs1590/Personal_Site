@@ -27,6 +27,8 @@ import { NavbarComponent } from './secondary-components/navbar/navbar.component'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 
+export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
       defaultLanguage: 'pt',
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
     }),
@@ -67,8 +69,4 @@ export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far, fab);
   }
-}
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

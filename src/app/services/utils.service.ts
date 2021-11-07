@@ -7,11 +7,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UtilsService {
 
+  currentLang = 'pt';
+
   constructor(
     private translate: TranslateService,
     private router: Router
   ) { }
-  currentLang = 'pt';
 
   useLanguage(): void {
     if (this.currentLang.match('pt')) {
