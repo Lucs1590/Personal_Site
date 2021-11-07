@@ -11,6 +11,7 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
+    "@angular-eslint/schematics": "^1.2.0",
     "@angular/animations": "~13.0.0",
     "@angular/common": "~13.0.0",
     "@angular/compiler": "~13.0.0",
