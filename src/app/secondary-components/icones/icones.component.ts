@@ -8,8 +8,6 @@ import { Icon } from 'src/app/models/icon.model';
 })
 export class IconesComponent {
 
-  constructor() { }
-
   iconList = [
     {
       icon: ['fas', 'envelope'],
@@ -62,4 +60,5 @@ export class IconesComponent {
     },
   ].map(icon => new Icon().deserialize(icon));
 
+  constructor() { }
 }

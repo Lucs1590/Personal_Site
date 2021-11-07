@@ -4,7 +4,7 @@
 	</div>
 	<div id="carouselControls" class="carousel slide carousel-fade w-100" data-ride="carousel">
 		<div class="carousel-inner text-center">
-			<div [ngClass]="i == 0 ? 'carousel-item active': 'carousel-item'"
+			<div [ngClass]="i === 0 ? 'carousel-item active': 'carousel-item'"
 				*ngFor="let recommendation of recommendations; let i = index" data-interval="5000">
 				<img class="imgAuthors" src="{{recommendation.authorImage}}" alt="author-image">
 				<small>{{recommendation.state}}</small>

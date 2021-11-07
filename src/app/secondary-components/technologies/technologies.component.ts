@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var particlesJS: any;
+declare let particlesJS: any;
 
 @Component({
   selector: 'app-technologies',
