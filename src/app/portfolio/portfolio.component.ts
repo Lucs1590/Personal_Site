@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  repos;
+  repos: Repository[];
 
   constructor(private apiService: ApiService) { }
 
