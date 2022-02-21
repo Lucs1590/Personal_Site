@@ -25,9 +25,39 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
-
+const ngxLoaderUiConfig: NgxUiLoaderConfig = {
+  'bgsColor': '#e69c24',
+  'bgsOpacity': 0.5,
+  'bgsPosition': 'bottom-right',
+  'bgsSize': 60,
+  'bgsType': 'ball-spin-clockwise',
+  'blur': 11,
+  'delay': 0,
+  'fastFadeOut': true,
+  'fgsColor': '#e69c24',
+  'fgsPosition': 'center-center',
+  'fgsSize': 50,
+  'fgsType': 'three-bounce',
+  'gap': 24,
+  'logoPosition': 'center-center',
+  'logoSize': 120,
+  'logoUrl': '',
+  'masterLoaderId': 'master',
+  'overlayBorderRadius': '0',
+  'overlayColor': 'rgba(100, 100, 100, 0.9)',
+  'pbColor': 'red',
+  'pbDirection': 'ltr',
+  'pbThickness': 3,
+  'hasProgressBar': false,
+  'text': '',
+  'textColor': '#FFFFFF',
+  'textPosition': 'center-center',
+  'maxTime': -1,
+  'minTime': 300
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +78,7 @@ export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(h
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
     TranslateModule.forRoot({
       defaultLanguage: 'pt',
       loader: {
