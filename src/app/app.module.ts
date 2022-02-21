@@ -57,7 +57,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   'textPosition': 'center-center',
   'maxTime': -1,
   'minTime': 300
-}
+};
 @NgModule({
   declarations: [
     AppComponent,

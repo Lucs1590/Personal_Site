@@ -17,7 +17,7 @@ export class PublicationsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.ngxService.start()
+    this.ngxService.start();
     await this.getPublications();
     setTimeout(async () => {
       this.ngxService.stop();
