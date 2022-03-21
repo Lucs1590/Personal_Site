@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-publications',
@@ -10,18 +9,17 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 })
 export class PublicationsComponent implements OnInit {
   publications: Publication[];
+  loading = false;
 
   constructor(
-    private apiService: ApiService,
-    private ngxService: NgxUiLoaderService
+    private apiService: ApiService
   ) { }
 
   async ngOnInit() {
-    this.ngxService.start();
     await this.getPublications();
-    setTimeout(async () => {
-      this.ngxService.stop();
-    }, 3000);
+    setTimeout(() => {
+      this.loading = true;
+    }, 2000);
   }
 
   async getPublications() {
