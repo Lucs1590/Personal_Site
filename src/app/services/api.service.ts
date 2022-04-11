@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
-import { IPInfo } from '../models/ipinfo.model';
+import { IPInfoRequest } from '../models/ipinfo-request.model';
 
 
 @Injectable({
@@ -31,9 +31,10 @@ export class ApiService {
   }
 
   getIPInfo(): Observable<any> {
-    return this.httpService.get('https://ipapi.co/json/', this.httpOptions)
+    return this.httpService.get<IPInfoRequest>
+      ('https://ipapi.co/json/', this.httpOptions)
       .pipe(
-        map(response => response.toString()),
+        map(response => response),
         catchError(() => throwError('Problem with IP info'))
       );
   }
