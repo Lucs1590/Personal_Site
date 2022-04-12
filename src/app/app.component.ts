@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
 
   async setLanguage() {
     const ipInfo = await this.apiService.getIPInfo().toPromise();
-    console.log(ipInfo);
     this.translate.setDefaultLang('pt');
     if (ipInfo?.country?.toUpperCase() !== 'BR') {
       this.translate.setDefaultLang('en');
