@@ -3,10 +3,8 @@ import { Deserializable } from './deserializable.model';
 export class IPInfo implements Deserializable {
     city?: string;
     country?: string;
-    country_capital?: string;
-    country_name?: string;
-    country_population?: number;
-    in_eu?: boolean;
+    countryCapital?: string;
+    countryName?: string;
     ip?: string;
     languages?: string;
     latitude?: number;
@@ -30,8 +28,8 @@ export class IPInfo implements Deserializable {
     Object.assign(this, {});
     this.city = input?.city;
     this.country = input?.country;
-    this.country_capital = input?.country_capital;
-    this.country_name = input?.country_name;
+    this.countryCapital = input?.country_capital;
+    this.countryName = input?.country_name;
     this.ip = input?.ip;
     this.languages = input?.languages;
     this.latitude = input?.latitude;

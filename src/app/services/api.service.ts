@@ -31,7 +31,7 @@ export class ApiService {
         catchError(() => throwError('Problem with publications')));
   }
 
-  getIPInfo(): Observable<any> {
+  getIPInfo(): Observable<IPInfo> {
     return this.httpService.get<IPInfoRequest>
       ('https://ipapi.co/json/', this.httpOptions)
       .pipe(
