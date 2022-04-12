@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private apiService: ApiService,
+    private translate: TranslateService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.setLanguage();
     this.title.setTitle('Lucas Brito');
     const date = new Date(Date.now());
     const formatedData = ((date.getDate())) + '/' + ((date.getMonth() + 1)) + '/' + date.getFullYear();
@@ -25,5 +30,13 @@ export class AppComponent implements OnInit {
       { name: 'date', content: formatedData, scheme: 'DD-MM-YYYY' },
       { charset: 'UTF-8' }
     ]);
+  }
+
+  async setLanguage() {
+    const ipInfo = await this.apiService.getIPInfo().toPromise();
+    this.translate.setDefaultLang('pt');
+    if (ipInfo?.country?.toUpperCase() !== 'BR') {
+      this.translate.setDefaultLang('en');
+    };
   }
 }
