@@ -19,7 +19,7 @@ export class PublicationsComponent implements OnInit {
     await this.getPublications();
     setTimeout(() => {
       this.loading = true;
-    }, 2000);
+    }, 750);
   }
 
   async getPublications() {
