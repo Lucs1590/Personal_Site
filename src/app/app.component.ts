@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     await this.setLanguage();
     this.title.setTitle('Lucas Brito');
     const date = new Date(Date.now());
-    const formatedData = ((date.getDate())) + '/' + ((date.getMonth() + 1)) + '/' + date.getFullYear();
+    const formatedData = `${(date.getDate())}/${(date.getMonth() + 1)}/${date.getFullYear()}`;
     this.meta.addTags([
       { name: 'description', content: 'Lucas Brito homepage.' },
       { name: 'author', content: 'Lucs1590' },
