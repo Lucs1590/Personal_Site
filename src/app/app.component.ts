@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     private translate: TranslateService
   ) { }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     await this.setLanguage();
     this.title.setTitle('Lucas Brito');
     const date = new Date(Date.now());
