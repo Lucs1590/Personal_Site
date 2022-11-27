@@ -82,7 +82,6 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
     TranslateModule.forRoot({
-      defaultLanguage: 'pt',
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,

@@ -11,15 +11,15 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "@angular/animations": "~13.0.0",
-    "@angular/common": "~13.0.0",
-    "@angular/compiler": "~13.0.0",
-    "@angular/core": "~13.0.0",
-    "@angular/forms": "~13.0.0",
-    "@angular/localize": "^13.0.0",
-    "@angular/platform-browser": "~13.0.0",
-    "@angular/platform-browser-dynamic": "~13.0.0",
-    "@angular/router": "~13.0.0",
+    "@angular/animations": "^15.0.1",
+    "@angular/common": "^15.0.1",
+    "@angular/compiler": "^15.0.1",
+    "@angular/core": "^15.0.1",
+    "@angular/forms": "^15.0.1",
+    "@angular/localize": "^15.0.1",
+    "@angular/platform-browser": "^15.0.1",
+    "@angular/platform-browser-dynamic": "^15.0.1",
+    "@angular/router": "^15.0.1",
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -44,15 +44,15 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^13.2.4",
+    "@angular-devkit/build-angular": "^15.0.1",
     "@angular-eslint/builder": "12.6.1",
     "@angular-eslint/eslint-plugin": "12.6.1",
     "@angular-eslint/eslint-plugin-template": "12.6.1",
     "@angular-eslint/schematics": "12.6.1",
     "@angular-eslint/template-parser": "12.6.1",
-    "@angular/cli": "~13.0.1",
-    "@angular/compiler-cli": "~13.0.0",
-    "@angular/language-service": "~13.0.0",
+    "@angular/cli": "^15.0.1",
+    "@angular/compiler-cli": "^15.0.1",
+    "@angular/language-service": "^15.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^12.11.1",
@@ -71,6 +71,6 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.9.1",
-    "typescript": "~4.4.4"
+    "typescript": "~4.8.4"
   }
 }

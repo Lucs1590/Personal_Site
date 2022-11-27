@@ -1,26 +1,67 @@
 <app-navbar></app-navbar>
-<div class="row pl-5 pt-5 mt-5">
-    <h2 translate>publi.title</h2>
-</div>
-<div class="row">
-    <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">publi.description
-        <div class="row" style="font-size: 2rem;">
-            <a href="https://lucasbsilva29.medium.com/" class="text-white ml-3 mt-2 icon">
-                <fa-icon [icon]="['fab', 'medium']"></fa-icon>
-            </a>
-            <a href="https://dev.to/lucs1590" class="text-white ml-2 mt-2 icon">
-                <fa-icon [icon]="['fab', 'dev']"></fa-icon>
-            </a>
-        </div>
+<div *ngIf="loading">
+    <div class="row pl-5 pt-5 mt-5">
+        <h2 translate>publi.title</h2>
     </div>
-    <!-- <div>
+    <div class="row">
+        <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
+            publi.description
+            <div class="row" style="font-size: 2rem;">
+                <a href="https://lucasbsilva29.medium.com/" class="text-white ml-3 mt-2 icon">
+                    <fa-icon [icon]="['fab', 'medium']"></fa-icon>
+                </a>
+                <a href="https://dev.to/lucs1590" class="text-white ml-2 mt-2 icon">
+                    <fa-icon [icon]="['fab', 'dev']"></fa-icon>
+                </a>
+            </div>
+        </div>
+        <!-- <div>
         <img src="../../../assets/img/writer.jpeg" class="img-fluid" alt="Writer Image"
             style="height: 15rem;width: 60rem;object-fit: cover;">
     </div> -->
+    </div>
 </div>
+
+<div *ngIf="!loading">
+    <div class="row pl-5 pt-5 mt-5">
+        <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
+            'border-radius': '5px',
+            'height': '3rem',
+            'width': '10rem',
+            'background-color': '#323232',
+            'border': '1px solid #323232',
+            'animation-duration': '1.2s'
+          }">
+        </ngx-skeleton-loader>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
+            <ngx-skeleton-loader count="3" [theme]="{
+                'border-radius': '5px',
+                'width': '30rem',
+                'background-color': '#323232',
+                'border': '1px solid #323232',
+                'animation-duration': '1.2s'
+              }"></ngx-skeleton-loader>
+            <div class="row" style="font-size: 2rem;">
+                <ngx-skeleton-loader count="2" [theme]="{
+                    'border-radius': '5px',
+                    'width': '2rem',
+                    'height': '2rem',
+                    'background-color': '#323232',
+                    'border': '1px solid #323232',
+                    'margin-left': '0.5rem',
+                    'animation-duration': '1.2s'
+                  }"></ngx-skeleton-loader>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
 
-    <ng-container *ngIf="publications.length; else skeletonTemplate">
+    <ng-container *ngIf="loading; else skeletonTemplate">
         <div class="card real-card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
             *ngFor="let pub of publications">
             <div class="card-body">
