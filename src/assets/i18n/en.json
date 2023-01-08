@@ -9,7 +9,9 @@
     "not_found.sub_2": "Page not found!",
     "not_found.back_button": "Back to Home",
     "publi.title": "Publications",
-    "publi.description": "Usually I like to write to 1) contribute to the community and 2) to consolidate my knowledge. The subjects that I deal with the most are related to technology, methods, computer vision, some learning of the moment or a certain subject that goes along with what I'm doing at the moment, thus trying to help people in the same way I'm helped. Feel free to read more of my posts by logging into my Medium or Dev Community by clicking on the icons below, or to view my latest posts below.",
-    "publi.read-more": "Learn more",
+    "publi.description": "I like to write to contribute to the community and to consolidate my knowledge. Subjects are usually scientific or digital technologies. Feel free to read my blog posts on Medium or Dev Community, or the science posts on Google Scholar or ResearchGate.",
+    "publi.blog-subtitle": "Blog",
+    "publi.sci-subtitle": "Scientific publications",
+    "publi.read-more": "Read more...",
     "recommendations.title": "Recommendations"
 }

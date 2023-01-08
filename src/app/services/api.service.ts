@@ -4,8 +4,10 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
+import { Repository } from '../models/repository.model';
 import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
+import { sciPublications } from 'src/assets/static_data/sciPublications';
 
 
 @Injectable({
@@ -28,6 +30,19 @@ export class ApiService {
           publication.items
             .filter(item => item.categories.length > 0)
             .map(item => new Publication().deserialize(item))),
+        catchError(() => throwError('Problem with publications request')));
+  }
+
+  getAllSciPublications(): Publication[] {
+    const _dataset = sciPublications?.map((subset) => new Publication().deserialize(subset));
+    return _dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+  }
+
+
+  getAllRepositories(username: string): Observable<Repository[]> {
+    return this.httpService.get<Repository[]>(`https://api.github.com/users/${username}/repos`, this.httpOptions)
+      .pipe(
+        map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
         catchError(() => throwError('Problem with publications')));
   }
 

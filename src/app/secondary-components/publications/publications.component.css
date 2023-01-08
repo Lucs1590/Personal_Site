@@ -31,11 +31,11 @@
     bottom: 1rem;
 }
 
-h2{
+h1, h2{
     font-family: 'Anton', 'Poppins', sans-serif;
 }
 
-.sobre_text {
+.about-text {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
 }
@@ -44,4 +44,8 @@ h2{
     transform: scale(1.25);
     transition-duration: 0.5s;
     color:#E69C24 !important;
+}
+
+.img-icon {
+    margin-top: -0.3rem;
 }

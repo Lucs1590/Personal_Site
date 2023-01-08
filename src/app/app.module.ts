@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -70,6 +71,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     RecommendationsComponent,
     NotFoundComponent,
     NavbarComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,
