@@ -19,14 +19,14 @@ export class PublicationsComponent implements OnInit {
     await this.getPublications();
     setTimeout(() => {
       this.loading = true;
-    }, 750);
+    }, 600);
   }
 
   async getPublications() {
     const publications = await this.apiService.getAllPublications().toPromise();
     this.publications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
-      .splice(0, 8);
+      .splice(0, 6);
   }
 
 }
