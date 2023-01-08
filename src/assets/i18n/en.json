@@ -10,6 +10,8 @@
     "not_found.back_button": "Back to Home",
     "publi.title": "Publications",
     "publi.description": "I like to write to contribute to the community and to consolidate my knowledge. Subjects are usually scientific or digital technologies. Feel free to read my blog posts on Medium or Dev Community, or the science posts on Google Scholar or ResearchGate.",
+    "publi.blog-subtitle": "Blog",
+    "publi.sci-subtitle": "Scientific publications",
     "publi.read-more": "Read more...",
     "recommendations.title": "Recommendations"
 }
