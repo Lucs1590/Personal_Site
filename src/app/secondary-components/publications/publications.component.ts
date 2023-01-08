@@ -45,6 +45,14 @@ export class PublicationsComponent implements OnInit {
   getSciPublications() {
     const publications = this.apiService.getAllSciPublications();
     this.sciPublications = publications;
+    this.sciPublications.map((publication) =>
+      publication.description = '<p>'.concat(
+        publication?.description
+          .slice(publication?.description.indexOf('<p>'), publication?.description.indexOf('</p>'))
+          .replace(new RegExp('<.+?>', 'g'), '')
+          .slice(0, 152),
+        '..</p>')
+    );
   }
 
 }
