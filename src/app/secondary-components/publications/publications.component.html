@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 <div *ngIf="loading">
     <div class="row pl-5 pt-5 mt-5">
-        <h2 translate>publi.title</h2>
+        <h1 translate>publi.title</h1>
     </div>
     <div class="row">
-        <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
+        <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 about-text">
             publi.description
             <div class="row" style="font-size: 2rem;">
                 <a href="https://lucasbsilva29.medium.com/" class="text-white ml-3 mt-2 icon">
@@ -12,6 +12,14 @@
                 </a>
                 <a href="https://dev.to/lucs1590" class="text-white ml-2 mt-2 icon">
                     <fa-icon [icon]="['fab', 'dev']"></fa-icon>
+                </a>
+                <a href="https://scholar.google.com.br/citations?user=lwCbcswAAAAJ&hl"
+                    class="text-white ml-2 mt-2 icon">
+                    <img [src]="scholarImage" class="img-icon" (mouseover)="defineIconImage($event)"
+                        (mouseout)="defineIconImage($event)" height="28rem">
+                </a>
+                <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ml-2 mt-2 icon">
+                    <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
                 </a>
             </div>
         </div>
@@ -35,7 +43,7 @@
         </ngx-skeleton-loader>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 sobre_text">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 about-text">
             <ngx-skeleton-loader count="3" [theme]="{
                 'border-radius': '5px',
                 'width': '30rem',
@@ -59,15 +67,17 @@
     </div>
 </div>
 
+<div class="row text-white pl-5 mt-5 mb-2">
+    <h2>Blog</h2>
+</div>
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
-
     <ng-container *ngIf="loading; else skeletonTemplate">
-        <div class="card real-card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
+        <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
             *ngFor="let pub of publications">
             <div class="card-body">
                 <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
                 <h4 class="card-title">{{ pub.title }}</h4>
-                <div class="card-text sobre_text" [innerHTML]=pub.description></div>
+                <div class="card-text about-text" [innerHTML]=pub.description></div>
                 <div class="row w-100 foot-card">
                     <div class="col">
                         <a translate [href]=pub.url class="read-more">
@@ -90,7 +100,7 @@
     <ng-template #skeletonTemplate>
         <div>
             <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-                *ngFor="let i of [].constructor(8)">
+                *ngFor="let i of [].constructor(6)">
                 <div class="card-body">
                     <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
                         'border-radius': '5px',
@@ -148,4 +158,11 @@
             </div>
         </div>
     </ng-template>
+</div>
+
+<div class="row text-white pl-5 mb-2">
+    <h2>Artigos Ciêntificos</h2>
+</div>
+<div class="d-flex flex-wrap text-dark justify-content-around pb-4">
+
 </div>

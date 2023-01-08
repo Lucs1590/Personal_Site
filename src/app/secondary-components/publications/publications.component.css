@@ -45,3 +45,7 @@ h1, h2{
     transition-duration: 0.5s;
     color:#E69C24 !important;
 }
+
+.img-icon {
+    margin-top: -0.3rem;
+}
