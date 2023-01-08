@@ -8,7 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./publications.component.css']
 })
 export class PublicationsComponent implements OnInit {
-  publications: Publication[];
+  blogPublications: Publication[];
+  sciPublications: Publication[];
   loading = false;
   scholarImage: string;
 
@@ -18,7 +19,8 @@ export class PublicationsComponent implements OnInit {
 
   async ngOnInit() {
     this.defineIconImage(null);
-    await this.getPublications();
+    this.getSciPublications();
+    await this.getBlogPublications();
     setTimeout(() => {
       this.loading = true;
     }, 600);
@@ -26,18 +28,23 @@ export class PublicationsComponent implements OnInit {
 
   public defineIconImage(event: MouseEvent): void {
     if (event && event.type === 'mouseover') {
-      this.scholarImage = '../../../assets/img/google-scholar2.svg';
+      this.scholarImage = '../../../assets/img/icons/google-scholar2.svg';
     } else {
-      this.scholarImage = '../../../assets/img/google-scholar1.svg';
+      this.scholarImage = '../../../assets/img/icons/google-scholar1.svg';
     }
   }
 
 
-  async getPublications() {
+  async getBlogPublications() {
     const publications = await this.apiService.getAllPublications().toPromise();
-    this.publications = publications
+    this.blogPublications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
       .splice(0, 6);
+  }
+
+  getSciPublications() {
+    const publications = this.apiService.getAllSciPublications();
+    this.sciPublications = publications;
   }
 
 }

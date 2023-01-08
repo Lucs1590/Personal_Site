@@ -52,7 +52,7 @@
                 'animation-duration': '1.2s'
               }"></ngx-skeleton-loader>
             <div class="row" style="font-size: 2rem;">
-                <ngx-skeleton-loader count="2" [theme]="{
+                <ngx-skeleton-loader count="4" [theme]="{
                     'border-radius': '5px',
                     'width': '2rem',
                     'height': '2rem',
@@ -73,7 +73,7 @@
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
     <ng-container *ngIf="loading; else skeletonTemplate">
         <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-            *ngFor="let pub of publications">
+            *ngFor="let pub of blogPublications">
             <div class="card-body">
                 <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
                 <h4 class="card-title">{{ pub.title }}</h4>
@@ -99,8 +99,7 @@
 
     <ng-template #skeletonTemplate>
         <div>
-            <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-                *ngFor="let i of [].constructor(6)">
+            <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                 <div class="card-body">
                     <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
                         'border-radius': '5px',
@@ -164,5 +163,90 @@
     <h2>Artigos Ciêntificos</h2>
 </div>
 <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
+    <ng-container *ngIf="loading; else skeletonTemplate">
+        <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
+            *ngFor="let pub of sciPublications">
+            <div class="card-body">
+                <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
+                <h4 class="card-title">{{ pub.title }}</h4>
+                <div class="card-text about-text" [innerHTML]=pub.description></div>
+                <div class="row w-100 foot-card">
+                    <div class="col">
+                        <a translate [href]=pub.url class="read-more">
+                            <fa-icon icon="link"></fa-icon> publi.read-more
+                        </a>
+                    </div>
+                    <div class="col">
+                        <p class="card-text text-right">
+                            <small class="text-muted">
+                                {{ pub.publicationDate | date:'mediumDate'}}
+                            </small>
+                        </p>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #skeletonTemplate>
+        <div>
+            <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
+                <div class="card-body">
+                    <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
+                        'border-radius': '5px',
+                        'height': '4rem',
+                        'width': '4rem',
+                        'background-color': '#323232',
+                        'border': '1px solid #323232',
+                        'animation-duration': '1.2s'
+                      }">
+                    </ngx-skeleton-loader>
+                    <div class="card-title">
+                        <ngx-skeleton-loader count="2" [theme]="{
+                        'border-radius': '5px',
+                        'width': '18rem',
+                        'background-color': '#323232',
+                        'border': '1px solid #323232',
+                        'animation-duration': '1.2s'
+                      }"></ngx-skeleton-loader>
+                    </div>
+                    <div class="card-text">
+                        <ngx-skeleton-loader count="3" [theme]="{
+                            'margin-left': '1rem',
+                            'border-radius': '5px',
+                            'width': '21.5rem',
+                            'background-color': '#323232',
+                            'border': '1px solid #323232',
+                            'animation-duration': '1.2s'
+                          }"></ngx-skeleton-loader>
+                    </div>
+                    <div class="row w-100 foot-card">
+                        <div class="col">
+                            <ngx-skeleton-loader count="1" [theme]="{
+                                'margin-left': '1rem',
+                                'border-radius': '5px',
+                                'width': '5rem',
+                                'background-color': '#323232',
+                                'border': '1px solid #323232',
+                                'animation-duration': '1.2s'
+                              }"></ngx-skeleton-loader>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-right">
+                                <ngx-skeleton-loader count="1" [theme]="{
+                                    'margin-left': '1rem',
+                                    'border-radius': '5px',
+                                    'width': '3rem',
+                                    'background-color': '#323232',
+                                    'border': '1px solid #323232',
+                                    'animation-duration': '1.2s'
+                                  }"></ngx-skeleton-loader>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>

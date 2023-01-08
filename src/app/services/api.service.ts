@@ -7,6 +7,7 @@ import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
 import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
+import { sciPublications } from 'src/assets/static_data/sciPublications';
 
 
 @Injectable({
@@ -31,6 +32,12 @@ export class ApiService {
             .map(item => new Publication().deserialize(item))),
         catchError(() => throwError('Problem with publications request')));
   }
+
+  getAllSciPublications(): Publication[] {
+    const _dataset = sciPublications?.map((subset) => new Publication().deserialize(subset));
+    return _dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+  }
+
 
   getAllRepositories(username: string): Observable<Repository[]> {
     return this.httpService.get<Repository[]>(`https://api.github.com/users/${username}/repos`, this.httpOptions)
