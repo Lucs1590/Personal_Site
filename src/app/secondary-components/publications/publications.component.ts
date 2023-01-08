@@ -17,10 +17,12 @@ export class PublicationsComponent implements OnInit {
     private apiService: ApiService
   ) { }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     this.defineIconImage(null);
     this.getSciPublications();
+
     await this.getBlogPublications();
+
     setTimeout(() => {
       this.loading = true;
     }, 600);
@@ -35,14 +37,14 @@ export class PublicationsComponent implements OnInit {
   }
 
 
-  async getBlogPublications() {
+  async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
     this.blogPublications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
       .splice(0, 6);
   }
 
-  getSciPublications() {
+  getSciPublications(): void {
     const publications = this.apiService.getAllSciPublications();
     this.sciPublications = publications;
     this.sciPublications.map((publication) =>
