@@ -1,24 +1,24 @@
-.imgPrincipal{
+.imgPrincipal {
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#title_name{
+#title_name {
     font-family: 'Montserrat', 'Anton', 'Poppins', sans-serif;
     font-size: 8rem;
 }
 
-h3{
+h3 {
     font-family: 'Anton', 'Poppins', sans-serif;
 }
 
-h5{
+h5 {
     font-weight: bold
 }
 
-hr{
+hr {
     width: 25rem;
-    border-top: 0.25rem solid rgba(0,0,0,.1)
+    border-top: 0.25rem solid rgba(0, 0, 0, .1)
 }
 
 .sobre_text {
