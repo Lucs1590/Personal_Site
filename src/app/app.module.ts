@@ -18,7 +18,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
-import { PublicationsComponent } from './secondary-components/publications/publications.component';
+import { PublicationsComponent } from './publications/publications.component';
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
