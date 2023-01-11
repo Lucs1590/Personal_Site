@@ -19,7 +19,7 @@ import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './publications/publications.component';
-import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
+import { HobbiesComponent } from './secondary-components/hobbies/hobbies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
@@ -67,7 +67,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     MHomeComponent,
     IconesComponent,
     PublicationsComponent,
-    TechnologiesComponent,
+    HobbiesComponent,
     RecommendationsComponent,
     NotFoundComponent,
     NavbarComponent,
