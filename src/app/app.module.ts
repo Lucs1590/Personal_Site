@@ -27,6 +27,7 @@ import { NavbarComponent } from './secondary-components/navbar/navbar.component'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { TechnologiesListComponent } from './secondary-components/technologies-list/technologies-list.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -72,6 +73,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    TechnologiesListComponent,
   ],
   imports: [
     BrowserModule,
