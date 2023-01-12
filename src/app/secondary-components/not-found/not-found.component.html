@@ -1,20 +1,25 @@
 <div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
     <app-navbar></app-navbar>
-    <div class="row justify-content-center mt-5">
+
+    <div class="row text-center justify-content-center mt-5 div-effect">
         <p class="glitch-text">
             <span aria-hidden="true">404</span>
             404
             <span aria-hidden="true">404</span>
         </p>
     </div>
-    <div class="row justify-content-center mt-3" *ngIf="utils.currentLang === 'en'">
+
+    <div class="row justify-content-center text-center mt-3" *ngIf="utils.currentLang === 'en'">
         <h3 translate>not_found.sub</h3>
     </div>
-    <div class="row justify-content-center mt-3">
+
+    <div class="row text-center mt-3">
         <h3 translate>not_found.sub_2</h3>
     </div>
-    <div class="row justify-content-center mt-2">
-        <button translate type="button" class="btn btn-outline-secondary rounded-pill"
+
+    <div class="row text-center justify-content-center mt-3">
+        <button translate type="button" class="btn btn-outline-secondary rounded-pill w-25"
             (click)="utils.goHome()">not_found.back_button</button>
     </div>
+
 </div>
