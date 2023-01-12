@@ -8,18 +8,18 @@
             <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 about-text">
                 publi.description
                 <div class="row" style="font-size: 2rem;">
-                    <a href="https://lucasbsilva29.medium.com/" class="text-white ml-3 mt-2 icon">
+                    <a href="https://lucasbsilva29.medium.com/" class="text-white ms-3 mt-2 icon">
                         <fa-icon [icon]="['fab', 'medium']"></fa-icon>
                     </a>
-                    <a href="https://dev.to/lucs1590" class="text-white ml-2 mt-2 icon">
+                    <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon">
                         <fa-icon [icon]="['fab', 'dev']"></fa-icon>
                     </a>
                     <a href="https://scholar.google.com.br/citations?user=lwCbcswAAAAJ&hl"
-                        class="text-white ml-2 mt-2 icon">
+                        class="text-white ms-2 mt-2 icon">
                         <img [src]="scholarImage" class="img-icon" (mouseover)="defineIconImage($event)"
                             (mouseout)="defineIconImage($event)" height="28rem">
                     </a>
-                    <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ml-2 mt-2 icon">
+                    <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ms-2 mt-2 icon">
                         <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
                     </a>
                 </div>
@@ -33,7 +33,7 @@
 
     <div *ngIf="!loading">
         <div class="row pl-5 pt-5 mt-5">
-            <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
+            <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
             'border-radius': '5px',
             'height': '3rem',
             'width': '10rem',
@@ -76,7 +76,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of blogPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
+                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem">
                     <h4 class="card-title">{{ pub.title }}</h4>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
@@ -102,7 +102,7 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
+                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
                         'border-radius': '5px',
                         'height': '4rem',
                         'width': '4rem',
@@ -168,7 +168,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of sciPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb mr-2 mb-1" alt="Thumbnail" height="2rem">
+                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem">
                     <h4 class="card-title">{{ pub.title }}</h4>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
@@ -194,7 +194,7 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb mr-2 mb-1" [theme]="{
+                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
                         'border-radius': '5px',
                         'height': '4rem',
                         'width': '4rem',
