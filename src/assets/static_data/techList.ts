@@ -65,7 +65,7 @@ export const techList = [
     {
         'id': 10,
         'name': 'Numpy',
-        'image': 'https://numpy.org/images/logos/numpy.svg',
+        'image': '',
         'description': 'NumPy is the fundamental package for scientific computing with Python. It contains among other things: a powerful N-dimensional array object, sophisticated (broadcasting) functions, tools for integrating C/C++ and Fortran code, useful linear algebra, Fourier transform, and random number capabilities.',
         'link': 'https://numpy.org/'
     },
@@ -114,21 +114,21 @@ export const techList = [
     {
         'id': 17,
         'name': 'Neo4j',
-        'image': 'https://neo4j.com/wp-content/uploads/neo4j_logo_whitebackground-1.png',
+        'image': '',
         'description': 'Neo4j is a graph database management system developed by Neo4j, Inc. Described by its developers as an ACID-compliant transactional database with native graph storage and processing, Neo4j is the most popular graph database according to DB-Engines ranking.',
         'link': 'https://neo4j.com/'
     },
     {
         'id': 18,
         'name': 'Docker',
-        'image': 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
+        'image': '',
         'description': 'Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels.',
         'link': 'https://www.docker.com/'
     },
     {
         'id': 19,
         'name': 'Qt',
-        'image': 'https://www.qt.io/qt-static/press-kit/images/qt-logo.png',
+        'image': '',
         'description': 'Qt is a cross-platform application framework that is used for developing application software that can be run on various software and hardware platforms with little or no change in the underlying codebase, while still being a native application with native capabilities and speed.',
         'link': 'https://www.qt.io/'
     }
