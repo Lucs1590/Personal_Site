@@ -27,7 +27,12 @@
 }
 
 .read-more {
-    color: #E69C24
+    color: #E69C24;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
 }
 
 .foot-card {
