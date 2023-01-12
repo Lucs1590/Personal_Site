@@ -21,7 +21,7 @@ export class IconesComponent {
     {
       icon: ['fab', 'stack-overflow'],
       link: 'https://pt.stackoverflow.com/users/122718/lucas-brito',
-      active: true
+      active: false
     },
     {
       icon: ['fab', 'medium'],
