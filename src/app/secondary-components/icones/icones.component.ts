@@ -8,8 +8,5 @@ import { iconList } from 'src/assets/static_data/iconsList';
   styleUrls: ['./icones.component.css']
 })
 export class IconesComponent {
-
   iconList = iconList.map(icon => new Icon().deserialize(icon));
-
-  constructor() { }
 }
