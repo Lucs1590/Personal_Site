@@ -1,14 +1,14 @@
 <div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
     <app-navbar></app-navbar>
     <div *ngIf="loading">
-        <div class="row pl-5 pt-5 mt-5">
+        <div class="row ps-4 pt-5 mt-5">
             <h1 translate>publi.title</h1>
         </div>
         <div class="row">
-            <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 about-text">
+            <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 publi.description
                 <div class="row" style="font-size: 2rem;">
-                    <a href="https://lucasbsilva29.medium.com/" class="text-white ms-3 mt-2 icon">
+                    <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon">
                         <fa-icon [icon]="['fab', 'medium']"></fa-icon>
                     </a>
                     <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon">
@@ -32,7 +32,7 @@
     </div>
 
     <div *ngIf="!loading">
-        <div class="row pl-5 pt-5 mt-5">
+        <div class="row ps-3 pt-5 mt-5">
             <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
             'border-radius': '5px',
             'height': '3rem',
@@ -44,7 +44,7 @@
             </ngx-skeleton-loader>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 pl-5 px-sm-5 px-md-5 about-text">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 <ngx-skeleton-loader count="3" [theme]="{
                 'border-radius': '5px',
                 'width': '30rem',
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="row text-white pl-5 mt-5 mb-2">
+    <div class="row text-white ps-3 mt-5 mb-2">
         <h2 translate>publi.blog-subtitle</h2>
     </div>
     <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
@@ -160,7 +160,7 @@
         </ng-template>
     </div>
 
-    <div class="row text-white pl-5 mb-2">
+    <div class="row text-white ps-3 mb-2">
         <h2 translate>publi.sci-subtitle</h2>
     </div>
     <div class="d-flex flex-wrap text-dark justify-content-around pb-4">

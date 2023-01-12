@@ -5,14 +5,18 @@
     transition-duration: 700ms;
 }
 
-.real-card:hover{
+.real-card:hover {
     display: inline-block;
     transform: scale(1.15);
     transition-duration: 700ms;
-    -webkit-transform: scale(1.15); /* Safari and Chrome */
-    -moz-transform: scale(1.15); /* Firefox */
-    -ms-transform: scale(1.15); /* IE 9+ */
-    -o-transform: scale(1.15); /* Opera */
+    /* Safari and Chrome */
+    -webkit-transform: scale(1.15);
+    /* Firefox */
+    -moz-transform: scale(1.15);
+    /* IE 9+ */
+    -ms-transform: scale(1.15);
+    /* Opera */
+    -o-transform: scale(1.15);
 }
 
 .thumb {
@@ -23,7 +27,7 @@
 }
 
 .read-more {
-    color:#E69C24
+    color: #E69C24
 }
 
 .foot-card {
@@ -31,7 +35,8 @@
     bottom: 1rem;
 }
 
-h1, h2{
+h1,
+h2 {
     font-family: 'Anton', 'Poppins', sans-serif;
 }
 
@@ -40,10 +45,14 @@ h1, h2{
     font-weight: 300;
 }
 
-.icon:hover{
+.icon {
+    width: 2rem;
+}
+
+.icon:hover {
     transform: scale(1.25);
     transition-duration: 0.5s;
-    color:#E69C24 !important;
+    color: #E69C24 !important;
 }
 
 .img-icon {
