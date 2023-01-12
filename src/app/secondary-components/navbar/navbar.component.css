@@ -4,11 +4,11 @@ a {
 }
 
 .itemnav {
-    text-decoration: underline 0.17rem rgba(0, 0, 0, 0);
-    transition: text-decoration-color 700ms;
+  text-decoration: underline 0.2rem rgba(0, 0, 0, 0);
+  transition: text-decoration-color 600ms;
 }
-  
+
 .itemnav:hover {
-    text-decoration-color: #E69C24;
-    color:#E69C24 !important;
+  text-decoration-color: #E69C24;
+  color: #E69C24 !important;
 }
