@@ -14,7 +14,7 @@ export class NotFoundComponent implements AfterViewChecked {
 
   ngAfterViewChecked(): void {
     const windowSize = this.defineWindowSize();
-    let spans = document.querySelectorAll('.glitch-text span');
+    const spans = document.querySelectorAll('.glitch-text span');
 
     spans.forEach((span: HTMLElement) => {
       let middle = windowSize / 2 - span.offsetWidth / 2;
