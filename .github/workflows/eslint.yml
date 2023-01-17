@@ -2,11 +2,11 @@ name: ESLint
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   schedule:
-    - cron: '16 19 * * 1'
+    - cron: "16 19 * * 1"
 
 jobs:
   eslint:
@@ -22,7 +22,8 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm install eslint@8.10.0 --force
+          npm install --force
+          npm install eslint --force
 
       - name: Run ESLint
         run: npx eslint .
