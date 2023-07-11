@@ -17,7 +17,7 @@
                     <a href="https://scholar.google.com.br/citations?user=lwCbcswAAAAJ&hl"
                         class="text-white ms-2 mt-2 icon">
                         <img [src]="scholarImage" class="img-icon" (mouseover)="defineIconImage($event)"
-                            (mouseout)="defineIconImage($event)" height="28rem">
+                            (mouseout)="defineIconImage($event)" height="28rem" loading="lazy">
                     </a>
                     <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ms-2 mt-2 icon">
                         <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
@@ -26,7 +26,7 @@
             </div>
             <!-- <div>
         <img src="../../../assets/img/writer.jpeg" class="img-fluid" alt="Writer Image"
-            style="height: 15rem;width: 60rem;object-fit: cover;">
+            style="height: 15rem;width: 60rem;object-fit: cover;" loading="lazy">
     </div> -->
         </div>
     </div>
@@ -76,7 +76,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of blogPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem">
+                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem" loading="lazy">
                     <h4 class="card-title">{{ pub.title }}</h4>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
@@ -168,7 +168,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of sciPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem">
+                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem" loading="lazy">
                     <h4 class="card-title">{{ pub.title }}</h4>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">

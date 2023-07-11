@@ -34,8 +34,8 @@ export class ApiService {
   }
 
   getAllSciPublications(): Publication[] {
-    const _dataset = sciPublications?.map((subset) => new Publication().deserialize(subset));
-    return _dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+    const dataset = sciPublications?.map((subset) => new Publication().deserialize(subset));
+    return dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
 
