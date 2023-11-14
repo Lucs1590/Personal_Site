@@ -1,0 +1,136 @@
+## Unreleased
+
+### Feat
+
+- add missing lazy loading
+- using container fluid instead of row
+- add project model file
+- add routes again
+- add function types
+- subtitle l10n
+- decreasing text size for sci articles
+- spliting scientific and blog publications
+- google scholar icon
+- **app.component.ts**: removing useless console log
+- **app.component.ts**: set language dynamically
+- **ipinfo.model.ts**: defining ipinfo model
+- **api.service.ts**: deserializing response
+- add ipinfo request instead of class
+- add initial api and model
+- **app.component.ts**: add translate service
+- **package-lock.json**: npm install
+- **publications.component**: trying to use skeleton instead of loader
+- **publications.component.ts**: set loading on publication page
+- **app**: add loading lib and settings
+- **portfolio.component.html**: changing initial display
+- **portfolio.component.ts**: add repository type
+- add github api request
+- **repository.model.ts**: add model to repositories
+- **app-routing.module.ts**: add portfolio route
+- **portfolio.component**: add portfolio component
+- **publications.component**: add skeleton on cards
+- **navbar.component.ts**: applying filter after translate
+- changing font weight
+- **publications.component.ts**: change the publications range
+- **publications.component**: add cover image to the page
+- add translation to the publications
+- **publications.component**: add image and effects
+- **navbar.component.css**: removing animation
+- **navbar.component**: add navbar language support
+- **publications.component.ts**: get only the last 9 publications
+- **publication.model.ts**: removing htlm tags
+- **publications.models.ts**: removing html tags
+- **publication.component**: initial version of publications
+- **m-home.component.html**: change col size
+- add publications route
+- using a dynamic navbar
+- **navbar**: add navbar component
+- **not-found.component**: changing not-found place
+- **home.component**: add hover element
+- replace home.lang to lang
+- **icones.component.ts**: add dev and sorting icons
+- add another pages on the correct place
+- **package-lock.json**: npm install
+- **not-found.component.html**: making navigation to home
+- add i18n to the back button
+- add i18n support on 404 page
+- **app.module.ts**: set default module
+- **utils.service**: generating utils service
+- **not-found.component**: sorting not found content
+- **index.html**: making black background
+- **not-found.component.css**: making animation to glitch effect
+- **style.css**: removing animation to user preference
+- **not-found.component.ts**: removing onInit
+- **app-routing.module.ts**: add not found page
+- **not-found.component**: generating component
+- **icon.model.ts**: creating a icon model
+- **index.html**: removing fontawesome style
+- **app.module.ts**: add brand to the application
+- **icones.component**: making the iconlist
+- **icones.component.css**: add default icon size
+- add seo
+- **home.component.html**: particle draft
+- removing ngOnInit
+- **app.component.ts**: remove useless const
+- **recommendations.component.html**: add authors infos
+- add title of recommendations
+- **recommendations.components.html**: add title and author's datas
+- **recommendations.components.css**: add style of image
+- **recommendations.component.ts**: add all recommendations
+- **recommendations.component**: add recommendation list
+- **recommendation.model.ts**: add model
+- **recommendations.component**: add recommendations component]
+- **technologies**: moving technologies
+- **en.json**: update english text about myself
+- **pt.json**: update text of myself
+- **technologies.component**: add particle js at technologies
+- **pt.json**: update potuguese text
+- **icones.component.html**: comment phone number
+- **publications.component.ts**: sort publications by date
+- **publication.model.ts**: string manipulation
+- get all publications
+- **publication.model.ts**: deserializing datas
+- **publication-request.model.ts**: add model to request
+- **app.modules.ts**: add publication component
+- **publication.model.ts**: renaming publication model
+- **models**: add models to deserialize and publications
+- **services**: add api service
+- **tsfconfig.ts**: add root page config
+- add publications page
+- add icons in another dir
+
+### Fix
+
+- package ecosystem for ci
+- hover underline
+- fixing center align
+- **icones.component.ts**: set type and fix url
+
+### Refactor
+
+- text-right to text-end
+- hr bar
+- changing left and right to start and end
+- removing portfolio route
+- changing 'read more' text
+- changing text related to publications
+- change loading time and number of publications
+- using english instead of portuguese
+- **app.component.ts**: using template string
+- **publication.component.ts**: updating loading time
+- using camelCase instead of snake case
+- **app.module.ts**: remove default language
+- **package*.json**: changing loader lib
+- **repository.model.ts**: changing repositories url
+- making the request generic
+- **publication.model.ts**: using a better regexp
+- **publication.model.ts**: add better element sort
+- set by default bg black and text white
+- migrating nav for a specific component
+- **icones.component.ts**: remove useless onInit
+- moving duplicate code to utils service
+- **publication.model.ts**: optional chaining and indentation
+
+### Perf
+
+- applying lazy loading to images
