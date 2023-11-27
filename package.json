@@ -29,7 +29,7 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/bootstrap": "^5.2.9",
     "@types/hammerjs": "^2.0.43",
-    "animate.css": "^3.7.2",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.2",
     "core-js": "^3.6.5",
     "eslit": "^6.0.0",
