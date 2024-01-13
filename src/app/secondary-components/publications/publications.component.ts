@@ -47,14 +47,14 @@ export class PublicationsComponent implements OnInit {
   getSciPublications(): void {
     const publications = this.apiService.getAllSciPublications();
     this.sciPublications = publications;
-    this.sciPublications.map((publication) =>
-      publication.description = '<p>'.concat(
-        publication?.description
-          .slice(publication?.description.indexOf('<p>'), publication?.description.indexOf('</p>'))
-          .replace(new RegExp('<.+?>', 'g'), '')
-          .slice(0, 152),
-        '..</p>')
-    );
+    const parser = new DOMParser();
+  
+    this.sciPublications.map((publication) => {
+      const parsedDescription = parser.parseFromString(publication.description, 'text/html');
+      const sanitizedDescription = parsedDescription.body.textContent || '';
+        publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
+    });
   }
+  
 
 }
