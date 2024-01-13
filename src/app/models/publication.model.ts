@@ -23,12 +23,11 @@ export class Publication implements Deserializable {
     Object.assign(this, {});
     this.title = input?.title;
 
-    this.description = '<p>'.concat(
-      input?.description
-        .slice(input?.description.indexOf('<p>'), input?.description.indexOf('</p>'))
-        .replace(new RegExp('<.+?>', 'g'), '')
-        .slice(0, 210),
-      '..</p>');
+    const parser = new DOMParser();
+    const parsedDescription = parser.parseFromString(input?.description, 'text/html');
+    const sanitizedDescription = parsedDescription.body.textContent || '';
+
+    this.description = sanitizedDescription.slice(0, 210) + '..</p>';
 
     this.image = input?.thumbnail;
     this.publicationDate = new Date(input?.pubDate);
@@ -37,3 +36,4 @@ export class Publication implements Deserializable {
     return this;
   }
 }
+
