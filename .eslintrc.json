@@ -31,7 +31,8 @@
           "off",
           "always"
         ],
-        "import/order": "off"
+        "import/order": "off",
+        "jsdoc/newline-after-description": "off" // Disable jsdoc/newline-after-description rule
       }
     },
     {
