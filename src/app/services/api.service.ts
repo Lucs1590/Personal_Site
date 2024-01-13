@@ -30,7 +30,8 @@ export class ApiService {
           publication.items
             .filter(item => item.categories.length > 0)
             .map(item => new Publication().deserialize(item))),
-        catchError(() => throwError('Problem with publications request')));
+        catchError(() => throwError(() => new Error('Problem with publications request')))
+      );
   }
 
   getAllSciPublications(): Publication[] {
@@ -43,7 +44,8 @@ export class ApiService {
     return this.httpService.get<Repository[]>(`https://api.github.com/users/${username}/repos`, this.httpOptions)
       .pipe(
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
-        catchError(() => throwError('Problem with publications')));
+        catchError(() => throwError(() => new Error('Problem with publications')))
+      );
   }
 
   getIPInfo(): Observable<IPInfo> {
@@ -51,7 +53,8 @@ export class ApiService {
       ('https://ipapi.co/json/', this.httpOptions)
       .pipe(
         map(response => new IPInfo().deserialize(response)),
-        catchError(() => throwError('Problem with IP info'))
+        catchError(() => throwError(() => new Error('Problem with IP info'))
+        )
       );
   }
 
