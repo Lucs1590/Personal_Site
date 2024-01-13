@@ -10,7 +10,7 @@ describe('HobbiesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HobbiesComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
