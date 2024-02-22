@@ -1,4 +1,24 @@
 User-agent: *
-Allow: /
+Disallow: /admin/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+Disallow: /reset-password/
+Disallow: /search/
+Disallow: /tag/
+Disallow: /category/
+Disallow: /archive/
+Disallow: /404/
+Disallow: /privacy/
+Disallow: /terms/
+Disallow: /contact/
 
-Sitemap: https://lucasbrito.vercel.app/sitemap.xml
+Allow: /$
+Allow: /home/
+Allow: /publications/
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+Sitemap: https://lucasbrito.com.br/sitemap.xml
