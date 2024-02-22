@@ -1,7 +1,7 @@
 {
     "home.sub_title": "Technologist in Big Data in Agribusiness",
     "home.about": "About me",
-    "home.description": "Hello, welcome to my website, my name is Lucas de Brito Silva and I am {{idade}} years old. I consider myself an enthusiast in Technology and I am motivated by my dreams, in which to realize them, I sought to train myself with the Computer Technical course at ETEC Professor Massuyuki Kawano, Big Data in Agribusiness at FATEC Shunji Nishimura (being the first class to graduate in Brazil) and currently I am doing a Masters in Computer Science at São Paulo State University (UNESP). I hope you enjoy browsing my website, shall we?",
+    "home.description": "Hello, welcome to my website! My name is Lucas de Brito Silva, and at 24, I embark on an exciting journey in the field of Technology. Since 2021, I made a transition from the area of systems and application development to the fascinating world of data. Currently, I am a Machine Learning Engineer at <a href=\"https://agibank.com.br/\" target=\"_blank\" >Agibank</a>. <br><br>My journey includes training in the Computer Technician course at ETEC Professor Massuyuki Kawano and pioneering in the first class to graduate in Big Data in Agribusiness, at FATEC Shunji Nishimura. Additionally, I am currently pursuing a master's degree in Computer Science at São Paulo State University \"Júlio de Mesquita Filho\" (UNESP).<br><br>My interests and passions lie in the areas of data, computational intelligence, deep learning, computer vision, and machine learning engineering. I hope you enjoy your visit to my website.",
     "lang": "pt",
     "nav.publications": "Publications",
     "nav.home": "Home",
@@ -9,9 +9,9 @@
     "not_found.sub_2": "Page not found!",
     "not_found.back_button": "Back to Home",
     "publi.title": "Publications",
-    "publi.description": "I like to write to contribute to the community and to consolidate my knowledge. Subjects are usually scientific or digital technologies. Feel free to read my blog posts on Medium or Dev Community, or the science posts on Google Scholar or ResearchGate.",
+    "publi.description": "I enjoy writing to contribute to the community and enhance my knowledge. My topics usually revolve around science and digital technologies. Feel free to read my blog posts on Medium or Dev Community, or explore my scientific publications on Google Scholar or ResearchGate.",
     "publi.blog-subtitle": "Blog",
-    "publi.sci-subtitle": "Scientific publications",
+    "publi.sci-subtitle": "Scientific Publications",
     "publi.read-more": "Read more...",
     "recommendations.title": "Recommendations"
 }
