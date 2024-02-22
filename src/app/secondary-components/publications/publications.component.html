@@ -76,8 +76,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of blogPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem" loading="lazy">
-                    <h4 class="card-title">{{ pub.title }}</h4>
+                    <h4 class="card-title mb-2">{{ pub.title }}</h4>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
@@ -102,19 +101,11 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
-                        'border-radius': '5px',
-                        'height': '4rem',
-                        'width': '4rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }">
-                        </ngx-skeleton-loader>
                         <div class="card-title">
-                            <ngx-skeleton-loader count="2" [theme]="{
+                            <ngx-skeleton-loader count="1" [theme]="{
                         'border-radius': '5px',
-                        'width': '18rem',
+                        'width': '13rem',
+                        'height': '3rem',
                         'background-color': '#323232',
                         'border': '1px solid #323232',
                         'animation-duration': '1.2s'
@@ -194,19 +185,11 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
-                        'border-radius': '5px',
-                        'height': '4rem',
-                        'width': '4rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }">
-                        </ngx-skeleton-loader>
                         <div class="card-title">
-                            <ngx-skeleton-loader count="2" [theme]="{
+                            <ngx-skeleton-loader count="1" [theme]="{
                         'border-radius': '5px',
-                        'width': '18rem',
+                        'width': '13rem',
+                        'height': '3rem',
                         'background-color': '#323232',
                         'border': '1px solid #323232',
                         'animation-duration': '1.2s'
