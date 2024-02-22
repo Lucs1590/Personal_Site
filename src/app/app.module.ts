@@ -15,6 +15,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgOptimizedImage } from '@angular/common';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
@@ -80,6 +81,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgOptimizedImage,
     NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
     TranslateModule.forRoot({
       loader: {
