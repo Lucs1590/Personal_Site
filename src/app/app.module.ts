@@ -1,33 +1,32 @@
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-// import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgOptimizedImage } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -60,6 +59,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   maxTime: -1,
   minTime: 300
 };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,10 +76,9 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     NgOptimizedImage,
     NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
@@ -93,6 +92,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     HammerModule,
     FontAwesomeModule,
     NgxSkeletonLoaderModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

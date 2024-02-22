@@ -46,6 +46,11 @@ export class ApiService {
 
 
   getAllRepositories(username: string): Observable<Repository[]> {
+    // Validate username input to prevent injection attacks
+    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+      throw new Error('Invalid username');
+    }
+
     const url = `${GITHUB_API_BASE_URL}/users/${username}/repos`;
     return this.httpService.get<Repository[]>(url, this.httpOptions)
       .pipe(
