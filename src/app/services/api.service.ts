@@ -9,28 +9,34 @@ import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
 
+const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
+const GITHUB_API_BASE_URL = 'https://api.github.com';
+const IPAPI_API_BASE_URL = 'https://ipapi.co/json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
-  httpOptions = {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+  private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', Accept: 'application/json' })
   };
 
   constructor(private httpService: HttpClient) { }
 
+  private handleError(error: any): Observable<never> {
+    console.error('API Error:', error);
+    return throwError(() => new Error('Something went wrong. Please try again later.'));
+  }
+
   getAllPublications(): Observable<Publication[]> {
-    return this.httpService.get<PublicationRequest>
-      ('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29', this.httpOptions)
+    return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
         map(publication =>
           publication.items
             .filter(item => item.categories.length > 0)
             .map(item => new Publication().deserialize(item))),
-        catchError(() => throwError('Problem with publications request')));
+        catchError(this.handleError)
+      );
   }
 
   getAllSciPublications(): Publication[] {
@@ -40,19 +46,24 @@ export class ApiService {
 
 
   getAllRepositories(username: string): Observable<Repository[]> {
-    return this.httpService.get<Repository[]>(`https://api.github.com/users/${username}/repos`, this.httpOptions)
+    // Validate username input to prevent injection attacks
+    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+      throw new Error('Invalid username');
+    }
+
+    const url = `${GITHUB_API_BASE_URL}/users/${username}/repos`;
+    return this.httpService.get<Repository[]>(url, this.httpOptions)
       .pipe(
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
-        catchError(() => throwError('Problem with publications')));
-  }
-
-  getIPInfo(): Observable<IPInfo> {
-    return this.httpService.get<IPInfoRequest>
-      ('https://ipapi.co/json/', this.httpOptions)
-      .pipe(
-        map(response => new IPInfo().deserialize(response)),
-        catchError(() => throwError('Problem with IP info'))
+        catchError(this.handleError)
       );
   }
 
+  getIPInfo(): Observable<IPInfo> {
+    return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
+      .pipe(
+        map(response => new IPInfo().deserialize(response)),
+        catchError(this.handleError)
+      );
+  }
 }
