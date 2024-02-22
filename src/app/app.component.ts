@@ -21,8 +21,19 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.setLanguage();
     this.title.setTitle('Lucas Brito - Personal Website');
-    const date = new Date(Date.now());
+    this.setMetaTags();
+  }
 
+  async setLanguage() {
+    const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
+    this.translate.setDefaultLang('pt');
+    if (ipInfo?.country?.toUpperCase() !== 'BR') {
+      this.translate.setDefaultLang('en');
+    }
+  }
+
+  setMetaTags() {
+    const date = new Date(Date.now());
     const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
     this.meta.addTags([
@@ -41,13 +52,5 @@ export class AppComponent implements OnInit {
       { name: 'og:locale', content: 'pt_BR, en_US' },
       { charset: 'UTF-8' }
     ]);
-  }
-
-  async setLanguage() {
-    const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-    this.translate.setDefaultLang('pt');
-    if (ipInfo?.country?.toUpperCase() !== 'BR') {
-      this.translate.setDefaultLang('en');
-    };
   }
 }
