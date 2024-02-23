@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center icons_div">
 
     <ng-container *ngFor="let icon of iconList">
-        <a [href]=icon.link class="text-white ms-3 icon" *ngIf="icon.active">
+        <a [href]=icon.link class="text-white ms-3 icon" *ngIf="icon.active" target="_blank" [aria-label]=icon.description>
             <fa-icon [icon]=icon.icon></fa-icon>
         </a>
     </ng-container>
