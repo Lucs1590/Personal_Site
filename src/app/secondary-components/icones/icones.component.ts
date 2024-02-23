@@ -13,7 +13,8 @@ export class IconesComponent {
       icon: ['fas', 'envelope'],
       link: 'mailto:lucasbsilva29@gmail.com?subject=Brito%20Web%20Site&body=Ola%20Lucas%20Brito',
       active: true
-    }, {
+    },
+    {
       icon: ['fab', 'github'],
       link: 'https://github.com/Lucs1590',
       active: true
