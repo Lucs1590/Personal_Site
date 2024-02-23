@@ -8,6 +8,13 @@
     font-size: 4rem;
 }
 
+#imgPerfil {
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+}
+
+h2,
 h3 {
     font-family: 'Anton', 'Poppins', sans-serif;
 }
@@ -21,8 +28,15 @@ hr {
     border-top: 0.35rem solid rgba(255, 255, 255, 0.3)
 }
 
-#imgPerfil {
-    border-radius: 50%;
-    width: 7rem;
-    height: 7rem;
+a {
+    text-decoration: none;
+    font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+a:visited {
+    font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+    font-weight: 300;
+    color: white;
 }
