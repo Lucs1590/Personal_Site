@@ -5,7 +5,7 @@ export const sciPublications = [
         thumbnail: '../../../assets/img/publications/efficient_sign_language.png',
         pubDate: '2021/6/30',
         link: 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11878/1187803/Efficient-sign-language-recognition-system-and-dataset-creation-method-based/10.1117/12.2601018.short',
-        author: 'A. L. Cavalcante Carneiro, L. Brito Silva, D. H. Pinheiro Salvadeo',
+        author: 'CARNEIRO, AL Cavalcante; SILVA, L. Brito; SALVADEO, DH Pinheiro.',
         guid: '',
         content: '',
         enclosure: '',
@@ -17,10 +17,34 @@ export const sciPublications = [
         thumbnail: '../../../assets/img/publications/coffee_crop.png',
         pubDate: '2021/3/20',
         link: 'https://arxiv.org/abs/2103.11241',
-        author: 'A. L. Cavalcante Carneiro, L. Brito Silva, M. S. A. R. Faulin',
+        author: 'CARNEIRO, AL Cavalcante; SILVA, L. Brito; FAULIN, Marisa Silveira Almeida Renaud. ',
         guid: '',
         content: '',
         enclosure: '',
         categories: []
+    },
+    {
+        title: 'Large-scale dataset and benchmarking for hand and face detection focused on sign language',
+        description: '<p>Object detection is an important preprocessing technique for sign language recognition, allowing focus on the most important parts of the image. This paper introduces a new large-scale dataset for hand and face detection in sign language context, mitigating the lack of data for this problem. We evaluated different object detection architectures to find the best trade-off between computational cost and mean Average Precision (mAP). The proposed dataset contains 477,480 annotated images. The most accurate detector (CenterNet) achieved an mAP of 96.7%. Furthermore, the optimizations made to the models reduced the inference time up to 74% in the best scenario.</p>',
+        thumbnail: '../../../assets/img/publications/large_scale_dataset.png',
+        pubDate: '2023/10/6',
+        link: 'https://www.esann.org/sites/default/files/proceedings/2023/ES2023-185.pdf',
+        author: 'CARNEIRO, AL Cavalcante; SALVADEO, DH Pinheiro; SILVA, L. Brito.',
+        guid: '',
+        content: '',
+        enclosure: '',
+        categories: []
+    },
+    {
+        title: 'Self-Supervised Feature Extraction for Video Surveillance Anomaly Detection',
+        description: '<p>The recent studies on Video Surveillance Anomaly Detection focus only on the training methodology, utilizing pre-extracted feature vectors from videos. They give little attention to methodologies for feature extraction, which could enhance the final anomaly detection quality. Thus, this work presents a self-supervised methodology named Self-Supervised Object-Centric (SSOC) for extracting features from the relationship between objects in videos. To achieve this, a pretext task is employed to predict the future position and appearance of a reference object based on a set of past frames. The Deep Learning-based model used in the pretext task is then fine-tuned on Weak Supervised datasets for the downstream task, using the Multiple Instance Learning training strategy, with the goal of detecting anomalies in the videos. In the best case scenario, the results demonstrate an increase of 3.1% in AUC on the UCF Crime dataset and an increase of 2.8% in AUC on the CamNuvem dataset.</p>',
+        thumbnail: '../../../assets/img/publications/self_supervised_feature_extraction.png',
+        pubDate: '2023/12/18',
+        link: 'https://ieeexplore.ieee.org/abstract/document/10347173',
+        author: 'DE PAULA, Davi D. et al.',
+        guid: '',
+        content: '',
+        enclosure: '',
+        categories: ['Training', 'Graphics', 'Feature extraction', 'Video surveillance', 'Task analysis', 'Anomaly detection']
     }
 ];

@@ -8,24 +8,27 @@
             <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 publi.description
                 <div class="row" style="font-size: 2rem;">
-                    <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon">
+                    <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon"
+                        aria-label="Check my Medium">
                         <fa-icon [icon]="['fab', 'medium']"></fa-icon>
                     </a>
-                    <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon">
+                    <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon" aria-label="Check my Dev.to">
                         <fa-icon [icon]="['fab', 'dev']"></fa-icon>
                     </a>
                     <a href="https://scholar.google.com.br/citations?user=lwCbcswAAAAJ&hl"
-                        class="text-white ms-2 mt-2 icon">
-                        <img [src]="scholarImage" class="img-icon" (mouseover)="defineIconImage($event)"
-                            (mouseout)="defineIconImage($event)" height="28rem" loading="lazy">
+                        class="text-white ms-2 mt-2 icon" aria-label="Check my Google Scholar">
+                        <img NgOptimizedImage [src]="scholarImage" class="img-icon"
+                            (mouseover)="defineIconImage($event)" (mouseout)="defineIconImage($event)" height="28rem"
+                            loading="lazy" alt="Google Scholar">
                     </a>
-                    <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ms-2 mt-2 icon">
+                    <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ms-2 mt-2 icon"
+                        aria-label="Check my ResearchGate">
                         <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
                     </a>
                 </div>
             </div>
             <!-- <div>
-        <img src="../../../assets/img/writer.jpeg" class="img-fluid" alt="Writer Image"
+        <img NgOptimizedImage src="../../../assets/img/writer.jpeg" class="img-fluid" alt="Writer Image"
             style="height: 15rem;width: 60rem;object-fit: cover;" loading="lazy">
     </div> -->
         </div>
@@ -76,8 +79,7 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of blogPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem" loading="lazy">
-                    <h4 class="card-title">{{ pub.title }}</h4>
+                    <h3 class="card-title mb-2">{{ pub.title }}</h3>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
@@ -102,19 +104,11 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
-                        'border-radius': '5px',
-                        'height': '4rem',
-                        'width': '4rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }">
-                        </ngx-skeleton-loader>
                         <div class="card-title">
-                            <ngx-skeleton-loader count="2" [theme]="{
+                            <ngx-skeleton-loader count="1" [theme]="{
                         'border-radius': '5px',
-                        'width': '18rem',
+                        'width': '13rem',
+                        'height': '3rem',
                         'background-color': '#323232',
                         'border': '1px solid #323232',
                         'animation-duration': '1.2s'
@@ -168,8 +162,9 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of sciPublications">
                 <div class="card-body">
-                    <img [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem" loading="lazy">
-                    <h4 class="card-title">{{ pub.title }}</h4>
+                    <img NgOptimizedImage [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem"
+                        loading="lazy">
+                    <h3 class="card-title sci-title">{{ pub.title }}</h3>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
@@ -194,19 +189,11 @@
             <div>
                 <div class="card mt-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0">
                     <div class="card-body">
-                        <ngx-skeleton-loader count="1" class="thumb me-2 mb-1" [theme]="{
-                        'border-radius': '5px',
-                        'height': '4rem',
-                        'width': '4rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }">
-                        </ngx-skeleton-loader>
                         <div class="card-title">
-                            <ngx-skeleton-loader count="2" [theme]="{
+                            <ngx-skeleton-loader count="1" [theme]="{
                         'border-radius': '5px',
-                        'width': '18rem',
+                        'width': '13rem',
+                        'height': '3rem',
                         'background-color': '#323232',
                         'border': '1px solid #323232',
                         'animation-duration': '1.2s'
