@@ -58,7 +58,8 @@ export class PortfolioComponent implements OnInit {
     } else {
       const query = this.searchQuery.trim().toLowerCase();
       this.filteredRepos = this.repos.filter(repo =>
-        repo.name.toLowerCase().includes(query)
+        repo.name.toLowerCase().includes(query) ||
+        repo.topics.some(tag => tag.toLowerCase().includes(query))
       );
     }
   }
