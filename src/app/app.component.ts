@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.setLanguage();
-    this.title.setTitle('Lucas Brito - Personal Website');
     this.setMetaTags();
   }
 
