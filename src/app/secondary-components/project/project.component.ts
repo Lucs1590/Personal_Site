@@ -13,4 +13,9 @@ export class ProjectComponent {
   showDetails() {
     console.log(this.repo);
   }
+
+  openRepo() {
+    window.open(this.repo.url, '_blank');
+  }
+
 }

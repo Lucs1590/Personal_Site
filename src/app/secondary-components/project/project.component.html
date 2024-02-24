@@ -1,8 +1,18 @@
 <!-- project.component.html -->
-<div class="card" (click)="showDetails()">
+<div class="card project-card" (click)="showDetails()">
     <div class="card-body">
-      <h5 class="card-title">{{ repo.name }}</h5>
-      <!-- Display other project details here -->
+        <h5 class="card-title">{{ repo.name }}</h5>
+        <p class="card-text">{{ repo.description }}</p>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-secondary" (click)="showDetails()">Details</button>
+                <a [href]="repo.url" target="_blank" class="btn btn-sm btn-secondary">
+                    <fa-icon [icon]="['fab', 'github']"></fa-icon>
+                    View on GitHub
+                </a>
+            </div>
+            <small class="text-muted">{{ repo.language }}</small>
+        </div>
     </div>
-  </div>
-  
+</div>

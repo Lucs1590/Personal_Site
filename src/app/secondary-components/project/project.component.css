@@ -1,0 +1,10 @@
+/* project.component.css */
+.project-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
