@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -14,18 +15,19 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public utils: UtilsService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.defineMenu();
-      this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+      this.filterItems();
     });
   }
 
   ngOnInit(): void {
-    this.mobile = window.innerWidth <= 991 ? true : false;
+    this.mobile = window.innerWidth <= 991;
     this.defineMenu();
-    this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+    this.filterItems();
   }
 
   defineMenu() {
@@ -49,6 +51,17 @@ export class NavbarComponent implements OnInit {
         desktop: false
       },
     ];
+  }
+
+  filterItems() {
+    this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+  }
+
+  isActive(route: string[]): boolean {
+    if (route[0] === '/') {
+      route = ['/home'];
+    }
+    return this.router.isActive(route[0], true);
   }
 
 }
