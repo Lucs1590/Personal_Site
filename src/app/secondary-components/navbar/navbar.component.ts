@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
@@ -30,13 +31,13 @@ export class NavbarComponent implements OnInit {
   defineMenu() {
     this.itemsList = [
       {
-        name: this.translate.get('nav.home').toPromise() as Promise<string>,
+        name: firstValueFrom(this.translate.get('nav.home')),
         ref: ['/'],
         mobile: true,
         desktop: true
       },
       {
-        name: this.translate.get('nav.publications').toPromise(),
+        name: firstValueFrom(this.translate.get('nav.publications')),
         ref: ['/publications'],
         mobile: true,
         desktop: true
