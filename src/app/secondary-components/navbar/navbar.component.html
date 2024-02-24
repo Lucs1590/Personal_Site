@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-left ms-2 mt-2">
-    <a translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utils.useLanguage()">lang</a>
+    <button translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utils.useLanguage()">lang</button>
     <div class="ms-5 mt-1">
         <a translate [routerLink]="item.ref" class="ms-3 itemnav" *ngFor="let item of itemsList">
             {{item.name | async}}
