@@ -52,10 +52,10 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.1",
     "@angular-eslint/builder": "17.2.1",
-    "@angular-eslint/eslint-plugin": "17.1.0",
+    "@angular-eslint/eslint-plugin": "17.2.1",
     "@angular-eslint/eslint-plugin-template": "17.1.0",
     "@angular-eslint/schematics": "17.1.0",
-    "@angular-eslint/template-parser": "17.1.0",
+    "@angular-eslint/template-parser": "17.2.1",
     "@angular/cli": "^17.0.0",
     "@angular/compiler-cli": "^17.0.8",
     "@angular/language-service": "^17.0.8",
@@ -71,13 +71,13 @@
     "eslint-plugin-prefer-arrow": "latest",
     "jasmine-core": "~5.1.1",
     "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.4.2",
+    "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "protractor": "^7.0.0",
-    "ts-node": "~8.9.1",
+    "ts-node": "~10.9.2",
     "typescript": "~5.2.2"
   },
   "config": {
