@@ -8,12 +8,19 @@
     font-size: 8rem;
 }
 
+.sobre_text {
+    font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+h2,
 h3 {
     font-family: 'Anton', 'Poppins', sans-serif;
 }
 
 h5 {
-    font-weight: bold
+    font-weight: bold;
 }
 
 hr {
@@ -21,7 +28,14 @@ hr {
     border-top: 0.35rem solid rgba(255, 255, 255, 0.3);
 }
 
-.sobre_text {
+a {
+    text-decoration: none;
+    font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+a:visited {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
     color: white;

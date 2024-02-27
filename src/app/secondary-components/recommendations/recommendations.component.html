@@ -6,7 +6,7 @@
 		<div class="carousel-inner text-center">
 			<div [ngClass]="i === 0 ? 'carousel-item active': 'carousel-item'"
 				*ngFor="let recommendation of recommendations; let i = index" data-interval="5000">
-				<img class="imgAuthors" src="{{recommendation.authorImage}}" alt="author-image" loading="lazy">
+				<img NgOptimizedImage class="imgAuthors" src="{{recommendation.authorImage}}" alt="author-image" loading="lazy">
 				<small>{{recommendation.state}}</small>
 				<p>{{recommendation.text}}</p>
 				<p class="blockquote-footer">{{recommendation.author}}</p>

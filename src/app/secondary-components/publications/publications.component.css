@@ -1,3 +1,8 @@
+h1,
+h2 {
+    font-family: 'Anton', 'Poppins', sans-serif;
+}
+
 .card {
     width: 25rem;
     height: 20rem;
@@ -40,9 +45,8 @@
     bottom: 1rem;
 }
 
-h1,
-h2 {
-    font-family: 'Anton', 'Poppins', sans-serif;
+.sci-title {
+    font-size: 1.6720rem;
 }
 
 .about-text {
