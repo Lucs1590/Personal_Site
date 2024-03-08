@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -13,9 +14,29 @@ export class PublicationsComponent implements OnInit {
   loading = false;
   scholarImage: string;
 
+  loading = false;
+  scholarImage: string;
+  notFound = false; // Flag to indicate if publications were not found
+  
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private route: ActivatedRoute // Inject ActivatedRoute to access query parameters
   ) { }
+  
+  async ngOnInit(): Promise<void> {
+    this.defineIconImage(null);
+  
+    // Parse query parameters
+    const title = this.route.snapshot.queryParamMap.get('title');
+    const category = this.route.snapshot.queryParamMap.get('category');
+  
+    await this.getBlogPublications(title, category);
+    this.getSciPublications(title, category);
+  
+    setTimeout(() => {
+      this.loading = true;
+    }, 600);
+  }
 
   async ngOnInit(): Promise<void> {
     this.defineIconImage(null);
@@ -38,14 +59,14 @@ export class PublicationsComponent implements OnInit {
 
 
   async getBlogPublications(): Promise<void> {
-    const publications = await this.apiService.getAllPublications().toPromise();
+    const publications = await this.apiService.getFilteredPublications(title, category).toPromise();
     this.blogPublications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
       .splice(0, 6);
   }
 
   getSciPublications(): void {
-    const publications = this.apiService.getAllSciPublications();
+    const publications = await this.apiService.getFilteredPublications(title, category).toPromise();
     this.sciPublications = publications;
     const parser = new DOMParser();
   
