@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, filter } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -65,5 +65,13 @@ export class ApiService {
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
+  }
+  getFilteredPublications(title?: string, category?: string): Observable<Publication[]> {
+    return this.getAllPublications().pipe(
+      map(publications => publications.filter(publication => 
+        (!title || publication.title.includes(title)) &&
+        (!category || publication.categories.includes(category))
+      ))
+    );
   }
 }
