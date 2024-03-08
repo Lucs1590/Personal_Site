@@ -26,6 +26,11 @@
                         <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
                     </a>
                 </div>
+        </div>
+    </div>
+    <div *ngIf="notFound" class="row text-center mt-5">
+        <h2 translate>publi.not-found</h2>
+    </div>
             </div>
             <!-- <div>
         <img NgOptimizedImage src="../../../assets/img/writer.jpeg" class="img-fluid" alt="Writer Image"
