@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap, toPromise, pipe, subscribe } from 'rxjs';
+import { toPromise } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -27,6 +27,10 @@ export class PublicationsComponent implements OnInit {
     await this.getBlogPublications();
     this.filterPublications();
 
+    this.setLoadingStateWithDelay();
+  }
+  
+  private setLoadingStateWithDelay(): void {
     setTimeout(() => {
       this.loading = true;
     }, 600);
@@ -65,7 +69,7 @@ export class PublicationsComponent implements OnInit {
   }
 
   filterPublications(): void {
-    this.activatedRoute.queryParams.pipe(subscribe)(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       const searchQuery = params['search']?.toLowerCase();
       if (!searchQuery) return;
 
