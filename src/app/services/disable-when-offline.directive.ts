@@ -1,4 +1,6 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
+import 'bootstrap';
+import { Modal } from 'bootstrap';
 
 @Directive({
   selector: '[disableWhenOffline]'
@@ -6,7 +8,7 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 export class DisableWhenOfflineDirective {
   private isOffline = false;
 
-  @HostBinding('disabled')
+  @HostBinding('class.disabled')
   get isDisabled(): boolean {
     return this.isOffline;
   }
@@ -19,5 +21,13 @@ export class DisableWhenOfflineDirective {
   @HostListener('window:online')
   setOnline(): void {
     this.isOffline = false;
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event: Event): void {
+    if (this.isOffline) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 }
