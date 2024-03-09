@@ -83,9 +83,14 @@
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
-                            <a translate [href]=pub.url class="read-more" target="_blank">
+                            <a translate [href]=pub.url class="read-more" target="_blank" *ngIf="!isOffline$; else disabledLink">
                                 <fa-icon icon="link"></fa-icon> publi.read-more
                             </a>
+                            <ng-template #disabledLink>
+                                <a translate [href]=pub.url class="read-more disabled" target="_blank">
+                                    <fa-icon icon="link"></fa-icon> publi.read-more
+                                </a>
+                            </ng-template>
                         </div>
                         <div class="col">
                             <p class="card-text text-end">

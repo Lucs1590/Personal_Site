@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, defer, fromEvent, merge, of, switchMap, switchMapTo } from 'rxjs';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -12,6 +13,7 @@ export class PublicationsComponent implements OnInit {
   sciPublications: Publication[];
   loading = false;
   scholarImage: string;
+  isOffline$: Observable<boolean> = checkInternetConnection();
 
   constructor(
     private apiService: ApiService
@@ -22,6 +24,14 @@ export class PublicationsComponent implements OnInit {
     this.getSciPublications();
 
     await this.getBlogPublications();
+
+    this.isOffline$.subscribe(isOffline => {
+      if (isOffline) {
+        console.log('Usuário está offline. Armazeno informações no cache');
+      } else {
+        console.log('Usuário recuperou a conexão. Obtenho as informações do cache e envio para o servidor');
+      }
+    })
 
     setTimeout(() => {
       this.loading = true;
@@ -61,3 +71,17 @@ export class PublicationsComponent implements OnInit {
     return doc.body.textContent || '';
   }
 }
+function checkInternetConnection(): Observable<boolean> {
+  const initialEvent$ = of(null);
+  const onlineEvent$ = fromEvent(window, 'online');
+  const offlineEvent$ = fromEvent(window, 'offline');
+  const isOfflineDefer$ = defer(() => of(!window.navigator.onLine));
+
+  const isOffline$ = merge(initialEvent$, onlineEvent$, offlineEvent$).pipe(
+    switchMap(() => isOfflineDefer$)
+  );
+
+  return isOffline$;
+
+}
+
