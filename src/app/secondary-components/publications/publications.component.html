@@ -7,6 +7,15 @@
         <div class="row">
             <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 publi.description
+                <br>
+                <div class="row mt-3">
+                    <div class="col">
+                        <div class="alert new-info-alert" role="alert">
+                            <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                            <small class="text-dark" translate>publi.tip</small>
+                        </div>
+                    </div>
+                </div>
                 <div class="row" style="font-size: 2rem;">
                     <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon"
                         aria-label="Check my Medium" disableWhenOffline>
@@ -43,18 +52,29 @@
             'background-color': '#323232',
             'border': '1px solid #323232',
             'animation-duration': '1.2s'
-          }">
+            }">
             </ngx-skeleton-loader>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 <ngx-skeleton-loader count="3" [theme]="{
                 'border-radius': '5px',
-                'width': '30rem',
+                'width': '100%',
+                'max-width': '30rem',
                 'background-color': '#323232',
                 'border': '1px solid #323232',
                 'animation-duration': '1.2s'
-              }"></ngx-skeleton-loader>
+                }"></ngx-skeleton-loader>
+                <br>
+                <ngx-skeleton-loader count="1" [theme]="{
+                'border-radius': '5px',
+                'height': '3rem',
+                'width': '100%',
+                'max-width': '60rem',
+                'background-color': '#323232',
+                'border': '1px solid #323232',
+                'animation-duration': '1.2s'
+                }"></ngx-skeleton-loader>
                 <div class="row" style="font-size: 2rem;">
                     <ngx-skeleton-loader count="4" [theme]="{
                     'border-radius': '5px',
@@ -64,10 +84,9 @@
                     'border': '1px solid #323232',
                     'margin-left': '0.5rem',
                     'animation-duration': '1.2s'
-                  }"></ngx-skeleton-loader>
+                    }"></ngx-skeleton-loader>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -77,7 +96,7 @@
     <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
         <ng-container *ngIf="loading; else skeletonTemplate">
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-                *ngFor="let pub of blogPublications">
+                *ngFor="let pub of blogPublications.slice(0, 6)">
                 <div class="card-body">
                     <h3 class="card-title mb-2">{{ pub.title }}</h3>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
@@ -98,6 +117,12 @@
 
                 </div>
             </div>
+            <div *ngIf="blogPublications.length === 0" class="text-center text-white mt-5">
+                <div class="alert new-info-alert" role="alert">
+                    <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                    <span class="text-dark" translate>publi.blog-not-found</span>
+                </div>
+            </div>
         </ng-container>
 
         <ng-template #skeletonTemplate>
@@ -106,46 +131,37 @@
                     <div class="card-body">
                         <div class="card-title">
                             <ngx-skeleton-loader count="1" [theme]="{
-                        'border-radius': '5px',
-                        'width': '13rem',
-                        'height': '3rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }"></ngx-skeleton-loader>
+                                'border-radius': '5px',
+                                'width': '100%',
+                                'max-width': '13rem',
+                                'height': '3rem',
+                                'background-color': '#323232',
+                                'border': '1px solid #323232',
+                                'animation-duration': '1.2s'
+                            }"></ngx-skeleton-loader>
                         </div>
                         <div class="card-text">
                             <ngx-skeleton-loader count="3" [theme]="{
-                            'margin-left': '1rem',
-                            'border-radius': '5px',
-                            'width': '21.5rem',
-                            'background-color': '#323232',
-                            'border': '1px solid #323232',
-                            'animation-duration': '1.2s'
-                          }"></ngx-skeleton-loader>
+                                'margin-left': '1rem',
+                                'border-radius': '5px',
+                                'width': '100%',
+                                'max-width': '21.5rem',
+                                'background-color': '#323232',
+                                'border': '1px solid #323232',
+                                'animation-duration': '1.2s'
+                            }"></ngx-skeleton-loader>
                         </div>
                         <div class="row w-100 foot-card">
                             <div class="col">
                                 <ngx-skeleton-loader count="1" [theme]="{
-                                'margin-left': '1rem',
-                                'border-radius': '5px',
-                                'width': '5rem',
-                                'background-color': '#323232',
-                                'border': '1px solid #323232',
-                                'animation-duration': '1.2s'
-                              }"></ngx-skeleton-loader>
-                            </div>
-                            <div class="col">
-                                <p class="card-text text-end">
-                                    <ngx-skeleton-loader count="1" [theme]="{
                                     'margin-left': '1rem',
                                     'border-radius': '5px',
-                                    'width': '3rem',
+                                    'width': '100%',
+                                    'max-width': '5rem',
                                     'background-color': '#323232',
                                     'border': '1px solid #323232',
                                     'animation-duration': '1.2s'
-                                  }"></ngx-skeleton-loader>
-                                </p>
+                                }"></ngx-skeleton-loader>
                             </div>
                         </div>
                     </div>
@@ -183,6 +199,12 @@
 
                 </div>
             </div>
+            <div *ngIf="sciPublications.length === 0" class="text-center text-white mt-5">
+                <div class="alert new-info-alert" role="alert">
+                    <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                    <span class="text-dark" translate>publi.sci-not-found</span>
+                </div>
+            </div>
         </ng-container>
 
         <ng-template #skeletonTemplate>
@@ -191,46 +213,37 @@
                     <div class="card-body">
                         <div class="card-title">
                             <ngx-skeleton-loader count="1" [theme]="{
-                        'border-radius': '5px',
-                        'width': '13rem',
-                        'height': '3rem',
-                        'background-color': '#323232',
-                        'border': '1px solid #323232',
-                        'animation-duration': '1.2s'
-                      }"></ngx-skeleton-loader>
+                                'border-radius': '5px',
+                                'width': '100%',
+                                'max-width': '13rem',
+                                'height': '3rem',
+                                'background-color': '#323232',
+                                'border': '1px solid #323232',
+                                'animation-duration': '1.2s'
+                            }"></ngx-skeleton-loader>
                         </div>
                         <div class="card-text">
                             <ngx-skeleton-loader count="3" [theme]="{
-                            'margin-left': '1rem',
-                            'border-radius': '5px',
-                            'width': '21.5rem',
-                            'background-color': '#323232',
-                            'border': '1px solid #323232',
-                            'animation-duration': '1.2s'
-                          }"></ngx-skeleton-loader>
+                                'margin-left': '1rem',
+                                'border-radius': '5px',
+                                'width': '100%',
+                                'max-width': '21.5rem',
+                                'background-color': '#323232',
+                                'border': '1px solid #323232',
+                                'animation-duration': '1.2s'
+                            }"></ngx-skeleton-loader>
                         </div>
                         <div class="row w-100 foot-card">
                             <div class="col">
                                 <ngx-skeleton-loader count="1" [theme]="{
-                                'margin-left': '1rem',
-                                'border-radius': '5px',
-                                'width': '5rem',
-                                'background-color': '#323232',
-                                'border': '1px solid #323232',
-                                'animation-duration': '1.2s'
-                              }"></ngx-skeleton-loader>
-                            </div>
-                            <div class="col">
-                                <p class="card-text text-end">
-                                    <ngx-skeleton-loader count="1" [theme]="{
                                     'margin-left': '1rem',
                                     'border-radius': '5px',
-                                    'width': '3rem',
+                                    'width': '100%',
+                                    'max-width': '5rem',
                                     'background-color': '#323232',
                                     'border': '1px solid #323232',
                                     'animation-duration': '1.2s'
-                                  }"></ngx-skeleton-loader>
-                                </p>
+                                }"></ngx-skeleton-loader>
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,14 @@ a.disabled {
     text-decoration: underline;
 }
 
+.new-info-alert {
+    background-color: #9AB9BC;
+    height: 3rem;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
 .card {
     width: 25rem;
     height: 20rem;
