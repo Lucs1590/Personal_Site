@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -14,7 +15,8 @@ export class PublicationsComponent implements OnInit {
   scholarImage: string;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -58,6 +60,29 @@ export class PublicationsComponent implements OnInit {
   
   sanitizeHTML(html: string): string {
     const doc = new DOMParser().parseFromString(html, 'text/html');
+  }
+
+  filterPublications(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const searchQuery = params['search']?.toLowerCase();
+      if (!searchQuery) return;
+
+      this.blogPublications = this.blogPublications.filter(publication =>
+        publication.title.toLowerCase().includes(searchQuery) ||
+        publication.categories.some(category => category.toLowerCase().includes(searchQuery))
+      );
+
+      this.sciPublications = this.sciPublications.filter(publication =>
+        publication.title.toLowerCase().includes(searchQuery) ||
+        publication.categories.some(category => category.toLowerCase().includes(searchQuery))
+      );
+    });
+  }
+    setTimeout(() => {
+      this.loading = true;
+    }, 600);
+
+    this.filterPublications();
     return doc.body.textContent || '';
   }
 }
