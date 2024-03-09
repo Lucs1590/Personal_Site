@@ -1,10 +1,19 @@
-.icons_div{
+a.disabled {
+    color: gray !important;
+    cursor: not-allowed;
+    text-decoration: underline;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+.icons_div {
     margin-top: 7rem;
     font-size: 2rem;
 }
 
-.icon:hover{
+.icon:hover {
     transform: scale(1.25);
     transition-duration: 0.5s;
-    color:#E69C24 !important;
+    color: #E69C24 !important;
 }
