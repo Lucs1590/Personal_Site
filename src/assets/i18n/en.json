@@ -13,5 +13,8 @@
     "publi.blog-subtitle": "Blog",
     "publi.sci-subtitle": "Scientific Publications",
     "publi.read-more": "Read more...",
-    "recommendations.title": "Recommendations"
+    "recommendations.title": "Recommendations",
+    "modal-off.title": "You are offline!",
+    "modal-off.description": "This website is best viewed online. Please check your internet connection and try again.",
+    "modal-off.close": "Close"
 }
