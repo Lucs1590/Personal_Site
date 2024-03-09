@@ -1,6 +1,6 @@
 {
   "name": "personal-site",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "commit": "git-cz",
+    "release": "standard-version"
   },
   "dependencies": {
     "@angular/animations": "^17.0.8",
@@ -64,6 +66,8 @@
     "@types/node": "^20.8.4",
     "@typescript-eslint/eslint-plugin": "6.11.0",
     "@typescript-eslint/parser": "7.1.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.53.0",
     "eslint-plugin-import": "latest",
     "eslint-plugin-jsdoc": "latest",
@@ -76,6 +80,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "protractor": "^7.0.0",
+    "standard-version": "^9.5.0",
     "ts-node": "~10.9.2",
     "typescript": "~5.3.3"
   },
