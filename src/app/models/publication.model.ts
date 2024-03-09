@@ -7,6 +7,7 @@ export class Publication implements Deserializable {
   publicationDate?: Date;
   url?: string;
   author?: string;
+  categories?: string[] = [];
 
   deserialize(input: {
     title: string;

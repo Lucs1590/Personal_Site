@@ -70,7 +70,7 @@ export class ApiService {
     return this.getAllPublications().pipe(
       map(publications => publications.filter(publication => 
         (!title || publication.title.includes(title)) &&
-        (!category || publication.categories.includes(category))
+        (!category || publication?.categories.includes(category))
       ))
     );
   }
