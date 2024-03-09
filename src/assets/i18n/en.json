@@ -15,5 +15,6 @@
     "publi.read-more": "Read more...",
     "publi.blog-not-found": "No blog posts matched your search criteria.",
     "publi.sci-not-found": "No scientific publications matched your search criteria.",
+    "publi.tip": "Tip: If you can't find a specific text, try adding \"?search=tag\" after /publication in the URL.",
     "recommendations.title": "Recommendations"
 }

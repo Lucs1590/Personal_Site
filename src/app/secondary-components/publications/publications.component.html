@@ -7,6 +7,15 @@
         <div class="row">
             <div translate class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-3 ps-5 px-sm-5 px-md-5 about-text">
                 publi.description
+                <br>
+                <div class="row mt-3">
+                    <div class="col">
+                        <div class="alert new-info-alert" role="alert">
+                            <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                            <small class="text-dark" translate>publi.tip</small>
+                        </div>
+                    </div>
+                </div>
                 <div class="row" style="font-size: 2rem;">
                     <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon"
                         aria-label="Check my Medium">
@@ -99,9 +108,9 @@
                 </div>
             </div>
             <div *ngIf="blogPublications.length === 0" class="text-center text-white mt-5">
-                <div class="alert alert-info" role="alert">
+                <div class="alert new-info-alert" role="alert">
                     <fa-icon icon="info-circle" class="me-2"></fa-icon>
-                    <span translate>publi.blog-not-found</span>
+                    <span class="text-dark" translate>publi.blog-not-found</span>
                 </div>
             </div>
         </ng-container>
@@ -190,9 +199,9 @@
                 </div>
             </div>
             <div *ngIf="sciPublications.length === 0" class="text-center text-white mt-5">
-                <div class="alert alert-info" role="alert">
+                <div class="alert new-info-alert" role="alert">
                     <fa-icon icon="info-circle" class="me-2"></fa-icon>
-                    <span translate>publi.sci-not-found</span>
+                    <span class="text-dark" translate>publi.sci-not-found</span>
                 </div>
             </div>
         </ng-container>

@@ -15,5 +15,6 @@
     "publi.read-more": "Leia mais...",
     "publi.blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
     "publi.sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
+    "publi.tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
     "recommendations.title": "Recomendações"
 }
