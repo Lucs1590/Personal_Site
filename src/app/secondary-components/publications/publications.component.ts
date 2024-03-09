@@ -13,8 +13,6 @@ export class PublicationsComponent implements OnInit {
   sciPublications: Publication[];
   loading = false;
   scholarImage: string;
-  isOnline: boolean;
-  isOffline$: Observable<boolean> = checkInternetConnection();
 
   constructor(
     private apiService: ApiService
@@ -25,14 +23,6 @@ export class PublicationsComponent implements OnInit {
     this.getSciPublications();
 
     await this.getBlogPublications();
-
-    this.isOffline$.subscribe(isOffline => {
-      if (isOffline) {
-        this.isOnline = false;
-      } else {
-        this.isOnline = true;
-      }
-    })
 
     setTimeout(() => {
       this.loading = true;
@@ -71,18 +61,5 @@ export class PublicationsComponent implements OnInit {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || '';
   }
-}
-function checkInternetConnection(): Observable<boolean> {
-  const initialEvent$ = of(null);
-  const onlineEvent$ = fromEvent(window, 'online');
-  const offlineEvent$ = fromEvent(window, 'offline');
-  const isOfflineDefer$ = defer(() => of(!window.navigator.onLine));
-
-  const isOffline$ = merge(initialEvent$, onlineEvent$, offlineEvent$).pipe(
-    switchMap(() => isOfflineDefer$)
-  );
-
-  return isOffline$;
-
 }
 

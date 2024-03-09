@@ -27,6 +27,7 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -62,6 +63,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
+    DisableWhenOfflineDirective,
     AppComponent,
     HomeComponent,
     SeparadorComponent,
