@@ -48,14 +48,14 @@ export class PublicationsComponent implements OnInit {
     const publications = this.apiService.getAllSciPublications();
     this.sciPublications = publications;
     const parser = new DOMParser();
-  
+
     this.sciPublications.map((publication) => {
       const parsedDescription = parser.parseFromString(publication.description, 'text/html');
       const sanitizedDescription = this.sanitizeHTML(parsedDescription.body.textContent || '');
       publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
     });
   }
-  
+
   sanitizeHTML(html: string): string {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || '';
