@@ -11,7 +11,7 @@ a.disabled {
 
 .new-info-alert {
     background-color: #9AB9BC;
-    height: 3rem;
+    min-height: 3rem;
     vertical-align: middle;
     display: flex;
     align-items: center;
