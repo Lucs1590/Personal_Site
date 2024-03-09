@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap, switchMapTo } from 'rxjs';
+import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -13,6 +13,7 @@ export class PublicationsComponent implements OnInit {
   sciPublications: Publication[];
   loading = false;
   scholarImage: string;
+  isOnline: boolean;
   isOffline$: Observable<boolean> = checkInternetConnection();
 
   constructor(
@@ -27,9 +28,9 @@ export class PublicationsComponent implements OnInit {
 
     this.isOffline$.subscribe(isOffline => {
       if (isOffline) {
-        console.log('Usuário está offline. Armazeno informações no cache');
+        this.isOnline = false;
       } else {
-        console.log('Usuário recuperou a conexão. Obtenho as informações do cache e envio para o servidor');
+        this.isOnline = true;
       }
     })
 
