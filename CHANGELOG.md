@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/Lucs1590/Personal_Site/compare/v1.1.0...v1.1.1) (2024-03-09)
+
+
+### Bug Fixes
+
+* height size ([66d1414](https://github.com/Lucs1590/Personal_Site/commit/66d141483fa6042acb75ce11e09a6684ddf6cc5d))
+
 ## [1.1.0](https://github.com/Lucs1590/Personal_Site/compare/v1.0.1...v1.1.0) (2024-03-09)
 
 
