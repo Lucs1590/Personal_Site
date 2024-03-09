@@ -12,7 +12,6 @@ import { firstValueFrom } from 'rxjs';
 export class AppComponent implements OnInit {
 
   constructor(
-    private title: Title,
     private meta: Meta,
     private apiService: ApiService,
     private translate: TranslateService

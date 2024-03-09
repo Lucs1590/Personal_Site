@@ -9,20 +9,20 @@
                 publi.description
                 <div class="row" style="font-size: 2rem;">
                     <a href="https://lucasbsilva29.medium.com/" class="text-white ms-2 mt-2 icon"
-                        aria-label="Check my Medium">
+                        aria-label="Check my Medium" disableWhenOffline>
                         <fa-icon [icon]="['fab', 'medium']"></fa-icon>
                     </a>
-                    <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon" aria-label="Check my Dev.to">
+                    <a href="https://dev.to/lucs1590" class="text-white ms-2 mt-2 icon" aria-label="Check my Dev.to" disableWhenOffline>
                         <fa-icon [icon]="['fab', 'dev']"></fa-icon>
                     </a>
                     <a href="https://scholar.google.com.br/citations?user=lwCbcswAAAAJ&hl"
-                        class="text-white ms-2 mt-2 icon" aria-label="Check my Google Scholar">
+                        class="text-white ms-2 mt-2 icon" aria-label="Check my Google Scholar" disableWhenOffline>
                         <img NgOptimizedImage [src]="scholarImage" class="img-icon"
                             (mouseover)="defineIconImage($event)" (mouseout)="defineIconImage($event)" height="28rem"
                             loading="lazy" alt="Google Scholar">
                     </a>
                     <a href="https://www.researchgate.net/profile/Lucas-Brito-Silva" class="text-white ms-2 mt-2 icon"
-                        aria-label="Check my ResearchGate">
+                        aria-label="Check my ResearchGate" disableWhenOffline>
                         <fa-icon [icon]="['fab', 'researchgate']"></fa-icon>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
-                            <a translate [href]=pub.url class="read-more" target="_blank">
+                            <a translate [href]=pub.url class="read-more" target="_blank" disableWhenOffline>
                                 <fa-icon icon="link"></fa-icon> publi.read-more
                             </a>
                         </div>
@@ -173,7 +173,7 @@
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
                         <div class="col">
-                            <a translate [href]=pub.url class="read-more">
+                            <a translate [href]=pub.url class="read-more" target="_blank" disableWhenOffline>
                                 <fa-icon icon="link"></fa-icon> publi.read-more
                             </a>
                         </div>

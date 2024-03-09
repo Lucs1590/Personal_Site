@@ -3,6 +3,12 @@ h2 {
     font-family: 'Anton', 'Poppins', sans-serif;
 }
 
+a.disabled {
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: underline;
+}
+
 .card {
     width: 25rem;
     height: 20rem;
