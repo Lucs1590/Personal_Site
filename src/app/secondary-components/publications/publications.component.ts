@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap, toPromise } from 'rxjs';
+import { Observable, defer, fromEvent, merge, of, switchMap, toPromise, pipe, subscribe } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -65,7 +65,7 @@ export class PublicationsComponent implements OnInit {
   }
 
   filterPublications(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.pipe(subscribe)(params => {
       const searchQuery = params['search']?.toLowerCase();
       if (!searchQuery) return;
 
