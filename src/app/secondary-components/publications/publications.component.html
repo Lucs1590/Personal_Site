@@ -99,7 +99,10 @@
                 </div>
             </div>
             <div *ngIf="blogPublications.length === 0" class="text-center text-white mt-5">
-                <h3>No blog publications matched your search criteria.</h3>
+                <div class="alert alert-info" role="alert">
+                    <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                    <span translate>publi.blog-not-found</span>
+                </div>
             </div>
         </ng-container>
 
@@ -187,7 +190,10 @@
                 </div>
             </div>
             <div *ngIf="sciPublications.length === 0" class="text-center text-white mt-5">
-                <h3>No scientific publications matched your search criteria.</h3>
+                <div class="alert alert-info" role="alert">
+                    <fa-icon icon="info-circle" class="me-2"></fa-icon>
+                    <span translate>publi.sci-not-found</span>
+                </div>
             </div>
         </ng-container>
 

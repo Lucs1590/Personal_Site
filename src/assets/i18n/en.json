@@ -13,5 +13,7 @@
     "publi.blog-subtitle": "Blog",
     "publi.sci-subtitle": "Scientific Publications",
     "publi.read-more": "Read more...",
+    "publi.blog-not-found": "No blog posts matched your search criteria.",
+    "publi.sci-not-found": "No scientific publications matched your search criteria.",
     "recommendations.title": "Recommendations"
 }
