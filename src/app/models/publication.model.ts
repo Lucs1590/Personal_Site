@@ -7,6 +7,7 @@ export class Publication implements Deserializable {
   publicationDate?: Date;
   url?: string;
   author?: string;
+  categories?: string[];
 
   deserialize(input: {
     title: string;
@@ -33,6 +34,7 @@ export class Publication implements Deserializable {
     this.publicationDate = new Date(input?.pubDate);
     this.url = input?.link;
     this.author = input?.author;
+    this.categories = input?.categories;
     return this;
   }
 }
