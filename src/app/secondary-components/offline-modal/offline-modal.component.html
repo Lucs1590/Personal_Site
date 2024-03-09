@@ -1,18 +1,17 @@
-<div class="modal fade" id="offlineModalCenter" tabindex="-1" role="dialog" aria-labelledby="offlineModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="offlineModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="offlineModal" translate>modal.title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close Button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title text-dark" id="modalLabel" translate>modal-off.title</h5>
             </div>
-            <div class="modal-body" translate>
-                modal.description
+            <div class="modal-body text-dark" translate>
+                modal-off.description
             </div>
+
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" translate>modal-off.close</button>
             </div>
+
         </div>
     </div>
 </div>
