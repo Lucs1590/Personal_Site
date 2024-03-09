@@ -28,6 +28,8 @@ import { NotFoundComponent } from './secondary-components/not-found/not-found.co
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { TechnologiesListComponent } from './secondary-components/technologies-list/technologies-list.component';
+import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
+import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -63,11 +65,13 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
+    DisableWhenOfflineDirective,
     AppComponent,
     HomeComponent,
     SeparadorComponent,
     MHomeComponent,
     IconesComponent,
+    OfflineModalComponent,
     PublicationsComponent,
     HobbiesComponent,
     RecommendationsComponent,

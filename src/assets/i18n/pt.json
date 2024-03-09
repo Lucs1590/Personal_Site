@@ -1,7 +1,7 @@
 {
     "home.sub_title": "Tecnólogo em Big Data no Agronegócio",
     "home.about": "Sobre",
-    "home.description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" target=\"_blank\" >Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, estou atualmente cursando mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site.",
+    "home.description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" class=\"text-white\" target=\"_blank\">Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, estou atualmente cursando mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site.",
     "lang": "en",
     "nav.publications": "Publicações",
     "nav.home": "Início",
@@ -13,5 +13,11 @@
     "publi.blog-subtitle": "Blog",
     "publi.sci-subtitle": "Publicações Científicas",
     "publi.read-more": "Leia mais...",
+    "modal-off.title": "Você está offline!",
+    "modal-off.description": "Parece que você está offline. Por favor, verifique sua conexão com a internet e tente novamente.",
+    "modal-off.close": "Fechar",
+    "publi.blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
+    "publi.sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
+    "publi.tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
     "recommendations.title": "Recomendações"
 }
