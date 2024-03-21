@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieManagementService } from '../services/cookie-management.service';
 
 @Component({
   selector: 'app-cookie-consent',
@@ -7,28 +7,33 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./cookie-consent.component.css']
 })
 export class CookieConsentComponent implements OnInit {
-  showConsentBanner = true;
+  showConsentBanner: boolean = true;
 
-  constructor(private cookieService: CookieService) {}
+  constructor(private cookieManagementService: CookieManagementService) {}
 
   ngOnInit(): void {
     this.checkConsent();
   }
 
-  checkConsent(): void {
-    const consentGiven = this.cookieService.get('cookieConsent');
-    if (consentGiven === 'true') {
+  ngOnInit(): void {
+    if (!this.cookieManagementService.checkConsent()) {
+      this.showConsentBanner = true;
+    } else {
       this.showConsentBanner = false;
     }
   }
 
+  checkConsent(): void {
+    // This method is now handled within ngOnInit and updated to use CookieManagementService
+  }
+
   acceptCookies(): void {
-    this.cookieService.set('cookieConsent', 'true', { expires: 365 });
+    this.cookieManagementService.acceptCookies();
     this.showConsentBanner = false;
   }
 
   declineCookies(): void {
-    this.cookieService.set('cookieConsent', 'false', { expires: 365 });
+    this.cookieManagementService.declineCookies();
     this.showConsentBanner = false;
   }
 }
