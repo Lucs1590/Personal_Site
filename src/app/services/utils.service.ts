@@ -27,6 +27,14 @@ export class UtilsService {
     this.cookieService.set('langPref', this.currentLang);
   }
 
+  setThemePreference(theme: string): void {
+    this.cookieService.set('themePref', theme);
+  }
+
+  getThemePreference(): string {
+    return this.cookieService.get('themePref') || 'light'; // Default to 'light' theme if not set
+  }
+
   goHome(): void {
     void this.router.navigate(['/']);
   }
