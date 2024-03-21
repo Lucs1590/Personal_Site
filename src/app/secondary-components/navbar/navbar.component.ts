@@ -28,10 +28,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const langPref = this.cookieService.get('langPref');
-    if (langPref) {
-      this.utils.currentLang = langPref;
-      this.translate.use(langPref);
+    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
+      const langPref = this.cookieService.get('langPref');
+      if (langPref) {
+        this.utils.currentLang = langPref;
+        this.translate.use(langPref);
+      }
     }
     this.mobile = window.innerWidth <= 991;
     this.defineMenu();
