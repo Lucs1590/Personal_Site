@@ -19,5 +19,13 @@
     "publi.blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
     "publi.sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
     "publi.tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
-    "recommendations.title": "Recomendações"
+    "recommendations.title": "Recomendações",
+    "hobbies.title": "Hobbies",
+    "hobbies.description": "Um vislumbre das atividades que alimentam minha criatividade e me mantêm energizado.",
+    "hobbies.booklist.title": "Lista de Livros",
+    "hobbies.booklist.description": "Uma coleção de livros que influenciaram meu pensamento e ampliaram minhas perspectivas.",
+    "hobbies.sports.title": "Esportes",
+    "hobbies.sports.description": "Acompanhando meus objetivos anuais de esportes e progresso semanal com dados do Strava.",
+    "hobbies.setup.title": "Configuração",
+    "hobbies.setup.description": "Os gadgets e equipamentos que potencializam minha vida digital e produtividade."
 }
