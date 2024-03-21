@@ -23,12 +23,12 @@ export class CookieConsentComponent implements OnInit {
   }
 
   acceptCookies(): void {
-    this.cookieService.set('cookieConsent', 'true', { expires: 365 });
+    this.cookieService.set('cookieConsent', true, { expires: 365 });
     this.showConsentBanner = false;
   }
 
   declineCookies(): void {
-    this.cookieService.set('cookieConsent', 'false', { expires: 365 });
+    this.cookieService.set('cookieConsent', false, { expires: 365 });
     this.showConsentBanner = false;
   }
 }
