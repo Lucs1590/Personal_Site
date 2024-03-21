@@ -25,17 +25,19 @@ export class AppComponent implements OnInit {
   }
 
   async setLanguage(): Promise<void> {
-    const langPref = this.cookieService.get('langPref');
-    if (langPref) {
-      this.translate.setDefaultLang(langPref);
-    } else {
-      try {
-        const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-        const userCountry = ipInfo?.country?.toUpperCase();
-        this.translate.setDefaultLang(userCountry === 'BR' ? 'pt' : 'en');
-      } catch (error) {
-        console.error('Error retrieving IP info:', error);
-        this.translate.setDefaultLang('en');
+    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
+      const langPref = this.cookieService.get('langPref');
+      if (langPref) {
+        this.translate.setDefaultLang(langPref);
+      } else {
+        try {
+          const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
+          const userCountry = ipInfo?.country?.toUpperCase();
+          this.translate.setDefaultLang(userCountry === 'BR' ? 'pt' : 'en');
+        } catch (error) {
+          console.error('Error retrieving IP info:', error);
+          this.translate.setDefaultLang('en');
+        }
       }
     }
   }
