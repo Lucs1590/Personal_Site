@@ -24,7 +24,9 @@ export class UtilsService {
       this.currentLang = 'pt';
       this.translate.use(this.currentLang);
     }
-    this.cookieService.set('langPref', this.currentLang);
+    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
+      this.cookieService.set('langPref', this.currentLang);
+    }
   }
 
   goHome(): void {
