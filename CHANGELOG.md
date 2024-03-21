@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Lucs1590/Personal_Site/compare/v1.1.1...v1.2.0) (2024-03-21)
+
+
+### Features
+
+* improve setLanguage function ([5529135](https://github.com/Lucs1590/Personal_Site/commit/5529135ff0049172485902c0d1fe508fda7268ee))
+* Updated src/app/app.component.ts ([635d94b](https://github.com/Lucs1590/Personal_Site/commit/635d94b704ab30373956f814e9268b15339101a1))
+* Updated src/app/app.module.ts ([fe4ca80](https://github.com/Lucs1590/Personal_Site/commit/fe4ca801b8fbf9a1348d271ac51d5d46256a636b))
+* Updated src/app/secondary-components/navbar/ ([e5cd12c](https://github.com/Lucs1590/Personal_Site/commit/e5cd12c5323982e047dfcb51935d01b1b745062e))
+* Updated src/app/services/utils.service.ts ([e4261da](https://github.com/Lucs1590/Personal_Site/commit/e4261da29b767bee41336ba3696548988fd68a07))
+
 ### [1.1.1](https://github.com/Lucs1590/Personal_Site/compare/v1.1.0...v1.1.1) (2024-03-09)
 
 
