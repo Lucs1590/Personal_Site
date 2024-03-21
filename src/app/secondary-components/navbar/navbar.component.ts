@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,15 +17,22 @@ export class NavbarComponent implements OnInit {
   constructor(
     public utils: UtilsService,
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.cookieService.set('langPref', event.lang);
       this.defineMenu();
       this.filterItems();
     });
   }
 
   ngOnInit(): void {
+    const langPref = this.cookieService.get('langPref');
+    if (langPref) {
+      this.utils.currentLang = langPref;
+      this.translate.use(langPref);
+    }
     this.mobile = window.innerWidth <= 991;
     this.defineMenu();
     this.filterItems();
