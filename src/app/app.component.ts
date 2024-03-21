@@ -22,10 +22,13 @@ export class AppComponent implements OnInit {
     this.setMetaTags();
   }
 
-  async setLanguage() {
-    const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-    this.translate.setDefaultLang('pt');
-    if (ipInfo?.country?.toUpperCase() !== 'BR') {
+  async setLanguage(): Promise<void> {
+    try {
+      const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
+      const userCountry = ipInfo?.country?.toUpperCase();
+      this.translate.setDefaultLang(userCountry === 'BR' ? 'pt' : 'en');
+    } catch (error) {
+      console.error('Error retrieving IP info:', error);
       this.translate.setDefaultLang('en');
     }
   }
