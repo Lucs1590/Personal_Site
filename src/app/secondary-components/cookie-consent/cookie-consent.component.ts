@@ -25,6 +25,10 @@ export class CookieConsentComponent implements OnInit {
     this.cookieService.set('cookieConsent', 'true', { expires: 365, path: '/' });
     this.showConsentMessage = false;
   }
+
+  declineConsent(): void {
+    this.showConsentMessage = false;
+  }
 }
 ```
 ```html
