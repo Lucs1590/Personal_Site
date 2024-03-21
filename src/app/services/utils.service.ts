@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class UtilsService {
 
   constructor(
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   useLanguage(): void {
@@ -22,6 +24,7 @@ export class UtilsService {
       this.currentLang = 'pt';
       this.translate.use(this.currentLang);
     }
+    this.cookieService.set('langPref', this.currentLang);
   }
 
   goHome(): void {
