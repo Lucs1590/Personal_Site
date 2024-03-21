@@ -29,6 +29,7 @@ import { NavbarComponent } from './secondary-components/navbar/navbar.component'
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
+import { CookieConsentComponent } from './secondary-components/cookie-consent/cookie-consent.component';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,6 +79,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    CookieConsentComponent,
   ],
   imports: [
     BrowserModule,
