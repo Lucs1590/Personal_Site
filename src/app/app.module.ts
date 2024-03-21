@@ -25,10 +25,12 @@ import { PublicationsComponent } from './secondary-components/publications/publi
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
+import { HobbiesComponent } from './secondary-components/hobbies/hobbies.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
+import { StravaService } from './services/strava.service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,6 +80,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    HobbiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +102,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgxSkeletonLoaderModule,
     AppRoutingModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, StravaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
