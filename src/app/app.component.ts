@@ -22,6 +22,11 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.setLanguage();
     this.setMetaTags();
+    const cookieConsent = this.cookieService.get('cookieConsent');
+    if (!cookieConsent) {
+      // Logic to display CookieConsentComponent
+      // This is a placeholder comment. The actual implementation depends on how the component is intended to be displayed (e.g., directly in the template, dynamically added to the DOM, etc.)
+    }
   }
 
   async setLanguage(): Promise<void> {
