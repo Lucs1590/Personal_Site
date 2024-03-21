@@ -1,0 +1,59 @@
+/* Global Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Section Styling */
+section {
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+/* Header Styling */
+h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Card Styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        padding: 0.5rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+}
