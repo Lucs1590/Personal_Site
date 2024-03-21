@@ -19,5 +19,13 @@
     "publi.blog-not-found": "No blog posts matched your search criteria.",
     "publi.sci-not-found": "No scientific publications matched your search criteria.",
     "publi.tip": "Tip: If you can't find a specific text, try adding \"?search=tag\" after /publication in the URL.",
-    "recommendations.title": "Recommendations"
+    "recommendations.title": "Recommendations",
+    "hobbies.title": "Hobbies",
+    "hobbies.description": "A glimpse into the activities that fuel my creativity and keep me energized.",
+    "hobbies.booklist.title": "Booklist",
+    "hobbies.booklist.description": "A collection of books that have influenced my thinking and broadened my perspectives.",
+    "hobbies.sports.title": "Sports",
+    "hobbies.sports.description": "Tracking my annual sports goals and weekly progress with data from Strava.",
+    "hobbies.setup.title": "Setup",
+    "hobbies.setup.description": "The gadgets and gear that power my digital life and productivity."
 }
