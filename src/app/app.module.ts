@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
+import { CookieConsentComponent } from './secondary-components/cookie-consent/cookie-consent.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
@@ -78,6 +79,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    CookieConsentComponent,
   ],
   imports: [
     BrowserModule,
