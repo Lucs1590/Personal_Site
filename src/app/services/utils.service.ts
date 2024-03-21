@@ -17,14 +17,17 @@ export class UtilsService {
   ) { }
 
   useLanguage(): void {
-    if (this.currentLang.match('pt')) {
-      this.currentLang = 'en';
-      this.translate.use(this.currentLang);
-    } else {
-      this.currentLang = 'pt';
-      this.translate.use(this.currentLang);
+    const consentGiven = this.cookieService.get('cookieConsent');
+    if (consentGiven === 'true') {
+      if (this.currentLang.match('pt')) {
+        this.currentLang = 'en';
+        this.translate.use(this.currentLang);
+      } else {
+        this.currentLang = 'pt';
+        this.translate.use(this.currentLang);
+      }
+      this.cookieService.set('langPref', this.currentLang);
     }
-    this.cookieService.set('langPref', this.currentLang);
   }
 
   goHome(): void {
