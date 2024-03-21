@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
+import { CookieManagementService } from './cookie-management.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +17,15 @@ export class UtilsService {
     private cookieService: CookieService
   ) { }
 
+  toggleLanguage(): void {
+    this.currentLang = this.currentLang === 'pt' ? 'en' : 'pt';
+    this.translate.use(this.currentLang);
+    this.cookieService.set('langPref', this.currentLang);
+  }
+
   useLanguage(): void {
-    const consentGiven = this.cookieService.get('cookieConsent');
-    if (consentGiven === 'true') {
-      if (this.currentLang.match('pt')) {
-        this.currentLang = 'en';
-        this.translate.use(this.currentLang);
-      } else {
-        this.currentLang = 'pt';
-        this.translate.use(this.currentLang);
-      }
-      this.cookieService.set('langPref', this.currentLang);
+    if (this.cookieManagementService.checkConsent()) {
+      this.toggleLanguage();
     }
   }
 
