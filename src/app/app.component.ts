@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
-import { ApiService } from './services/api.service';
-import { firstValueFrom } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
+import { Meta } from '@angular/platform-browser';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -14,30 +11,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private meta: Meta,
-    private apiService: ApiService,
-    private translate: TranslateService,
-    private cookieService: CookieService
+    private utilsService: UtilsService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.setLanguage();
+    await this.utilsService.setLanguage();
     this.setMetaTags();
-  }
-
-  async setLanguage(): Promise<void> {
-    const langPref = this.cookieService.get('langPref');
-    if (langPref) {
-      this.translate.setDefaultLang(langPref);
-    } else {
-      try {
-        const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-        const userCountry = ipInfo?.country?.toUpperCase();
-        this.translate.setDefaultLang(userCountry === 'BR' ? 'pt' : 'en');
-      } catch (error) {
-        console.error('Error retrieving IP info:', error);
-        this.translate.setDefaultLang('en');
-      }
-    }
   }
 
   setMetaTags() {

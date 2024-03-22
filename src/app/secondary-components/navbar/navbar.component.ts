@@ -21,17 +21,18 @@ export class NavbarComponent implements OnInit {
     private cookieService: CookieService
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.cookieService.set('langPref', event.lang);
       this.defineMenu();
       this.filterItems();
     });
   }
 
   ngOnInit(): void {
-    const langPref = this.cookieService.get('langPref');
-    if (langPref) {
-      this.utils.currentLang = langPref;
-      this.translate.use(langPref);
+    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
+      const langPref = this.cookieService.get('langPref');
+      if (langPref) {
+        this.utils.currentLang = langPref;
+        this.translate.use(langPref);
+      }
     }
     this.mobile = window.innerWidth <= 991;
     this.defineMenu();
