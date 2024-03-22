@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
     private cookieService: CookieService
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.cookieService.set('langPref', event.lang);
       this.defineMenu();
       this.filterItems();
     });
