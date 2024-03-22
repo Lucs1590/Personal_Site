@@ -25,8 +25,11 @@ export class AppComponent implements OnInit {
   }
 
   async setLanguage(): Promise<void> {
+    this.translate.setDefaultLang('en');
+
     if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
       const langPref = this.cookieService.get('langPref');
+
       if (langPref) {
         this.translate.setDefaultLang(langPref);
       } else {
@@ -39,6 +42,7 @@ export class AppComponent implements OnInit {
           this.translate.setDefaultLang('en');
         }
       }
+
     }
   }
 
