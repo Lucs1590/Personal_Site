@@ -17,33 +17,6 @@
   line-height: 1.5;
 }
 
-.cookie-buttons {
-  display: inline-flex;
-  gap: 10px;
-}
-
-.cookie-consent-container button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.cookie-consent-container button:hover {
-  background-color: #45a049;
-}
-
-.cookie-consent-container button.decline {
-  background-color: #f44336;
-}
-
-.cookie-consent-container button.decline:hover {
-  background-color: #e53935;
-}
-
 @media (max-width: 768px) {
   .cookie-consent-container p {
     font-size: 14px;
