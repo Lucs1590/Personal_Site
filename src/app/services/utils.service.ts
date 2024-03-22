@@ -19,16 +19,17 @@ export class UtilsService {
   ) { }
 
   useLanguage(): void {
-    if (this.currentLang.match('pt')) {
+    if (this.currentLang === 'pt') {
       this.currentLang = 'en';
-      this.translate.use(this.currentLang);
     } else {
       this.currentLang = 'pt';
-      this.translate.use(this.currentLang);
     }
+
     if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
       this.cookieService.set('langPref', this.currentLang);
     }
+
+    this.translate.use(this.currentLang);
   }
 
 
@@ -44,13 +45,14 @@ export class UtilsService {
         try {
           const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
           const userCountry = ipInfo?.country?.toUpperCase();
-          this.translate.setDefaultLang(userCountry === 'BR' ? 'pt' : 'en');
+          const preferredLang = userCountry === 'BR' ? 'pt' : 'en';
+
+          this.translate.setDefaultLang(preferredLang);
+          this.currentLang = preferredLang;
         } catch (error) {
           console.error('Error retrieving IP info:', error);
-          this.translate.setDefaultLang('en');
         }
       }
-
     }
   }
 
