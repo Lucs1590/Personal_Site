@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-cookie-consent',
@@ -9,7 +10,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class CookieConsentComponent implements OnInit {
   showConsentMessage: boolean = false;
 
-  constructor(private cookieService: CookieService) { }
+  constructor(
+    private cookieService: CookieService,
+    private utilsService: UtilsService
+  ) { }
 
   ngOnInit(): void {
     this.checkCookieConsent();
@@ -21,9 +25,10 @@ export class CookieConsentComponent implements OnInit {
     }
   }
 
-  acceptConsent(): void {
+  async acceptConsent(): Promise<void> {
     this.cookieService.set('cookieConsent', 'true', { expires: 365, path: '/' });
     this.showConsentMessage = false;
+    await this.utilsService.setLanguage();
   }
 
   declineConsent(): void {
