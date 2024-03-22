@@ -15,7 +15,7 @@ export class CookieConsentComponent implements OnInit {
     this.checkCookieConsent();
   }
 
-  checkCookieConsent(): void {
+  private checkCookieConsent(): void {
     if (!this.cookieService.check('cookieConsent')) {
       this.showConsentMessage = true;
     }
