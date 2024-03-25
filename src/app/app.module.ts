@@ -21,13 +21,14 @@ import { HomeComponent } from './home/home.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
+import { PublicationsComponent } from './publications/publications.component';
+import { HobbiesComponent } from './secondary-components/hobbies/hobbies.component';
 import { CookieConsentComponent } from './secondary-components/cookie-consent/cookie-consent.component';
-import { PublicationsComponent } from './secondary-components/publications/publications.component';
-import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { TechnologiesListComponent } from './secondary-components/technologies-list/technologies-list.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
@@ -74,11 +75,12 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     IconesComponent,
     OfflineModalComponent,
     PublicationsComponent,
-    TechnologiesComponent,
+    HobbiesComponent,
     RecommendationsComponent,
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    TechnologiesListComponent,
     CookieConsentComponent,
   ],
   imports: [

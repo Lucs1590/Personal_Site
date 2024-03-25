@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
-import { PublicationsComponent } from './secondary-components/publications/publications.component';
+import { PublicationsComponent } from './publications/publications.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
 
