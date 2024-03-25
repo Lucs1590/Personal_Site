@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
+import { CookieConsentComponent } from './secondary-components/cookie-consent/cookie-consent.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { TechnologiesComponent } from './secondary-components/technologies/technologies.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
@@ -28,6 +29,9 @@ import { NotFoundComponent } from './secondary-components/not-found/not-found.co
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ProjectComponent } from './secondary-components/project/project.component';
+import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
+import { CookieService } from 'ngx-cookie-service';
+import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -63,18 +67,21 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
+    DisableWhenOfflineDirective,
     AppComponent,
     HomeComponent,
     SeparadorComponent,
     MHomeComponent,
     IconesComponent,
+    OfflineModalComponent,
     PublicationsComponent,
     TechnologiesComponent,
     RecommendationsComponent,
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
-    ProjectComponent
+    ProjectComponent,
+    CookieConsentComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +103,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgxSkeletonLoaderModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

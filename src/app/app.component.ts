@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
-import { ApiService } from './services/api.service';
-import { firstValueFrom } from 'rxjs';
+import { Meta } from '@angular/platform-browser';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +10,13 @@ import { firstValueFrom } from 'rxjs';
 export class AppComponent implements OnInit {
 
   constructor(
-    private title: Title,
     private meta: Meta,
-    private apiService: ApiService,
-    private translate: TranslateService
+    private utilsService: UtilsService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.setLanguage();
+    await this.utilsService.setLanguage();
     this.setMetaTags();
-  }
-
-  async setLanguage() {
-    const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-    this.translate.setDefaultLang('pt');
-    if (ipInfo?.country?.toUpperCase() !== 'BR') {
-      this.translate.setDefaultLang('en');
-    }
   }
 
   setMetaTags() {
