@@ -2,7 +2,7 @@
 
     <ng-container *ngFor="let icon of iconList">
         <a [href]=icon.link class="text-white ms-3 icon" *ngIf="icon.active" target="_blank"
-            [attr.aria-label]="icon.description">
+            [attr.aria-label]="icon.description" disableWhenOffline>
             <fa-icon [icon]=icon.icon></fa-icon>
         </a>
     </ng-container>

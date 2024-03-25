@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -14,7 +16,8 @@ export class PublicationsComponent implements OnInit {
   scholarImage: string;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -22,6 +25,7 @@ export class PublicationsComponent implements OnInit {
     this.getSciPublications();
 
     await this.getBlogPublications();
+    this.filterPublications();
 
     setTimeout(() => {
       this.loading = true;
@@ -40,24 +44,43 @@ export class PublicationsComponent implements OnInit {
   async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
     this.blogPublications = publications
-      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime())
-      .splice(0, 6);
+      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
   getSciPublications(): void {
     const publications = this.apiService.getAllSciPublications();
     this.sciPublications = publications;
     const parser = new DOMParser();
-  
+
     this.sciPublications.map((publication) => {
       const parsedDescription = parser.parseFromString(publication.description, 'text/html');
       const sanitizedDescription = this.sanitizeHTML(parsedDescription.body.textContent || '');
       publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
     });
   }
-  
+
   sanitizeHTML(html: string): string {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || '';
   }
+
+  filterPublications(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const searchQuery = params['search']?.toLowerCase();
+      if (!searchQuery) return;
+
+      this.blogPublications = this.blogPublications.filter(publication =>
+        publication.title.toLowerCase().includes(searchQuery) ||
+        publication.description.toLowerCase().includes(searchQuery)
+      );
+
+      this.sciPublications = this.sciPublications.filter(publication =>
+        publication.title.toLowerCase().includes(searchQuery) ||
+        publication.description.toLowerCase().includes(searchQuery)
+      );
+    });
+  }
+
+
 }
+

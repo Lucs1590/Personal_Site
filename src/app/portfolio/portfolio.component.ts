@@ -1,3 +1,4 @@
+// portfolio.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
@@ -9,6 +10,9 @@ import { ApiService } from '../services/api.service';
 })
 export class PortfolioComponent implements OnInit {
   repos: Repository[];
+  filteredRepos: Repository[];
+  tags: string[];
+  searchQuery: string = '';
 
   constructor(private apiService: ApiService) { }
 
@@ -21,7 +25,38 @@ export class PortfolioComponent implements OnInit {
     this.repos = repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
       .filter(repo => repo.private === false);
+    this.filteredRepos = [...this.repos];
+    this.tags = this.extractTags(this.repos);
   }
 
-  // https://gitstalk.netlify.app/lucs1590 --> Gitstalk link
+  private extractTags(repos: Repository[]): string[] {
+    const allTags = repos.reduce((tags, repo) => {
+      repo.topics.forEach(tag => {
+        if (!tags.includes(tag)) {
+          tags.push(tag);
+        }
+      });
+      return tags;
+    }, []);
+    return allTags.sort();
+  }
+
+  filterByTag(tag: string) {
+    if (tag === 'All') {
+      this.filteredRepos = [...this.repos];
+    } else {
+      this.filteredRepos = this.repos.filter(repo => repo.topics.includes(tag));
+    }
+  }
+
+  searchProjects() {
+    if (!this.searchQuery.trim()) {
+      this.filteredRepos = [...this.repos];
+    } else {
+      const query = this.searchQuery.trim().toLowerCase();
+      this.filteredRepos = this.repos.filter(repo =>
+        repo.name.toLowerCase().includes(query)
+      );
+    }
+  }
 }

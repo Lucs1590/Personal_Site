@@ -23,11 +23,15 @@ import { MHomeComponent } from './m-home/m-home.component';
 import { IconesComponent } from './secondary-components/icones/icones.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { HobbiesComponent } from './secondary-components/hobbies/hobbies.component';
+import { CookieConsentComponent } from './secondary-components/cookie-consent/cookie-consent.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { TechnologiesListComponent } from './secondary-components/technologies-list/technologies-list.component';
+import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
+import { CookieService } from 'ngx-cookie-service';
+import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -63,11 +67,13 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
+    DisableWhenOfflineDirective,
     AppComponent,
     HomeComponent,
     SeparadorComponent,
     MHomeComponent,
     IconesComponent,
+    OfflineModalComponent,
     PublicationsComponent,
     HobbiesComponent,
     RecommendationsComponent,
@@ -75,6 +81,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NavbarComponent,
     PortfolioComponent,
     TechnologiesListComponent,
+    CookieConsentComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +103,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgxSkeletonLoaderModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

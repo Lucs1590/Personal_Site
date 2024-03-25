@@ -1,3 +1,12 @@
+a.disabled {
+    color: gray !important;
+    cursor: not-allowed;
+    text-decoration: underline;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
 .icons_div {
     margin-top: 7rem;
     font-size: 2rem;
