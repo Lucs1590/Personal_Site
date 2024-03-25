@@ -1,0 +1,28 @@
+.cookie-consent-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 10px;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+}
+
+.cookie-consent-container p {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-container p {
+    font-size: 14px;
+  }
+
+  .cookie-consent-container button {
+    padding: 8px 16px;
+  }
+}

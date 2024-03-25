@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
@@ -21,24 +21,34 @@ export class NavbarComponent implements OnInit {
     private cookieService: CookieService
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.cookieService.set('langPref', event.lang);
       this.defineMenu();
       this.filterItems();
     });
   }
 
   ngOnInit(): void {
-    const langPref = this.cookieService.get('langPref');
-    if (langPref) {
-      this.utils.currentLang = langPref;
-      this.translate.use(langPref);
-    }
-    this.mobile = window.innerWidth <= 991;
+    this.checkCookieConsent();
     this.defineMenu();
     this.filterItems();
   }
 
-  defineMenu() {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.mobile = event.target.innerWidth <= 991;
+    this.filterItems();
+  }
+
+  private async checkCookieConsent() {
+    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
+      const langPref = this.cookieService.get('langPref');
+      if (langPref) {
+        this.utils.currentLang = langPref;
+        await firstValueFrom(this.translate.use(langPref));
+      }
+    }
+  }
+
+  private async defineMenu() {
     this.itemsList = [
       {
         name: firstValueFrom(this.translate.get('nav.home')),
@@ -54,7 +64,7 @@ export class NavbarComponent implements OnInit {
       },
       {
         name: 'Portfolio',
-        ref: [''],
+        ref: ['/portfolio'],
         mobile: false,
         desktop: false
       },
@@ -67,7 +77,7 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
-  filterItems() {
+  private filterItems() {
     this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
   }
 
@@ -77,5 +87,4 @@ export class NavbarComponent implements OnInit {
     }
     return this.router.isActive(route[0], true);
   }
-
 }
