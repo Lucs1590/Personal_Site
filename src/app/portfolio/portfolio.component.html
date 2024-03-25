@@ -3,18 +3,21 @@
     <div class="row">
         <div class="col-md-3">
             <h3>Filter by Tag</h3>
-            <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action"
-                    (click)="filterByTag('All')">All</button>
-                <button *ngFor="let tag of tags" type="button" class="list-group-item list-group-item-action"
-                    (click)="filterByTag(tag)">{{ tag }}</button>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Tags" aria-label="Search Tags"
+                    aria-describedby="search-tags" [(ngModel)]="tagSearchQuery" (input)="filterTags()">
+            </div>
+            <div class="mt-3">
+                <div class="form-check" *ngFor="let tag of filteredTags">
+                    <input class="form-check-input" type="checkbox" id="{{tag}}" (change)="toggleTagFilter(tag)">
+                    <label class="form-check-label" for="{{tag}}">{{tag}}</label>
+                </div>
             </div>
         </div>
         <div class="col-md-9">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search Projects" aria-label="Search Projects"
-                    aria-describedby="search-button" [(ngModel)]="searchQuery" (input)="searchProjects()">
-                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+                    aria-describedby="search-projects" [(ngModel)]="searchQuery" (input)="searchProjects()">
             </div>
             <div class="row">
                 <ng-container *ngFor="let repo of filteredRepos">

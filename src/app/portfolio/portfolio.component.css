@@ -1,0 +1,36 @@
+/* portfolio.component.css */
+
+/* Style for the filter by tag section */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Style for the tag checkboxes */
+.form-check {
+    margin-bottom: 10px;
+}
+
+/* Style for the project cards */
+.card {
+    border: 1px solid #dee2e6;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 767px) {
+    .col-md-3 {
+        margin-bottom: 20px;
+    }
+}
