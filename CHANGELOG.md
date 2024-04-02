@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Lucs1590/Personal_Site/compare/v1.2.0...v1.3.0) (2024-03-25)
+
+
+### Features
+
+* add a default language ([cbfdbd1](https://github.com/Lucs1590/Personal_Site/commit/cbfdbd1804e104ea59f26c18999a17af4c5cf1ce))
+* add missing spec file ([ad38d45](https://github.com/Lucs1590/Personal_Site/commit/ad38d454c29853a635ada8432efc4ca43d4bd3c0))
+* Add stylish cookie consent UI matching websi ([8116bf5](https://github.com/Lucs1590/Personal_Site/commit/8116bf53224de0d9e638f6e47ad7fafc4525446e))
+* Added HTML structure for cookie consent UI ([efcb68a](https://github.com/Lucs1590/Personal_Site/commit/efcb68a48266add73feaca58ba14e4e300e0e3c9))
+* Implement cookie consent component ([5ee32be](https://github.com/Lucs1590/Personal_Site/commit/5ee32be724a7c4656888d70e6591acf891b1e82a))
+* improving code ([6031cb4](https://github.com/Lucs1590/Personal_Site/commit/6031cb489a2bb7c95f9aee6fb91e59dd4413d7c4))
+* remove wrong code ([2bceb58](https://github.com/Lucs1590/Personal_Site/commit/2bceb585c1b2519eaf926a489abf345b325e05c8))
+* set language when accept cookies ([5dfde6c](https://github.com/Lucs1590/Personal_Site/commit/5dfde6c113894561dd068e96d3b651a241baceda))
+* Updated src/app/app.component.html ([412cad2](https://github.com/Lucs1590/Personal_Site/commit/412cad2be7b55b14d75500c56eaa9fea722f4c15))
+* Updated src/app/app.component.ts ([3ba03e3](https://github.com/Lucs1590/Personal_Site/commit/3ba03e38216100b50fea2c68116dafa1530e05dd))
+* Updated src/app/app.module.ts ([9fd0364](https://github.com/Lucs1590/Personal_Site/commit/9fd036467d6786a874d03762979c884eb27e12d8))
+* Updated src/app/secondary-components/cookie- ([2c7b6bb](https://github.com/Lucs1590/Personal_Site/commit/2c7b6bb977f73b9ba07c31a69f985b04b523980f))
+* Updated src/app/secondary-components/cookie- ([e5e5702](https://github.com/Lucs1590/Personal_Site/commit/e5e57021d62eeb946d18f4a0569bdf626828c912))
+* Updated src/app/secondary-components/navbar/ ([db2d7f7](https://github.com/Lucs1590/Personal_Site/commit/db2d7f7bd7f87a571c9b23858603f9c2e5c0aaf0))
+* Updated src/app/services/utils.service.ts ([a673a92](https://github.com/Lucs1590/Personal_Site/commit/a673a928328cd4806e6f238a29b43fc62a1e638e))
+
+
+### Bug Fixes
+
+* remove setting lang pref in navbar component ([06fcba2](https://github.com/Lucs1590/Personal_Site/commit/06fcba2570f5e3595e2328920383eef58eca5878))
+
 ## [1.2.0](https://github.com/Lucs1590/Personal_Site/compare/v1.1.1...v1.2.0) (2024-03-21)
 
 
