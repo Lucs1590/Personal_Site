@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
