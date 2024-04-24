@@ -15,14 +15,19 @@
 
     <section id="sports-data" class="mt-5">
         <h2>Sports Data</h2>
-        <table class="table">
-            <tbody>
-                <tr *ngFor="let data of sportsData | keyvalue">
-                    <td>{{ data.key }}</td>
-                    <td>{{ data.value }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Activity Summary</h3>
+                <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no'
+                    src='https://www.strava.com/athletes/47005114/activity-summary/ee748cb9798d701b773b8c5f4c0736bcacf2eaeb'></iframe>
+            </div>
+            <div class="col-md-6">
+                <h3>Latest Rides</h3>
+                <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no'
+                    src='https://www.strava.com/athletes/47005114/latest-rides/ee748cb9798d701b773b8c5f4c0736bcacf2eaeb'></iframe>
+            </div>
+
+        </div>
     </section>
 
     <section id="computer-setup" class="mt-5">
