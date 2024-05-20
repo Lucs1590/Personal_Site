@@ -49,7 +49,7 @@
     "tslib": "^2.6.2",
     "webpack": "^5.89.0",
     "xml2js": "^0.6.2",
-    "zone.js": "^0.14.2"
+    "zone.js": "^0.14.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.5",
