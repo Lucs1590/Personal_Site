@@ -61,7 +61,7 @@
     "@angular/cli": "^17.3.6",
     "@angular/compiler-cli": "^17.3.9",
     "@angular/language-service": "^17.3.4",
-    "@microsoft/eslint-formatter-sarif": "^3.0.0",
+    "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^20.12.2",
