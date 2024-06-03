@@ -58,7 +58,3 @@ jobs:
         with:
           sarif_file: codeql-builtin.sarif
 
-      - name: Upload annotations
-        uses: github/codeql-action/upload-annotations@v3
-        with:
-          annotations_file: codeql-builtin
