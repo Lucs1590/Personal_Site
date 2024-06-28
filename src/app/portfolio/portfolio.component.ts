@@ -11,8 +11,10 @@ import { ApiService } from '../services/api.service';
 export class PortfolioComponent implements OnInit {
   repos: Repository[];
   filteredRepos: Repository[];
+  filteredTags: string[];
   tags: string[];
   searchQuery: string = '';
+  tagSearchQuery: string = '';
 
   constructor(private apiService: ApiService) { }
 
@@ -27,6 +29,7 @@ export class PortfolioComponent implements OnInit {
       .filter(repo => repo.private === false);
     this.filteredRepos = [...this.repos];
     this.tags = this.extractTags(this.repos);
+    this.filteredTags = [...this.tags];
   }
 
   private extractTags(repos: Repository[]): string[] {
@@ -55,8 +58,35 @@ export class PortfolioComponent implements OnInit {
     } else {
       const query = this.searchQuery.trim().toLowerCase();
       this.filteredRepos = this.repos.filter(repo =>
-        repo.name.toLowerCase().includes(query)
+        repo.name.toLowerCase().includes(query) ||
+        repo.topics.some(tag => tag.toLowerCase().includes(query))
       );
     }
   }
+
+  filterTags() {
+    if (!this.tagSearchQuery.trim()) {
+      this.filteredTags = [...this.tags];
+    } else {
+      const query = this.tagSearchQuery.trim().toLowerCase();
+      this.filteredTags = this.tags.filter(tag => tag.toLowerCase().includes(query));
+    }
+  }
+
+  toggleTagFilter(tag: string) {
+    const trimmedTag = tag.trim();
+    const trimmedQuery = this.tagSearchQuery.trim();
+
+    if (this.tagSearchQuery.includes(trimmedTag)) {
+      this.tagSearchQuery = this.tagSearchQuery.replace(trimmedTag, '').trim();
+    } else {
+      if (trimmedTag.includes(trimmedQuery)) {
+        this.tagSearchQuery = trimmedTag;
+      } else {
+        this.tagSearchQuery += ` ${trimmedTag}`;
+      }
+    }
+    this.filterTags();
+  }
 }
+
