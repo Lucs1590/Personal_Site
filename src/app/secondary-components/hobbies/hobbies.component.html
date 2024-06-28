@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <section id="book-list">
+        <h2>Book List</h2>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let book of bookList">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Author: {{ book.author }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sports-data" class="mt-5">
+        <h2>Sports Data</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Activity Summary</h3>
+                <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no'
+                    src='https://www.strava.com/athletes/47005114/activity-summary/ee748cb9798d701b773b8c5f4c0736bcacf2eaeb'></iframe>
+            </div>
+            <div class="col-md-6">
+                <h3>Latest Rides</h3>
+                <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no'
+                    src='https://www.strava.com/athletes/47005114/latest-rides/ee748cb9798d701b773b8c5f4c0736bcacf2eaeb'></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="computer-setup" class="mt-5">
+        <h2>Computer Setup</h2>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let item of computerSetup">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.item }}</h5>
+                        <p class="card-text">Model: {{ item.model }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -68,6 +68,12 @@ export class NavbarComponent implements OnInit {
         mobile: false,
         desktop: false
       },
+      {
+        name: firstValueFrom(this.translate.get('nav.hobbies')),
+        ref: ['/hobbies'],
+        mobile: true,
+        desktop: true
+      },
     ];
   }
 

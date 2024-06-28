@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
+import { HobbiesComponent } from './secondary-components/hobbies/hobbies.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: SeparadorComponent, title: 'Lucas Brito - Personal Website' },
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
+  { path: 'hobbies', component: HobbiesComponent },
   { path: '404', component: NotFoundComponent, title: '404 - Not Found' },
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }
 ];
