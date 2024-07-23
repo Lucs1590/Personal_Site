@@ -63,10 +63,10 @@ export class NavbarComponent implements OnInit {
         desktop: true
       },
       {
-        name: 'Portfolio',
+        name: firstValueFrom(this.translate.get('nav.portfolio')),
         ref: ['/portfolio'],
         mobile: false,
-        desktop: false
+        desktop: true
       },
     ];
   }
