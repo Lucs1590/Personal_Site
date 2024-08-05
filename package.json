@@ -64,7 +64,7 @@
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.1.0",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.0",
     "commitizen": "^4.3.0",
