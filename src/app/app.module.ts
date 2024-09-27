@@ -2,7 +2,7 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -64,46 +64,39 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   minTime: 300
 };
 
-@NgModule({
-  declarations: [
-    DisableWhenOfflineDirective,
-    AppComponent,
-    HomeComponent,
-    SeparadorComponent,
-    MHomeComponent,
-    IconesComponent,
-    OfflineModalComponent,
-    PublicationsComponent,
-    TechnologiesComponent,
-    RecommendationsComponent,
-    NotFoundComponent,
-    NavbarComponent,
-    PortfolioComponent,
-    CookieConsentComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgOptimizedImage,
-    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    HammerModule,
-    FontAwesomeModule,
-    NgxSkeletonLoaderModule,
-    AppRoutingModule,
-  ],
-  providers: [CookieService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        DisableWhenOfflineDirective,
+        AppComponent,
+        HomeComponent,
+        SeparadorComponent,
+        MHomeComponent,
+        IconesComponent,
+        OfflineModalComponent,
+        PublicationsComponent,
+        TechnologiesComponent,
+        RecommendationsComponent,
+        NotFoundComponent,
+        NavbarComponent,
+        PortfolioComponent,
+        CookieConsentComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        HammerModule,
+        FontAwesomeModule,
+        NgxSkeletonLoaderModule,
+        AppRoutingModule], providers: [CookieService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far, fab);
