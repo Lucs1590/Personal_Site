@@ -21,4 +21,40 @@ export class StravaService {
       })
     });
   }
+
+  getActivityById(activityId: string): Observable<any> {
+    const url = `https://www.strava.com/api/v3/activities/${activityId}?access_token=${this.accessToken}`;
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  getAthleteProfile(): Observable<any> {
+    const url = `https://www.strava.com/api/v3/athlete?access_token=${this.accessToken}`;
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  getAnnualGoals(): Observable<any> {
+    const url = `https://www.strava.com/api/v3/athlete/goals?access_token=${this.accessToken}`;
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  getWeeklyProgress(): Observable<any> {
+    const url = `https://www.strava.com/api/v3/athlete/weekly_progress?access_token=${this.accessToken}`;
+    return this.http.get(url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }
