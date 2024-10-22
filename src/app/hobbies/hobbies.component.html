@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h1 translate>hobbies.title</h1>
+
+  <section id="books" class="mt-4">
+    <h2 translate>hobbies.books.title</h2>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search Books" aria-label="Search Books" aria-describedby="search-button">
+      <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+    </div>
+    <h3 translate>hobbies.books.read</h3>
+    <ul>
+      <li *ngFor="let book of booksRead">{{ book }}</li>
+    </ul>
+    <h3 translate>hobbies.books.reading</h3>
+    <ul>
+      <li *ngFor="let book of booksReading">{{ book }}</li>
+    </ul>
+  </section>
+
+  <section id="sports" class="mt-4">
+    <h2 translate>hobbies.sports.title</h2>
+    <div *ngIf="sportsData">
+      <p><strong translate>hobbies.sports.annualGoals</strong>: {{ sportsData.annualGoals }}</p>
+      <p><strong translate>hobbies.sports.weeklyProgress</strong>: {{ sportsData.weeklyProgress }}</p>
+      <div *ngFor="let activity of sportsData.activities">
+        <p><strong>Activity:</strong> {{ activity.type }}</p>
+        <p><strong>Distance:</strong> {{ activity.distance }} km</p>
+        <p><strong>Duration:</strong> {{ activity.duration }} minutes</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup" class="mt-4">
+    <h2 translate>hobbies.setup.title</h2>
+    <ul>
+      <li *ngFor="let item of setupItems">{{ item }}</li>
+    </ul>
+  </section>
+</div>
