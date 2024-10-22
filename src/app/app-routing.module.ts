@@ -4,12 +4,14 @@ import { NotFoundComponent } from './secondary-components/not-found/not-found.co
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
+import { HobbiesComponent } from './hobbies/hobbies.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SeparadorComponent, title: 'Lucas Brito - Personal Website' },
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
+  { path: 'hobbies', component: HobbiesComponent, title: 'Lucas Brito - Hobbies' },
   { path: '404', component: NotFoundComponent, title: '404 - Not Found' },
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }
 ];
