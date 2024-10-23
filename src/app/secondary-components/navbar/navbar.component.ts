@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkCookieConsent();
+    this.setCurrentLanguage();
     this.defineMenu();
     this.filterItems();
   }
@@ -38,13 +38,11 @@ export class NavbarComponent implements OnInit {
     this.filterItems();
   }
 
-  private async checkCookieConsent() {
-    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
-      const langPref = this.cookieService.get('langPref');
-      if (langPref) {
-        this.utils.currentLang = langPref;
-        await firstValueFrom(this.translate.use(langPref));
-      }
+  private async setCurrentLanguage() {
+    const langPref = this.cookieService.get('langPref');
+    if (langPref) {
+      this.utils.currentLang = langPref;
+      await firstValueFrom(this.translate.use(langPref));
     }
   }
 
