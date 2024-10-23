@@ -44,6 +44,7 @@ export class UtilsService {
         const preferredLang = userCountry === 'BR' ? 'pt' : 'en';
 
         this.translate.setDefaultLang(preferredLang);
+        this.cookieService.set('langPref', preferredLang);
         this.currentLang = preferredLang;
       } catch (error) {
         console.error('Error retrieving IP info:', error);
