@@ -31,5 +31,30 @@ export class HomeComponent implements AfterViewInit {
     this.renderer.addClass(title, 'fadeInLeft');
     this.renderer.addClass(subtitle, 'animated');
     this.renderer.addClass(subtitle, 'fadeInLeft');
+
+    // Lazy loading for background images using Intersection Observer API
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.renderer.setStyle(elemento, 'background-image', window.innerWidth >= 1350 ? image1 : image2);
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(elemento);
+
+    // Subtle animations for interactive elements and transitions
+    const interactiveElements = this.elementRef.nativeElement.querySelectorAll('a, button');
+    interactiveElements.forEach(element => {
+      this.renderer.listen(element, 'mouseover', () => {
+        this.renderer.addClass(element, 'animated');
+        this.renderer.addClass(element, 'pulse');
+      });
+      this.renderer.listen(element, 'mouseout', () => {
+        this.renderer.removeClass(element, 'animated');
+        this.renderer.removeClass(element, 'pulse');
+      });
+    });
   }
 }
