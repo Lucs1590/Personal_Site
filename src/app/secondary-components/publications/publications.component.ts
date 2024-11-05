@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
@@ -17,7 +17,9 @@ export class PublicationsComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -27,9 +29,7 @@ export class PublicationsComponent implements OnInit {
     await this.getBlogPublications();
     this.filterPublications();
 
-    setTimeout(() => {
-      this.loading = true;
-    }, 600);
+    this.monitorContentLoad();
   }
 
   public defineIconImage(event: MouseEvent): void {
@@ -39,7 +39,6 @@ export class PublicationsComponent implements OnInit {
       this.scholarImage = '../../../assets/img/icons/google-scholar1.svg';
     }
   }
-
 
   async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
@@ -81,6 +80,15 @@ export class PublicationsComponent implements OnInit {
     });
   }
 
+  monitorContentLoad(): void {
+    const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
+    const observer = new MutationObserver(() => {
+      if (contentElement.innerHTML.trim() !== '') {
+        this.loading = true;
+        observer.disconnect();
+      }
+    });
 
+    observer.observe(contentElement, { childList: true, subtree: true });
+  }
 }
-
