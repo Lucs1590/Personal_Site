@@ -58,6 +58,12 @@ export class NavbarComponent implements OnInit {
         mobile: false,
         desktop: false
       },
+      {
+        name: firstValueFrom(this.translate.get('privacy_policy.title')),
+        ref: ['/privacy-policy'],
+        mobile: true,
+        desktop: true
+      }
     ];
   }
 
