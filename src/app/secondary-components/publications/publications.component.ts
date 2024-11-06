@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.css']
 })
-export class PublicationsComponent implements OnInit {
+export class PublicationsComponent implements OnInit, AfterViewInit {
   blogPublications: Publication[];
   sciPublications: Publication[];
   loading = false;
@@ -17,7 +16,8 @@ export class PublicationsComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private elementRef: ElementRef
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -26,10 +26,11 @@ export class PublicationsComponent implements OnInit {
 
     await this.getBlogPublications();
     this.filterPublications();
+  }
 
-    setTimeout(() => {
-      this.loading = true;
-    }, 600);
+  ngAfterViewInit(): void {
+    const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
+    this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
   }
 
   public defineIconImage(event: MouseEvent): void {
@@ -39,7 +40,6 @@ export class PublicationsComponent implements OnInit {
       this.scholarImage = '../../../assets/img/icons/google-scholar1.svg';
     }
   }
-
 
   async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
@@ -80,7 +80,4 @@ export class PublicationsComponent implements OnInit {
       );
     });
   }
-
-
 }
-
