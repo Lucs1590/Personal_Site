@@ -1,5 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
-import { Observable, defer, fromEvent, merge, of, switchMap } from 'rxjs';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.css']
 })
-export class PublicationsComponent implements OnInit {
+export class PublicationsComponent implements OnInit, AfterViewInit {
   blogPublications: Publication[];
   sciPublications: Publication[];
   loading = false;
@@ -18,7 +17,6 @@ export class PublicationsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private renderer: Renderer2,
     private elementRef: ElementRef
   ) { }
 
@@ -28,8 +26,11 @@ export class PublicationsComponent implements OnInit {
 
     await this.getBlogPublications();
     this.filterPublications();
+  }
 
-    this.monitorContentLoad();
+  ngAfterViewInit(): void {
+    const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
+    this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
   }
 
   public defineIconImage(event: MouseEvent): void {
@@ -78,17 +79,5 @@ export class PublicationsComponent implements OnInit {
         publication.description.toLowerCase().includes(searchQuery)
       );
     });
-  }
-
-  monitorContentLoad(): void {
-    const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
-    const observer = new MutationObserver(() => {
-      if (contentElement.innerHTML.trim() !== '') {
-        this.loading = true;
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(contentElement, { childList: true, subtree: true });
   }
 }
