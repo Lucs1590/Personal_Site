@@ -14,11 +14,18 @@ Disallow: /404/
 Disallow: /privacy/
 Disallow: /terms/
 Disallow: /contact/
+Disallow: /api/
+Disallow: /config/
+Disallow: /scripts/
 
 Allow: /$
 Allow: /home/
 Allow: /publications/
 Allow: /sitemap.xml
 Allow: /robots.txt
+
+Noindex: /privacy/
+Noindex: /terms/
+Noindex: /contact/
 
 Sitemap: https://lucasbrito.com.br/sitemap.xml
