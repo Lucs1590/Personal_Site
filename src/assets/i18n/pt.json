@@ -19,5 +19,21 @@
     "publi.blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
     "publi.sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
     "publi.tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
-    "recommendations.title": "Recomendações"
+    "recommendations.title": "Recomendações",
+    "privacy_policy.title": "Política de Privacidade",
+    "privacy_policy.introduction": "Introdução",
+    "privacy_policy.information_collection": "Coleta de Informações",
+    "privacy_policy.information_collection_text": "Coletamos vários tipos de informações de nossos usuários, incluindo dados pessoais, dados de uso e cookies.",
+    "privacy_policy.use_of_information": "Uso das Informações",
+    "privacy_policy.use_of_information_text": "As informações coletadas são usadas para melhorar nossos serviços, personalizar a experiência do usuário e comunicar-se com os usuários.",
+    "privacy_policy.data_sharing": "Compartilhamento de Dados",
+    "privacy_policy.data_sharing_text": "Os dados dos usuários podem ser compartilhados com terceiros em conformidade com obrigações legais ou parcerias.",
+    "privacy_policy.data_security": "Segurança dos Dados",
+    "privacy_policy.data_security_text": "Tomamos medidas para proteger os dados dos usuários contra acesso não autorizado, violações ou uso indevido.",
+    "privacy_policy.user_rights": "Direitos dos Usuários",
+    "privacy_policy.user_rights_text": "Os usuários têm direitos em relação aos seus dados, incluindo acesso, correção, exclusão e a opção de não participar da coleta de dados.",
+    "privacy_policy.changes_to_policy": "Alterações na Política",
+    "privacy_policy.changes_to_policy_text": "A Política de Privacidade pode ser atualizada periodicamente, e os usuários serão informados sobre quaisquer alterações.",
+    "privacy_policy.contact_information": "Informações de Contato",
+    "privacy_policy.contact_information_text": "Para perguntas ou preocupações sobre a Política de Privacidade, entre em contato conosco."
 }
