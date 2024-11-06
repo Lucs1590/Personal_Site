@@ -31,6 +31,9 @@ import { DisableWhenOfflineDirective } from './services/disable-when-offline.dir
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 
+import { ServerModule } from '@angular/platform-server';
+import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
+
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bgsColor: '#e69c24',
@@ -97,7 +100,9 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     HammerModule,
     FontAwesomeModule,
     NgxSkeletonLoaderModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServerModule,
+    ModuleMapLoaderModule
   ],
   providers: [CookieService, provideHttpClient(withInterceptorsFromDi())]
 })

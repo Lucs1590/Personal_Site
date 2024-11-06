@@ -38,10 +38,11 @@
             ],
             "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
+            "buildOptimizer": true,
             "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "optimization": true,
+            "namedChunks": true,
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -68,7 +69,8 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
                 }
-              ]
+              ],
+              "aot": true
             }
           },
           "defaultConfiguration": ""
