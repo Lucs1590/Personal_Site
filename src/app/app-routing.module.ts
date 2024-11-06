@@ -4,7 +4,7 @@ import { NotFoundComponent } from './secondary-components/not-found/not-found.co
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
