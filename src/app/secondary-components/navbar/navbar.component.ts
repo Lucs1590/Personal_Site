@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.checkCookieConsent();
+  async ngOnInit(): Promise<void> {
+    await this.utils.setLanguage();
     this.defineMenu();
     this.filterItems();
   }
@@ -37,16 +37,6 @@ export class NavbarComponent implements OnInit {
   onResize(event: any) {
     this.mobile = event.target.innerWidth <= 991;
     this.filterItems();
-  }
-
-  private async checkCookieConsent() {
-    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
-      const langPref = this.cookieService.get('langPref');
-      if (langPref) {
-        this.utils.currentLang = langPref;
-        await firstValueFrom(this.translate.use(langPref));
-      }
-    }
   }
 
   private async defineMenu() {
@@ -86,6 +76,14 @@ export class NavbarComponent implements OnInit {
     if (route[0] === '/') {
       route = ['/home'];
     }
-    return this.router.isActive(route[0], true);
+    return this.router.isActive(
+      this.router.createUrlTree(route),
+      {
+        paths: 'exact',
+        queryParams: 'exact',
+        fragment: 'ignored',
+        matrixParams: 'ignored'
+      }
+    );
   }
 }
