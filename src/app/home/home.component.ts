@@ -17,34 +17,32 @@ export class HomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const image1 = 'url("../../assets/img/perfil_site.png")';
-    const image2 = 'url("../../assets/img/principal-min.png")';
+    const imageOption1 = 'url("../../assets/img/perfil_site.png")';
+    const imageOption2 = 'url("../../assets/img/principal-min.png")';
 
     const title = this.elementRef.nativeElement.querySelector('#title_name');
     const subtitle = this.elementRef.nativeElement.querySelector('#sub_title');
-    const elemento = this.elementRef.nativeElement.querySelector('.imgPrincipal');
+    const mainImageElement = this.elementRef.nativeElement.querySelector('.imgPrincipal');
 
-    this.renderer.setStyle(elemento, 'background-image', window.innerWidth >= 1350 ? image1 : image2);
-    this.renderer.addClass(elemento, 'animated');
-    this.renderer.addClass(elemento, 'fadeInUp');
+    this.renderer.setStyle(mainImageElement, 'background-image', window.innerWidth >= 1350 ? imageOption1 : imageOption2);
+    this.renderer.addClass(mainImageElement, 'animated');
+    this.renderer.addClass(mainImageElement, 'fadeInUp');
     this.renderer.addClass(title, 'animated');
     this.renderer.addClass(title, 'fadeInLeft');
     this.renderer.addClass(subtitle, 'animated');
     this.renderer.addClass(subtitle, 'fadeInLeft');
 
-    // Lazy loading for background images using Intersection Observer API
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.renderer.setStyle(elemento, 'background-image', window.innerWidth >= 1350 ? image1 : image2);
+          this.renderer.setStyle(mainImageElement, 'background-image', window.innerWidth >= 1350 ? imageOption1 : imageOption2);
           observer.unobserve(entry.target);
         }
       });
     });
 
-    observer.observe(elemento);
+    observer.observe(mainImageElement);
 
-    // Subtle animations for interactive elements and transitions
     const interactiveElements = this.elementRef.nativeElement.querySelectorAll('a, button');
     interactiveElements.forEach(element => {
       this.renderer.listen(element, 'mouseover', () => {
