@@ -25,10 +25,7 @@ export class UtilsService {
       this.currentLang = 'pt';
     }
 
-    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
-      this.cookieService.set('langPref', this.currentLang);
-    }
-
+    this.cookieService.set('langPref', this.currentLang);
     this.translate.use(this.currentLang);
   }
 
@@ -36,22 +33,21 @@ export class UtilsService {
   async setLanguage(): Promise<void> {
     this.translate.setDefaultLang(this.currentLang);
 
-    if (this.cookieService.check('cookieConsent') && this.cookieService.get('cookieConsent') === 'true') {
-      const langPref = this.cookieService.get('langPref');
+    const langPref = this.cookieService.get('langPref');
 
-      if (langPref) {
-        this.translate.setDefaultLang(langPref);
-      } else {
-        try {
-          const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
-          const userCountry = ipInfo?.country?.toUpperCase();
-          const preferredLang = userCountry === 'BR' ? 'pt' : 'en';
+    if (langPref) {
+      this.translate.setDefaultLang(langPref);
+    } else {
+      try {
+        const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
+        const userCountry = ipInfo?.country?.toUpperCase();
+        const preferredLang = userCountry === 'BR' ? 'pt' : 'en';
 
-          this.translate.setDefaultLang(preferredLang);
-          this.currentLang = preferredLang;
-        } catch (error) {
-          console.error('Error retrieving IP info:', error);
-        }
+        this.translate.setDefaultLang(preferredLang);
+        this.cookieService.set('langPref', preferredLang);
+        this.currentLang = preferredLang;
+      } catch (error) {
+        console.error('Error retrieving IP info:', error);
       }
     }
   }

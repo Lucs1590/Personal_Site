@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
@@ -29,6 +29,7 @@ describe('PublicationsComponent', () => {
 });
 import { ApiService } from 'src/app/services/api.service';
 import { Publication } from 'src/app/models/publication.model';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('PublicationsComponent', () => {
   let component: PublicationsComponent;
@@ -51,13 +52,15 @@ describe('PublicationsComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [PublicationsComponent],
-      providers: [
+    declarations: [PublicationsComponent],
+    imports: [],
+    providers: [
         { provide: ApiService, useValue: mockApiService },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute }
-      ],
-      imports: [HttpClientTestingModule]
-    })
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+})
       .compileComponents();
   }));
 

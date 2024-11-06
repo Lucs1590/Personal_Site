@@ -6,37 +6,46 @@
 #title_name {
     font-family: 'Montserrat', 'Anton', 'Poppins', sans-serif;
     font-size: 8rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
 .sobre_text {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
     color: white;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
 h2,
 h3 {
     font-family: 'Anton', 'Poppins', sans-serif;
+    line-height: 1.3;
+    margin-bottom: 1rem;
 }
 
 h5 {
     font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 1rem;
 }
 
 hr {
     width: 25rem;
-    border-top: 0.35rem solid rgba(255, 255, 255, 0.3);
+    border-top: 0.35rem solid rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
 }
 
 a {
     text-decoration: none;
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
-    color: white;
+    color: #E69C24;
 }
 
 a:visited {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
-    color: white;
+    color: #E69C24;
 }

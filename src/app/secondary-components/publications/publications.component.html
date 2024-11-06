@@ -96,7 +96,7 @@
     <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
         <ng-container *ngIf="loading; else skeletonTemplate">
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-                *ngFor="let pub of blogPublications.slice(0, 6)">
+                *ngFor="let pub of (blogPublications?.slice(0, 6) || [])">
                 <div class="card-body">
                     <h3 class="card-title mb-2">{{ pub.title }}</h3>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
@@ -114,10 +114,9 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
-            <div *ngIf="blogPublications.length === 0" class="text-center text-white mt-5">
+            <div *ngIf="blogPublications && blogPublications.length === 0" class="text-center text-white mt-5">
                 <div class="alert new-info-alert" role="alert">
                     <fa-icon icon="info-circle" class="me-2"></fa-icon>
                     <span class="text-dark" translate>publi.blog-not-found</span>
