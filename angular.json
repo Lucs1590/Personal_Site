@@ -41,8 +41,7 @@
             "buildOptimizer": true,
             "sourceMap": true,
             "optimization": true,
-            "namedChunks": true,
-            "aot": true
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -69,8 +68,7 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
                 }
-              ],
-              "aot": true
+              ]
             }
           },
           "defaultConfiguration": ""
