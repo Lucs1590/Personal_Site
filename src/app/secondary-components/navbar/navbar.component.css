@@ -1,7 +1,7 @@
 a,
 button {
   font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
-  color: white;
+  color: #FFFFFF;
 }
 
 .itemnav {
@@ -12,14 +12,4 @@ button {
 .itemnav:hover {
   text-decoration-color: #E69C24;
   color: #E69C24 !important;
-}
-
-/* Improved color contrast ratios for accessibility */
-a,
-button {
-  color: #FFFFFF; /* White color for better contrast */
-}
-
-.itemnav:hover {
-  color: #E69C24 !important; /* High contrast color for hover state */
 }
