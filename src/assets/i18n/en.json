@@ -19,5 +19,22 @@
     "publi.blog-not-found": "No blog posts matched your search criteria.",
     "publi.sci-not-found": "No scientific publications matched your search criteria.",
     "publi.tip": "Tip: If you can't find a specific text, try adding \"?search=tag\" after /publication in the URL.",
-    "recommendations.title": "Recommendations"
+    "recommendations.title": "Recommendations",
+    "privacy_policy.title": "Privacy Policy",
+    "privacy_policy.introduction": "Introduction",
+    "privacy_policy.information_collection": "Information Collection",
+    "privacy_policy.information_collection_text": "This website does not collect any personal data from users. The only information processed is the user's IP address, which is checked with a third-party service solely to adapt the website's language settings (English or Portuguese) based on location. This is done via cookies for a seamless user experience.",
+    "privacy_policy.use_of_information": "Use of Information",
+    "privacy_policy.use_of_information_text": "The information gathered is limited to language preferences, enabling a customized experience for users by displaying content in their preferred language.",
+    "privacy_policy.data_sharing": "Data Sharing",
+    "privacy_policy.data_sharing_text": "No personal data of users is collected or shared with third parties. The IP address is briefly processed by a third-party language adaptation service, but it is not stored by this website.",
+    "privacy_policy.data_security": "Data Security",
+    "privacy_policy.data_security_text": "As no personal data is collected, data security measures apply only to ensure safe integration with third-party services and protect website functionality.",
+    "privacy_policy.user_rights": "User Rights",
+    "privacy_policy.user_rights_text": "Users can adjust their cookie settings to control language preference storage. Since no personal data is stored, there are no additional data rights applicable.",
+    "privacy_policy.changes_to_policy": "Changes to Policy",
+    "privacy_policy.changes_to_policy_text": "This Privacy Policy may be updated periodically, especially if there are changes to the third-party services we use.",
+    "privacy_policy.contact_information": "Contact Information",
+    "privacy_policy.contact_information_text": "If you have questions or concerns about this Privacy Policy, please feel free to contact us.",
+    "privacy_policy.additional_text": "The detailed information regarding our privacy practices is provided below."
 }

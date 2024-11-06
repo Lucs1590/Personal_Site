@@ -19,5 +19,22 @@
     "publi.blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
     "publi.sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
     "publi.tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
-    "recommendations.title": "Recomendações"
+    "recommendations.title": "Recomendações",
+    "privacy_policy.title": "Política de Privacidade",
+    "privacy_policy.introduction": "Introdução",
+    "privacy_policy.information_collection": "Coleta de Informações",
+    "privacy_policy.information_collection_text": "Este site não coleta dados pessoais dos usuários. A única informação processada é o endereço IP do usuário, que é consultado com um serviço de terceiros unicamente para adaptar a configuração de idioma do site (português ou inglês) com base na localização. Isso é feito através de cookies para uma experiência de navegação mais fluida.",
+    "privacy_policy.use_of_information": "Uso das Informações",
+    "privacy_policy.use_of_information_text": "As informações coletadas são limitadas às preferências de idioma, permitindo uma experiência personalizada ao exibir o conteúdo no idioma preferido do usuário.",
+    "privacy_policy.data_sharing": "Compartilhamento de Dados",
+    "privacy_policy.data_sharing_text": "Nenhum dado pessoal do usuário é coletado ou compartilhado com terceiros. O endereço IP é temporariamente processado por um serviço externo para adaptação do idioma, mas não é armazenado por este site.",
+    "privacy_policy.data_security": "Segurança dos Dados",
+    "privacy_policy.data_security_text": "Como nenhum dado pessoal é coletado, as medidas de segurança de dados se aplicam apenas para garantir a integração segura com serviços de terceiros e proteger a funcionalidade do site.",
+    "privacy_policy.user_rights": "Direitos dos Usuários",
+    "privacy_policy.user_rights_text": "Os usuários podem ajustar suas configurações de cookies para controlar o armazenamento de preferências de idioma. Como nenhum dado pessoal é armazenado, não há direitos adicionais aplicáveis.",
+    "privacy_policy.changes_to_policy": "Alterações na Política",
+    "privacy_policy.changes_to_policy_text": "Esta Política de Privacidade pode ser atualizada periodicamente, especialmente em caso de alterações nos serviços de terceiros que utilizamos.",
+    "privacy_policy.contact_information": "Informações de Contato",
+    "privacy_policy.contact_information_text": "Se você tiver dúvidas ou preocupações sobre esta Política de Privacidade, entre em contato conosco.",
+    "privacy_policy.additional_text": "As informações detalhadas sobre nossas práticas de privacidade estão descritas abaixo."
 }
