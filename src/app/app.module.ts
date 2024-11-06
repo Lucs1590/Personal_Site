@@ -63,38 +63,44 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   minTime: 300
 };
 
-@NgModule({ declarations: [
-        DisableWhenOfflineDirective,
-        AppComponent,
-        HomeComponent,
-        SeparadorComponent,
-        MHomeComponent,
-        IconesComponent,
-        OfflineModalComponent,
-        PublicationsComponent,
-        TechnologiesComponent,
-        RecommendationsComponent,
-        NotFoundComponent,
-        NavbarComponent,
-        PortfolioComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: httpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        HammerModule,
-        FontAwesomeModule,
-        NgxSkeletonLoaderModule,
-        AppRoutingModule], providers: [CookieService, provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    DisableWhenOfflineDirective,
+    AppComponent,
+    HomeComponent,
+    SeparadorComponent,
+    MHomeComponent,
+    IconesComponent,
+    OfflineModalComponent,
+    PublicationsComponent,
+    TechnologiesComponent,
+    RecommendationsComponent,
+    NotFoundComponent,
+    NavbarComponent,
+    PortfolioComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    HammerModule,
+    FontAwesomeModule,
+    NgxSkeletonLoaderModule,
+    AppRoutingModule
+  ],
+  providers: [CookieService, provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far, fab);
