@@ -1,5 +1,5 @@
-// portfolio.component.ts
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
 
@@ -14,7 +14,7 @@ export class PortfolioComponent implements OnInit {
   tags: string[];
   searchQuery: string = '';
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   async ngOnInit() {
     await this.getRepositories();
@@ -58,5 +58,9 @@ export class PortfolioComponent implements OnInit {
         repo.name.toLowerCase().includes(query)
       );
     }
+  }
+
+  navigateToProjectDetail(id: string) {
+    this.router.navigate(['/portfolio', id]);
   }
 }

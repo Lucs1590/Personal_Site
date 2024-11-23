@@ -27,6 +27,7 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ProjectDetailComponent } from './portfolio/project-detail.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
@@ -79,6 +80,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    ProjectDetailComponent,
     PrivacyPolicyComponent,
   ],
   bootstrap: [AppComponent],

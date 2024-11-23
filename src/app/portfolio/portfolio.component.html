@@ -19,7 +19,9 @@
             <div class="row">
                 <ng-container *ngFor="let repo of filteredRepos">
                     <div class="col-md-4 mb-3">
-                        <app-project [repo]="repo"></app-project>
+                        <a [routerLink]="['/portfolio', repo.id]">
+                            <app-project [repo]="repo"></app-project>
+                        </a>
                     </div>
                 </ng-container>
             </div>
