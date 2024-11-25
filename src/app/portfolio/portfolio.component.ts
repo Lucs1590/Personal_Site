@@ -90,8 +90,6 @@ export class PortfolioComponent implements OnInit {
         return repos.sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime());
       case 'name':
         return repos.sort((a, b) => a.name.localeCompare(b.name));
-      case 'popularity':
-        return repos.sort((a, b) => b.stargazersCount - a.stargazersCount);
       default:
         return repos;
     }
