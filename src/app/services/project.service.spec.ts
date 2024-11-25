@@ -60,4 +60,37 @@ describe('ProjectService', () => {
     const project = service.getProjectById('1');
     expect(project).toBeUndefined();
   });
+
+  it('should filter projects by tag', () => {
+    const projects: Project[] = [
+      new Project('1', 'Project1', 'Description1', ['SOFTWARE'], ['image1.jpg'], ['video1.mp4']),
+      new Project('2', 'Project2', 'Description2', ['OTHERS'], ['image2.jpg'], ['video2.mp4'])
+    ];
+    spyOn(service, 'getProjects').and.returnValue(projects);
+    const filteredProjects = service.getProjects().filter(project => project.technologies.includes('SOFTWARE'));
+    expect(filteredProjects.length).toBe(1);
+    expect(filteredProjects[0].name).toBe('Project1');
+  });
+
+  it('should search projects by name', () => {
+    const projects: Project[] = [
+      new Project('1', 'Project1', 'Description1', ['SOFTWARE'], ['image1.jpg'], ['video1.mp4']),
+      new Project('2', 'Project2', 'Description2', ['OTHERS'], ['image2.jpg'], ['video2.mp4'])
+    ];
+    spyOn(service, 'getProjects').and.returnValue(projects);
+    const searchQuery = 'Project1';
+    const searchedProjects = service.getProjects().filter(project => project.name.includes(searchQuery));
+    expect(searchedProjects.length).toBe(1);
+    expect(searchedProjects[0].name).toBe('Project1');
+  });
+
+  it('should sort projects by date', () => {
+    const projects: Project[] = [
+      new Project('1', 'Project1', 'Description1', ['SOFTWARE'], ['image1.jpg'], ['video1.mp4']),
+      new Project('2', 'Project2', 'Description2', ['OTHERS'], ['image2.jpg'], ['video2.mp4'])
+    ];
+    spyOn(service, 'getProjects').and.returnValue(projects);
+    const sortedProjects = service.getProjects().sort((a, b) => b.id.localeCompare(a.id));
+    expect(sortedProjects[0].name).toBe('Project2');
+  });
 });

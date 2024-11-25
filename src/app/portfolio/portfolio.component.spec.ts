@@ -48,4 +48,56 @@ describe('PortfolioComponent', () => {
     component.navigateToProjectDetail('1');
     expect(navigateSpy).toHaveBeenCalledWith(['/portfolio', '1']);
   });
+
+  it('should filter projects by search query', () => {
+    const repos: Repository[] = [
+      { id: '1', name: 'Repo1', description: 'Description1', topics: ['SOFTWARE'], private: false, updateDate: new Date() },
+      { id: '2', name: 'Repo2', description: 'Description2', topics: ['OTHERS'], private: false, updateDate: new Date() }
+    ];
+    component.repos = repos;
+    component.searchQuery = 'Repo1';
+    component.searchProjects();
+    expect(component.filteredRepos.length).toBe(1);
+    expect(component.filteredRepos[0].name).toBe('Repo1');
+  });
+
+  it('should sort projects by date', () => {
+    const repos: Repository[] = [
+      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date('2022-01-01') },
+      { id: '2', name: 'Repo2', topics: ['OTHERS'], private: false, updateDate: new Date('2023-01-01') }
+    ];
+    component.repos = repos;
+    component.sortOption = 'date';
+    component.applyFilters();
+    expect(component.filteredRepos[0].name).toBe('Repo2');
+  });
+
+  it('should sort projects by name', () => {
+    const repos: Repository[] = [
+      { id: '1', name: 'BRepo', topics: ['SOFTWARE'], private: false, updateDate: new Date() },
+      { id: '2', name: 'ARepo', topics: ['OTHERS'], private: false, updateDate: new Date() }
+    ];
+    component.repos = repos;
+    component.sortOption = 'name';
+    component.applyFilters();
+    expect(component.filteredRepos[0].name).toBe('ARepo');
+  });
+
+  it('should show project info on hover', () => {
+    const repos: Repository[] = [
+      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: false }
+    ];
+    component.repos = repos;
+    component.showProjectInfo('1');
+    expect(component.repos[0].showInfo).toBe(true);
+  });
+
+  it('should hide project info on mouse out', () => {
+    const repos: Repository[] = [
+      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: true }
+    ];
+    component.repos = repos;
+    component.hideProjectInfo('1');
+    expect(component.repos[0].showInfo).toBe(false);
+  });
 });
