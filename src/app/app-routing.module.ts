@@ -5,7 +5,7 @@ import { PublicationsComponent } from './secondary-components/publications/publi
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
-import { ProjectDetailComponent } from './portfolio/project-detail.component';
+import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
