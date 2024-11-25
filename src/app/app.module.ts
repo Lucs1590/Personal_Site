@@ -32,6 +32,7 @@ import { DisableWhenOfflineDirective } from './services/disable-when-offline.dir
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
+import { ScrollService } from './services/scroll.service';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -103,7 +104,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgxSkeletonLoaderModule,
     AppRoutingModule
   ],
-  providers: [CookieService, provideHttpClient(withInterceptorsFromDi())]
+  providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

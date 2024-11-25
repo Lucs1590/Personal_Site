@@ -13,6 +13,8 @@ export class PortfolioComponent implements OnInit {
   filteredRepos: Repository[];
   tags: string[];
   searchQuery: string = '';
+  selectedTags: string[] = [];
+  sortOption: string = '';
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -43,21 +45,63 @@ export class PortfolioComponent implements OnInit {
 
   filterByTag(tag: string) {
     if (tag === 'All') {
-      this.filteredRepos = [...this.repos];
+      this.selectedTags = [];
     } else {
-      this.filteredRepos = this.repos.filter(repo => repo.topics.includes(tag));
+      const index = this.selectedTags.indexOf(tag);
+      if (index === -1) {
+        this.selectedTags.push(tag);
+      } else {
+        this.selectedTags.splice(index, 1);
+      }
     }
+    this.applyFilters();
   }
 
   searchProjects() {
-    if (!this.searchQuery.trim()) {
-      this.filteredRepos = [...this.repos];
-    } else {
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    let filtered = [...this.repos];
+
+    if (this.selectedTags.length > 0) {
+      filtered = filtered.filter(repo => this.selectedTags.every(tag => repo.topics.includes(tag)));
+    }
+
+    if (this.searchQuery.trim()) {
       const query = this.searchQuery.trim().toLowerCase();
-      this.filteredRepos = this.repos.filter(repo =>
-        repo.name.toLowerCase().includes(query)
+      filtered = filtered.filter(repo =>
+        repo.name.toLowerCase().includes(query) ||
+        repo.description.toLowerCase().includes(query) ||
+        repo.topics.some(topic => topic.toLowerCase().includes(query))
       );
     }
+
+    if (this.sortOption) {
+      filtered = this.sortProjects(filtered, this.sortOption);
+    }
+
+    this.filteredRepos = filtered;
+  }
+
+  sortProjects(repos: Repository[], sortOption: string): Repository[] {
+    switch (sortOption) {
+      case 'date':
+        return repos.sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime());
+      case 'name':
+        return repos.sort((a, b) => a.name.localeCompare(b.name));
+      case 'popularity':
+        return repos.sort((a, b) => b.stargazersCount - a.stargazersCount);
+      default:
+        return repos;
+    }
+  }
+
+  clearFilters() {
+    this.selectedTags = [];
+    this.searchQuery = '';
+    this.sortOption = '';
+    this.filteredRepos = [...this.repos];
   }
 
   navigateToProjectDetail(id: string) {
