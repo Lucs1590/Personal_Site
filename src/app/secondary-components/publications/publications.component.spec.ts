@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
+import { HttpClient, HttpHandler, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { PublicationsComponent } from './publications.component';
 
@@ -27,9 +29,6 @@ describe('PublicationsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-import { ApiService } from 'src/app/services/api.service';
-import { Publication } from 'src/app/models/publication.model';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('PublicationsComponent', () => {
   let component: PublicationsComponent;
@@ -52,15 +51,15 @@ describe('PublicationsComponent', () => {
     };
 
     TestBed.configureTestingModule({
-    declarations: [PublicationsComponent],
-    imports: [],
-    providers: [
+      declarations: [PublicationsComponent],
+      imports: [],
+      providers: [
         { provide: ApiService, useValue: mockApiService },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting()
-    ]
-})
+      ]
+    })
       .compileComponents();
   }));
 
