@@ -1,27 +1,49 @@
-<!-- portfolio.component.html -->
 <div class="container mt-5">
     <div class="row">
+        <!-- Sidebar -->
         <div class="col-md-3">
-            <h3>Filter by Tag</h3>
-            <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action"
-                    (click)="filterByTag('All')">All</button>
-                <button *ngFor="let tag of tags" type="button" class="list-group-item list-group-item-action"
-                    (click)="filterByTag(tag)">{{ tag }}</button>
-            </div>
+            <h4 class="mb-4">Filter by Tag</h4>
+            <ul class="list-group">
+                <li class="list-group-item" [ngClass]="{'active': selectedTags.length === 0}"
+                    (click)="filterByTag('All')">
+                    All
+                </li>
+                <li *ngFor="let tag of tags" class="list-group-item" [ngClass]="{'active': selectedTags.includes(tag)}"
+                    (click)="filterByTag(tag)">
+                    {{ tag }}
+                </li>
+            </ul>
         </div>
+
+        <!-- Portfolio Section -->
         <div class="col-md-9">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search Projects" aria-label="Search Projects"
-                    aria-describedby="search-button" [(ngModel)]="searchQuery" (input)="searchProjects()">
-                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            <!-- Search Bar -->
+            <div class="mb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Projects" [(ngModel)]="searchQuery"
+                        (input)="searchProjects()">
+                </div>
             </div>
+
+            <!-- Portfolio Grid -->
             <div class="row">
                 <ng-container *ngFor="let repo of filteredRepos">
-                    <div class="col-md-4 mb-3">
-                        <a [routerLink]="['/portfolio', repo.id]">
-                            <app-project [repo]="repo"></app-project>
-                        </a>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card project-card">
+                            <img *ngIf="repo.imageUrl" [src]="repo.imageUrl" class="card-img-top" [alt]="repo.name">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ repo.name }}</h5>
+                                <p class="card-text">{{ repo.description }}</p>
+                                <div class="tags">
+                                    <span class="badge bg-primary text-light me-1" *ngFor="let tag of repo.topics">
+                                        {{ tag }}
+                                    </span>
+                                </div>
+                                <a [routerLink]="['/portfolio', repo.id]" class="btn btn-outline-primary mt-3">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </ng-container>
             </div>
