@@ -105,4 +105,18 @@ export class PortfolioComponent implements OnInit {
   navigateToProjectDetail(id: string) {
     this.router.navigate(['/portfolio', id]);
   }
+
+  showProjectInfo(id: string) {
+    const repo = this.repos.find(r => r.id === id);
+    if (repo) {
+      repo.showInfo = true;
+    }
+  }
+
+  hideProjectInfo(id: string) {
+    const repo = this.repos.find(r => r.id === id);
+    if (repo) {
+      repo.showInfo = false;
+    }
+  }
 }
