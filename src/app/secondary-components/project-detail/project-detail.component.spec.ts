@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { ProjectDetailComponent } from './project-detail.component';
-import { ProjectService } from '../../services/project.service';
-import { Project } from '../../models/project.model';
+import { ProjectService } from '../services/project.service';
+import { Project } from '../models/project.model';
 
 describe('ProjectDetailComponent', () => {
   let component: ProjectDetailComponent;
