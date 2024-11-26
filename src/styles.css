@@ -14,3 +14,7 @@ html, body { height:100%; }
         transition-delay: 0s !important;
     }
 }
+
+html {
+    scroll-behavior: smooth;
+}

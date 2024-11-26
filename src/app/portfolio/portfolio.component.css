@@ -1,0 +1,35 @@
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.additional-info {
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .additional-info {
+  opacity: 1;
+}
+
+.carousel {
+  margin-top: 20px;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #555;
+}

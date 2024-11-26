@@ -1,4 +1,13 @@
+# Allow search engines to crawl important pages
 User-agent: *
+Allow: /$
+Allow: /home/
+Allow: /publications/
+Allow: /privacy-policy/
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Disallow access to sensitive or irrelevant directories or files
 Disallow: /admin/
 Disallow: /login/
 Disallow: /logout/
@@ -14,11 +23,14 @@ Disallow: /404/
 Disallow: /privacy/
 Disallow: /terms/
 Disallow: /contact/
+Disallow: /api/
+Disallow: /config/
+Disallow: /scripts/
 
-Allow: /$
-Allow: /home/
-Allow: /publications/
-Allow: /sitemap.xml
-Allow: /robots.txt
+# Use the Noindex directive for pages that should not appear in search results but are not disallowed
+Noindex: /privacy/
+Noindex: /terms/
+Noindex: /contact/
 
+# Sitemap location
 Sitemap: https://lucasbrito.com.br/sitemap.xml

@@ -27,10 +27,13 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
+import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
+import { ScrollService } from './services/scroll.service';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -64,39 +67,47 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   minTime: 300
 };
 
-@NgModule({ declarations: [
-        DisableWhenOfflineDirective,
-        AppComponent,
-        HomeComponent,
-        SeparadorComponent,
-        MHomeComponent,
-        IconesComponent,
-        OfflineModalComponent,
-        PublicationsComponent,
-        TechnologiesComponent,
-        RecommendationsComponent,
-        NotFoundComponent,
-        NavbarComponent,
-        PortfolioComponent,
-        HobbiesComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: httpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        HammerModule,
-        FontAwesomeModule,
-        NgxSkeletonLoaderModule,
-        AppRoutingModule], providers: [CookieService, provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    DisableWhenOfflineDirective,
+    AppComponent,
+    HomeComponent,
+    SeparadorComponent,
+    MHomeComponent,
+    IconesComponent,
+    OfflineModalComponent,
+    PublicationsComponent,
+    TechnologiesComponent,
+    RecommendationsComponent,
+    NotFoundComponent,
+    NavbarComponent,
+    PortfolioComponent,
+    ProjectDetailComponent,
+    PrivacyPolicyComponent,
+    HobbiesComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    HammerModule,
+    FontAwesomeModule,
+    NgxSkeletonLoaderModule,
+    AppRoutingModule
+  ],
+  providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
+})
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far, fab);

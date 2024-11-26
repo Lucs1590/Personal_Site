@@ -64,6 +64,12 @@ export class NavbarComponent implements OnInit {
         ref: ['/hobbies'],
         mobile: true,
         desktop: true
+      },
+      {
+        name: firstValueFrom(this.translate.get('privacy_policy.title')),
+        ref: ['/privacy-policy'],
+        mobile: true,
+        desktop: true
       }
     ];
   }

@@ -5,6 +5,8 @@ import { PublicationsComponent } from './secondary-components/publications/publi
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
+import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
+import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,12 +14,14 @@ const routes: Routes = [
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
   { path: 'hobbies', component: HobbiesComponent, title: 'Lucas Brito - Hobbies' },
+  { path: 'portfolio/:id', component: ProjectDetailComponent, title: 'Lucas Brito - Project Detail' },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
   { path: '404', component: NotFoundComponent, title: '404 - Not Found' },
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
