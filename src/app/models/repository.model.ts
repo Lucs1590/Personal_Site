@@ -12,6 +12,7 @@ export class Repository implements Deserializable {
     public created_at?: Date;
     public updateDate?: Date;
     public private?: boolean;
+    public showInfo?: boolean;
 
     deserialize(input: any): this {
         this.name = input?.name;
@@ -25,6 +26,7 @@ export class Repository implements Deserializable {
         this.created_at = new Date(input?.created_at);
         this.updateDate = new Date(input?.updated_at);
         this.private = input?.private;
+        this.showInfo = false;
 
         return this;
     }
