@@ -43,7 +43,7 @@
             <div class="row">
                 <ng-container *ngFor="let repo of filteredRepos">
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                        <div class="card project-card" (mouseover)="showProjectInfo(repo.id)" (mouseout)="hideProjectInfo(repo.id)">
+                        <div class="card project-card" (mouseover)="showProjectInfo(repo.name)" (mouseout)="hideProjectInfo(repo.name)">
                             <img *ngIf="repo.imageUrl" [src]="repo.imageUrl" class="card-img-top" [alt]="repo.name">
                             <div class="card-body">
                                 <h5 class="card-title">{{ repo.name }}</h5>
@@ -57,7 +57,7 @@
                                     <p>Status: {{ repo.status }}</p>
                                     <p>Key Features: {{ repo.keyFeatures }}</p>
                                 </div>
-                                <a [routerLink]="['/portfolio', repo.id]" class="btn btn-outline-primary mt-3">
+                                <a [routerLink]="['/portfolio', 1]" class="btn btn-outline-primary mt-3">
                                     View Details
                                 </a>
                             </div>

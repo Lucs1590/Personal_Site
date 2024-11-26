@@ -107,14 +107,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   showProjectInfo(id: string) {
-    const repo = this.repos.find(r => r.id === id);
+    const repo = this.repos.find(r => r.name === id);
     if (repo) {
       repo.showInfo = true;
     }
   }
 
   hideProjectInfo(id: string) {
-    const repo = this.repos.find(r => r.id === id);
+    const repo = this.repos.find(r => r.name === id);
     if (repo) {
       repo.showInfo = false;
     }
