@@ -17,8 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     public utils: UtilsService,
     private translate: TranslateService,
-    private router: Router,
-    private cookieService: CookieService
+    private router: Router
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.defineMenu();
@@ -55,12 +54,6 @@ export class NavbarComponent implements OnInit {
       {
         name: firstValueFrom(this.translate.get('nav.portfolio')),
         ref: ['/portfolio'],
-        mobile: false,
-        desktop: false
-      },
-      {
-        name: firstValueFrom(this.translate.get('nav.privacy_policy')),
-        ref: ['/privacy-policy'],
         mobile: false,
         desktop: false
       }

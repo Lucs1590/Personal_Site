@@ -32,6 +32,7 @@ import { DisableWhenOfflineDirective } from './services/disable-when-offline.dir
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
+import { FooterComponent } from './secondary-components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,6 +84,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     PortfolioComponent,
     ProjectDetailComponent,
     PrivacyPolicyComponent,
+    FooterComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
