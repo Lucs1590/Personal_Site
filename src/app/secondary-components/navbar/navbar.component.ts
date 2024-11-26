@@ -4,6 +4,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HobbiesComponent } from 'src/app/hobbies/hobbies.component';
 
 @Component({
   selector: 'app-navbar',
@@ -57,6 +58,12 @@ export class NavbarComponent implements OnInit {
         ref: ['/portfolio'],
         mobile: false,
         desktop: false
+      },
+      {
+        name: 'Hobbies',
+        ref: ['/hobbies'],
+        mobile: true,
+        desktop: true
       },
       {
         name: firstValueFrom(this.translate.get('privacy_policy.title')),

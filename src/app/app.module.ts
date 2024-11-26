@@ -31,6 +31,7 @@ import { ProjectDetailComponent } from './secondary-components/project-detail/pr
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
+import { HobbiesComponent } from './hobbies/hobbies.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
 import { ScrollService } from './services/scroll.service';
 
@@ -83,6 +84,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     PortfolioComponent,
     ProjectDetailComponent,
     PrivacyPolicyComponent,
+    HobbiesComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
