@@ -27,11 +27,13 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { NavbarComponent } from './secondary-components/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 import { DisableWhenOfflineDirective } from './services/disable-when-offline.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { OfflineModalComponent } from './secondary-components/offline-modal/offline-modal.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
 import { FooterComponent } from './secondary-components/footer/footer.component';
+import { ScrollService } from './services/scroll.service';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -80,6 +82,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NotFoundComponent,
     NavbarComponent,
     PortfolioComponent,
+    ProjectDetailComponent,
     PrivacyPolicyComponent,
     FooterComponent,
   ],
@@ -103,7 +106,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgxSkeletonLoaderModule,
     AppRoutingModule
   ],
-  providers: [CookieService, provideHttpClient(withInterceptorsFromDi())]
+  providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
