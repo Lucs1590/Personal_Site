@@ -1,8 +1,8 @@
 footer {
   background-color: #333;
   color: #fff;
-  padding: 2rem;
-  text-align: center;
+  padding: 0.2rem;
+  text-align: right;
 }
 
 .footer-container {
@@ -13,13 +13,7 @@ footer {
 
 .footer-section {
   flex: 1;
-  margin: 1rem;
-}
-
-.footer-section h5 {
-  font-family: 'Anton', 'Poppins', sans-serif;
-  line-height: 1.3;
-  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .footer-section p,
@@ -41,18 +35,5 @@ footer {
 }
 
 .footer-section a:hover {
-  text-decoration: underline;
-}
-
-.back-to-top {
-  margin-top: 2rem;
-}
-
-.back-to-top a {
-  text-decoration: none;
-  color: #E69C24;
-}
-
-.back-to-top a:hover {
   text-decoration: underline;
 }
