@@ -17,8 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     public utils: UtilsService,
     private translate: TranslateService,
-    private router: Router,
-    private cookieService: CookieService
+    private router: Router
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.defineMenu();
