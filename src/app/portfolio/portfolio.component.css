@@ -33,3 +33,27 @@
 .carousel-control-next:hover {
   background-color: #555;
 }
+
+/* Add CSS styles for carousel controls and transitions */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure project cards are responsive with appropriate CSS media queries */
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 20px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10%;
+  }
+}

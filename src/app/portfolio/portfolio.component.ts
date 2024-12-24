@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
+import { ProjectService } from '../services/project.service';
+import { Project } from '../models/project.model';
 
 @Component({
   selector: 'app-portfolio',
@@ -15,11 +17,13 @@ export class PortfolioComponent implements OnInit {
   searchQuery: string = '';
   selectedTags: string[] = [];
   sortOption: string = '';
+  projects: Project[];
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private projectService: ProjectService) { }
 
   async ngOnInit() {
     await this.getRepositories();
+    this.projects = this.projectService.getProjects();
   }
 
   async getRepositories() {
