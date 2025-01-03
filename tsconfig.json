@@ -20,5 +20,8 @@
       "dom"
     ],
     "useDefineForClassFields": false
-  }
+  },
+  "exclude": [
+    "e2e"
+  ]
 }
