@@ -4,9 +4,10 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 
 @Component({
-  selector: 'app-project-detail',
-  templateUrl: './project-detail.component.html',
-  styleUrls: ['./project-detail.component.css']
+    selector: 'app-project-detail',
+    templateUrl: './project-detail.component.html',
+    styleUrls: ['./project-detail.component.css'],
+    standalone: false
 })
 export class ProjectDetailComponent implements OnInit {
   project: Project;

@@ -2,9 +2,10 @@ import { AfterViewChecked, AfterViewInit, Component } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.css']
+    selector: 'app-not-found',
+    templateUrl: './not-found.component.html',
+    styleUrls: ['./not-found.component.css'],
+    standalone: false
 })
 export class NotFoundComponent implements AfterViewChecked {
 
