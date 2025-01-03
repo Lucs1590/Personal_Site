@@ -2,7 +2,8 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 import * as bootstrap from "bootstrap";
 
 @Directive({
-  selector: '[disableWhenOffline]'
+    selector: '[disableWhenOffline]',
+    standalone: false
 })
 export class DisableWhenOfflineDirective {
   private isOffline = false;

@@ -11,12 +11,15 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/personal-site",
+            "outputPath": {
+              "base": "dist/personal-site"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/icon.ico",
@@ -36,12 +39,11 @@
               "./node_modules/popper.js/dist/popper.min.js",
               "./node_modules/particles.js/particles.js"
             ],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": true,
             "sourceMap": true,
             "optimization": true,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -56,8 +58,6 @@
               "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
