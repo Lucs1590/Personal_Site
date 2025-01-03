@@ -4,7 +4,8 @@ import { StravaService } from '../services/strava.service';
 @Component({
   selector: 'app-hobbies',
   templateUrl: './hobbies.component.html',
-  styleUrls: ['./hobbies.component.css']
+  styleUrls: ['./hobbies.component.css'],
+  standalone: false
 })
 export class HobbiesComponent implements OnInit {
 
