@@ -34,6 +34,7 @@ import { OfflineModalComponent } from './secondary-components/offline-modal/offl
 import { HobbiesComponent } from './hobbies/hobbies.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
 import { ScrollService } from './services/scroll.service';
+import { FooterComponent } from './secondary-components/footer/footer.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -85,6 +86,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     ProjectDetailComponent,
     PrivacyPolicyComponent,
     HobbiesComponent,
+    FooterComponent
   ],
   bootstrap: [AppComponent],
   imports: [
