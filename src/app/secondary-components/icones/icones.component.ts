@@ -3,9 +3,10 @@ import { Icon } from 'src/app/models/icon.model';
 import { iconList } from 'src/assets/static_data/iconList'
 
 @Component({
-  selector: 'app-icones',
-  templateUrl: './icones.component.html',
-  styleUrls: ['./icones.component.css']
+    selector: 'app-icones',
+    templateUrl: './icones.component.html',
+    styleUrls: ['./icones.component.css'],
+    standalone: false
 })
 export class IconesComponent {
 

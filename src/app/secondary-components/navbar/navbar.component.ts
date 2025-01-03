@@ -6,9 +6,10 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
+    standalone: false
 })
 export class NavbarComponent implements OnInit {
   mobile = false;
