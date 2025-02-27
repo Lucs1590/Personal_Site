@@ -45,7 +45,7 @@
     "normalize.css": "^8.0.1",
     "particles.js": "^2.0.0",
     "popper.js": "^1.16.1",
-    "rxjs": "^7.8.1",
+    "rxjs": "^7.8.2",
     "tslib": "^2.7.0",
     "webpack": "^5.95.0",
     "xml2js": "^0.6.2",
