@@ -12,7 +12,7 @@ import { ApiService } from '../services/api.service';
 export class PortfolioComponent implements OnInit {
   repos: Signal<Repository[]> = signal([]);
   filteredRepos: Signal<Repository[]> = signal([]);
-  tags: string[];
+  tags: Signal<string[]> = signal([]);
   searchQuery: Signal<string> = signal('');
   selectedTags: Signal<string[]> = signal([]);
   sortOption: Signal<string> = signal('');
@@ -25,11 +25,11 @@ export class PortfolioComponent implements OnInit {
 
   async getRepositories() {
     const repositories = await this.apiService.getAllRepositories('Lucs1590').toPromise();
-    this.repos.set(repositories
+    this.repos.update(() => repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
       .filter(repo => repo.private === false));
-    this.filteredRepos.set([...this.repos()]);
-    this.tags = this.extractTags(this.repos());
+    this.filteredRepos.update(() => [...this.repos()]);
+    this.tags.update(() => this.extractTags(this.repos()));
   }
 
   private extractTags(repos: Repository[]): string[] {
@@ -46,13 +46,13 @@ export class PortfolioComponent implements OnInit {
 
   filterByTag(tag: string) {
     if (tag === 'All') {
-      this.selectedTags.set([]);
+      this.selectedTags.update(() => []);
     } else {
       const index = this.selectedTags().indexOf(tag);
       if (index === -1) {
-        this.selectedTags.set([...this.selectedTags(), tag]);
+        this.selectedTags.update(tags => [...tags, tag]);
       } else {
-        this.selectedTags.set(this.selectedTags().filter(t => t !== tag));
+        this.selectedTags.update(tags => tags.filter(t => t !== tag));
       }
     }
     this.applyFilters();
@@ -82,7 +82,7 @@ export class PortfolioComponent implements OnInit {
       filtered = this.sortProjects(filtered, this.sortOption());
     }
 
-    this.filteredRepos.set(filtered);
+    this.filteredRepos.update(() => filtered);
   }
 
   sortProjects(repos: Repository[], sortOption: string): Repository[] {
@@ -97,10 +97,10 @@ export class PortfolioComponent implements OnInit {
   }
 
   clearFilters() {
-    this.selectedTags.set([]);
-    this.searchQuery.set('');
-    this.sortOption.set('');
-    this.filteredRepos.set([...this.repos()]);
+    this.selectedTags.update(() => []);
+    this.searchQuery.update(() => '');
+    this.sortOption.update(() => '');
+    this.filteredRepos.update(() => [...this.repos()]);
   }
 
   navigateToProjectDetail(id: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Signal, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Signal, signal, computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -44,13 +44,13 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
   async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
-    this.blogPublications.set(publications
+    this.blogPublications.update(() => publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime()));
   }
 
   getSciPublications(): void {
     const publications = this.apiService.getAllSciPublications();
-    this.sciPublications.set(publications);
+    this.sciPublications.update(() => publications);
     const parser = new DOMParser();
 
     this.sciPublications().map((publication) => {
@@ -70,12 +70,12 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
       const searchQuery = params['search']?.toLowerCase();
       if (!searchQuery) return;
 
-      this.blogPublications.set(this.blogPublications().filter(publication =>
+      this.blogPublications.update(() => this.blogPublications().filter(publication =>
         publication.title.toLowerCase().includes(searchQuery) ||
         publication.description.toLowerCase().includes(searchQuery)
       ));
 
-      this.sciPublications.set(this.sciPublications().filter(publication =>
+      this.sciPublications.update(() => this.sciPublications().filter(publication =>
         publication.title.toLowerCase().includes(searchQuery) ||
         publication.description.toLowerCase().includes(searchQuery)
       ));
