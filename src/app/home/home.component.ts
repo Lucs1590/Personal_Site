@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, Signal, signal, computed } from '@angular/core';
 
 @Component({
     selector: 'app-home',
@@ -7,7 +7,7 @@ import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
     standalone: false
 })
 export class HomeComponent implements AfterViewInit {
-  idade: number;
+  idade: Signal<number>;
 
   private readonly birthDate = new Date(1999, 3, 27); // April (month index is 0-based)
   private readonly imageOption1 = 'url("../../assets/img/perfil_site.png")';
@@ -20,7 +20,7 @@ export class HomeComponent implements AfterViewInit {
   };
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-    this.idade = this.calculateAge();
+    this.idade = computed(() => this.calculateAge());
   }
 
   ngAfterViewInit(): void {
