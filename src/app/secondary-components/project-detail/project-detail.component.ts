@@ -23,4 +23,24 @@ export class ProjectDetailComponent implements OnInit {
       this.project = this.projectService.getProjectById(projectId);
     });
   }
+
+  getProjectDetails() {
+    if (this.project) {
+      return {
+        name: this.project.name,
+        description: this.project.description,
+        technologies: this.project.technologies,
+        images: this.project.images,
+        videos: this.project.videos
+      };
+    } else {
+      return {
+        name: 'Project not found',
+        description: '',
+        technologies: [],
+        images: [],
+        videos: []
+      };
+    }
+  }
 }

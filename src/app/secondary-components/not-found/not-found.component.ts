@@ -25,10 +25,6 @@ export class NotFoundComponent implements AfterViewChecked {
   }
 
   defineWindowSize(): number {
-    if (window.innerWidth >= 768) {
-      return window.innerWidth;
-    }
-    const widthMobile = document.getElementsByClassName('div-effect')[0].clientWidth;
-    return widthMobile;
+    return window.innerWidth >= 768 ? window.innerWidth : document.getElementsByClassName('div-effect')[0].clientWidth;
   }
 }
