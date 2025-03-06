@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal, signal, computed } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { UtilsService } from './services/utils.service';
 
@@ -9,6 +9,26 @@ import { UtilsService } from './services/utils.service';
     standalone: false
 })
 export class AppComponent implements OnInit {
+  private readonly description = signal('Lucas Brito - Personal Website. AI, Machine Learning, Data');
+  private readonly author = signal('Lucs1590');
+  private readonly keywords = signal('Lucas Brito, Lucas de Brito Silva, Lucs1590, AI, Machine Learning, Personal Website, Data');
+  private readonly robots = signal('index, follow');
+  private readonly viewport = signal('width=device-width, initial-scale=1');
+  private readonly date = signal(new Date(Date.now()));
+  private readonly formattedDate = computed(() => `${this.date().getDate()}/${this.date().getMonth() + 1}/${this.date().getFullYear()}`);
+  private readonly ogTitle = signal('Lucas Brito - Personal Website');
+  private readonly ogType = signal('website');
+  private readonly ogUrl = signal('https://lucasbrito.com.br');
+  private readonly ogImage = signal('https://www.lucasbrito.com.br/assets/img/principal-min-mob.png');
+  private readonly ogDescription = signal('Lucas Brito - Personal Website. AI, Machine Learning, Data');
+  private readonly ogSiteName = signal('Lucas Brito');
+  private readonly ogLocale = signal('pt_BR, en_US');
+  private readonly twitterCard = signal('summary_large_image');
+  private readonly twitterSite = signal('@lucs1590');
+  private readonly twitterTitle = signal('Lucas Brito - Personal Website');
+  private readonly twitterDescription = signal('Lucas Brito - Personal Website. AI, Machine Learning, Data');
+  private readonly twitterImage = signal('https://www.lucasbrito.com.br/assets/img/principal-min-mob.png');
+  private readonly charset = signal('UTF-8');
 
   constructor(
     private meta: Meta,
@@ -21,30 +41,27 @@ export class AppComponent implements OnInit {
   }
 
   setMetaTags() {
-    const date = new Date(Date.now());
-    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-
     this.meta.addTags([
-      { name: 'description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
-      { name: 'author', content: 'Lucs1590' },
-      { name: 'keywords', content: 'Lucas Brito, Lucas de Brito Silva, Lucs1590, AI, Machine Learning, Personal Website, Data' },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'date', content: formattedDate, scheme: 'DD/MM/YYYY' },
-      { name: 'revised', content: formattedDate, scheme: 'DD/MM/YYYY' },
-      { name: 'og:title', content: 'Lucas Brito - Personal Website' },
-      { name: 'og:type', content: 'website' },
-      { name: 'og:url', content: 'https://lucasbrito.com.br' },
-      { name: 'og:image', content: 'https://www.lucasbrito.com.br/assets/img/principal-min-mob.png' },
-      { name: 'og:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
-      { name: 'og:site_name', content: 'Lucas Brito' },
-      { name: 'og:locale', content: 'pt_BR, en_US' },
-      { name: 'twitter:card', content: 'summary_large_image' }, // Changed to summary_large_image for better Twitter card
-      { name: 'twitter:site', content: '@lucs1590' },
-      { name: 'twitter:title', content: 'Lucas Brito - Personal Website' },
-      { name: 'twitter:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
-      { name: 'twitter:image', content: 'https://www.lucasbrito.com.br/assets/img/principal-min-mob.png' },
-      { charset: 'UTF-8' }
+      { name: 'description', content: this.description() },
+      { name: 'author', content: this.author() },
+      { name: 'keywords', content: this.keywords() },
+      { name: 'robots', content: this.robots() },
+      { name: 'viewport', content: this.viewport() },
+      { name: 'date', content: this.formattedDate(), scheme: 'DD/MM/YYYY' },
+      { name: 'revised', content: this.formattedDate(), scheme: 'DD/MM/YYYY' },
+      { name: 'og:title', content: this.ogTitle() },
+      { name: 'og:type', content: this.ogType() },
+      { name: 'og:url', content: this.ogUrl() },
+      { name: 'og:image', content: this.ogImage() },
+      { name: 'og:description', content: this.ogDescription() },
+      { name: 'og:site_name', content: this.ogSiteName() },
+      { name: 'og:locale', content: this.ogLocale() },
+      { name: 'twitter:card', content: this.twitterCard() },
+      { name: 'twitter:site', content: this.twitterSite() },
+      { name: 'twitter:title', content: this.twitterTitle() },
+      { name: 'twitter:description', content: this.twitterDescription() },
+      { name: 'twitter:image', content: this.twitterImage() },
+      { charset: this.charset() }
     ]);
   }
 }

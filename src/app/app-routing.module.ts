@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
@@ -18,8 +17,4 @@ const routes: Routes = [
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const AppRoutingModule = RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' });

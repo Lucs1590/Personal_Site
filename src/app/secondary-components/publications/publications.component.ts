@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Signal, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -10,8 +10,8 @@ import { ApiService } from 'src/app/services/api.service';
     standalone: false
 })
 export class PublicationsComponent implements OnInit, AfterViewInit {
-  blogPublications: Publication[];
-  sciPublications: Publication[];
+  blogPublications: Signal<Publication[]> = signal([]);
+  sciPublications: Signal<Publication[]> = signal([]);
   loading = false;
   scholarImage: string;
 
@@ -44,16 +44,16 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
   async getBlogPublications(): Promise<void> {
     const publications = await this.apiService.getAllPublications().toPromise();
-    this.blogPublications = publications
-      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+    this.blogPublications.set(publications
+      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime()));
   }
 
   getSciPublications(): void {
     const publications = this.apiService.getAllSciPublications();
-    this.sciPublications = publications;
+    this.sciPublications.set(publications);
     const parser = new DOMParser();
 
-    this.sciPublications.map((publication) => {
+    this.sciPublications().map((publication) => {
       const parsedDescription = parser.parseFromString(publication.description, 'text/html');
       const sanitizedDescription = this.sanitizeHTML(parsedDescription.body.textContent || '');
       publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
@@ -70,15 +70,15 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
       const searchQuery = params['search']?.toLowerCase();
       if (!searchQuery) return;
 
-      this.blogPublications = this.blogPublications.filter(publication =>
+      this.blogPublications.set(this.blogPublications().filter(publication =>
         publication.title.toLowerCase().includes(searchQuery) ||
         publication.description.toLowerCase().includes(searchQuery)
-      );
+      ));
 
-      this.sciPublications = this.sciPublications.filter(publication =>
+      this.sciPublications.set(this.sciPublications().filter(publication =>
         publication.title.toLowerCase().includes(searchQuery) ||
         publication.description.toLowerCase().includes(searchQuery)
-      );
+      ));
     });
   }
 }

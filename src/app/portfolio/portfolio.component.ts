@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
@@ -10,12 +10,12 @@ import { ApiService } from '../services/api.service';
     standalone: false
 })
 export class PortfolioComponent implements OnInit {
-  repos: Repository[];
-  filteredRepos: Repository[];
+  repos: Signal<Repository[]> = signal([]);
+  filteredRepos: Signal<Repository[]> = signal([]);
   tags: string[];
-  searchQuery: string = '';
-  selectedTags: string[] = [];
-  sortOption: string = '';
+  searchQuery: Signal<string> = signal('');
+  selectedTags: Signal<string[]> = signal([]);
+  sortOption: Signal<string> = signal('');
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -25,11 +25,11 @@ export class PortfolioComponent implements OnInit {
 
   async getRepositories() {
     const repositories = await this.apiService.getAllRepositories('Lucs1590').toPromise();
-    this.repos = repositories
+    this.repos.set(repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
-      .filter(repo => repo.private === false);
-    this.filteredRepos = [...this.repos];
-    this.tags = this.extractTags(this.repos);
+      .filter(repo => repo.private === false));
+    this.filteredRepos.set([...this.repos()]);
+    this.tags = this.extractTags(this.repos());
   }
 
   private extractTags(repos: Repository[]): string[] {
@@ -46,13 +46,13 @@ export class PortfolioComponent implements OnInit {
 
   filterByTag(tag: string) {
     if (tag === 'All') {
-      this.selectedTags = [];
+      this.selectedTags.set([]);
     } else {
-      const index = this.selectedTags.indexOf(tag);
+      const index = this.selectedTags().indexOf(tag);
       if (index === -1) {
-        this.selectedTags.push(tag);
+        this.selectedTags.set([...this.selectedTags(), tag]);
       } else {
-        this.selectedTags.splice(index, 1);
+        this.selectedTags.set(this.selectedTags().filter(t => t !== tag));
       }
     }
     this.applyFilters();
@@ -63,14 +63,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   applyFilters() {
-    let filtered = [...this.repos];
+    let filtered = [...this.repos()];
 
-    if (this.selectedTags.length > 0) {
-      filtered = filtered.filter(repo => this.selectedTags.every(tag => repo.topics.includes(tag)));
+    if (this.selectedTags().length > 0) {
+      filtered = filtered.filter(repo => this.selectedTags().every(tag => repo.topics.includes(tag)));
     }
 
-    if (this.searchQuery.trim()) {
-      const query = this.searchQuery.trim().toLowerCase();
+    if (this.searchQuery().trim()) {
+      const query = this.searchQuery().trim().toLowerCase();
       filtered = filtered.filter(repo =>
         repo.name.toLowerCase().includes(query) ||
         repo.description.toLowerCase().includes(query) ||
@@ -78,11 +78,11 @@ export class PortfolioComponent implements OnInit {
       );
     }
 
-    if (this.sortOption) {
-      filtered = this.sortProjects(filtered, this.sortOption);
+    if (this.sortOption()) {
+      filtered = this.sortProjects(filtered, this.sortOption());
     }
 
-    this.filteredRepos = filtered;
+    this.filteredRepos.set(filtered);
   }
 
   sortProjects(repos: Repository[], sortOption: string): Repository[] {
@@ -97,10 +97,10 @@ export class PortfolioComponent implements OnInit {
   }
 
   clearFilters() {
-    this.selectedTags = [];
-    this.searchQuery = '';
-    this.sortOption = '';
-    this.filteredRepos = [...this.repos];
+    this.selectedTags.set([]);
+    this.searchQuery.set('');
+    this.sortOption.set('');
+    this.filteredRepos.set([...this.repos()]);
   }
 
   navigateToProjectDetail(id: string) {
@@ -108,14 +108,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   showProjectInfo(id: string) {
-    const repo = this.repos.find(r => r.name === id);
+    const repo = this.repos().find(r => r.name === id);
     if (repo) {
       repo.showInfo = true;
     }
   }
 
   hideProjectInfo(id: string) {
-    const repo = this.repos.find(r => r.name === id);
+    const repo = this.repos().find(r => r.name === id);
     if (repo) {
       repo.showInfo = false;
     }

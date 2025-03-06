@@ -1,9 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-navbar',
@@ -12,8 +11,8 @@ import { CookieService } from 'ngx-cookie-service';
     standalone: false
 })
 export class NavbarComponent implements OnInit {
-  mobile = false;
-  itemsList: { name: Promise<string> | string; ref: string[]; mobile: boolean; desktop: boolean }[];
+  mobile: Signal<boolean> = signal(false);
+  itemsList: Signal<{ name: Promise<string> | string; ref: string[]; mobile: boolean; desktop: boolean }[]> = signal([]);
 
   constructor(
     public utils: UtilsService,
@@ -34,12 +33,12 @@ export class NavbarComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.mobile = event.target.innerWidth <= 991;
+    this.mobile.set(event.target.innerWidth <= 991);
     this.filterItems();
   }
 
   private async defineMenu() {
-    this.itemsList = [
+    this.itemsList.set([
       {
         name: firstValueFrom(this.translate.get('nav.home')),
         ref: ['/'],
@@ -58,11 +57,11 @@ export class NavbarComponent implements OnInit {
         mobile: false,
         desktop: false
       }
-    ];
+    ]);
   }
 
   private filterItems() {
-    this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+    this.itemsList.set(this.mobile() ? this.itemsList().filter(item => item.mobile) : this.itemsList().filter(item => item.desktop));
   }
 
   isActive(route: string[]): boolean {
