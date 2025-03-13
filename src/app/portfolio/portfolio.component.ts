@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
+import { Store } from '@ngrx/store';
+import * as AppActions from '../store/app.actions';
 
 @Component({
     selector: 'app-portfolio',
@@ -17,10 +19,11 @@ export class PortfolioComponent implements OnInit {
   selectedTags: string[] = [];
   sortOption: string = '';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private store: Store) { }
 
   async ngOnInit() {
     await this.getRepositories();
+    this.store.dispatch(AppActions.loadPortfolioItems());
   }
 
   async getRepositories() {

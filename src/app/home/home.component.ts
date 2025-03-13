@@ -1,4 +1,6 @@
 import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as AppActions from '../store/app.actions';
 
 @Component({
     selector: 'app-home',
@@ -19,7 +21,7 @@ export class HomeComponent implements AfterViewInit {
     interactive: ['animated', 'pulse']
   };
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private store: Store) {
     this.idade = this.calculateAge();
   }
 
@@ -27,6 +29,7 @@ export class HomeComponent implements AfterViewInit {
     this.applyInitialStyles();
     this.setupIntersectionObserver();
     this.addInteractiveElementListeners();
+    this.store.dispatch(AppActions.loadHomeData());
   }
 
   private calculateAge(): number {

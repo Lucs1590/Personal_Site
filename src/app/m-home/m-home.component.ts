@@ -1,5 +1,7 @@
 import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
+import { Store } from '@ngrx/store';
+import * as AppActions from '../store/app.actions';
 
 @Component({
     selector: 'app-m-home',
@@ -11,7 +13,8 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit {
   constructor(
     public utils: UtilsService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private store: Store
   ) { }
 
   ngAfterContentInit(): void {
@@ -35,5 +38,7 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit {
         this.renderer.removeClass(element, 'pulse');
       });
     });
+
+    this.store.dispatch(AppActions.loadMobileHomeData());
   }
 }

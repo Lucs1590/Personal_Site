@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Recommendation } from 'src/app/models/recommendation.model';
+import * as AppActions from '../../store/app.actions';
 
 @Component({
     selector: 'app-recommendations',
@@ -7,7 +9,7 @@ import { Recommendation } from 'src/app/models/recommendation.model';
     styleUrls: ['./recommendations.component.css'],
     standalone: false
 })
-export class RecommendationsComponent {
+export class RecommendationsComponent implements OnInit {
 
   recommendations = [
     {
@@ -50,6 +52,9 @@ Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
     }
   ].map(recommendation => new Recommendation().deserialize(recommendation));
 
-  constructor() { }
+  constructor(private store: Store) { }
 
+  ngOnInit(): void {
+    this.store.dispatch(AppActions.loadRecommendations());
+  }
 }

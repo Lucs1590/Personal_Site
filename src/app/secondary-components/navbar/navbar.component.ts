@@ -4,6 +4,8 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Store } from '@ngrx/store';
+import * as AppActions from '../../store/app.actions';
 
 @Component({
     selector: 'app-navbar',
@@ -18,7 +20,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     public utils: UtilsService,
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.defineMenu();
@@ -30,6 +33,7 @@ export class NavbarComponent implements OnInit {
     await this.utils.setLanguage();
     this.defineMenu();
     this.filterItems();
+    this.store.dispatch(AppActions.loadMenuItems());
   }
 
   @HostListener('window:resize', ['$event'])

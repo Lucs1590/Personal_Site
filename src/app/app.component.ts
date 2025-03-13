@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { UtilsService } from './services/utils.service';
+import { Store } from '@ngrx/store';
+import * as AppActions from './store/app.actions';
 
 @Component({
     selector: 'app-root',
@@ -12,12 +14,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private meta: Meta,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private store: Store
   ) { }
 
   async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();
     this.setMetaTags();
+    this.store.dispatch(AppActions.loadAppData());
   }
 
   setMetaTags() {

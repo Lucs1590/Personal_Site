@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
+import * as AppActions from '../../store/app.actions';
 
 @Component({
     selector: 'app-publications',
@@ -18,7 +20,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private store: Store
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -27,6 +30,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
     await this.getBlogPublications();
     this.filterPublications();
+
+    this.store.dispatch(AppActions.loadPublications());
   }
 
   ngAfterViewInit(): void {
