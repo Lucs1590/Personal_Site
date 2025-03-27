@@ -12,12 +12,36 @@ export const sciPublications = [
         categories: []
     },
     {
+        title: 'Sign language recognition based on deep learning and low-cost handcrafted descriptors',
+        description: '<p>This paper proposes a novel approach to sign language recognition by integrating deep learning techniques with low-cost, handcrafted descriptors. The authors, Alvaro Leandro Cavalcante Carneiro, Denis Henrique Pinheiro Salvadeo, and Lucas de Brito Silva from São Paulo State University, aim to address the challenges of existing recognition systems, particularly focusing on the need for portability, low computational cost, and accuracy for aiding the hearing-impaired community.</p>',
+        thumbnail: '../../../assets/img/publications/sign-language-rec.png',
+        pubDate: '2024/8/14',
+        link: 'https://arxiv.org/abs/2408.07244',
+        author: 'CARNEIRO, AL Cavalcante; SALVADEO, DH Pinheiro; SILVA, L. Brito',
+        guid: '',
+        content: '',
+        enclosure: '',
+        categories: []
+    },
+    {
+        title: 'Semantic image segmentation with BPCAPooling: a deep learning-based approach',
+        description: '<p>Computer vision, especially in the field of image segmentation, has made significant contributions to advanced medical analysis, understanding complex scenes, design of autonomous systems, among other areas of possible applications. The emergence of deep learning techniques has enabled the advancement of architectures and models with a view to achieving the state-of-the-art in image segmentation. However, there are still significant obstacles to be overcome, particularly the simultaneous preservation of spatiality and maintaining a global view of the attribute map during the dimensionality reduction procedure inherent in the pooling layers of convolutional networks. Faced with this challenge, this work proposes the investigation and development of the Block-based Principal Component Analysis Pooling (BPCAPooling) method. Different from the conventional Max Pooling method, BPCAPooling is a PCA-based pooling method that seeks not only to locally preserve the spatial information of samples, but also to maintain a global view of attribute maps while reducing dimensionality.</p>',
+        thumbnail: '../../../assets/img/publications/bpca.png',
+        pubDate: '2024/2/5',
+        link: 'https://repositorio.unesp.br/items/2d5a295d-aaa4-4fec-882c-370430854f96',
+        author: 'SILVA, L. Brito',
+        guid: '',
+        content: '',
+        enclosure: '',
+        categories: []
+    },
+    {
         title: 'Artificial intelligence for detection and quantification of rust and leaf miner in coffee crop',
         description: '<p>Pest and disease control plays a key role in agriculture since the damage caused by these agents are responsible for a huge economic loss every year. Based on this assumption, we create an algorithm capable of detecting rust (Hemileia vastatrix) and leaf miner (Leucoptera coffeella) in coffee leaves (Coffea arabica) and quantify disease severity using a mobile application as a high-level interface for the model inferences. We used different convolutional neural network architectures to create the object detector, besides the OpenCV library, k-means, and three treatments: the RGB and value to quantification, and the AFSoft software, in addition to the analysis of variance, where we compare the three methods. The results show an average precision of 81,5% in the detection and that there was no significant statistical difference between treatments to quantify the severity of coffee leaves, proposing a computationally less costly method. The application, together with the trained model, can detect the pest and disease over different image conditions and infection stages and also estimate the disease infection stage.</p>',
         thumbnail: '../../../assets/img/publications/coffee_crop.png',
         pubDate: '2021/3/20',
         link: 'https://arxiv.org/abs/2103.11241',
-        author: 'CARNEIRO, AL Cavalcante; SILVA, L. Brito; FAULIN, Marisa Silveira Almeida Renaud. ',
+        author: 'CARNEIRO, AL Cavalcante; SILVA, L. Brito; FAULIN, Marisa Silveira Almeida Renaud.',
         guid: '',
         content: '',
         enclosure: '',
