@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
     selector: 'app-portfolio',
@@ -9,7 +10,7 @@ import { ApiService } from '../services/api.service';
     styleUrls: ['./portfolio.component.css'],
     standalone: false
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, AfterViewInit {
   repos: Repository[];
   filteredRepos: Repository[];
   tags: string[];
@@ -17,7 +18,13 @@ export class PortfolioComponent implements OnInit {
   selectedTags: string[] = [];
   sortOption: string = '';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private utilsService: UtilsService
+  ) { }
 
   async ngOnInit() {
     await this.getRepositories();
@@ -119,5 +126,20 @@ export class PortfolioComponent implements OnInit {
     if (repo) {
       repo.showInfo = false;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.modifyLinks();
+  }
+
+  private modifyLinks(): void {
+    const links = this.elementRef.nativeElement.querySelectorAll('a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        const modifiedHref = this.utilsService.addUtmSource(href);
+        this.renderer.setAttribute(link, 'href', modifiedHref);
+      }
+    });
   }
 }

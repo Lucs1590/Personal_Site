@@ -29,7 +29,6 @@ export class UtilsService {
     this.translate.use(this.currentLang);
   }
 
-
   async setLanguage(): Promise<void> {
     this.translate.setDefaultLang(this.currentLang);
 
@@ -54,5 +53,16 @@ export class UtilsService {
 
   goHome(): void {
     void this.router.navigate(['/']);
+  }
+
+  addUtmSource(url: string): string {
+    if (url.startsWith('mailto:')) {
+      return url;
+    }
+
+    const utmSource = 'utm_source=https://lucasbrito.com.br';
+    const separator = url.includes('?') ? '&' : '?';
+
+    return `${url}${separator}${utmSource}`;
   }
 }
