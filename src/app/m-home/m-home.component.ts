@@ -2,10 +2,10 @@ import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2 } fro
 import { UtilsService } from '../services/utils.service';
 
 @Component({
-    selector: 'app-m-home',
-    templateUrl: './m-home.component.html',
-    styleUrls: ['./m-home.component.css'],
-    standalone: false
+  selector: 'app-m-home',
+  templateUrl: './m-home.component.html',
+  styleUrls: ['./m-home.component.css'],
+  standalone: false
 })
 export class MHomeComponent implements AfterContentInit, AfterViewInit {
   constructor(
@@ -34,19 +34,6 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit {
         this.renderer.removeClass(element, 'animated');
         this.renderer.removeClass(element, 'pulse');
       });
-    });
-
-    this.modifyLinks();
-  }
-
-  private modifyLinks(): void {
-    const links = this.elementRef.nativeElement.querySelectorAll('a');
-    links.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href) {
-        const modifiedHref = this.utils.addUtmSource(href);
-        this.renderer.setAttribute(link, 'href', modifiedHref);
-      }
     });
   }
 }
