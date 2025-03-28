@@ -23,9 +23,15 @@
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://lucasbrito.com.br/privacy-policy</loc>
+      <loc>https://lucasbrito.com.br/privacy</loc>
       <lastmod>2025-01-02</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://lucasbrito.com.br/recommendations</loc>
+      <lastmod>2025-01-02</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
    </url>
 </urlset>
