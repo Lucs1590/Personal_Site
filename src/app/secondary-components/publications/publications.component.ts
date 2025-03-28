@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -47,7 +48,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   }
 
   async getBlogPublications(): Promise<void> {
-    const publications = await this.apiService.getAllPublications().toPromise();
+    const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }

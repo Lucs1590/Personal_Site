@@ -1,16 +1,16 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
-import { UtilsService } from '../services/utils.service';
 
 @Component({
-    selector: 'app-portfolio',
-    templateUrl: './portfolio.component.html',
-    styleUrls: ['./portfolio.component.css'],
-    standalone: false
+  selector: 'app-portfolio',
+  templateUrl: './portfolio.component.html',
+  styleUrls: ['./portfolio.component.css'],
+  standalone: false
 })
-export class PortfolioComponent implements OnInit, AfterViewInit {
+export class PortfolioComponent implements OnInit {
   repos: Repository[];
   filteredRepos: Repository[];
   tags: string[];
@@ -20,10 +20,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   constructor(
     private apiService: ApiService,
-    private router: Router,
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private utilsService: UtilsService
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -31,7 +28,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   async getRepositories() {
-    const repositories = await this.apiService.getAllRepositories('Lucs1590').toPromise();
+    const repositories = await firstValueFrom(this.apiService.getAllRepositories('Lucs1590'));
     this.repos = repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
       .filter(repo => repo.private === false);
@@ -126,20 +123,5 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     if (repo) {
       repo.showInfo = false;
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.modifyLinks();
-  }
-
-  private modifyLinks(): void {
-    const links = this.elementRef.nativeElement.querySelectorAll('a');
-    links.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href) {
-        const modifiedHref = this.utilsService.addUtmSource(href);
-        this.renderer.setAttribute(link, 'href', modifiedHref);
-      }
-    });
   }
 }
