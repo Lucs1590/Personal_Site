@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css'],
-    standalone: false
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+  standalone: false
 })
 export class NavbarComponent implements OnInit {
   mobile = false;
@@ -57,6 +56,12 @@ export class NavbarComponent implements OnInit {
         ref: ['/portfolio'],
         mobile: false,
         desktop: false
+      },
+      {
+        name: 'Hobbies',
+        ref: ['/hobbies'],
+        mobile: true,
+        desktop: true
       }
     ];
   }
