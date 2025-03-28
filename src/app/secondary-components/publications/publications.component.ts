@@ -6,10 +6,10 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-    selector: 'app-publications',
-    templateUrl: './publications.component.html',
-    styleUrls: ['./publications.component.css'],
-    standalone: false
+  selector: 'app-publications',
+  templateUrl: './publications.component.html',
+  styleUrls: ['./publications.component.css'],
+  standalone: false
 })
 export class PublicationsComponent implements OnInit, AfterViewInit {
   blogPublications: Publication[];
@@ -50,6 +50,10 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   async getBlogPublications(): Promise<void> {
     const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
+      .map((publication) => {
+        publication.url = this.utilsService.addUtmSource(publication.url);
+        return publication;
+      })
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
