@@ -55,14 +55,22 @@ export class UtilsService {
     void this.router.navigate(['/']);
   }
 
-  addUtmSource(url: string): string {
+  addUtmParameters(url: string, source: string = 'lucasbrito-website', medium: string = 'link'): string {
+    if (!url || typeof url !== 'string') {
+      console.warn('Invalid URL provided');
+      return url;
+    }
+
     if (url.startsWith('mailto:')) {
       return url;
     }
 
-    const utmSource = 'utm_source=https://lucasbrito.com.br';
-    const separator = url.includes('?') ? '&' : '?';
+    const params = new URLSearchParams({
+      utm_source: source,
+      utm_medium: medium
+    });
 
-    return `${url}${separator}${utmSource}`;
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}${params.toString()}`;
   }
 }
