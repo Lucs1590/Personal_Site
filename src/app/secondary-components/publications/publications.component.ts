@@ -51,7 +51,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
     const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
       .map((publication) => {
-        publication.url = this.utilsService.addUtmSource(publication.url);
+        publication.url = this.utilsService.addUtmParameters(publication.url);
         return publication;
       })
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
@@ -96,7 +96,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
     links.forEach(link => {
       const href = link.getAttribute('href');
       if (href) {
-        const modifiedHref = this.utilsService.addUtmSource(href);
+        const modifiedHref = this.utilsService.addUtmParameters(href);
         this.renderer.setAttribute(link, 'href', modifiedHref);
       }
     });

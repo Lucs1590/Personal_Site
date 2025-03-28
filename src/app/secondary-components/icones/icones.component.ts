@@ -24,7 +24,7 @@ export class IconesComponent implements AfterViewInit {
     links.forEach(link => {
       const href = link.getAttribute('href');
       if (href) {
-        const modifiedHref = this.utilsService.addUtmSource(href);
+        const modifiedHref = this.utilsService.addUtmParameters(href);
         this.renderer.setAttribute(link, 'href', modifiedHref);
       }
     });

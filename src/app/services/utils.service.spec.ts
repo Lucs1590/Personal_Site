@@ -27,22 +27,22 @@ describe('UtilsService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('addUtmSource', () => {
+  describe('addUtmParameters', () => {
     it('should add utm_source parameter to URLs without existing parameters', () => {
       const url = 'https://example.com';
-      const result = service.addUtmSource(url);
+      const result = service.addUtmParameters(url);
       expect(result).toBe('https://example.com?utm_source=https://lucasbrito.com.br');
     });
 
     it('should add utm_source parameter to URLs with existing parameters', () => {
       const url = 'https://example.com?param=value';
-      const result = service.addUtmSource(url);
+      const result = service.addUtmParameters(url);
       expect(result).toBe('https://example.com?param=value&utm_source=https://lucasbrito.com.br');
     });
 
     it('should not modify mailto links', () => {
       const url = 'mailto:test@example.com';
-      const result = service.addUtmSource(url);
+      const result = service.addUtmParameters(url);
       expect(result).toBe(url);
     });
   });
