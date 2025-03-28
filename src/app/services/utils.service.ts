@@ -29,7 +29,6 @@ export class UtilsService {
     this.translate.use(this.currentLang);
   }
 
-
   async setLanguage(): Promise<void> {
     this.translate.setDefaultLang(this.currentLang);
 
@@ -54,5 +53,24 @@ export class UtilsService {
 
   goHome(): void {
     void this.router.navigate(['/']);
+  }
+
+  addUtmParameters(url: string, source: string = 'lucasbrito-website', medium: string = 'link'): string {
+    if (!url || typeof url !== 'string') {
+      console.warn('Invalid URL provided');
+      return url;
+    }
+
+    if (url.startsWith('mailto:')) {
+      return url;
+    }
+
+    const params = new URLSearchParams({
+      utm_source: source,
+      utm_medium: medium
+    });
+
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}${params.toString()}`;
   }
 }

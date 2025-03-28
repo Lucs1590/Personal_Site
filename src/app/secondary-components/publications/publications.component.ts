@@ -1,13 +1,15 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-    selector: 'app-publications',
-    templateUrl: './publications.component.html',
-    styleUrls: ['./publications.component.css'],
-    standalone: false
+  selector: 'app-publications',
+  templateUrl: './publications.component.html',
+  styleUrls: ['./publications.component.css'],
+  standalone: false
 })
 export class PublicationsComponent implements OnInit, AfterViewInit {
   blogPublications: Publication[];
@@ -18,7 +20,9 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private utilsService: UtilsService,
+    private renderer: Renderer2
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -32,6 +36,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
     this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
+    this.modifyLinks();
   }
 
   public defineIconImage(event: MouseEvent): void {
@@ -43,8 +48,12 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   }
 
   async getBlogPublications(): Promise<void> {
-    const publications = await this.apiService.getAllPublications().toPromise();
+    const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
+      .map((publication) => {
+        publication.url = this.utilsService.addUtmParameters(publication.url);
+        return publication;
+      })
       .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
@@ -79,6 +88,17 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
         publication.title.toLowerCase().includes(searchQuery) ||
         publication.description.toLowerCase().includes(searchQuery)
       );
+    });
+  }
+
+  private modifyLinks(): void {
+    const links = this.elementRef.nativeElement.querySelectorAll('a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        const modifiedHref = this.utilsService.addUtmParameters(href);
+        this.renderer.setAttribute(link, 'href', modifiedHref);
+      }
     });
   }
 }

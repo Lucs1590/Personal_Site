@@ -2,10 +2,10 @@ import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2 } fro
 import { UtilsService } from '../services/utils.service';
 
 @Component({
-    selector: 'app-m-home',
-    templateUrl: './m-home.component.html',
-    styleUrls: ['./m-home.component.css'],
-    standalone: false
+  selector: 'app-m-home',
+  templateUrl: './m-home.component.html',
+  styleUrls: ['./m-home.component.css'],
+  standalone: false
 })
 export class MHomeComponent implements AfterContentInit, AfterViewInit {
   constructor(

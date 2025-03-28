@@ -1,5 +1,6 @@
 {
     "tasks": {
-        "build": "npm install --force && npm run build"
+        "build": "npm install --force && npm run build",
+        "test": "npm install --force && npm test"
     }
 }
