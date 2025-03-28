@@ -8,11 +8,15 @@ import { UtilsService } from '../services/utils.service';
   standalone: false
 })
 export class MHomeComponent implements AfterContentInit, AfterViewInit {
+  currentUrl: string;
+
   constructor(
     public utils: UtilsService,
     private elementRef: ElementRef,
     private renderer: Renderer2
-  ) { }
+  ) {
+    this.currentUrl = window.location.href;
+  }
 
   ngAfterContentInit(): void {
     const title = document.getElementById('title_name');
