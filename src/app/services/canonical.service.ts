@@ -11,15 +11,21 @@ export class CanonicalService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
-  setCanonicalURL(url: string): void {
-    let link: HTMLLinkElement = this.document.querySelector('link[rel="canonical"]');
+  setCanonicalURL(url?: string) {
+    let cleanUrl = url || this.document.location.href;
 
-    if (!link) {
-      link = this.document.createElement('link');
+    cleanUrl = cleanUrl.replace(/index\.html$/, '');
+    cleanUrl = cleanUrl.split('?')[0];
+    cleanUrl = cleanUrl.replace(/^https?:\/\/www\./, 'https://'); // Removendo "www."
+
+    let link: HTMLLinkElement = this.document.querySelector('link[rel="canonical"]') ||
+      this.document.createElement('link');
+
+    if (!link.parentElement) {
       link.setAttribute('rel', 'canonical');
       this.document.head.appendChild(link);
     }
 
-    this.renderer.setAttribute(link, 'href', url);
+    this.renderer.setAttribute(link, 'href', cleanUrl);
   }
 }
