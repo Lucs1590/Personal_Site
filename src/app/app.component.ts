@@ -1,23 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { UtilsService } from './services/utils.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { CanonicalService } from './services/canonical.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent implements OnInit {
 
   constructor(
     private meta: Meta,
+    private router: Router,
+    private canonicalService: CanonicalService,
     private utilsService: UtilsService
   ) { }
 
   async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();
     this.setMetaTags();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.canonicalService.setCanonicalURL(window.location.href);
+      }
+    });
   }
 
   setMetaTags() {
