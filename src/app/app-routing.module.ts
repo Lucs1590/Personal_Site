@@ -10,7 +10,7 @@ import { RecommendationsComponent } from './secondary-components/recommendations
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: SeparadorComponent, title: 'Lucas Brito - Personal Website' },
+  { path: 'home', component: SeparadorComponent, title: 'Lucas de Brito Silva' },
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
   { path: 'portfolio/project/:id', component: ProjectDetailComponent, title: 'Lucas Brito - Project Detail' },
