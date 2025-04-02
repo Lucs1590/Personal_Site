@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
     this.meta.addTags([
-      { name: 'description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
+      { name: 'description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data, Portfolio, Recommendations, Publications' },
       { name: 'author', content: 'Lucs1590' },
-      { name: 'keywords', content: 'Lucas Brito, Lucas de Brito Silva, Lucs1590, AI, Machine Learning, Personal Website, Data' },
+      { name: 'keywords', content: 'Lucas Brito, Lucas de Brito Silva, Lucs1590, AI, Machine Learning, Personal Website, Data, Portfolio, Recommendations, Publications' },
       { name: 'robots', content: 'index, follow' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'date', content: formattedDate, scheme: 'DD/MM/YYYY' },
@@ -36,13 +36,13 @@ export class AppComponent implements OnInit {
       { name: 'og:type', content: 'website' },
       { name: 'og:url', content: 'https://lucasbrito.com.br' },
       { name: 'og:image', content: 'https://www.lucasbrito.com.br/assets/img/principal-min-mob.png' },
-      { name: 'og:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
+      { name: 'og:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data, Portfolio, Recommendations, Publications' },
       { name: 'og:site_name', content: 'Lucas Brito' },
       { name: 'og:locale', content: 'pt_BR, en_US' },
-      { name: 'twitter:card', content: 'summary_large_image' }, // Changed to summary_large_image for better Twitter card
+      { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@lucs1590' },
       { name: 'twitter:title', content: 'Lucas Brito - Personal Website' },
-      { name: 'twitter:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data' },
+      { name: 'twitter:description', content: 'Lucas Brito - Personal Website. AI, Machine Learning, Data, Portfolio, Recommendations, Publications' },
       { name: 'twitter:image', content: 'https://www.lucasbrito.com.br/assets/img/principal-min-mob.png' },
       { charset: 'UTF-8' }
     ]);

@@ -3,7 +3,9 @@ User-agent: *
 Allow: /$
 Allow: /home/
 Allow: /publications/
-Allow: /privacy-policy/
+Allow: /portfolio/
+Allow: /recommendations/
+Allow: /privacy/
 Allow: /sitemap.xml
 Allow: /robots.txt
 
@@ -20,7 +22,6 @@ Disallow: /tag/
 Disallow: /category/
 Disallow: /archive/
 Disallow: /404/
-Disallow: /privacy/
 Disallow: /terms/
 Disallow: /contact/
 Disallow: /api/
@@ -28,7 +29,6 @@ Disallow: /config/
 Disallow: /scripts/
 
 # Use the Noindex directive for pages that should not appear in search results but are not disallowed
-Noindex: /privacy/
 Noindex: /terms/
 Noindex: /contact/
 
