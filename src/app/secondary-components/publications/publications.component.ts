@@ -16,6 +16,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   sciPublications: Publication[];
   loading = false;
   scholarImage: string;
+  mcpResponse = '';
+  userQuestion = '';
 
   constructor(
     private apiService: ApiService,
@@ -100,5 +102,16 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
         this.renderer.setAttribute(link, 'href', modifiedHref);
       }
     });
+  }
+
+  askMCP() {
+    const messages = [
+      { role: 'system', content: 'Você é um assistente especializado nos artigos do Lucas Brito Silva. Ajude o usuário a entender melhor as publicações.' },
+      { role: 'user', content: this.userQuestion }
+    ];
+
+    // this.utilsService.sendMessageToMCP(messages).subscribe((response: any) => {
+    //  this.mcpResponse = response.choices[0].message.content;
+    // });
   }
 }
