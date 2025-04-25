@@ -252,4 +252,17 @@
             </div>
         </ng-template>
     </div>
+    <div class="container-fluid mt-5 px-4">
+        <h2 class="text-white">🤖 Pergunte ao MCP</h2>
+        <div class="mb-3">
+            <textarea [(ngModel)]="userQuestion" class="form-control" rows="3"
+                placeholder="Pergunte algo sobre os artigos..."></textarea>
+        </div>
+        <button class="btn btn-warning mb-3" (click)="askMCP()">Enviar</button>
+
+        <div *ngIf="mcpResponse" class="alert alert-secondary">
+            <strong>MCP:</strong> {{ mcpResponse }}
+        </div>
+    </div>
+
 </div>
