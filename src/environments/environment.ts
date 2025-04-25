@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  openAiKey: null,
   production: false,
   appVersion: require('../../package.json').version + '-dev'
 };
