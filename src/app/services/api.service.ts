@@ -8,10 +8,13 @@ import { Repository } from '../models/repository.model';
 import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
+import { environment } from 'src/environments/environment';
+
 
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
 const IPAPI_API_BASE_URL = 'https://ipapi.co/json';
+const OPENAPI_URL = 'https://api.openai.com/v1/chat/completions';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +68,17 @@ export class ApiService {
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
+  }
+
+  sendMessageToMCP(messages: any[]) {
+    return this.httpService.post(OPENAPI_URL, {
+      model: 'gpt-4',
+      messages,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${environment.openAiKey}`
+      }
+    });
   }
 }
