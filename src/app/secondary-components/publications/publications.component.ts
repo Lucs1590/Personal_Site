@@ -110,8 +110,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
       { role: 'user', content: this.userQuestion }
     ];
 
-    // this.utilsService.sendMessageToMCP(messages).subscribe((response: any) => {
-    //  this.mcpResponse = response.choices[0].message.content;
-    // });
+    this.apiService.sendMessageToMCP(messages).subscribe((response: any) => {
+      this.mcpResponse = response.choices[0].message.content;
+    });
   }
 }
