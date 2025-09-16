@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-left ms-2 mt-2">
-    <button translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utils.useLanguage()" aria-label="Change Language">lang</button>
+    <button translate class="btn btn-outline-secondary btn-fab btn-sm" (click)="utilsService.useLanguage()" aria-label="Change Language">lang</button>
     <div class="ms-5 mt-1">
         <a translate *ngFor="let item of itemsList" [routerLink]="item.ref" [routerLinkActive]="'active-page'"
             [attr.aria-current]="isActive(item.ref) ? 'page' : ''" class="ms-3 itemnav" [attr.aria-label]="item.name | async">

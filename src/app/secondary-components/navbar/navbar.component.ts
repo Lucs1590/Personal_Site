@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   itemsList = signal<{ name: Promise<string> | string; ref: string[]; mobile: boolean; desktop: boolean }[]>([]);
 
   constructor(
-    public utils: UtilsService,
+    public utilsService: UtilsService,
     private translate: TranslateService,
     private router: Router
   ) {
@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.utils.setLanguage();
+    await this.utilsService.setLanguage();
     this.defineMenu();
     this.filterItems();
   }

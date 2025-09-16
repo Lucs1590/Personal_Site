@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
 
 @Component({
-    selector: 'app-portfolio',
-    templateUrl: './portfolio.component.html',
-    styleUrls: ['./portfolio.component.css'],
-    standalone: false
+  selector: 'app-portfolio',
+  templateUrl: './portfolio.component.html',
+  styleUrls: ['./portfolio.component.css'],
+  standalone: false
 })
 export class PortfolioComponent implements OnInit {
   repos: Repository[];
@@ -17,14 +18,17 @@ export class PortfolioComponent implements OnInit {
   selectedTags: string[] = [];
   sortOption: string = '';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+  ) { }
 
   async ngOnInit() {
     await this.getRepositories();
   }
 
   async getRepositories() {
-    const repositories = await this.apiService.getAllRepositories('Lucs1590').toPromise();
+    const repositories = await firstValueFrom(this.apiService.getAllRepositories('Lucs1590'));
     this.repos = repositories
       .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
       .filter(repo => repo.private === false);
