@@ -14,8 +14,8 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@angular/animations": "^20.3.0",
-    "@angular/common": "^20.3.0",
+    "@angular/animations": "^20.3.1",
+    "@angular/common": "^20.3.1",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
     "@angular/forms": "^20.3.0",
@@ -27,7 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/bootstrap": "^5.2.9",
