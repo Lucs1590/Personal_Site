@@ -8,6 +8,12 @@ export class Publication implements Deserializable {
   url?: string;
   author?: string;
   categories?: string[];
+  venue?: string;
+  year?: number;
+  doi?: string;
+  pdfUrl?: string;
+  githubUrl?: string;
+  type?: string; // e.g., 'journal', 'conference', 'preprint', 'blog'
 
   deserialize(input: {
     title: string;
@@ -20,6 +26,12 @@ export class Publication implements Deserializable {
     content: string;
     enclosure: any;
     categories: string[];
+    venue?: string;
+    year?: number;
+    doi?: string;
+    pdfUrl?: string;
+    githubUrl?: string;
+    type?: string;
   }): this {
     Object.assign(this, {});
     this.title = input?.title;
@@ -35,6 +47,12 @@ export class Publication implements Deserializable {
     this.url = input?.link;
     this.author = input?.author;
     this.categories = input?.categories;
+    this.venue = input?.venue;
+    this.year = input?.year || new Date(input?.pubDate).getFullYear();
+    this.doi = input?.doi;
+    this.pdfUrl = input?.pdfUrl;
+    this.githubUrl = input?.githubUrl;
+    this.type = input?.type || 'blog';
     return this;
   }
 }
