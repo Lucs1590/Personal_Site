@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-* { padding:0;margin:0;}
-html, body { height:100%; }
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
+
     *,
     ::before,
     ::after {
