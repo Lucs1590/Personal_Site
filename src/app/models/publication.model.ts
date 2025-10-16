@@ -13,7 +13,7 @@ export class Publication implements Deserializable {
   doi?: string;
   pdfUrl?: string;
   githubUrl?: string;
-  type?: string; // e.g., 'journal', 'conference', 'preprint', 'blog'
+  type?: string;
 
   deserialize(input: {
     title: string;
@@ -42,7 +42,13 @@ export class Publication implements Deserializable {
 
     this.description = sanitizedDescription.slice(0, 210) + '..</p>';
 
-    this.image = input?.thumbnail;
+    if (input?.thumbnail) {
+      this.image = input.thumbnail;
+    } else if (input?.content) {
+      const contentDoc = new DOMParser().parseFromString(input?.content, 'text/html');
+      const img = contentDoc.querySelector('img');
+      this.image = img?.getAttribute('src') || undefined;
+    }
     this.publicationDate = new Date(input?.pubDate);
     this.url = input?.link;
     this.author = input?.author;
