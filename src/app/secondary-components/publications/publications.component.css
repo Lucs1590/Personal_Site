@@ -185,6 +185,12 @@ a.disabled {
     border: 1px solid rgba(155, 89, 182, 0.5);
 }
 
+.type-blog {
+    background-color: rgba(230, 156, 36, 0.2);
+    color: #E69C24;
+    border: 1px solid rgba(230, 156, 36, 0.5);
+}
+
 .pub-description {
     color: #d8d8d8;
     font-size: 1rem;

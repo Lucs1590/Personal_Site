@@ -92,34 +92,48 @@
         </div>
     </div>
 
-    <div class="row text-white ps-3 mt-5 mb-2">
+    <div class="row text-white ps-3 mt-5 mb-3">
         <h2 translate>publi.blog-subtitle</h2>
     </div>
-    <div class="d-flex flex-wrap text-dark justify-content-around pb-4">
+
+    <!-- Blog Publications List -->
+    <div class="publications-container pb-4">
         <ng-container *ngIf="loading; else skeletonTemplate">
-            <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
-                *ngFor="let pub of (blogPublications?.slice(0, 6) || [])">
-                <div class="card-body">
-                    <img NgOptimizedImage [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem"
-                        loading="lazy">
-                    <h3 class="card-title mb-2">{{ pub.title }}</h3>
-                    <div class="card-text about-text" [innerHTML]=pub.description></div>
-                    <div class="row w-100 foot-card">
-                        <div class="col">
-                            <a translate [href]=pub.url class="read-more" target="_blank" disableWhenOffline>
-                                <fa-icon icon="link"></fa-icon> publi.read-more
+            <div class="publication-card" *ngFor="let pub of (blogPublications?.slice(0, 6) || [])">
+                <div class="pub-content">
+                    <div class="pub-header">
+                        <h3 class="pub-title">
+                            <a [href]="pub.url" target="_blank" class="title-link" disableWhenOffline>
+                                {{ pub.title }}
                             </a>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end">
-                                <small class="text-muted">
-                                    {{ pub.publicationDate | date:'mediumDate'}}
-                                </small>
-                            </p>
+                        </h3>
+                        <div class="pub-meta">
+                            <span class="pub-authors" *ngIf="pub.author">{{ pub.author }}</span>
+                            <span class="pub-venue">
+                                <fa-icon icon="calendar" class="me-1"></fa-icon>
+                                {{ pub.publicationDate | date:'mediumDate'}}
+                            </span>
+                            <span class="pub-type-badge type-blog">
+                                Blog
+                            </span>
                         </div>
                     </div>
+                    
+                    <div class="pub-description about-text" [innerHTML]="pub.description"></div>
+                    
+                    <div class="pub-links">
+                        <a [href]="pub.url" class="pub-link-btn" target="_blank" disableWhenOffline
+                            [attr.aria-label]="'Read post: ' + pub.title">
+                            <fa-icon icon="link" class="me-1"></fa-icon>
+                            <span translate>publi.read-more</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="pub-image" *ngIf="pub.image">
+                    <img [src]="pub.image" [alt]="pub.title" class="img-fluid" loading="lazy">
                 </div>
             </div>
+
             <div *ngIf="blogPublications && blogPublications.length === 0" class="text-center text-white mt-5">
                 <div class="alert new-info-alert" role="alert">
                     <fa-icon icon="info-circle" class="me-2"></fa-icon>
