@@ -100,6 +100,8 @@
             <div class="card real-card mb-5 text-white bg-dark border-white rounded-0 border-right-0 border-left-0"
                 *ngFor="let pub of (blogPublications?.slice(0, 6) || [])">
                 <div class="card-body">
+                    <img NgOptimizedImage [src]="pub.image" class="thumb me-2 mb-1" alt="Thumbnail" height="2rem"
+                        loading="lazy">
                     <h3 class="card-title mb-2">{{ pub.title }}</h3>
                     <div class="card-text about-text" [innerHTML]=pub.description></div>
                     <div class="row w-100 foot-card">
