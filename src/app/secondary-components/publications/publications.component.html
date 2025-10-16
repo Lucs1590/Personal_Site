@@ -217,17 +217,17 @@
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="pub-description about-text" [innerHTML]="pub.description"></div>
-                    
+
                     <div class="pub-links">
                         <a [href]="pub.url" class="pub-link-btn" target="_blank" disableWhenOffline
                             [attr.aria-label]="'View publication: ' + pub.title">
                             <fa-icon icon="link" class="me-1"></fa-icon>
                             <span translate>publi.view-publication</span>
                         </a>
-                        <a *ngIf="pub.pdfUrl" [href]="pub.pdfUrl" class="pub-link-btn" target="_blank" disableWhenOffline
-                            [attr.aria-label]="'Download PDF: ' + pub.title">
+                        <a *ngIf="pub.pdfUrl" [href]="pub.pdfUrl" class="pub-link-btn" target="_blank"
+                            disableWhenOffline [attr.aria-label]="'Download PDF: ' + pub.title">
                             <fa-icon icon="file-pdf" class="me-1"></fa-icon>
                             <span>PDF</span>
                         </a>
