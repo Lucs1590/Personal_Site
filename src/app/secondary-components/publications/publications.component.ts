@@ -36,6 +36,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
     await this.getBlogPublications();
     this.filterPublications();
+    console.log('Blog Publications:', this.blogPublications);
   }
 
   ngAfterViewInit(): void {
@@ -55,11 +56,11 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   async getBlogPublications(): Promise<void> {
     const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
-      .map((publication) => {
+      .map((publication: Publication) => {
         publication.url = this.utilsService.addUtmParameters(publication.url);
         return publication;
       })
-      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+      .sort((a: Publication, b: Publication) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
   getSciPublications(): void {
