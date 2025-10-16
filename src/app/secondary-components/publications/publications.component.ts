@@ -14,8 +14,13 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class PublicationsComponent implements OnInit, AfterViewInit {
   blogPublications: Publication[];
   sciPublications: Publication[];
+  filteredSciPublications: Publication[];
   loading = false;
   scholarImage: string;
+  selectedYear: string = 'all';
+  selectedType: string = 'all';
+  availableYears: number[] = [];
+  availableTypes: string[] = [];
 
   constructor(
     private apiService: ApiService,
@@ -31,6 +36,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
     await this.getBlogPublications();
     this.filterPublications();
+    console.log('Blog Publications:', this.blogPublications);
   }
 
   ngAfterViewInit(): void {
@@ -50,11 +56,11 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
   async getBlogPublications(): Promise<void> {
     const publications = await firstValueFrom(this.apiService.getAllPublications());
     this.blogPublications = publications
-      .map((publication) => {
+      .map((publication: Publication) => {
         publication.url = this.utilsService.addUtmParameters(publication.url);
         return publication;
       })
-      .sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+      .sort((a: Publication, b: Publication) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
   getSciPublications(): void {
@@ -67,6 +73,28 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
       const sanitizedDescription = this.sanitizeHTML(parsedDescription.body.textContent || '');
       publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
     });
+
+    this.availableYears = [...new Set(this.sciPublications.map(p => p.year).filter(y => y))].sort((a, b) => b - a);
+    this.availableTypes = [...new Set(this.sciPublications.map(p => p.type).filter(t => t))];
+    this.applyFilters();
+  }
+
+  applyFilters(): void {
+    this.filteredSciPublications = this.sciPublications.filter(pub => {
+      const yearMatch = this.selectedYear === 'all' || pub.year === parseInt(this.selectedYear, 10);
+      const typeMatch = this.selectedType === 'all' || pub.type === this.selectedType;
+      return yearMatch && typeMatch;
+    });
+  }
+
+  onYearChange(year: string): void {
+    this.selectedYear = year;
+    this.applyFilters();
+  }
+
+  onTypeChange(type: string): void {
+    this.selectedType = type;
+    this.applyFilters();
   }
 
   sanitizeHTML(html: string): string {
