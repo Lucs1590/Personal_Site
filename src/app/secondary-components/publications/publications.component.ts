@@ -80,7 +80,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit {
 
   applyFilters(): void {
     this.filteredSciPublications = this.sciPublications.filter(pub => {
-      const yearMatch = this.selectedYear === 'all' || pub.year === parseInt(this.selectedYear);
+      const yearMatch = this.selectedYear === 'all' || pub.year === parseInt(this.selectedYear, 10);
       const typeMatch = this.selectedType === 'all' || pub.type === this.selectedType;
       return yearMatch && typeMatch;
     });
