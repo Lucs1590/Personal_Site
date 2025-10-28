@@ -79,8 +79,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private filterItems(): void {
     if (!this.itemsList) return;
-    this.itemsList = this.mobile 
-      ? this.itemsList.filter(item => item.mobile) 
+    this.itemsList = this.mobile
+      ? this.itemsList.filter(item => item.mobile)
       : this.itemsList.filter(item => item.desktop);
   }
 
