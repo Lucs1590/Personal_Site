@@ -11,7 +11,7 @@
                     (click)="filterByTag('All')">
                     All
                 </li>
-                <li *ngFor="let tag of tags" class="list-group-item" [ngClass]="{'active': selectedTags.includes(tag)}"
+                <li *ngFor="let tag of tags; trackBy: trackByTag" class="list-group-item" [ngClass]="{'active': selectedTags.includes(tag)}"
                     (click)="filterByTag(tag)">
                     {{ tag }}
                 </li>
@@ -42,7 +42,7 @@
 
             <!-- Portfolio Grid -->
             <div class="row">
-                <ng-container *ngFor="let repo of filteredRepos">
+                <ng-container *ngFor="let repo of filteredRepos; trackBy: trackByRepoName">
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card project-card" (mouseover)="showProjectInfo(repo.name)"
                             (mouseout)="hideProjectInfo(repo.name)">
@@ -51,7 +51,7 @@
                                 <h5 class="card-title">{{ repo.name }}</h5>
                                 <p class="card-text">{{ repo.description }}</p>
                                 <div class="tags">
-                                    <span class="badge bg-primary text-light me-1" *ngFor="let tag of repo.topics">
+                                    <span class="badge bg-primary text-light me-1" *ngFor="let tag of repo.topics; trackBy: trackByTag">
                                         {{ tag }}
                                     </span>
                                 </div>
@@ -71,7 +71,7 @@
             <!-- Carousel for Project Images and Videos -->
             <div id="projectCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item" *ngFor="let repo of filteredRepos; let i = index"
+                    <div class="carousel-item" *ngFor="let repo of filteredRepos; let i = index; trackBy: trackByRepoName"
                         [ngClass]="{'active': i === 0}">
                         <img *ngIf="repo.imageUrl" [src]="repo.imageUrl" class="d-block w-100" [alt]="repo.name">
                         <video *ngIf="repo.videoUrl" class="d-block w-100" controls>

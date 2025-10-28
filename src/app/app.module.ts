@@ -1,6 +1,5 @@
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -89,7 +88,6 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
@@ -101,7 +99,6 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
         deps: [HttpClient]
       }
     }),
-    HammerModule,
     FontAwesomeModule,
     NgxSkeletonLoaderModule,
     AppRoutingModule

@@ -11,33 +11,39 @@ import { ApiService } from '../services/api.service';
   standalone: false
 })
 export class PortfolioComponent implements OnInit {
-  repos: Repository[];
-  filteredRepos: Repository[];
-  tags: string[];
-  searchQuery: string = '';
+  repos: Repository[] = [];
+  filteredRepos: Repository[] = [];
+  tags: string[] = [];
+  searchQuery = '';
   selectedTags: string[] = [];
-  sortOption: string = '';
+  sortOption = '';
 
   constructor(
     private apiService: ApiService,
     private router: Router
   ) { }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     await this.getRepositories();
   }
 
-  async getRepositories() {
-    const repositories = await firstValueFrom(this.apiService.getAllRepositories('Lucs1590'));
-    this.repos = repositories
-      .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
-      .filter(repo => repo.private === false);
-    this.filteredRepos = [...this.repos];
-    this.tags = this.extractTags(this.repos);
+  async getRepositories(): Promise<void> {
+    try {
+      const repositories = await firstValueFrom(this.apiService.getAllRepositories('Lucs1590'));
+      this.repos = repositories
+        .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
+        .filter(repo => !repo.private);
+      this.filteredRepos = [...this.repos];
+      this.tags = this.extractTags(this.repos);
+    } catch (error) {
+      console.error('Error fetching repositories:', error);
+      this.repos = [];
+      this.filteredRepos = [];
+    }
   }
 
   private extractTags(repos: Repository[]): string[] {
-    const allTags = repos.reduce((tags, repo) => {
+    const allTags = repos.reduce<string[]>((tags, repo) => {
       repo.topics.forEach(tag => {
         if (!tags.includes(tag)) {
           tags.push(tag);
@@ -48,7 +54,7 @@ export class PortfolioComponent implements OnInit {
     return allTags.sort();
   }
 
-  filterByTag(tag: string) {
+  filterByTag(tag: string): void {
     if (tag === 'All') {
       this.selectedTags = [];
     } else {
@@ -62,11 +68,11 @@ export class PortfolioComponent implements OnInit {
     this.applyFilters();
   }
 
-  searchProjects() {
+  searchProjects(): void {
     this.applyFilters();
   }
 
-  applyFilters() {
+  applyFilters(): void {
     let filtered = [...this.repos];
 
     if (this.selectedTags.length > 0) {
@@ -100,28 +106,36 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  clearFilters() {
+  clearFilters(): void {
     this.selectedTags = [];
     this.searchQuery = '';
     this.sortOption = '';
     this.filteredRepos = [...this.repos];
   }
 
-  navigateToProjectDetail(id: string) {
-    this.router.navigate(['/portfolio', id]);
+  navigateToProjectDetail(id: string): void {
+    void this.router.navigate(['/portfolio', id]);
   }
 
-  showProjectInfo(id: string) {
+  showProjectInfo(id: string): void {
     const repo = this.repos.find(r => r.name === id);
     if (repo) {
       repo.showInfo = true;
     }
   }
 
-  hideProjectInfo(id: string) {
+  hideProjectInfo(id: string): void {
     const repo = this.repos.find(r => r.name === id);
     if (repo) {
       repo.showInfo = false;
     }
+  }
+
+  trackByRepoName(repo: Repository): string {
+    return repo.name;
+  }
+
+  trackByTag(tag: string): string {
+    return tag;
   }
 }

@@ -18,14 +18,18 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit {
     const title = document.getElementById('title_name');
     const subtitle = document.getElementById('sub_title');
 
-    title.classList.add('animated', 'zoomIn');
-    subtitle.classList.add('animated', 'zoomIn');
+    if (title) {
+      title.classList.add('animated', 'zoomIn');
+    }
+    if (subtitle) {
+      subtitle.classList.add('animated', 'zoomIn');
+    }
   }
 
   ngAfterViewInit(): void {
     // Subtle animations for interactive elements and transitions
     const interactiveElements = this.elementRef.nativeElement.querySelectorAll('a, button');
-    interactiveElements.forEach(element => {
+    interactiveElements.forEach((element: HTMLElement) => {
       this.renderer.listen(element, 'mouseover', () => {
         this.renderer.addClass(element, 'animated');
         this.renderer.addClass(element, 'pulse');
