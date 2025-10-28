@@ -3,13 +3,7 @@ import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
-
-interface MenuItem {
-  name: Promise<string> | string;
-  ref: string[];
-  mobile: boolean;
-  desktop: boolean;
-}
+import { MenuItem } from 'src/app/models/menu-item.model'
 
 @Component({
     selector: 'app-navbar',
