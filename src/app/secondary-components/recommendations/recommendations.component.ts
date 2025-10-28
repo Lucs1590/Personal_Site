@@ -51,6 +51,6 @@ Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
   ].map(recommendation => new Recommendation().deserialize(recommendation));
 
   trackByAuthor(index: number, recommendation: Recommendation): string {
-    return recommendation.author;
+    return recommendation.author || index.toString();
   }
 }

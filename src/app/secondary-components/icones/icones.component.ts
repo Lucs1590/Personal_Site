@@ -31,6 +31,6 @@ export class IconesComponent implements AfterViewInit {
   }
 
   trackByIconLink(index: number, icon: Icon): string {
-    return icon.link;
+    return icon.link || index.toString();
   }
 }
