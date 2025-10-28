@@ -9,7 +9,7 @@ import { Recommendation } from 'src/app/models/recommendation.model';
 })
 export class RecommendationsComponent {
 
-  recommendations = [
+  readonly recommendations = [
     {
       author: 'Samuel Licorio Leiva',
       authorImage: '../../assets/img/samu.jpeg',
@@ -49,7 +49,4 @@ Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
       stage: 'Em 2 de fevereiro de 2021, Lucas trabalhava com Rafael no mesmo grupo'
     }
   ].map(recommendation => new Recommendation().deserialize(recommendation));
-
-  constructor() { }
-
 }

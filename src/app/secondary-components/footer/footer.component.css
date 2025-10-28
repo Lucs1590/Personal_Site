@@ -1,6 +1,6 @@
 footer {
   background-color: #333;
-  color: #fff;
+  color: var(--color-white);
   padding: 0.2rem;
   text-align: right;
 }
@@ -18,20 +18,20 @@ footer {
 
 .footer-section p,
 .footer-section a {
-  font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 300;
-  color: #fff;
+  color: var(--color-white);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .footer-section a {
   text-decoration: none;
-  color: #E69C24;
+  color: var(--color-primary);
 }
 
 .footer-section a:visited {
-  color: #E69C24;
+  color: var(--color-primary);
 }
 
 .footer-section a:hover {
