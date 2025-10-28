@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { UtilsService } from './services/utils.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CanonicalService } from './services/canonical.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { CanonicalService } from './services/canonical.service';
   styleUrls: ['./app.component.css'],
   standalone: false
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  private readonly destroy$ = new Subject<void>();
 
   constructor(
     private meta: Meta,
@@ -22,17 +24,27 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();
     this.setMetaTags();
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const cleanUrl = this.router.url.split('?')[0];
-        const canonicalUrl = `https://lucasbrito.com.br${cleanUrl}`;
-        this.canonicalService.setCanonicalURL(canonicalUrl);
-      }
-    });
+    this.setupCanonicalUrlUpdates();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
-  setMetaTags() {
+  private setupCanonicalUrlUpdates(): void {
+    this.router.events
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          const cleanUrl = this.router.url.split('?')[0];
+          const canonicalUrl = `https://lucasbrito.com.br${cleanUrl}`;
+          this.canonicalService.setCanonicalURL(canonicalUrl);
+        }
+      });
+  }
+
+  private setMetaTags(): void {
     const date = new Date(Date.now());
     const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 

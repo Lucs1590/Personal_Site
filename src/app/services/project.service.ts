@@ -5,7 +5,7 @@ import { Project } from '../models/project.model';
   providedIn: 'root'
 })
 export class ProjectService {
-  private projects: Project[] = [
+  private readonly projects: Project[] = [
     new Project(
       '1',
       'Tombamento de Guia',
@@ -116,7 +116,7 @@ export class ProjectService {
     return this.projects;
   }
 
-  getProjectById(id: string): Project {
+  getProjectById(id: string): Project | undefined {
     return this.projects.find(project => project.id === id);
   }
 
@@ -132,6 +132,9 @@ export class ProjectService {
   }
 
   deleteProject(id: string): void {
-    this.projects = this.projects.filter(project => project.id !== id);
+    const index = this.projects.findIndex(project => project.id === id);
+    if (index !== -1) {
+      this.projects.splice(index, 1);
+    }
   }
 }
