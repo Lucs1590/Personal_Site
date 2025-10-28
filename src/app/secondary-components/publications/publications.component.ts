@@ -140,4 +140,16 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
   }
+
+  trackByPublicationId(index: number, publication: Publication): string {
+    return publication.url || index.toString();
+  }
+
+  trackByYear(index: number, year: number): number {
+    return year;
+  }
+
+  trackByType(index: number, type: string): string {
+    return type;
+  }
 }

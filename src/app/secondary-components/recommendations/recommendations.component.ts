@@ -49,4 +49,8 @@ Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
       stage: 'Em 2 de fevereiro de 2021, Lucas trabalhava com Rafael no mesmo grupo'
     }
   ].map(recommendation => new Recommendation().deserialize(recommendation));
+
+  trackByAuthor(index: number, recommendation: Recommendation): string {
+    return recommendation.author;
+  }
 }

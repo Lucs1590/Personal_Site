@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class IconesComponent implements AfterViewInit {
 
-  iconList = iconList.map(icon => new Icon().deserialize(icon));
+  readonly iconList = iconList.map(icon => new Icon().deserialize(icon));
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2, private utilsService: UtilsService) { }
 
@@ -21,12 +21,16 @@ export class IconesComponent implements AfterViewInit {
 
   private modifyLinks(): void {
     const links = this.elementRef.nativeElement.querySelectorAll('a');
-    links.forEach(link => {
+    links.forEach((link: HTMLAnchorElement) => {
       const href = link.getAttribute('href');
       if (href) {
         const modifiedHref = this.utilsService.addUtmParameters(href);
         this.renderer.setAttribute(link, 'href', modifiedHref);
       }
     });
+  }
+
+  trackByIconLink(index: number, icon: Icon): string {
+    return icon.link;
   }
 }
