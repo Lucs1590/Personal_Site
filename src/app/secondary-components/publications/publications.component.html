@@ -99,7 +99,7 @@
     <!-- Blog Publications List -->
     <div class="publications-container pb-4">
         <ng-container *ngIf="loading; else skeletonTemplate">
-            <div class="publication-card" *ngFor="let pub of (blogPublications?.slice(0, 6) || [])">
+            <div class="publication-card" *ngFor="let pub of (blogPublications?.slice(0, 6) || []); trackBy: trackByPublicationId">
                 <div class="pub-content">
                     <div class="pub-header">
                         <h3 class="pub-title">
@@ -198,7 +198,7 @@
             <select class="form-select filter-select" [(ngModel)]="selectedYear" (change)="onYearChange(selectedYear)"
                 aria-label="Filter by year">
                 <option value="all" translate>publi.all-years</option>
-                <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+                <option *ngFor="let year of availableYears; trackBy: trackByYear" [value]="year">{{ year }}</option>
             </select>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mb-2">
@@ -206,7 +206,7 @@
             <select class="form-select filter-select" [(ngModel)]="selectedType" (change)="onTypeChange(selectedType)"
                 aria-label="Filter by type">
                 <option value="all" translate>publi.all-types</option>
-                <option *ngFor="let type of availableTypes" [value]="type">{{ type | titlecase }}</option>
+                <option *ngFor="let type of availableTypes; trackBy: trackByType" [value]="type">{{ type | titlecase }}</option>
             </select>
         </div>
     </div>
@@ -214,7 +214,7 @@
     <!-- Publications List -->
     <div class="publications-container pb-4">
         <ng-container *ngIf="loading; else skeletonTemplate">
-            <div class="publication-card" *ngFor="let pub of filteredSciPublications">
+            <div class="publication-card" *ngFor="let pub of filteredSciPublications; trackBy: trackByPublicationId">
                 <div class="pub-content">
                     <div class="pub-header">
                         <h3 class="pub-title">
