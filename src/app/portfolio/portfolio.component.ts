@@ -131,11 +131,11 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  trackByRepoName(index: number, repo: Repository): string {
+  trackByRepoName(repo: Repository): string {
     return repo.name;
   }
 
-  trackByTag(index: number, tag: string): string {
+  trackByTag(tag: string): string {
     return tag;
   }
 }
