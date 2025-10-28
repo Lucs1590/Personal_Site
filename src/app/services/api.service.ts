@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -61,6 +61,7 @@ export class ApiService {
   getIPInfo(): Observable<IPInfo> {
     return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
       .pipe(
+        timeout(2000),
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
