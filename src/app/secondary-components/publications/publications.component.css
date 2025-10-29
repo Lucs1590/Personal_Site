@@ -176,6 +176,12 @@ a.disabled {
     border: 1px solid rgba(155, 89, 182, 0.5);
 }
 
+.type-dataset {
+    background-color: rgba(230, 126, 34, 0.2);
+    color: #eb984e;
+    border: 1px solid rgba(230, 126, 34, 0.5);
+}
+
 .type-blog {
     background-color: rgba(var(--color-primary-rgb), 0.2);
     color: var(--color-primary);
