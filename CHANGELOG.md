@@ -2,6 +2,120 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.4.0 (2025-10-29)
+
+### Feat
+
+- add image display for blog publications in publications component
+- add comprehensive Copilot instructions for AI agents
+- enhance CanonicalService to set canonical URL with improved URL cleaning
+- update website name and search target URL in index.html
+- update personal branding in meta tags and routing titles
+- add CanonicalService to manage canonical URLs and update app.component to set canonical URL on navigation
+- add changes
+- refactor addUtmSource to addUtmParameters for improved URL parameter handling
+- enhance URL handling in publications component by adding UTM source
+- add @angular/localize/init to polyfills for localization support
+- add target="_blank" to external links in publications component for better user experience
+- :memo: add missing papaers
+- update navbar translations and add missing entries for portfolio and privacy policy
+- add showInfo property to Repository model
+- enhance portfolio layout with improved filtering and search functionality
+
+### Fix
+
+- add timeout to API requests for improved error handling
+- clean up whitespace and improve link accessibility in publications component
+- add missing radix
+- clean up package-lock.json by removing unused dependencies
+- update eslint plugins to latest versions and remove unused dependencies
+- correct route path for privacy policy
+- :bug: downgrade version
+- exclude e2e directory from TypeScript compilation
+- update project info display logic to use repo name instead of id
+- remove popularity sorting from portfolio component
+- update import path for PrivacyPolicyComponent to secondary-components directory
+- update privacy policy text for clarity and compliance with data protection standards
+- update privacy policy text for i18n support
+
+### Refactor
+
+- move MenuItem interface to a separate model file for better organization
+- simplify trackBy functions by removing unused index parameter
+- remove unused imports from app.module.ts for cleaner code
+- add type annotations for publication mapping in getBlogPublications
+- refine image assignment logic in Publication model
+- updating params according to new version
+- simplify angular.json structure and improve build configurations
+- update utils to utilsService for clarity in navbar component
+- rename utils to utilsService for clarity in NavbarComponent
+- addUtmSource to addUtmParameters for consistency in URL parameter handling
+- simplify portfolio and publications components by removing unused methods and updating promise handling
+- remove unused modifyLinks method from MHomeComponent
+- update component metadata to include standalone option and adjust tsconfig settings
+- update footer styles for improved layout and alignment
+- remove back-to-top link from footer component
+- clean up footer component and improve privacy policy link
+- restructure project detail components and remove unused files
+- move ProjectDetailComponent tests to secondary-components directory
+- move ProjectDetailComponent to secondary-components directory
+
+## v1.4.0 (2024-11-06)
+
+### Feat
+
+- using agibank english page
+- preventing undefined error
+- update about description
+- iconList initialization using external data source
+
+### Fix
+
+- update home component title for improved SEO relevance
+- add portfolio URL to sitemap.xml for improved SEO and indexing
+- update robots.txt to improve search engine crawling and indexing directives
+- update home component headings to include relevant keywords for better SEO
+
+### Refactor
+
+- improving code
+- removing duplicated code
+- using a simpler approach
+- update language preference logic in navbar and utils service
+- update language preference logic in navbar and utils service
+- removing cookie consent page
+
+## v1.3.0 (2024-03-25)
+
+### Feat
+
+- improving code
+- Updated src/app/secondary-components/cookie-
+- set language when accept cookies
+- add a default language
+- remove wrong code
+- add missing spec file
+- Updated src/app/secondary-components/cookie-
+- Updated src/app/secondary-components/navbar/
+- Updated src/app/app.component.ts
+- Updated src/app/services/utils.service.ts
+- Updated src/app/app.component.html
+- Updated src/app/app.module.ts
+- Add stylish cookie consent UI matching websi
+- Added HTML structure for cookie consent UI
+- Implement cookie consent component
+
+### Fix
+
+- remove setting lang pref in navbar component
+
+### Refactor
+
+- send setLanguage to utils
+- color theme
+- using bootstrap instead of css
+- transform function to private
+
 ## [1.3.0](https://github.com/Lucs1590/Personal_Site/compare/v1.2.0...v1.3.0) (2024-03-25)
 
 
