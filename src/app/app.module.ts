@@ -11,7 +11,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgOptimizedImage } from '@angular/common';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -100,7 +99,6 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
       }
     }),
     FontAwesomeModule,
-    NgxSkeletonLoaderModule,
     AppRoutingModule
   ],
   providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]

@@ -40,7 +40,6 @@
     "jquery": "^3.7.1",
     "jszip": "^3.4.0",
     "ngx-cookie-service": "^20.1.0",
-    "ngx-skeleton-loader": "^11.3.0",
     "ngx-ui-loader": "^13.0.0",
     "normalize.css": "^8.0.1",
     "particles.js": "^2.0.0",
