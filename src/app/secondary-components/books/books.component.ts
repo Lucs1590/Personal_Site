@@ -28,7 +28,7 @@ export class BooksComponent {
         {
             title: 'Malibu Rising',
             author: 'Taylor Jenkins Reid',
-            cover: 'assets/images/malibu-rising.jpg',
+            cover: 'assets/images/malibu-rising.jpeg',
             rating: 5
         },
         {
