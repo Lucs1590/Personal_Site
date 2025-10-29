@@ -1,9 +1,9 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
-import { CookieService } from 'ngx-cookie-service';
+import { MenuItem } from 'src/app/models/menu-item.model'
 
 @Component({
     selector: 'app-navbar',
@@ -11,19 +11,23 @@ import { CookieService } from 'ngx-cookie-service';
     styleUrls: ['./navbar.component.css'],
     standalone: false
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   mobile = false;
-  itemsList: { name: Promise<string> | string; ref: string[]; mobile: boolean; desktop: boolean }[];
+  itemsList: MenuItem[] = [];
+
+  private readonly destroy$ = new Subject<void>();
 
   constructor(
     public utilsService: UtilsService,
     private translate: TranslateService,
     private router: Router
   ) {
-    translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.defineMenu();
-      this.filterItems();
-    });
+    translate.onLangChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event: LangChangeEvent) => {
+        this.defineMenu();
+        this.filterItems();
+      });
   }
 
   async ngOnInit(): Promise<void> {
@@ -32,13 +36,19 @@ export class NavbarComponent implements OnInit {
     this.filterItems();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.mobile = event.target.innerWidth <= 991;
+  onResize(event: UIEvent): void {
+    const target = event.target as Window;
+    this.mobile = target.innerWidth <= 991;
     this.filterItems();
   }
 
-  private async defineMenu() {
+  private defineMenu(): void {
     this.itemsList = [
       {
         name: firstValueFrom(this.translate.get('nav.home')),
@@ -61,16 +71,17 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
-  private filterItems() {
-    this.itemsList = this.mobile ? this.itemsList?.filter(item => item.mobile) : this.itemsList?.filter(item => item.desktop);
+  private filterItems(): void {
+    if (!this.itemsList) return;
+    this.itemsList = this.mobile
+      ? this.itemsList.filter(item => item.mobile)
+      : this.itemsList.filter(item => item.desktop);
   }
 
   isActive(route: string[]): boolean {
-    if (route[0] === '/') {
-      route = ['/home'];
-    }
+    const normalizedRoute = route[0] === '/' ? ['/home'] : route;
     return this.router.isActive(
-      this.router.createUrlTree(route),
+      this.router.createUrlTree(normalizedRoute),
       {
         paths: 'exact',
         queryParams: 'exact',
@@ -78,5 +89,9 @@ export class NavbarComponent implements OnInit {
         matrixParams: 'ignored'
       }
     );
+  }
+
+  trackByItemRef(index: number, item: MenuItem): string {
+    return item.ref.join('/');
   }
 }

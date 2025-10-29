@@ -9,7 +9,11 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: []
+        categories: [],
+        venue: 'SPIE Conference Proceedings',
+        year: 2021,
+        doi: '10.1117/12.2601018',
+        type: 'conference'
     },
     {
         title: 'Sign language recognition based on deep learning and low-cost handcrafted descriptors',
@@ -21,7 +25,11 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: []
+        categories: [],
+        venue: 'arXiv preprint',
+        year: 2024,
+        pdfUrl: 'https://arxiv.org/pdf/2408.07244',
+        type: 'preprint'
     },
     {
         title: 'Semantic image segmentation with BPCAPooling: a deep learning-based approach',
@@ -33,7 +41,10 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: []
+        categories: [],
+        venue: 'UNESP Repository',
+        year: 2024,
+        type: 'thesis'
     },
     {
         title: 'Artificial intelligence for detection and quantification of rust and leaf miner in coffee crop',
@@ -45,7 +56,11 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: []
+        categories: [],
+        venue: 'arXiv preprint',
+        year: 2021,
+        pdfUrl: 'https://arxiv.org/pdf/2103.11241',
+        type: 'preprint'
     },
     {
         title: 'Large-scale dataset and benchmarking for hand and face detection focused on sign language',
@@ -57,7 +72,11 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: []
+        categories: [],
+        venue: 'ESANN 2023',
+        year: 2023,
+        pdfUrl: 'https://www.esann.org/sites/default/files/proceedings/2023/ES2023-185.pdf',
+        type: 'conference'
     },
     {
         title: 'Self-Supervised Feature Extraction for Video Surveillance Anomaly Detection',
@@ -69,6 +88,10 @@ export const sciPublications = [
         guid: '',
         content: '',
         enclosure: '',
-        categories: ['Training', 'Graphics', 'Feature extraction', 'Video surveillance', 'Task analysis', 'Anomaly detection']
+        categories: ['Training', 'Graphics', 'Feature extraction', 'Video surveillance', 'Task analysis', 'Anomaly detection'],
+        venue: 'IEEE SIBGRAPI 2023',
+        year: 2023,
+        doi: '10.1109/SIBGRAPI59091.2023.10347173',
+        type: 'conference'
     }
 ];

@@ -1,5 +1,5 @@
 .project-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .project-card:hover {
@@ -8,7 +8,7 @@
 }
 
 .additional-info {
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .project-card:hover .additional-info {
@@ -20,7 +20,7 @@
 }
 
 .carousel-item {
-  transition: transform 0.5s ease-in-out;
+  transition: transform var(--transition-medium);
 }
 
 .carousel-control-prev-icon,
@@ -31,5 +31,5 @@
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background-color: #555;
+  background-color: var(--color-border);
 }

@@ -17,7 +17,7 @@ export class HomeComponent implements AfterViewInit {
     title: ['animated', 'fadeInLeft'],
     subtitle: ['animated', 'fadeInLeft'],
     interactive: ['animated', 'pulse']
-  };
+  } as const;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
     this.idade = this.calculateAge();
@@ -44,13 +44,20 @@ export class HomeComponent implements AfterViewInit {
     const title = this.elementRef.nativeElement.querySelector('#title_name');
     const subtitle = this.elementRef.nativeElement.querySelector('#sub_title');
 
-    this.setStyleAndClasses(mainImageElement, 'background-image', this.getBackgroundImageUrl(), this.animationClasses.mainImage);
-    this.setClasses(title, this.animationClasses.title);
-    this.setClasses(subtitle, this.animationClasses.subtitle);
+    if (mainImageElement) {
+      this.setStyleAndClasses(mainImageElement, 'background-image', this.getBackgroundImageUrl(), this.animationClasses.mainImage);
+    }
+    if (title) {
+      this.setClasses(title, this.animationClasses.title);
+    }
+    if (subtitle) {
+      this.setClasses(subtitle, this.animationClasses.subtitle);
+    }
   }
 
   private setupIntersectionObserver(): void {
     const mainImageElement = this.elementRef.nativeElement.querySelector('.imgPrincipal');
+    if (!mainImageElement) return;
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -66,7 +73,7 @@ export class HomeComponent implements AfterViewInit {
 
   private addInteractiveElementListeners(): void {
     const interactiveElements = this.elementRef.nativeElement.querySelectorAll('a, button');
-    interactiveElements.forEach(element => {
+    interactiveElements.forEach((element: HTMLElement) => {
       this.renderer.listen(element, 'mouseover', () => this.setClasses(element, this.animationClasses.interactive));
       this.renderer.listen(element, 'mouseout', () => this.removeClasses(element, this.animationClasses.interactive));
     });
@@ -76,16 +83,16 @@ export class HomeComponent implements AfterViewInit {
     return window.innerWidth >= 1350 ? this.imageOption1 : this.imageOption2;
   }
 
-  private setStyleAndClasses(element: HTMLElement, styleName: string, styleValue: string, classes: string[]): void {
+  private setStyleAndClasses(element: HTMLElement, styleName: string, styleValue: string, classes: readonly string[]): void {
     this.renderer.setStyle(element, styleName, styleValue);
     this.setClasses(element, classes);
   }
 
-  private setClasses(element: HTMLElement, classes: string[]): void {
+  private setClasses(element: HTMLElement, classes: readonly string[]): void {
     classes.forEach(className => this.renderer.addClass(element, className));
   }
 
-  private removeClasses(element: HTMLElement, classes: string[]): void {
+  private removeClasses(element: HTMLElement, classes: readonly string[]): void {
     classes.forEach(className => this.renderer.removeClass(element, className));
   }
 }

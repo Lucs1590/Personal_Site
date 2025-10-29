@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
   { path: 'portfolio/project/:id', component: ProjectDetailComponent, title: 'Lucas Brito - Project Detail' },
-  { path: 'privacy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
   { path: 'recommendations', component: RecommendationsComponent, title: 'Lucas Brito - Recommendations' },
   { path: '404', component: NotFoundComponent, title: '404 - Not Found' },
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }

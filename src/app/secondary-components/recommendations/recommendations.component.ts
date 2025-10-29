@@ -9,7 +9,7 @@ import { Recommendation } from 'src/app/models/recommendation.model';
 })
 export class RecommendationsComponent {
 
-  recommendations = [
+  readonly recommendations = [
     {
       author: 'Samuel Licorio Leiva',
       authorImage: '../../assets/img/samu.jpeg',
@@ -50,6 +50,7 @@ Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
     }
   ].map(recommendation => new Recommendation().deserialize(recommendation));
 
-  constructor() { }
-
+  trackByAuthor(index: number, recommendation: Recommendation): string {
+    return recommendation.author || index.toString();
+  }
 }

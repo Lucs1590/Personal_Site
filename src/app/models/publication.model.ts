@@ -8,6 +8,12 @@ export class Publication implements Deserializable {
   url?: string;
   author?: string;
   categories?: string[];
+  venue?: string;
+  year?: number;
+  doi?: string;
+  pdfUrl?: string;
+  githubUrl?: string;
+  type?: string;
 
   deserialize(input: {
     title: string;
@@ -20,6 +26,12 @@ export class Publication implements Deserializable {
     content: string;
     enclosure: any;
     categories: string[];
+    venue?: string;
+    year?: number;
+    doi?: string;
+    pdfUrl?: string;
+    githubUrl?: string;
+    type?: string;
   }): this {
     Object.assign(this, {});
     this.title = input?.title;
@@ -30,11 +42,23 @@ export class Publication implements Deserializable {
 
     this.description = sanitizedDescription.slice(0, 210) + '..</p>';
 
-    this.image = input?.thumbnail;
+    if (input?.thumbnail) {
+      this.image = input.thumbnail;
+    } else if (input?.content) {
+      const contentDoc = new DOMParser().parseFromString(input?.content, 'text/html');
+      const img = contentDoc.querySelector('img');
+      this.image = img?.getAttribute('src') || undefined;
+    }
     this.publicationDate = new Date(input?.pubDate);
     this.url = input?.link;
     this.author = input?.author;
     this.categories = input?.categories;
+    this.venue = input?.venue;
+    this.year = input?.year || new Date(input?.pubDate).getFullYear();
+    this.doi = input?.doi;
+    this.pdfUrl = input?.pdfUrl;
+    this.githubUrl = input?.githubUrl;
+    this.type = input?.type || 'blog';
     return this;
   }
 }

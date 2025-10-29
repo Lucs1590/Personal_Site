@@ -1,7 +1,7 @@
 a,
 button {
-  font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
-  color: #FFFFFF;
+  font-family: var(--font-primary);
+  color: var(--color-white);
 }
 
 .itemnav {
@@ -10,6 +10,6 @@ button {
 }
 
 .itemnav:hover {
-  text-decoration-color: #E69C24;
-  color: #E69C24 !important;
+  text-decoration-color: var(--color-primary);
+  color: var(--color-primary) !important;
 }

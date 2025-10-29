@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -17,13 +17,13 @@ const IPAPI_API_BASE_URL = 'https://ipapi.co/json';
   providedIn: 'root'
 })
 export class ApiService {
-  private httpOptions = {
+  private readonly httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', Accept: 'application/json' })
   };
 
   constructor(private httpService: HttpClient) { }
 
-  private handleError(error: any): Observable<never> {
+  private handleError(error: unknown): Observable<never> {
     console.error('API Error:', error);
     return throwError(() => new Error('Something went wrong. Please try again later.'));
   }
@@ -44,7 +44,6 @@ export class ApiService {
     return dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
 
-
   getAllRepositories(username: string): Observable<Repository[]> {
     // Validate username input to prevent injection attacks
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
@@ -62,6 +61,7 @@ export class ApiService {
   getIPInfo(): Observable<IPInfo> {
     return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
       .pipe(
+        timeout(2000),
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
