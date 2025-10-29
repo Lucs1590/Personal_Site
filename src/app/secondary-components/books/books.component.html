@@ -1,0 +1,41 @@
+<div class="books-container">
+    <header class="header">
+        <h1 class="logo">BOOKS</h1>
+        <div class="tabs">
+            <button class="tab active">Books</button>
+            <button class="tab">AudioBooks</button>
+        </div>
+    </header>
+
+    <section class="current-reading">
+        <h2>Currently Reading</h2>
+        <div class="reading-content">
+            <div class="current-book">
+                <img [src]="currentBook.cover" [alt]="currentBook.title" />
+            </div>
+            <div class="author-week">
+                <div class="author-card">
+                    <img [src]="authorOfWeek.image" [alt]="authorOfWeek.name" />
+                    <p class="author-name">{{ authorOfWeek.name }}</p>
+                    <p class="collection">
+                        {{ authorOfWeek.collectionCount }} books
+                    </p>
+                </div>
+                <p class="author-title">Author of the Week</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="read-books">
+        <h3>Read Books</h3>
+        <div class="books-list">
+            <div class="book-card" *ngFor="let book of readBooks">
+                <img [src]="book.cover" [alt]="book.title" />
+                <h4>{{ book.title }}</h4>
+                <p class="author">{{ book.author }}</p>
+                <p class="stars">⭐️ {{ book.rating }}/5</p>
+                <button class="read-more">Read More</button>
+            </div>
+        </div>
+    </section>
+</div>
