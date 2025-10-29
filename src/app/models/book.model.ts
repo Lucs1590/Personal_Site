@@ -12,7 +12,7 @@ export class Book implements Deserializable {
     deserialize(input: any): this {
         Object.assign(this, {});
         this.author = input.author;
-        this.title = input.title;
+        this.title = input.title.split(':')[0];
         this.rating = input.rating ? parseInt(input.rating, 10) : 0;
         this.user_read_at = input.user_read_at ? new Date(input.user_read_at) : undefined;
         this.user_review = input.user_review;
