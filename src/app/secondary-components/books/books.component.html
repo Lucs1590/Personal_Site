@@ -23,7 +23,9 @@
             </div>
 
             <div class="current-book-display">
-                <img [src]="currentBook.cover" [alt]="currentBook.title">
+                <div class="book-cover-wrapper">
+                    <img [src]="currentBook.cover" [alt]="currentBook.title">
+                </div>
             </div>
 
             <div class="author-of-week-display">
@@ -51,7 +53,9 @@
             <div class="books-list-wrapper">
                 <div class="books-list">
                     <div class="book-card" *ngFor="let book of readBooks">
-                        <img [src]="book.cover" [alt]="book.title">
+                        <div class="book-cover-wrapper">
+                            <img [src]="book.cover" [alt]="book.title">
+                        </div>
                         <div class="stars">
                             <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
                                 <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">

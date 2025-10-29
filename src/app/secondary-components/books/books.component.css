@@ -8,9 +8,6 @@ body {
 }
 */
 
-/* Ou, para manter encapsulado, use :host para definir o fundo 
-  e o preenchimento de todo o wrapper.
-*/
 :host {
     display: block;
     background-color: #FBF6EE;
@@ -140,23 +137,27 @@ body {
 /* Coluna 2: Livro */
 .current-book-display {
     text-align: center;
-}
-
-.current-book-display img {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 12px;
-    /* Sombra sutil para "levantar" o livro */
-    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
-    margin-bottom: -15px;
-    /* Faz o livro "sentar" na prateleira */
     position: relative;
-    z-index: 5;
-    transition: var(--transition-fast);
+    /* NOVO: Para a sombra de contato */
 }
 
-.current-book-display img:hover {
-    transform: translateY(-5px);
+/* NOVA SOMBRA DE CONTATO 
+  Esta sombra fica SOBRE a prateleira, dando a sensação de apoio.
+*/
+.current-book-display::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    /* Posição exata onde o livro "encontra" a prateleira */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    /* Largura da sombra */
+    height: 20px;
+    /* Sombra elíptica suave */
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: 4;
+    /* Fica abaixo do livro (z-index 5) e acima da prateleira (z-index 3) */
 }
 
 /* Coluna 3: Autor */
@@ -216,7 +217,7 @@ body {
 }
 
 /* ======================= */
-/* PRATELEIRA        */
+/* PRATELEIRA MELHORADA    */
 /* ======================= */
 .shelf {
     position: relative;
@@ -234,13 +235,14 @@ body {
     width: 100%;
     height: 20px;
     /* Profundidade da prateleira */
-    background: #DDCDBF;
-    /* Cor de madeira clara */
+    background: #e0c8b3;
+    /* Cor de madeira mais quente */
     border-radius: 4px 4px 0 0;
-    /* Sombra interna para dar profundidade */
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
-    transform: perspective(30px) rotateX(-5deg);
-    /* Efeito 3D sutil */
+    /* Sombra interna para profundidade + destaque de luz */
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.5);
+    transform: perspective(40px) rotateX(-7deg);
+    /* Perspectiva mais acentuada */
 }
 
 .shelf-front {
@@ -251,11 +253,11 @@ body {
     width: 100%;
     height: 15px;
     /* Espessura da prateleira */
-    background: #C4B4A5;
-    /* Borda frontal mais escura */
+    /* Gradiente para simular borda arredondada */
+    background: linear-gradient(to bottom, #c9a98d 0%, #b8987d 100%);
     border-radius: 0 0 4px 4px;
-    /* Sombra que a prateleira projeta */
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.25);
+    /* Sombra projetada (mais suave e maior) */
+    box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -303,25 +305,131 @@ body {
     /* Espaço para scroll e sombras */
 }
 
-.book-card {
-    flex: 0 0 150px;
-    /* Largura fixa para cada card */
-    text-align: left;
+/* =========================== */
+/* EFEITO 3D DO LIVRO (NOVO)   */
+/* =========================== */
+
+.book-cover-wrapper {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    /* Corrige espaço extra da imagem */
     transition: var(--transition-fast);
 }
 
-.book-card:hover {
-    transform: translateY(-5px);
+/* Páginas e Contracapa (pseudo-elementos) */
+.book-cover-wrapper::before,
+.book-cover-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    /* Herda o border-radius do wrapper */
+    transition: var(--transition-fast);
 }
 
-.book-card img {
+/* ::before - Contracapa (a mais de trás) */
+.book-cover-wrapper::before {
+    background: #EAE2D8;
+    /* Cor de "papelão" ou capa dura */
+    transform: translate(6px, 6px);
+    z-index: 3;
+}
+
+/* ::after - Bloco de páginas (no meio) */
+.book-cover-wrapper::after {
+    background: #F9F5F0;
+    /* Cor de página clara */
+    transform: translate(3px, 3px);
+    z-index: 4;
+}
+
+/* A capa (imagem) */
+.book-cover-wrapper img {
+    position: relative;
+    z-index: 10;
+    /* Fica na frente de tudo */
+    display: block;
+    /* Corrige espaço extra */
+}
+
+/* --- Aplicação do Efeito 3D nos livros --- */
+
+/* Livro Principal */
+.current-book-display .book-cover-wrapper {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
+    margin-bottom: -15px;
+    /* Faz "sentar" na prateleira */
+    z-index: 5;
+    /* Sombra principal (mais suave) */
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+}
+
+.current-book-display .book-cover-wrapper img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* Efeito de "levantar" no hover */
+.current-book-display .book-cover-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.3);
+}
+
+.current-book-display .book-cover-wrapper:hover::before {
+    transform: translate(8px, 9px);
+}
+
+.current-book-display .book-cover-wrapper:hover::after {
+    transform: translate(4px, 5px);
+}
+
+
+/* Livros da Lista */
+.book-card .book-cover-wrapper {
+    display: block;
+    border-radius: 8px;
+    /* Sombra principal (mais suave) */
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.75rem;
+}
+
+.book-card .book-cover-wrapper img {
     width: 100%;
     height: 220px;
-    /* Altura fixa */
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.15);
-    margin-bottom: 0.75rem;
+}
+
+/* Efeito de "levantar" no hover (no card pai) */
+.book-card:hover {
+    transform: translateY(-5px);
+    /* Move o card inteiro */
+}
+
+.book-card:hover .book-cover-wrapper {
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+.book-card:hover .book-cover-wrapper::before {
+    transform: translate(5px, 4px);
+}
+
+.book-card:hover .book-cover-wrapper::after {
+    transform: translate(2px, 2px);
+}
+
+/* --- Estilos dos Cards (sem alterações) --- */
+.book-card {
+    flex: 0 0 150px;
+    text-align: left;
+    transition: var(--transition-fast);
+    /* O hover foi movido para cima */
 }
 
 .book-card .stars {
@@ -343,7 +451,6 @@ body {
     font-size: 1rem;
     color: #333;
     margin: 0 0 0.25rem 0;
-    /* Evita quebra de linha feia */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -368,18 +475,16 @@ body {
 
 /* ======================= */
 /* RESPONSIVIDADE     */
+/* (Sem alterações)     */
 /* ======================= */
 
-/* Tablet (Large) */
 @media (max-width: 1024px) {
     .current-reading-grid {
         grid-template-columns: 1fr 1fr;
-        /* 2 colunas */
         gap: 1.5rem;
     }
 
     .reading-info {
-        /* Ocupa a linha inteira */
         grid-column: 1 / -1;
         text-align: center;
     }
@@ -396,20 +501,17 @@ body {
 
     .author-of-week-display {
         justify-content: center;
-        /* Centraliza o autor */
     }
 
     .current-book-display {
         order: -1;
-        /* Move o livro para antes do autor */
     }
 
-    .current-book-display img {
+    .current-book-display .book-cover-wrapper {
         max-width: 240px;
     }
 }
 
-/* Tablet (Small) & Mobile (Large) */
 @media (max-width: 768px) {
     :host {
         padding: 1rem 0;
@@ -419,7 +521,6 @@ body {
     .bottom-section {
         padding: 1.5rem;
         border-radius: 0;
-        /* Remove bordas em telas pequenas */
     }
 
     .header {
@@ -429,44 +530,34 @@ body {
         margin-bottom: 2rem;
     }
 
-    /* Layout de 1 coluna */
     .current-reading-grid {
         grid-template-columns: 1fr;
     }
 
     .current-book-display {
         order: 0;
-        /* Ordem normal */
     }
 
-    .current-book-display img {
+    .current-book-display .book-cover-wrapper {
         margin-bottom: -10px;
     }
 
-    .author-of-week-display {
-
-        /* Esconde o título vertical em telas pequenas */
-        .vertical-title {
-            display: none;
-        }
+    .author-of-week-display .vertical-title {
+        display: none;
     }
 
-    /* Layout da lista de livros */
     .read-books-grid {
         grid-template-columns: 1fr;
-        /* 1 coluna */
     }
 
     .read-books-info {
         padding-top: 0;
-
-        /* Esconde o título vertical e adiciona um horizontal */
-        .vertical-title {
-            display: none;
-        }
     }
 
-    /* Adiciona um título horizontal para a lista de livros no mobile */
+    .read-books-info .vertical-title {
+        display: none;
+    }
+
     .read-books-info::before {
         content: 'Read Books';
         font-family: var(--font-display);
@@ -480,15 +571,13 @@ body {
 
     .book-card {
         flex: 0 0 130px;
-        /* Cards menores */
     }
 
-    .book-card img {
+    .book-card .book-cover-wrapper img {
         height: 190px;
     }
 }
 
-/* Mobile (Small) */
 @media (max-width: 480px) {
     .logo {
         font-size: 1.8rem;
@@ -509,7 +598,7 @@ body {
         font-size: 2rem;
     }
 
-    .current-book-display img {
+    .current-book-display .book-cover-wrapper {
         max-width: 200px;
     }
 }
