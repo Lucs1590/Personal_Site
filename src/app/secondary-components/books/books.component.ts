@@ -1,7 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { firstValueFrom, Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { Book } from 'src/app/models/book.model';
+
+interface Author {
+    name: string;
+    collectionCount: number;
+    image: string;
+}
 
 @Component({
     selector: 'app-books',
@@ -11,36 +18,21 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class BooksComponent implements OnInit, OnDestroy {
     activeTab: 'books' | 'audiobooks' = 'books';
-    currentBook = {
+
+    currentBook: Partial<Book> = {
         title: 'The Last Thing He Told Me',
         author: 'Laura Dave',
         cover: 'assets/the-last-thing-he-told-me.jpg'
     };
-    authorOfWeek = {
+
+    authorOfWeek: Author = {
         name: 'Stephen King Collection',
         collectionCount: 78,
         image: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg'
     };
-    readBooks = [
-        {
-            title: 'False Witness: A Novel',
-            author: 'Karin Slaughter',
-            cover: 'assets/left-to-fear.jpg',
-            rating: 4
-        },
-        {
-            title: 'Malibu Rising',
-            author: 'Taylor Jenkins Reid',
-            cover: 'assets/malibu-rising.jpeg',
-            rating: 5
-        },
-        {
-            title: 'Black Ice',
-            author: 'Brad Thor',
-            cover: 'assets/black-ice.jpg',
-            rating: 4
-        }
-    ];
+
+    readBooks: Book[] = [];
+
 
     private readonly destroy$ = new Subject<void>();
     constructor(
@@ -49,6 +41,20 @@ export class BooksComponent implements OnInit, OnDestroy {
     ) { }
 
     async ngOnInit(): Promise<void> {
+        await this.getAllBooks();
+    }
+
+    async getAllBooks(): Promise<void> {
+        try {
+            const books = await firstValueFrom(this.apiService.fetchBooksFromGoodreads());
+            this.readBooks = books;
+            if (this.readBooks.length > 0) {
+                this.currentBook = this.readBooks[0];
+            }
+        } catch (error) {
+            console.error("Failed to fetch books:", error);
+            this.readBooks = [];
+        }
     }
 
     ngOnDestroy(): void {
@@ -61,6 +67,7 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
 
     getStarRating(rating: number): boolean[] {
-        return Array(5).fill(false).map((_, i) => i < rating);
+        const numericRating = Math.round(Number(rating));
+        return Array(5).fill(false).map((_, i) => i < numericRating);
     }
 }

@@ -1,15 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map, timeout } from 'rxjs/operators';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, map, switchMap, timeout } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
 import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
+import { parseString } from 'xml2js';
+import { Book } from '../models/book.model';
 
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
+const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz&shelf=to-read';
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
 const IPAPI_API_BASE_URL = 'https://ipapi.co/json';
 
@@ -45,9 +49,8 @@ export class ApiService {
   }
 
   getAllRepositories(username: string): Observable<Repository[]> {
-    // Validate username input to prevent injection attacks
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      throw new Error('Invalid username');
+      return throwError(() => new Error('Invalid username'));
     }
 
     const url = `${GITHUB_API_BASE_URL}/users/${username}/repos`;
@@ -63,6 +66,51 @@ export class ApiService {
       .pipe(
         timeout(2000),
         map(response => new IPInfo().deserialize(response)),
+        catchError(this.handleError)
+      );
+  }
+
+  fetchBooksFromGoodreads(): Observable<Book[]> {
+    const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
+
+    return this.httpService.get(proxyUrl, { responseType: 'text' })
+      .pipe(
+        switchMap((booksXml: string) => {
+          return new Observable<Book[]>(subscriber => {
+            parseString(booksXml, (err, result) => {
+              if (err) {
+                console.error('Failed to parse XML:', err);
+                subscriber.error(err);
+                return;
+              }
+
+              try {
+                const items = result.rss.channel[0].item;
+                const parsedData: Book[] = items.map((item: any) => {
+                  const bookData = {
+                    author: item.author_name[0],
+                    title: item.title[0],
+                    rating: item.user_rating[0],
+                    user_read_at: item.user_read_at[0],
+                    user_review: item.user_review[0],
+                    user_review_link: item.guid[0],
+                    link: item.link[0],
+                    description: item.book_description[0],
+                    cover: item.book_large_image_url[0] || item.book_medium_image_url[0] || item.book_small_image_url[0],
+                  };
+                  return new Book().deserialize(bookData);
+                });
+
+                subscriber.next(parsedData);
+                subscriber.complete();
+
+              } catch (parseError) {
+                console.error('Failed to process parsed XML:', parseError);
+                subscriber.error(parseError);
+              }
+            });
+          });
+        }),
         catchError(this.handleError)
       );
   }
