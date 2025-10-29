@@ -29,9 +29,13 @@ body {
     border-radius: 20px;
     padding: 2rem 3rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    position: relative;
+    /* Para z-index */
+    z-index: 5;
+    /* Fica na frente */
 }
 
-/* ---------- Header ---------- */
+/* ... (CSS do .header, .logo, .tabs permanece o mesmo) ... */
 .header {
     display: flex;
     justify-content: space-between;
@@ -42,6 +46,7 @@ body {
     padding-bottom: 1.5rem;
     margin-bottom: 2.5rem;
 }
+
 
 .logo {
     font-family: var(--font-heading);
@@ -95,9 +100,11 @@ body {
     align-items: flex-end;
     /* Alinha na base */
     gap: 2rem;
+    /* NOVO: Aumenta o espaço inferior para o livro vazar */
+    padding-bottom: 1.5rem;
 }
 
-/* Coluna 1: Info */
+/* ... (CSS do .reading-info, .search-bar permanece o mesmo) ... */
 .reading-info h2 {
     font-family: var(--font-display);
     font-size: 2.75rem;
@@ -123,7 +130,6 @@ body {
     width: 100%;
     padding: 0.9rem 1rem 0.9rem 2.8rem;
     border-radius: 99px;
-    /* Pill shape */
     border: 1px solid var(--color-text-light, #ddd);
     font-family: var(--font-primary);
     font-size: 0.9rem;
@@ -134,33 +140,31 @@ body {
     color: var(--color-text-light);
 }
 
+
 /* Coluna 2: Livro */
 .current-book-display {
     text-align: center;
     position: relative;
-    /* NOVO: Para a sombra de contato */
 }
 
-/* NOVA SOMBRA DE CONTATO 
-  Esta sombra fica SOBRE a prateleira, dando a sensação de apoio.
+/* SOMBRA DE CONTATO (AJUSTADA)
+  Agora posicionada para sentar na prateleira que está abaixo.
 */
 .current-book-display::after {
     content: '';
     position: absolute;
-    bottom: 5px;
-    /* Posição exata onde o livro "encontra" a prateleira */
+    /* ATUALIZADO: Posição ajustada para a nova prateleira */
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
-    /* Largura da sombra */
     height: 20px;
-    /* Sombra elíptica suave */
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-    z-index: 4;
-    /* Fica abaixo do livro (z-index 5) e acima da prateleira (z-index 3) */
+    /* ATUALIZADO: z-index 10 para ficar sobre a 'shelf-top' */
+    z-index: 10;
 }
 
-/* Coluna 3: Autor */
+/* ... (CSS do .author-of-week-display, .vertical-title, .author-card permanece o mesmo) ... */
 .author-of-week-display {
     display: flex;
     align-items: center;
@@ -178,12 +182,10 @@ body {
     font-weight: 600;
     text-align: center;
     flex-shrink: 0;
-    /* Não encolhe */
 }
 
 .author-card {
     background-color: rgba(var(--color-primary-rgb), 0.1);
-    /* Laranja claro */
     border-radius: 12px;
     padding: 1rem;
     text-align: center;
@@ -195,7 +197,6 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    /* Círculo */
     object-fit: cover;
     margin-bottom: 0.75rem;
     border: 4px solid var(--color-white);
@@ -216,48 +217,54 @@ body {
     margin: 0.25rem 0 0 0;
 }
 
-/* ======================= */
-/* PRATELEIRA MELHORADA    */
-/* ======================= */
+
+/* ================================== */
+/* PRATELEIRA COM PERSPECTIVA CORRIGIDA */
+/* ================================== */
 .shelf {
     position: relative;
     height: 35px;
-    /* Altura total da prateleira */
+    /* Altura total (20px top + 15px front) */
     margin-top: 2rem;
-    /* Espaço acima da prateleira */
-    z-index: 3;
+    /* ATUALIZADO: z-index 8, fica acima do 'bottom-section' (z-index 2) 
+     mas abaixo do livro (z-index 10) */
+    z-index: 8;
+    /* ATUALIZADO: Perspectiva aplicada ao contêiner */
+    perspective: 150px;
 }
 
 .shelf-top {
     position: absolute;
-    top: 0;
+    /* ATUALIZADO: Senta em cima da 'shelf-front' */
+    bottom: 15px;
     left: 0;
     width: 100%;
     height: 20px;
-    /* Profundidade da prateleira */
+    /* Profundidade */
     background: #e0c8b3;
-    /* Cor de madeira mais quente */
-    border-radius: 4px 4px 0 0;
     /* Sombra interna para profundidade + destaque de luz */
-    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2),
-        inset 0 -1px 1px rgba(255, 255, 255, 0.5);
-    transform: perspective(40px) rotateX(-7deg);
-    /* Perspectiva mais acentuada */
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+    /* ATUALIZADO: Vira para "deitar", olhando de cima */
+    transform: rotateX(50deg);
+    transform-origin: bottom;
+    /* z-index 9 para ficar acima do 'shelf-front' mas abaixo da sombra */
+    z-index: 9;
 }
 
 .shelf-front {
     position: absolute;
-    top: 20px;
-    /* Alinha abaixo do topo */
+    /* ATUALIZADO: A parte mais baixa */
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 15px;
-    /* Espessura da prateleira */
-    /* Gradiente para simular borda arredondada */
+    /* Espessura */
     background: linear-gradient(to bottom, #c9a98d 0%, #b8987d 100%);
     border-radius: 0 0 4px 4px;
     /* Sombra projetada (mais suave e maior) */
     box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.3);
+    z-index: 8;
 }
 
 
@@ -268,56 +275,52 @@ body {
     background: var(--color-white);
     border-radius: 20px;
     padding: 2rem 3rem;
-    /* Senta "em cima" da prateleira */
+    /* ATUALIZADO: Margem negativa para "deslizar" para baixo da prateleira */
     margin-top: -10px;
     position: relative;
+    /* ATUALIZADO: z-index 2 para ficar atrás da prateleira */
     z-index: 2;
-    /* Fica atrás do livro, mas na frente da sombra da prateleira */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
 }
 
 .read-books-grid {
     display: grid;
     grid-template-columns: auto 1fr;
-    /* Coluna auto para o título, 1fr para a lista */
     gap: 1.5rem;
     align-items: center;
 }
 
+/* ... (O restante do CSS de .read-books-info, .books-list, .book-card, etc. 
+      permanece o mesmo da V2) ... */
+
 /* Coluna 1: Título */
 .read-books-info {
-    /* Alinha o título vertical com a lista */
     padding-top: 1rem;
 }
 
 /* Coluna 2: Lista */
 .books-list-wrapper {
     overflow-x: hidden;
-    /* Garante que não haja scrollbar feia */
 }
 
 .books-list {
     display: flex;
     gap: 2rem;
     overflow-x: auto;
-    /* Permite scroll horizontal */
     padding: 1rem 0.5rem 1.5rem 0.5rem;
-    /* Espaço para scroll e sombras */
 }
 
 /* =========================== */
-/* EFEITO 3D DO LIVRO (NOVO)   */
+/* EFEITO 3D DO LIVRO (AJUSTADO) */
 /* =========================== */
 
 .book-cover-wrapper {
     position: relative;
     display: inline-block;
     line-height: 0;
-    /* Corrige espaço extra da imagem */
     transition: var(--transition-fast);
 }
 
-/* Páginas e Contracapa (pseudo-elementos) */
 .book-cover-wrapper::before,
 .book-cover-wrapper::after {
     content: '';
@@ -327,46 +330,37 @@ body {
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    /* Herda o border-radius do wrapper */
     transition: var(--transition-fast);
 }
 
-/* ::before - Contracapa (a mais de trás) */
 .book-cover-wrapper::before {
     background: #EAE2D8;
-    /* Cor de "papelão" ou capa dura */
     transform: translate(6px, 6px);
     z-index: 3;
 }
 
-/* ::after - Bloco de páginas (no meio) */
 .book-cover-wrapper::after {
     background: #F9F5F0;
-    /* Cor de página clara */
     transform: translate(3px, 3px);
     z-index: 4;
 }
 
-/* A capa (imagem) */
 .book-cover-wrapper img {
     position: relative;
     z-index: 10;
-    /* Fica na frente de tudo */
     display: block;
-    /* Corrige espaço extra */
 }
-
-/* --- Aplicação do Efeito 3D nos livros --- */
 
 /* Livro Principal */
 .current-book-display .book-cover-wrapper {
     width: 100%;
     max-width: 280px;
     border-radius: 12px;
-    margin-bottom: -15px;
-    /* Faz "sentar" na prateleira */
-    z-index: 5;
-    /* Sombra principal (mais suave) */
+    /* ATUALIZADO: Margem para "vazar" para fora da 'top-section' 
+     e sentar na prateleira */
+    margin-bottom: -40px;
+    /* ATUALIZADO: z-index 11, o mais alto */
+    z-index: 11;
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
 }
 
@@ -375,7 +369,6 @@ body {
     border-radius: 12px;
 }
 
-/* Efeito de "levantar" no hover */
 .current-book-display .book-cover-wrapper:hover {
     transform: translateY(-5px);
     box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.3);
@@ -394,7 +387,6 @@ body {
 .book-card .book-cover-wrapper {
     display: block;
     border-radius: 8px;
-    /* Sombra principal (mais suave) */
     box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.2);
     margin-bottom: 0.75rem;
 }
@@ -406,10 +398,8 @@ body {
     border-radius: 8px;
 }
 
-/* Efeito de "levantar" no hover (no card pai) */
 .book-card:hover {
     transform: translateY(-5px);
-    /* Move o card inteiro */
 }
 
 .book-card:hover .book-cover-wrapper {
@@ -424,12 +414,13 @@ body {
     transform: translate(2px, 2px);
 }
 
-/* --- Estilos dos Cards (sem alterações) --- */
+/* ... (Restante do CSS de .book-card, .stars, .book-title, 
+      @media queries, etc. permanece o mesmo) ... */
+
 .book-card {
     flex: 0 0 150px;
     text-align: left;
     transition: var(--transition-fast);
-    /* O hover foi movido para cima */
 }
 
 .book-card .stars {
@@ -475,13 +466,17 @@ body {
 
 /* ======================= */
 /* RESPONSIVIDADE     */
-/* (Sem alterações)     */
 /* ======================= */
-
 @media (max-width: 1024px) {
     .current-reading-grid {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
+        padding-bottom: 0;
+        /* Reseta no tablet */
+    }
+
+    .current-book-display .book-cover-wrapper {
+        margin-bottom: -40px;
     }
 
     .reading-info {
@@ -532,6 +527,7 @@ body {
 
     .current-reading-grid {
         grid-template-columns: 1fr;
+        padding-bottom: 0;
     }
 
     .current-book-display {
@@ -539,7 +535,8 @@ body {
     }
 
     .current-book-display .book-cover-wrapper {
-        margin-bottom: -10px;
+        margin-bottom: -40px;
+        /* Mantém o overlap */
     }
 
     .author-of-week-display .vertical-title {
