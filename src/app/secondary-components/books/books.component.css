@@ -1,220 +1,278 @@
 .books-container {
-    font-family: var(--font-primary);
-    color: var(--color-bg-darker);
-    background-color: var(--color-white);
-    padding: 2rem 3rem;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    margin: 0 auto;
+  font-family: var(--font-primary);
+  color: var(--color-bg-darker);
+  background-color: var(--color-white);
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* ---------- HEADER ---------- */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: var(--color-bg-darker);
-    letter-spacing: 1px;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-bg-darker);
+  letter-spacing: 1px;
 }
 
 .tabs {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .tab {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    color: var(--color-text-gray);
-    transition: var(--transition-fast);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-text-gray);
+  transition: var(--transition-fast);
 }
 
 .tab.active {
-    color: var(--color-primary);
-    font-weight: bold;
+  color: var(--color-primary);
+  font-weight: bold;
 }
 
 /* ---------- CURRENTLY READING ---------- */
 .current-reading {
-    margin-top: 3rem;
-    text-align: left;
+  margin-top: 3rem;
+  text-align: left;
+  position: relative;
 }
 
 .current-reading h2 {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* --- shelf effect for "Currently Reading" section --- */
+.current-reading::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.05)
+  );
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .reading-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .current-book img {
-    width: 220px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(5px);
+  transition: transform var(--transition-medium);
+}
+
+.current-book img:hover {
+  transform: translateY(0);
 }
 
 .author-week {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .author-card {
-    background-color: var(--color-primary);
-    padding: 1.2rem;
-    border-radius: 10px;
-    color: var(--color-white);
-    width: 140px;
+  background-color: var(--color-primary);
+  padding: 1.2rem;
+  border-radius: 10px;
+  color: var(--color-white);
+  width: 140px;
+  box-shadow: 0 8px 15px rgba(var(--color-primary-rgb), 0.35);
 }
 
 .author-card img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
 .author-title {
-    margin-top: 0.5rem;
-    color: var(--color-text-dark-gray);
-    font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--color-text-dark-gray);
+  font-size: 0.9rem;
 }
 
 /* ---------- READ BOOKS ---------- */
 .read-books {
-    margin-top: 3rem;
+  margin-top: 4rem;
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+/* --- shelf effect for bottom books --- */
+.read-books::before {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.05)
+  );
+  border-radius: 8px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .read-books h3 {
-    font-family: var(--font-display);
-    margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  margin-bottom: 1.5rem;
 }
 
 .books-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .book-card {
-    background: var(--color-white);
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
-    width: 150px;
-    flex: 1 1 150px;
+  background: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  text-align: center;
+  width: 150px;
+  flex: 1 1 150px;
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .book-card img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
 .book-card .author {
-    color: var(--color-text-dark-gray);
-    font-size: 0.85rem;
+  color: var(--color-text-dark-gray);
+  font-size: 0.85rem;
 }
 
 .book-card .stars {
-    margin: 0.4rem 0;
-    color: var(--color-primary);
+  margin: 0.4rem 0;
+  color: var(--color-primary);
 }
 
 .read-more {
-    background-color: var(--color-primary);
-    border: none;
-    color: var(--color-white);
-    border-radius: 6px;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    transition: var(--transition-fast);
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-white);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
 
 .read-more:hover {
-    opacity: 0.85;
+  opacity: 0.85;
 }
 
 /* ---------- RESPONSIVE DESIGN ---------- */
 
 /* TABLET */
 @media (max-width: 1024px) {
-    .books-container {
-        padding: 2rem;
-    }
+  .books-container {
+    padding: 2rem;
+  }
 
-    .reading-content {
-        justify-content: center;
-        text-align: center;
-    }
+  .reading-content {
+    justify-content: center;
+    text-align: center;
+  }
 
-    .current-reading h2 {
-        text-align: center;
-    }
+  .current-reading h2 {
+    text-align: center;
+  }
 
-    .books-list {
-        justify-content: center;
-    }
+  .books-list {
+    justify-content: center;
+  }
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-    .books-container {
-        padding: 1.5rem;
-    }
+  .books-container {
+    padding: 1.5rem;
+  }
 
-    .header {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    .tabs {
-        justify-content: center;
-    }
+  .tabs {
+    justify-content: center;
+  }
 
-    .reading-content {
-        flex-direction: column;
-        align-items: center;
-    }
+  .reading-content {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .current-book img {
-        width: 180px;
-    }
+  .current-book img {
+    width: 180px;
+  }
 
-    .author-card {
-        width: 120px;
-        padding: 1rem;
-    }
+  .author-card {
+    width: 120px;
+    padding: 1rem;
+  }
 
-    .read-books h3 {
-        text-align: center;
-    }
+  .read-books h3 {
+    text-align: center;
+  }
 
-    .books-list {
-        flex-direction: column;
-        align-items: center;
-    }
+  .books-list {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .book-card {
-        width: 70%;
-        max-width: 250px;
-    }
+  .book-card {
+    width: 70%;
+    max-width: 250px;
+  }
 }
