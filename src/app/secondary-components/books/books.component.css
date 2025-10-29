@@ -1,278 +1,515 @@
-.books-container {
+/* NOTA: Adicione este seletor ao seu 'styles.css' global 
+  para dar o fundo bege da página.
+*/
+/*
+body {
+  background-color: #FBF6EE; 
   font-family: var(--font-primary);
-  color: var(--color-bg-darker);
-  background-color: var(--color-white);
-  padding: 2rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
+}
+*/
+
+/* Ou, para manter encapsulado, use :host para definir o fundo 
+  e o preenchimento de todo o wrapper.
+*/
+:host {
+    display: block;
+    background-color: #FBF6EE;
+    /* Fundo bege da imagem */
+    padding: 2rem 1rem;
+    /* Espaçamento da página */
 }
 
-/* ---------- HEADER ---------- */
+.book-app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ======================= */
+/* SEÇÃO SUPERIOR     */
+/* ======================= */
+.top-section {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+/* ---------- Header ---------- */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--color-text-light, #eee);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .logo {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  color: var(--color-bg-darker);
-  letter-spacing: 1px;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #333;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 .tabs {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .tab {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: var(--color-text-gray);
-  transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    border-radius: 99px;
+    /* Pill shape */
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    color: var(--color-text-gray);
+    transition: var(--transition-fast);
+}
+
+.tab .icon {
+    font-size: 1.1rem;
+}
+
+.tab:not(.active):hover {
+    color: var(--color-bg-darker);
 }
 
 .tab.active {
-  color: var(--color-primary);
-  font-weight: bold;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 10px rgba(var(--color-primary-rgb), 0.3);
 }
 
-/* ---------- CURRENTLY READING ---------- */
-.current-reading {
-  margin-top: 3rem;
-  text-align: left;
-  position: relative;
+/* ---------- Current Reading Grid ---------- */
+.current-reading-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    /* 3 colunas */
+    align-items: flex-end;
+    /* Alinha na base */
+    gap: 2rem;
 }
 
-.current-reading h2 {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+/* Coluna 1: Info */
+.reading-info h2 {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    line-height: 1.1;
+    color: #333;
+    margin: 0 0 2rem 0;
 }
 
-/* --- shelf effect for "Currently Reading" section --- */
-.current-reading::after {
-  content: '';
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  height: 8px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.05)
-  );
-  border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+.search-bar {
+    position: relative;
 }
 
-.reading-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+.search-bar .icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-gray);
+    font-size: 0.9rem;
 }
 
-.current-book img {
-  width: 220px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(5px);
-  transition: transform var(--transition-medium);
+.search-bar input {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 2.8rem;
+    border-radius: 99px;
+    /* Pill shape */
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
 }
 
-.current-book img:hover {
-  transform: translateY(0);
+.search-bar input::placeholder {
+    color: var(--color-text-light);
 }
 
-.author-week {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* Coluna 2: Livro */
+.current-book-display {
+    text-align: center;
+}
+
+.current-book-display img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
+    /* Sombra sutil para "levantar" o livro */
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+    margin-bottom: -15px;
+    /* Faz o livro "sentar" na prateleira */
+    position: relative;
+    z-index: 5;
+    transition: var(--transition-fast);
+}
+
+.current-book-display img:hover {
+    transform: translateY(-5px);
+}
+
+/* Coluna 3: Autor */
+.author-of-week-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.vertical-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-transform: uppercase;
+    color: var(--color-text-gray);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    flex-shrink: 0;
+    /* Não encolhe */
 }
 
 .author-card {
-  background-color: var(--color-primary);
-  padding: 1.2rem;
-  border-radius: 10px;
-  color: var(--color-white);
-  width: 140px;
-  box-shadow: 0 8px 15px rgba(var(--color-primary-rgb), 0.35);
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    /* Laranja claro */
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    max-width: 160px;
 }
 
 .author-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* Círculo */
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+    border: 4px solid var(--color-white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.author-title {
-  margin-top: 0.5rem;
-  color: var(--color-text-dark-gray);
-  font-size: 0.9rem;
+.author-card .author-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
 }
 
-/* ---------- READ BOOKS ---------- */
-.read-books {
-  margin-top: 4rem;
-  position: relative;
-  padding-bottom: 3rem;
+.author-card .collection {
+    font-size: 0.85rem;
+    color: var(--color-text-dark-gray);
+    margin: 0.25rem 0 0 0;
 }
 
-/* --- shelf effect for bottom books --- */
-.read-books::before {
-  content: '';
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 10px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.05)
-  );
-  border-radius: 8px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+/* ======================= */
+/* PRATELEIRA        */
+/* ======================= */
+.shelf {
+    position: relative;
+    height: 35px;
+    /* Altura total da prateleira */
+    margin-top: 2rem;
+    /* Espaço acima da prateleira */
+    z-index: 3;
 }
 
-.read-books h3 {
-  font-family: var(--font-display);
-  margin-bottom: 1.5rem;
+.shelf-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    /* Profundidade da prateleira */
+    background: #DDCDBF;
+    /* Cor de madeira clara */
+    border-radius: 4px 4px 0 0;
+    /* Sombra interna para dar profundidade */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+    transform: perspective(30px) rotateX(-5deg);
+    /* Efeito 3D sutil */
+}
+
+.shelf-front {
+    position: absolute;
+    top: 20px;
+    /* Alinha abaixo do topo */
+    left: 0;
+    width: 100%;
+    height: 15px;
+    /* Espessura da prateleira */
+    background: #C4B4A5;
+    /* Borda frontal mais escura */
+    border-radius: 0 0 4px 4px;
+    /* Sombra que a prateleira projeta */
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================= */
+/* SEÇÃO INFERIOR     */
+/* ======================= */
+.bottom-section {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    /* Senta "em cima" da prateleira */
+    margin-top: -10px;
+    position: relative;
+    z-index: 2;
+    /* Fica atrás do livro, mas na frente da sombra da prateleira */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.read-books-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* Coluna auto para o título, 1fr para a lista */
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Coluna 1: Título */
+.read-books-info {
+    /* Alinha o título vertical com a lista */
+    padding-top: 1rem;
+}
+
+/* Coluna 2: Lista */
+.books-list-wrapper {
+    overflow-x: hidden;
+    /* Garante que não haja scrollbar feia */
 }
 
 .books-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    /* Permite scroll horizontal */
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+    /* Espaço para scroll e sombras */
 }
 
 .book-card {
-  background: var(--color-white);
-  border-radius: 10px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  text-align: center;
-  width: 150px;
-  flex: 1 1 150px;
-  transition: transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+    flex: 0 0 150px;
+    /* Largura fixa para cada card */
+    text-align: left;
+    transition: var(--transition-fast);
 }
 
 .book-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
 .book-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
-.book-card .author {
-  color: var(--color-text-dark-gray);
-  font-size: 0.85rem;
+    width: 100%;
+    height: 220px;
+    /* Altura fixa */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.75rem;
 }
 
 .book-card .stars {
-  margin: 0.4rem 0;
-  color: var(--color-primary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
-.read-more {
-  background-color: var(--color-primary);
-  border: none;
-  color: var(--color-white);
-  border-radius: 6px;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
-  transition: var(--transition-fast);
+.book-card .star.filled {
+    color: var(--color-primary);
 }
 
-.read-more:hover {
-  opacity: 0.85;
+.book-card .star.empty {
+    color: var(--color-text-light);
 }
 
-/* ---------- RESPONSIVE DESIGN ---------- */
+.book-card .book-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+    /* Evita quebra de linha feia */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-/* TABLET */
+.book-card .book-author {
+    font-size: 0.85rem;
+    color: var(--color-text-gray);
+    margin: 0 0 0.5rem 0;
+}
+
+.book-card .read-more {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.book-card .read-more:hover {
+    text-decoration: underline;
+}
+
+/* ======================= */
+/* RESPONSIVIDADE     */
+/* ======================= */
+
+/* Tablet (Large) */
 @media (max-width: 1024px) {
-  .books-container {
-    padding: 2rem;
-  }
+    .current-reading-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 colunas */
+        gap: 1.5rem;
+    }
 
-  .reading-content {
-    justify-content: center;
-    text-align: center;
-  }
+    .reading-info {
+        /* Ocupa a linha inteira */
+        grid-column: 1 / -1;
+        text-align: center;
+    }
 
-  .current-reading h2 {
-    text-align: center;
-  }
+    .reading-info h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+    }
 
-  .books-list {
-    justify-content: center;
-  }
+    .search-bar {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .author-of-week-display {
+        justify-content: center;
+        /* Centraliza o autor */
+    }
+
+    .current-book-display {
+        order: -1;
+        /* Move o livro para antes do autor */
+    }
+
+    .current-book-display img {
+        max-width: 240px;
+    }
 }
 
-/* MOBILE */
+/* Tablet (Small) & Mobile (Large) */
 @media (max-width: 768px) {
-  .books-container {
-    padding: 1.5rem;
-  }
+    :host {
+        padding: 1rem 0;
+    }
 
-  .header {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+    .top-section,
+    .bottom-section {
+        padding: 1.5rem;
+        border-radius: 0;
+        /* Remove bordas em telas pequenas */
+    }
 
-  .tabs {
-    justify-content: center;
-  }
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
 
-  .reading-content {
-    flex-direction: column;
-    align-items: center;
-  }
+    /* Layout de 1 coluna */
+    .current-reading-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .current-book img {
-    width: 180px;
-  }
+    .current-book-display {
+        order: 0;
+        /* Ordem normal */
+    }
 
-  .author-card {
-    width: 120px;
-    padding: 1rem;
-  }
+    .current-book-display img {
+        margin-bottom: -10px;
+    }
 
-  .read-books h3 {
-    text-align: center;
-  }
+    .author-of-week-display {
 
-  .books-list {
-    flex-direction: column;
-    align-items: center;
-  }
+        /* Esconde o título vertical em telas pequenas */
+        .vertical-title {
+            display: none;
+        }
+    }
 
-  .book-card {
-    width: 70%;
-    max-width: 250px;
-  }
+    /* Layout da lista de livros */
+    .read-books-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna */
+    }
+
+    .read-books-info {
+        padding-top: 0;
+
+        /* Esconde o título vertical e adiciona um horizontal */
+        .vertical-title {
+            display: none;
+        }
+    }
+
+    /* Adiciona um título horizontal para a lista de livros no mobile */
+    .read-books-info::before {
+        content: 'Read Books';
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .book-card {
+        flex: 0 0 130px;
+        /* Cards menores */
+    }
+
+    .book-card img {
+        height: 190px;
+    }
+}
+
+/* Mobile (Small) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .reading-info h2 {
+        font-size: 2rem;
+    }
+
+    .current-book-display img {
+        max-width: 200px;
+    }
 }

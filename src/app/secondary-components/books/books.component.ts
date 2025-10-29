@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class BooksComponent {
 
+    activeTab: 'books' | 'audiobooks' = 'books';
+
     currentBook = {
         title: 'The Last Thing He Told Me',
         author: 'Laura Dave',
@@ -17,14 +19,14 @@ export class BooksComponent {
     };
 
     authorOfWeek = {
-        name: 'Stephen King',
+        name: 'Stephen King Collection',
         collectionCount: 78,
-        image: 'assets/stephen-king.jpg'
+        image: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg'
     };
 
     readBooks = [
         {
-            title: 'Left to Fear',
+            title: 'False Witness: A Novel',
             author: 'Karin Slaughter',
             cover: 'assets/left-to-fear.jpg',
             rating: 4
@@ -42,4 +44,12 @@ export class BooksComponent {
             rating: 4
         }
     ];
+
+    setActiveTab(tab: 'books' | 'audiobooks') {
+        this.activeTab = tab;
+    }
+
+    getStarRating(rating: number): boolean[] {
+        return Array(5).fill(false).map((_, i) => i < rating);
+    }
 }

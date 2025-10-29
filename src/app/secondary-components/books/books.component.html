@@ -1,41 +1,71 @@
-<div class="books-container">
-    <header class="header">
-        <h1 class="logo">BOOKS</h1>
-        <div class="tabs">
-            <button class="tab active">Books</button>
-            <button class="tab">AudioBooks</button>
-        </div>
-    </header>
+<div class="book-app-container">
 
-    <section class="current-reading">
-        <h2>Currently Reading</h2>
-        <div class="reading-content">
-            <div class="current-book">
-                <img [src]="currentBook.cover" [alt]="currentBook.title" />
-            </div>
-            <div class="author-week">
-                <div class="author-card">
-                    <img [src]="authorOfWeek.image" [alt]="authorOfWeek.name" />
-                    <p class="author-name">{{ authorOfWeek.name }}</p>
-                    <p class="collection">
-                        {{ authorOfWeek.collectionCount }} books
-                    </p>
+    <main class="top-section">
+        <header class="header">
+            <h1 class="logo">BOOKS</h1>
+            <nav class="tabs">
+                <button class="tab" [class.active]="activeTab === 'books'" (click)="setActiveTab('books')">
+                    <span class="icon">📖</span> Books
+                </button>
+                <button class="tab" [class.active]="activeTab === 'audiobooks'" (click)="setActiveTab('audiobooks')">
+                    <span class="icon">🎧</span> AudioBooks
+                </button>
+            </nav>
+        </header>
+
+        <div class="current-reading-grid">
+            <div class="reading-info">
+                <h2>Currently<br>Reading</h2>
+                <div class="search-bar">
+                    <span class="icon">🔍</span>
+                    <input type="text" placeholder="Titles, author, or topics">
                 </div>
-                <p class="author-title">Author of the Week</p>
             </div>
-        </div>
-    </section>
 
-    <section class="read-books">
-        <h3>Read Books</h3>
-        <div class="books-list">
-            <div class="book-card" *ngFor="let book of readBooks">
-                <img [src]="book.cover" [alt]="book.title" />
-                <h4>{{ book.title }}</h4>
-                <p class="author">{{ book.author }}</p>
-                <p class="stars">⭐️ {{ book.rating }}/5</p>
-                <button class="read-more">Read More</button>
+            <div class="current-book-display">
+                <img [src]="currentBook.cover" [alt]="currentBook.title">
+            </div>
+
+            <div class="author-of-week-display">
+                <span class="vertical-title">Author of the Week</span>
+                <div class="author-card">
+                    <img [src]="authorOfWeek.image" [alt]="authorOfWeek.name">
+                    <h4 class="author-name">{{ authorOfWeek.name }}</h4>
+                    <p class="collection">{{ authorOfWeek.collectionCount }} books</p>
+                </div>
             </div>
         </div>
-    </section>
+    </main>
+
+    <div class="shelf">
+        <div class="shelf-top"></div>
+        <div class="shelf-front"></div>
+    </div>
+
+    <footer class="bottom-section">
+        <div class="read-books-grid">
+            <div class="read-books-info">
+                <span class="vertical-title">Read Books</span>
+            </div>
+
+            <div class="books-list-wrapper">
+                <div class="books-list">
+                    <div class="book-card" *ngFor="let book of readBooks">
+                        <img [src]="book.cover" [alt]="book.title">
+                        <div class="stars">
+                            <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
+                                <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
+                                    {{ isFilled ? '★' : '☆' }}
+                                </span>
+                            </ng-container>
+                        </div>
+                        <h4 class="book-title">{{ book.title }}</h4>
+                        <p class="book-author">{{ book.author }}</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </div>
