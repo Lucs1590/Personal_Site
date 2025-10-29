@@ -117,15 +117,13 @@
         </div>
     </div>
 
-    <!-- Publications List -->
+    <!-- Sci Publications -->
     <div class="publications-container pb-4">
         <div class="publication-card" *ngFor="let pub of filteredSciPublications; trackBy: trackByPublicationId">
             <div class="pub-content">
                 <div class="pub-header">
                     <h3 class="pub-title">
-                        <a [href]="pub.url" target="_blank" class="title-link" disableWhenOffline>
-                            {{ pub.title }}
-                        </a>
+                        {{ pub.title }}
                     </h3>
                     <div class="pub-meta">
                         <span class="pub-authors">{{ pub.author }}</span>
