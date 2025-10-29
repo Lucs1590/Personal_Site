@@ -8,6 +8,7 @@ export class Book implements Deserializable {
     user_review?: string;
     link?: string;
     cover?: string;
+    shelves?: string[];
 
     deserialize(input: any): this {
         Object.assign(this, {});
@@ -18,6 +19,7 @@ export class Book implements Deserializable {
         this.user_review = input.user_review;
         this.link = input.link;
         this.cover = input.cover;
+        this.shelves = input.shelves ? input.shelves.split(',').map((shelf: string) => shelf.trim()) : ['read'];
         return this;
     }
 }
