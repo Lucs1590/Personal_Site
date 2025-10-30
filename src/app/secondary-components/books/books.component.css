@@ -10,15 +10,7 @@ body {
 
 :host {
     display: block;
-    background-color: #FBF6EE;
-    /* Fundo bege da imagem */
     padding: 2rem 1rem;
-    /* Espaçamento da página */
-}
-
-.book-app-container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* ======================= */
@@ -35,7 +27,6 @@ body {
     /* Fica na frente */
 }
 
-/* ... (CSS do .header, .logo, .tabs permanece o mesmo) ... */
 .header {
     display: flex;
     justify-content: space-between;
@@ -225,7 +216,7 @@ body {
     position: relative;
     height: 35px;
     /* Altura total (20px top + 15px front) */
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     /* ATUALIZADO: z-index 8, fica acima do 'bottom-section' (z-index 2) 
      mas abaixo do livro (z-index 10) */
     z-index: 8;
@@ -273,14 +264,12 @@ body {
 /* ======================= */
 .bottom-section {
     background: var(--color-white);
-    border-radius: 20px;
     padding: 2rem 3rem;
     /* ATUALIZADO: Margem negativa para "deslizar" para baixo da prateleira */
     margin-top: -10px;
     position: relative;
     /* ATUALIZADO: z-index 2 para ficar atrás da prateleira */
     z-index: 2;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
 }
 
 .read-books-grid {
@@ -385,14 +374,13 @@ body {
 
 /* Livros da Lista */
 .book-card .book-cover-wrapper {
-    display: block;
     border-radius: 8px;
     box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.2);
     margin-bottom: 0.75rem;
 }
 
 .book-card .book-cover-wrapper img {
-    width: 100%;
+    width: 150px;
     height: 220px;
     object-fit: cover;
     border-radius: 8px;
@@ -515,7 +503,6 @@ body {
     .top-section,
     .bottom-section {
         padding: 1.5rem;
-        border-radius: 0;
     }
 
     .header {

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
     <app-navbar></app-navbar>
 
-    <main class="top-section">
+    <main class="top-section mt-5">
         <header class="header">
             <h1 class="logo">BOOKS</h1>
             <nav class="tabs">
@@ -14,13 +14,10 @@
             </nav>
         </header>
 
+        <!-- Current Reading Section -->
         <div class="current-reading-grid">
             <div class="reading-info">
                 <h2>Currently<br>Reading</h2>
-                <div class="search-bar">
-                    <span class="icon">🔍</span>
-                    <input type="text" placeholder="Titles, author, or topics">
-                </div>
             </div>
 
             <div class="current-book-display">
@@ -38,39 +35,41 @@
                 </div>
             </div>
         </div>
-    </main>
 
-    <div class="shelf">
-        <div class="shelf-top"></div>
-        <div class="shelf-front"></div>
-    </div>
+        <!-- Shelf Decoration -->
+        <div class="shelf">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
 
-    <footer class="bottom-section">
-        <div class="read-books-grid">
-            <div class="read-books-info">
-                <span class="vertical-title">Read Books</span>
-            </div>
+        <!-- Read Books Section -->
+        <footer class="bottom-section">
+            <div class="read-books-grid">
+                <div class="read-books-info">
+                    <span class="vertical-title">Read Books</span>
+                </div>
 
-            <div class="books-list-wrapper">
-                <div class="books-list">
-                    <div class="book-card" *ngFor="let book of readBooks">
-                        <div class="book-cover-wrapper">
-                            <img [src]="book.cover" [alt]="book.title">
+                <div class="books-list-wrapper">
+                    <div class="books-list">
+                        <div class="book-card" *ngFor="let book of readBooks">
+                            <div class="book-cover-wrapper">
+                                <img [src]="book.cover" [alt]="book.title">
+                            </div>
+                            <div class="stars">
+                                <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
+                                    <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
+                                        {{ isFilled ? '★' : '☆' }}
+                                    </span>
+                                </ng-container>
+                            </div>
+                            <h4 class="book-title">{{ book.title }}</h4>
+                            <p class="book-author">{{ book.author }}</p>
+                            <a href="#" class="read-more">Read More</a>
                         </div>
-                        <div class="stars">
-                            <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
-                                <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
-                                    {{ isFilled ? '★' : '☆' }}
-                                </span>
-                            </ng-container>
-                        </div>
-                        <h4 class="book-title">{{ book.title }}</h4>
-                        <p class="book-author">{{ book.author }}</p>
-                        <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </main>
 
 </div>
