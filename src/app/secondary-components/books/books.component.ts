@@ -31,6 +31,7 @@ export class BooksComponent implements OnInit, OnDestroy {
         image: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg'
     };
 
+    books: Book[] = [];
     readBooks: Book[] = [];
 
 
@@ -47,13 +48,14 @@ export class BooksComponent implements OnInit, OnDestroy {
     async getAllBooks(): Promise<void> {
         try {
             const books = await firstValueFrom(this.apiService.fetchBooksFromGoodreads());
-            this.readBooks = books;
-            if (this.readBooks.length > 0) {
-                this.currentBook = this.readBooks[0];
+            this.books = books;
+            if (this.books.length > 0) {
+                this.currentBook = this.books.filter(book => book.shelves.includes('currently-reading'))[0];
+                this.readBooks = this.books.filter(book => book.shelves.includes('read'));
             }
         } catch (error) {
             console.error("Failed to fetch books:", error);
-            this.readBooks = [];
+            this.books = [];
         }
     }
 
