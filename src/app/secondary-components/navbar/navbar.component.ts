@@ -6,10 +6,10 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { MenuItem } from 'src/app/models/menu-item.model'
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css'],
-    standalone: false
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+  standalone: false
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   mobile = false;
@@ -67,6 +67,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
         ref: ['/portfolio'],
         mobile: false,
         desktop: false
+      },
+      {
+        name: firstValueFrom(this.translate.get('nav.books')),
+        ref: ['/books'],
+        mobile: true,
+        desktop: true
       }
     ];
   }

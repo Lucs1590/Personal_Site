@@ -1,0 +1,75 @@
+<div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
+    <app-navbar></app-navbar>
+
+    <main class="top-section mt-5">
+        <header class="header">
+            <h1 class="logo">BOOKS</h1>
+            <nav class="tabs">
+                <button class="tab" [class.active]="activeTab === 'books'" (click)="setActiveTab('books')">
+                    <span class="icon">📖</span> Books
+                </button>
+                <button class="tab" [class.active]="activeTab === 'audiobooks'" (click)="setActiveTab('audiobooks')">
+                    <span class="icon">🎧</span> AudioBooks
+                </button>
+            </nav>
+        </header>
+
+        <!-- Current Reading Section -->
+        <div class="current-reading-grid">
+            <div class="reading-info">
+                <h2>Currently<br>Reading</h2>
+            </div>
+
+            <div class="current-book-display">
+                <div class="book-cover-wrapper">
+                    <img [src]="currentBook.cover" [alt]="currentBook.title">
+                </div>
+            </div>
+
+            <div class="author-of-week-display">
+                <span class="vertical-title">Author of the Week</span>
+                <div class="author-card">
+                    <img [src]="authorOfWeek.image" [alt]="authorOfWeek.name">
+                    <h4 class="author-name">{{ authorOfWeek.name }}</h4>
+                    <p class="collection">{{ authorOfWeek.collectionCount }} books</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shelf Decoration -->
+        <div class="shelf">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
+
+        <!-- Read Books Section -->
+        <footer class="bottom-section">
+            <div class="read-books-grid">
+                <div class="read-books-info">
+                    <span class="vertical-title">Read Books</span>
+                </div>
+
+                <div class="books-list-wrapper">
+                    <div class="books-list">
+                        <div class="book-card" *ngFor="let book of readBooks">
+                            <div class="book-cover-wrapper">
+                                <img [src]="book.cover" [alt]="book.title">
+                            </div>
+                            <div class="stars">
+                                <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
+                                    <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
+                                        {{ isFilled ? '★' : '☆' }}
+                                    </span>
+                                </ng-container>
+                            </div>
+                            <h4 class="book-title">{{ book.title }}</h4>
+                            <p class="book-author">{{ book.author }}</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+</div>
