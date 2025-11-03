@@ -1,0 +1,629 @@
+/* NOTA: Adicione este seletor ao seu 'styles.css' global 
+  para dar o fundo bege da página.
+*/
+/*
+body {
+  background-color: #FBF6EE; 
+  font-family: var(--font-primary);
+}
+*/
+
+:host {
+    display: block;
+    padding-bottom: 2rem;
+}
+
+/* ======================= */
+/* SEÇÃO SUPERIOR     */
+/* ======================= */
+.top-section {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--color-text-light, #eee);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: #333;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    border-radius: 99px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    color: var(--color-text-gray);
+    transition: var(--transition-fast);
+}
+
+.tab .icon {
+    font-size: 1.1rem;
+}
+
+.tab:not(.active):hover {
+    color: var(--color-bg-darker);
+}
+
+.tab.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 10px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* ---------- Current Reading Grid ---------- */
+.current-reading-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.reading-info h2 {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: #333;
+    margin: 0;
+    padding-top: 1rem;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar .icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-gray);
+    font-size: 0.9rem;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 2.8rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
+/* Coluna 2: Livro */
+.current-book-display {
+    text-align: center;
+    position: relative;
+}
+
+.current-book-display::after {
+    content: '';
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 25px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 65%);
+    filter: blur(2px);
+    z-index: 10;
+}
+
+.book-description-display {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    justify-content: flex-end;
+    height: 100%;
+    padding-top: 1rem;
+}
+
+.book-description-display .vertical-title {
+    padding-top: 0.5rem;
+}
+
+.book-description {
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #555;
+    max-height: 22rem;
+    overflow-y: auto;
+    padding-right: 5px;
+    font-style: italic;
+    margin: 0;
+}
+
+
+.vertical-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-transform: uppercase;
+    color: var(--color-text-gray);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+
+/* ================================== */
+/* PRATELEIRA                         */
+/* ================================== */
+.shelf {
+    position: relative;
+    height: 35px;
+    z-index: 8;
+    perspective: 150px;
+    margin: 2rem -1rem 0;
+}
+
+.shelf-top {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #e0c8b3;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+    transform: rotateX(50deg);
+    transform-origin: bottom;
+    z-index: 9;
+}
+
+.shelf-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(to bottom, #c9a98d 0%, #b8987d 100%);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.3);
+    z-index: 8;
+}
+
+
+/* ======================= */
+/* SEÇÃO INFERIOR          */
+/* ======================= */
+.bottom-section {
+    background: var(--color-white);
+    padding: 2rem 3rem;
+    margin-top: -10px;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.read-books-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.read-books-info {
+    padding-top: 1rem;
+}
+
+.books-list-wrapper {
+    overflow-x: hidden;
+}
+
+.books-list {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0.5rem 1.5rem;
+}
+
+
+.book-cover-wrapper {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    transition: var(--transition-fast);
+}
+
+.book-cover-wrapper::before,
+.book-cover-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    transition: var(--transition-fast);
+}
+
+.book-cover-wrapper::before {
+    background: #EAE2D8;
+    transform: translate(6px, 6px);
+    z-index: 3;
+}
+
+.book-cover-wrapper::after {
+    background: #F9F5F0;
+    transform: translate(3px, 3px);
+    z-index: 4;
+}
+
+.book-cover-wrapper img {
+    position: relative;
+    z-index: 10;
+    display: block;
+}
+
+/* Livro Principal */
+.current-book-display .book-cover-wrapper {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
+    margin-bottom: -40px;
+    z-index: 11;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+}
+
+.current-book-display .book-cover-wrapper img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.current-book-display .book-cover-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.3);
+}
+
+.current-book-display .book-cover-wrapper:hover::before {
+    transform: translate(8px, 9px);
+}
+
+.current-book-display .book-cover-wrapper:hover::after {
+    transform: translate(4px, 5px);
+}
+
+/* Livros da Lista */
+.book-card .book-cover-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.75rem;
+}
+
+.book-card .book-cover-wrapper img {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card:hover .book-cover-wrapper {
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+.book-card:hover .book-cover-wrapper::before {
+    transform: translate(5px, 4px);
+}
+
+.book-card:hover .book-cover-wrapper::after {
+    transform: translate(2px, 2px);
+}
+
+.book-card {
+    flex: 0 0 150px;
+    text-align: left;
+    transition: var(--transition-fast);
+}
+
+.book-card .stars {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-card .star.filled {
+    color: var(--color-primary);
+}
+
+.book-card .star.empty {
+    color: var(--color-text-light);
+}
+
+.book-card .book-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-card .book-author {
+    font-size: 0.85rem;
+    color: var(--color-text-gray);
+    margin: 0 0 0.5rem;
+}
+
+.book-year {
+    font-size: 0.7rem;
+    color: var(--color-text-gray);
+}
+
+.book-card .read-more {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.book-card .read-more:hover {
+    text-decoration: underline;
+}
+
+.filters {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filter-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-control select {
+    padding: 0.55rem 0.75rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
+.filters .search-bar {
+    position: relative;
+    min-width: 220px;
+    flex: 1 1 320px;
+}
+
+.filters .search-bar .icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-gray);
+    font-size: 0.9rem;
+}
+
+.filters .search-bar input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.6rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
+.checkbox-control {
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--color-text-gray);
+}
+
+.no-results {
+    padding: 1rem;
+    color: var(--color-text-gray);
+    font-style: italic;
+}
+
+
+/* ======================= */
+/* RESPONSIVIDADE          */
+/* ======================= */
+@media (max-width: 1024px) {
+    .current-reading-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        padding-bottom: 0;
+    }
+
+
+    .reading-info {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .reading-info h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-top: 0;
+    }
+
+    .book-description-display {
+        grid-column: 1 / -1;
+        justify-content: center;
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .book-description-display .vertical-title {
+        display: none;
+    }
+
+    .book-description {
+        max-height: 100px;
+        text-align: center;
+    }
+
+    .current-book-display {
+        order: -1;
+    }
+
+    .current-book-display .book-cover-wrapper {
+        max-width: 240px;
+        margin-bottom: -40px;
+    }
+}
+
+@media (max-width: 768px) {
+    :host {
+        padding: 1rem 0;
+    }
+
+    .top-section,
+    .bottom-section {
+        padding: 1.5rem;
+        border-radius: 0;
+    }
+
+    .shelf {
+        margin: 0;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .current-reading-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
+    }
+
+    .current-book-display {
+        order: 0;
+    }
+
+    .current-book-display .book-cover-wrapper {
+        margin-bottom: -40px;
+    }
+
+    .book-description-display {
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .read-books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .read-books-info {
+        padding-top: 0;
+    }
+
+    .read-books-info .vertical-title {
+        display: none;
+    }
+
+    .read-books-info::before {
+        content: attr(data-title);
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .book-card {
+        flex: 0 0 130px;
+    }
+
+    .book-card .book-cover-wrapper img {
+        height: 190px;
+    }
+
+    .filters {
+        gap: 0.5rem;
+        padding: 0;
+    }
+
+    .filters .search-bar {
+        flex: 1 1 100%;
+        min-width: 140px;
+    }
+
+    .filter-control select {
+        padding: 0.45rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2.25rem;
+    }
+
+    .shelf {
+        margin: 0;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .reading-info h2 {
+        font-size: 1.85rem;
+    }
+
+    .current-book-display .book-cover-wrapper {
+        max-width: 200px;
+    }
+}

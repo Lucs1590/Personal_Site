@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Allow: /home
 Allow: /publications
+Allow: /books
 Allow: /portfolio
 Allow: /recommendations
 Allow: /privacy
