@@ -60,7 +60,10 @@
                             </div>
                             <h4 class="book-title">{{ book.title }}</h4>
                             <p class="book-author">{{ book.author }}</p>
-                            <a [href]="book.user_review" class="read-more">Read More</a>
+                            <p class="book-year">Read at {{ book.user_read_at | date: 'shortDate' }}</p>
+                            <a [href]="book.link" class="read-more" target="_blank" rel="noopener noreferrer">
+                                My Goodreads Review
+                            </a>
                         </div>
                     </div>
                 </div>
