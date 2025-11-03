@@ -22,18 +22,12 @@ export class BooksComponent implements OnInit, OnDestroy {
     currentBook: Partial<Book> = {
         title: 'The Last Thing He Told Me',
         author: 'Laura Dave',
-        cover: 'assets/the-last-thing-he-told-me.jpg'
-    };
-
-    authorOfWeek: Author = {
-        name: 'Stephen King Collection',
-        collectionCount: 78,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg'
+        cover: 'assets/the-last-thing-he-told-me.jpg',
+        description: 'Before Owen Michaels disappears, he smuggles a note to his beloved wife of one year: Protect her. Despite her confusion and fear, Hannah Hall knows exactly to whom the note refers: Owen’s sixteen-year-old daughter, Bailey...'
     };
 
     books: Book[] = [];
     readBooks: Book[] = [];
-
 
     private readonly destroy$ = new Subject<void>();
     constructor(
@@ -50,7 +44,12 @@ export class BooksComponent implements OnInit, OnDestroy {
             const books = await firstValueFrom(this.apiService.fetchBooksFromGoodreads());
             this.books = books;
             if (this.books.length > 0) {
-                this.currentBook = this.books.filter(book => book.shelves.includes('currently-reading'))[0];
+                const currentlyReadingBook = this.books.find(book => book.shelves.includes('currently-reading'));
+
+                if (currentlyReadingBook) {
+                    this.currentBook = currentlyReadingBook;
+                }
+
                 this.readBooks = this.books.filter(book => book.shelves.includes('read'));
             }
         } catch (error) {

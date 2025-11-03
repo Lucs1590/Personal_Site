@@ -1,4 +1,4 @@
-<div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
+<div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto; padding: 0 1rem;">
     <app-navbar></app-navbar>
 
     <main class="top-section mt-5">
@@ -22,17 +22,13 @@
 
             <div class="current-book-display">
                 <div class="book-cover-wrapper">
-                    <img [src]="currentBook.cover" [alt]="currentBook.title">
+                    <img *ngIf="currentBook" [src]="currentBook.cover" [alt]="currentBook.title">
                 </div>
             </div>
 
-            <div class="author-of-week-display">
-                <span class="vertical-title">Author of the Week</span>
-                <div class="author-card">
-                    <img [src]="authorOfWeek.image" [alt]="authorOfWeek.name">
-                    <h4 class="author-name">{{ authorOfWeek.name }}</h4>
-                    <p class="collection">{{ authorOfWeek.collectionCount }} books</p>
-                </div>
+            <div class="book-description-display">
+                <span class="vertical-title">Description</span>
+                <p *ngIf="currentBook" class="book-description" [innerHTML]="currentBook.description"></p>
             </div>
         </div>
 
