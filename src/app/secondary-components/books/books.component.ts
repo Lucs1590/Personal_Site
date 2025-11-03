@@ -74,7 +74,7 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
 
     applyFilters(query: string = '', onlyThisYear: boolean = false): void {
-        const q = query.trim().toLowerCase();
+        const searchQuery = query.trim().toLowerCase();
         const yearNow = new Date().getFullYear();
 
         this.filteredReadBooks = this.readBooksOriginal.filter(book => {
@@ -85,13 +85,13 @@ export class BooksComponent implements OnInit, OnDestroy {
                 }
             }
 
-            if (!q) return true;
+            if (!searchQuery) return true;
 
             const title = (book.title ?? '').toLowerCase();
             const author = (book.author ?? '').toLowerCase();
             const description = (book.description ?? '').toLowerCase();
 
-            return title.includes(q) || author.includes(q) || description.includes(q);
+            return title.includes(searchQuery) || author.includes(searchQuery) || description.includes(searchQuery);
         });
     }
 }
