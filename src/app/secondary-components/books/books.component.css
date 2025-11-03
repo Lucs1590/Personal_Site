@@ -10,7 +10,7 @@ body {
 
 :host {
     display: block;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
 }
 
 /* ======================= */
@@ -22,9 +22,9 @@ body {
     padding: 2rem 3rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
     position: relative;
-    /* Para z-index */
     z-index: 5;
-    /* Fica na frente */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .header {
@@ -37,7 +37,6 @@ body {
     padding-bottom: 1.5rem;
     margin-bottom: 2.5rem;
 }
-
 
 .logo {
     font-family: var(--font-heading);
@@ -62,7 +61,6 @@ body {
     background: none;
     border: none;
     border-radius: 99px;
-    /* Pill shape */
     padding: 0.6rem 1.2rem;
     cursor: pointer;
     color: var(--color-text-gray);
@@ -87,21 +85,18 @@ body {
 .current-reading-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
-    /* 3 colunas */
-    align-items: flex-end;
-    /* Alinha na base */
+    align-items: flex-start;
     gap: 2rem;
-    /* NOVO: Aumenta o espaço inferior para o livro vazar */
     padding-bottom: 1.5rem;
 }
 
-/* ... (CSS do .reading-info, .search-bar permanece o mesmo) ... */
 .reading-info h2 {
     font-family: var(--font-display);
     font-size: 2.75rem;
     line-height: 1.1;
     color: #333;
-    margin: 0 0 2rem 0;
+    margin: 0;
+    padding-top: 1rem;
 }
 
 .search-bar {
@@ -127,41 +122,50 @@ body {
     background-color: #fcfcfc;
 }
 
-.search-bar input::placeholder {
-    color: var(--color-text-light);
-}
-
-
 /* Coluna 2: Livro */
 .current-book-display {
     text-align: center;
     position: relative;
 }
 
-/* SOMBRA DE CONTATO (AJUSTADA)
-  Agora posicionada para sentar na prateleira que está abaixo.
-*/
 .current-book-display::after {
     content: '';
     position: absolute;
-    /* ATUALIZADO: Posição ajustada para a nova prateleira */
-    bottom: 25px;
+    bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
-    height: 20px;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-    /* ATUALIZADO: z-index 10 para ficar sobre a 'shelf-top' */
+    width: 70%;
+    height: 25px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 65%);
+    filter: blur(2px);
     z-index: 10;
 }
 
-/* ... (CSS do .author-of-week-display, .vertical-title, .author-card permanece o mesmo) ... */
-.author-of-week-display {
+.book-description-display {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     justify-content: flex-end;
+    height: 100%;
+    padding-top: 1rem;
 }
+
+.book-description-display .vertical-title {
+    padding-top: 0.5rem;
+}
+
+.book-description {
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #555;
+    max-height: 22rem;
+    overflow-y: auto;
+    padding-right: 5px;
+    font-style: italic;
+    margin: 0;
+}
+
 
 .vertical-title {
     writing-mode: vertical-rl;
@@ -175,101 +179,57 @@ body {
     flex-shrink: 0;
 }
 
-.author-card {
-    background-color: rgba(var(--color-primary-rgb), 0.1);
-    border-radius: 12px;
-    padding: 1rem;
-    text-align: center;
-    width: 100%;
-    max-width: 160px;
-}
-
-.author-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 0.75rem;
-    border: 4px solid var(--color-white);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.author-card .author-name {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-}
-
-.author-card .collection {
-    font-size: 0.85rem;
-    color: var(--color-text-dark-gray);
-    margin: 0.25rem 0 0 0;
-}
-
 
 /* ================================== */
-/* PRATELEIRA COM PERSPECTIVA CORRIGIDA */
+/* PRATELEIRA                         */
 /* ================================== */
 .shelf {
     position: relative;
     height: 35px;
-    /* Altura total (20px top + 15px front) */
-    /* margin-top: 2rem; */
-    /* ATUALIZADO: z-index 8, fica acima do 'bottom-section' (z-index 2) 
-     mas abaixo do livro (z-index 10) */
     z-index: 8;
-    /* ATUALIZADO: Perspectiva aplicada ao contêiner */
     perspective: 150px;
+    margin: 2rem -1rem 0 -1rem;
 }
 
 .shelf-top {
     position: absolute;
-    /* ATUALIZADO: Senta em cima da 'shelf-front' */
     bottom: 15px;
     left: 0;
     width: 100%;
     height: 20px;
-    /* Profundidade */
     background: #e0c8b3;
-    /* Sombra interna para profundidade + destaque de luz */
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7),
         inset 0 -2px 3px rgba(0, 0, 0, 0.2);
-    /* ATUALIZADO: Vira para "deitar", olhando de cima */
     transform: rotateX(50deg);
     transform-origin: bottom;
-    /* z-index 9 para ficar acima do 'shelf-front' mas abaixo da sombra */
     z-index: 9;
 }
 
 .shelf-front {
     position: absolute;
-    /* ATUALIZADO: A parte mais baixa */
     bottom: 0;
     left: 0;
     width: 100%;
     height: 15px;
-    /* Espessura */
     background: linear-gradient(to bottom, #c9a98d 0%, #b8987d 100%);
     border-radius: 0 0 4px 4px;
-    /* Sombra projetada (mais suave e maior) */
     box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.3);
     z-index: 8;
 }
 
 
 /* ======================= */
-/* SEÇÃO INFERIOR     */
+/* SEÇÃO INFERIOR          */
 /* ======================= */
 .bottom-section {
     background: var(--color-white);
     padding: 2rem 3rem;
-    /* ATUALIZADO: Margem negativa para "deslizar" para baixo da prateleira */
     margin-top: -10px;
     position: relative;
-    /* ATUALIZADO: z-index 2 para ficar atrás da prateleira */
     z-index: 2;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .read-books-grid {
@@ -279,15 +239,10 @@ body {
     align-items: center;
 }
 
-/* ... (O restante do CSS de .read-books-info, .books-list, .book-card, etc. 
-      permanece o mesmo da V2) ... */
-
-/* Coluna 1: Título */
 .read-books-info {
     padding-top: 1rem;
 }
 
-/* Coluna 2: Lista */
 .books-list-wrapper {
     overflow-x: hidden;
 }
@@ -299,9 +254,6 @@ body {
     padding: 1rem 0.5rem 1.5rem 0.5rem;
 }
 
-/* =========================== */
-/* EFEITO 3D DO LIVRO (AJUSTADO) */
-/* =========================== */
 
 .book-cover-wrapper {
     position: relative;
@@ -345,10 +297,7 @@ body {
     width: 100%;
     max-width: 280px;
     border-radius: 12px;
-    /* ATUALIZADO: Margem para "vazar" para fora da 'top-section' 
-     e sentar na prateleira */
     margin-bottom: -40px;
-    /* ATUALIZADO: z-index 11, o mais alto */
     z-index: 11;
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
 }
@@ -370,7 +319,6 @@ body {
 .current-book-display .book-cover-wrapper:hover::after {
     transform: translate(4px, 5px);
 }
-
 
 /* Livros da Lista */
 .book-card .book-cover-wrapper {
@@ -401,9 +349,6 @@ body {
 .book-card:hover .book-cover-wrapper::after {
     transform: translate(2px, 2px);
 }
-
-/* ... (Restante do CSS de .book-card, .stars, .book-title, 
-      @media queries, etc. permanece o mesmo) ... */
 
 .book-card {
     flex: 0 0 150px;
@@ -453,14 +398,13 @@ body {
 }
 
 /* ======================= */
-/* RESPONSIVIDADE     */
+/* RESPONSIVIDADE          */
 /* ======================= */
 @media (max-width: 1024px) {
     .current-reading-grid {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
         padding-bottom: 0;
-        /* Reseta no tablet */
     }
 
     .current-book-display .book-cover-wrapper {
@@ -475,15 +419,23 @@ body {
     .reading-info h2 {
         font-size: 2.25rem;
         margin-bottom: 1.5rem;
+        padding-top: 0;
     }
 
-    .search-bar {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .author-of-week-display {
+    .book-description-display {
+        grid-column: 1 / -1;
         justify-content: center;
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .book-description-display .vertical-title {
+        display: none;
+    }
+
+    .book-description {
+        max-height: 100px;
+        text-align: center;
     }
 
     .current-book-display {
@@ -503,6 +455,11 @@ body {
     .top-section,
     .bottom-section {
         padding: 1.5rem;
+        border-radius: 0;
+    }
+
+    .shelf {
+        margin: 2rem 0 0 0;
     }
 
     .header {
@@ -523,11 +480,11 @@ body {
 
     .current-book-display .book-cover-wrapper {
         margin-bottom: -40px;
-        /* Mantém o overlap */
     }
 
-    .author-of-week-display .vertical-title {
-        display: none;
+    .book-description-display {
+        justify-content: center;
+        padding-top: 1rem;
     }
 
     .read-books-grid {
