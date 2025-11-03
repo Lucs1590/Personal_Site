@@ -10,7 +10,7 @@ body {
 
 :host {
     display: block;
-    padding: 2rem 0;
+    padding-bottom: 2rem;
 }
 
 /* ======================= */
