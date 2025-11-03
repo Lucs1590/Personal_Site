@@ -61,7 +61,7 @@
                             </div>
                             <h4 class="book-title">{{ book.title }}</h4>
                             <p class="book-author">{{ book.author }}</p>
-                            <p class="book-year">Read at {{ book.user_read_at | date: 'shortDate' }}</p>
+                            <p class="book-year">Read at {{ book.user_read_at | date: 'dd/MM/yyyy' }}</p>
                             <a [href]="book.link" class="read-more" target="_blank" rel="noopener noreferrer">
                                 My Goodreads Review
                             </a>
