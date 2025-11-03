@@ -475,9 +475,6 @@ body {
         padding-bottom: 0;
     }
 
-    .current-book-display .book-cover-wrapper {
-        margin-bottom: -40px;
-    }
 
     .reading-info {
         grid-column: 1 / -1;
@@ -512,6 +509,7 @@ body {
 
     .current-book-display .book-cover-wrapper {
         max-width: 240px;
+        margin-bottom: -40px;
     }
 }
 
