@@ -15,10 +15,8 @@ export class BooksComponent implements OnInit, OnDestroy {
     activeTab: 'books' | 'audiobooks' = 'books';
 
     currentBook: Partial<Book> = {
-        title: 'The Last Thing He Told Me',
-        author: 'Laura Dave',
-        cover: 'assets/the-last-thing-he-told-me.jpg',
-        description: 'Before Owen Michaels disappears, he smuggles a note to his beloved wife of one year: Protect her. Despite her confusion and fear, Hannah Hall knows exactly to whom the note refers: Owen’s sixteen-year-old daughter, Bailey...'
+        cover: 'assets/img/cover.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed nisl neque. Nulla at fermentum massa, eget egestas orci. Cras convallis enim ex, sit amet posuere diam maximus sed. Phasellus pharetra dui risus, vitae dapibus est placerat id. Nullam eget velit ex. Donec a feugiat libero. Maecenas condimentum lacus vitae arcu pulvinar, eu rhoncus dui tincidunt. Suspendisse nec libero sit amet velit finibus mollis. Pellentesque placerat porta dolor et mattis. Suspendisse quis metus at metus condimentum ultrices eget sed nunc.'
     };
     isLoading = true;
     books: Book[] = [];
