@@ -386,6 +386,11 @@ body {
     margin: 0 0 0.5rem 0;
 }
 
+.book-year {
+    font-size: 0.7rem;
+    color: var(--color-text-gray);
+}
+
 .book-card .read-more {
     font-size: 0.9rem;
     color: var(--color-primary);
@@ -459,7 +464,7 @@ body {
     }
 
     .shelf {
-        margin: 2rem 0 0 0;
+        margin: 0 0 0 0;
     }
 
     .header {
@@ -522,6 +527,10 @@ body {
 @media (max-width: 480px) {
     .logo {
         font-size: 1.8rem;
+    }
+
+    .shelf {
+        margin: 0 0 0 0;
     }
 
     .tabs {
