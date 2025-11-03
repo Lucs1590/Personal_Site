@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.6.0 (2025-11-03)
+
+### Feat
+
+- add sorting functionality to book filters
+- add filters for book search and year selection in books component
+- update date format for book reading year to 'dd/MM/yyyy'
+- update currentBook details and add default cover image
+- adjust font sizes for logo and reading info for better readability
+- integrate ngx-ui-loader for improved loading experience in books component
+- add styling for book year and adjust shelf margins for consistency
+- update book card to display reading date and link to Goodreads review
+- adjust layout and spacing for improved book display and readability
+- enhance book display with description and improve current book logic
+- update Read More link to direct to user review for each book
+- add description property to Book model and update deserialize method
+- add shelves property to Book model and update API service to fetch user shelves
+- enhance title deserialization to remove additional text
+- update title deserialization to remove subtitle
+- implement Book model and integrate Goodreads API for book fetching
+-  improve structure and add lifecycle methods
+- add Books section and update navigation, sitemap, and translations
+- add new publication
+- remove unused ngx-skeleton-loader dependencies and clean up publications component
+- add styles for dataset publication type
+- implement 3D book cover effect and improve shelf styling in BooksComponent
+- enhance BooksComponent layout and functionality with improved structure and tab navigation
+- add route for BooksComponent in app routing module
+- implement BooksComponent with styling and functionality for displaying books and authors
+
+### Fix
+
+- update search title and placeholder for clarity
+- add timers package as a dependency
+- restore margin-bottom for book cover wrapper in current book display
+- update padding in host selector for improved layout
+- adjust padding in container-fluid for better layout
+- correct book assignment logic in getAllBooks method
+- adjust margin for social media icons in publications component
+- update image paths in BooksComponent to correct directory structure
+- correct file extension for Malibu Rising cover image
+
+### Refactor
+
+- refine search and review labels in i18n files for clarity
+- rename variable for clarity in applyFilters method
+- clean up HTML structure and CSS styles for better readability
+- update Sci Publications section to remove link from title
+- remove unused properties from Publication model
+
 ## v1.5.0 (2025-10-29)
 
 ### Feat
