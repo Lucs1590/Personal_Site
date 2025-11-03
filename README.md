@@ -13,16 +13,17 @@ Feel free to use this repository as a template or contribute to it. 😊
 - Icons: [Font Awesome](https://fontawesome.com/)
 - Deployment: [Vercel](https://vercel.com/)
 - CI/CD: [GitHub Actions](https://github.com/features/actions)
+- Linting: [ESLint](https://eslint.org/)
 
 ## Features
 
 - [About](https://lucasbrito.com.br/)
 - [Publications](https://lucasbrito.com.br/publications)
 - [404 Page](https://lucasbrito.com.br/404)
+- [Books](https://lucasbrito.com.br/books)
 
 Coming soon...
 
-- Portfolio -> <https://lucasbrito.com.br/portfolio>
 - Hobbies -> <https://lucasbrito.com.br/hobbies>
 - Contact -> <https://lucasbrito.com.br/contact>
 - Videos and Events -> <https://lucasbrito.com.br/videos-and-events>
