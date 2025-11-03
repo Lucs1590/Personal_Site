@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
-import { UtilsService } from 'src/app/services/utils.service';
 import { Book } from 'src/app/models/book.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
@@ -20,12 +19,12 @@ export class BooksComponent implements OnInit, OnDestroy {
     };
     isLoading = true;
     books: Book[] = [];
-    readBooks: Book[] = [];
+    private readBooksOriginal: Book[] = [];
+    filteredReadBooks: Book[] = [];
 
     private readonly destroy$ = new Subject<void>();
     constructor(
         private apiService: ApiService,
-        private utilsService: UtilsService,
         private ngxLoader: NgxUiLoaderService
     ) { }
 
@@ -46,11 +45,17 @@ export class BooksComponent implements OnInit, OnDestroy {
                     this.currentBook = currentlyReadingBook;
                 }
 
-                this.readBooks = this.books.filter(book => book.shelves.includes('read'));
+                this.readBooksOriginal = this.books.filter(book => book.shelves.includes('read'));
+                this.filteredReadBooks = [...this.readBooksOriginal];
+            } else {
+                this.readBooksOriginal = [];
+                this.filteredReadBooks = [];
             }
         } catch (error) {
             console.error("Failed to fetch books:", error);
             this.books = [];
+            this.readBooksOriginal = [];
+            this.filteredReadBooks = [];
         }
     }
 
@@ -66,5 +71,27 @@ export class BooksComponent implements OnInit, OnDestroy {
     getStarRating(rating: number): boolean[] {
         const numericRating = Math.round(Number(rating));
         return Array(5).fill(false).map((_, i) => i < numericRating);
+    }
+
+    applyFilters(query: string = '', onlyThisYear: boolean = false): void {
+        const q = query.trim().toLowerCase();
+        const yearNow = new Date().getFullYear();
+
+        this.filteredReadBooks = this.readBooksOriginal.filter(book => {
+            if (onlyThisYear) {
+                const readDate = book.user_read_at ? new Date(book.user_read_at) : null;
+                if (!readDate || readDate.getFullYear() !== yearNow) {
+                    return false;
+                }
+            }
+
+            if (!q) return true;
+
+            const title = (book.title ?? '').toLowerCase();
+            const author = (book.author ?? '').toLowerCase();
+            const description = (book.description ?? '').toLowerCase();
+
+            return title.includes(q) || author.includes(q) || description.includes(q);
+        });
     }
 }

@@ -47,8 +47,24 @@
                 </div>
 
                 <div class="books-list-wrapper">
+                    <!-- FILTERS -->
+                    <div class="filters">
+                        <div class="filter-control search-bar" title="Search by title or author or description">
+                            <span class="icon">🔎</span>
+                            <input #searchInput type="text" placeholder="Search title or author or description..."
+                                (input)="applyFilters(searchInput.value, onlyThisYear.checked)">
+                        </div>
+
+                        <div class="filter-control checkbox-control">
+                            <input #onlyThisYear type="checkbox" id="onlyYear"
+                                (change)="applyFilters(searchInput.value, onlyThisYear.checked)">
+                            <label for="onlyYear">Only this year</label>
+                        </div>
+                    </div>
+
+                    <!-- BOOKS LIST -->
                     <div class="books-list">
-                        <div class="book-card" *ngFor="let book of readBooks">
+                        <div class="book-card" *ngFor="let book of filteredReadBooks">
                             <div class="book-cover-wrapper">
                                 <img [src]="book.cover" [alt]="book.title">
                             </div>
@@ -65,6 +81,10 @@
                             <a [href]="book.link" class="read-more" target="_blank" rel="noopener noreferrer">
                                 My Goodreads Review
                             </a>
+                        </div>
+
+                        <div class="no-results" *ngIf="filteredReadBooks.length === 0">
+                            No books found with current filters.
                         </div>
                     </div>
                 </div>

@@ -402,6 +402,69 @@ body {
     text-decoration: underline;
 }
 
+.filters {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem 0.75rem 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-control select {
+    padding: 0.55rem 0.75rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
+.filters .search-bar {
+    position: relative;
+    min-width: 220px;
+    flex: 1 1 320px;
+}
+
+.filters .search-bar .icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-gray);
+    font-size: 0.9rem;
+}
+
+.filters .search-bar input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.6rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-text-light, #ddd);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
+.checkbox-control {
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--color-text-gray);
+}
+
+.no-results {
+    padding: 1rem;
+    color: var(--color-text-gray);
+    font-style: italic;
+}
+
+
 /* ======================= */
 /* RESPONSIVIDADE          */
 /* ======================= */
@@ -521,6 +584,20 @@ body {
 
     .book-card .book-cover-wrapper img {
         height: 190px;
+    }
+
+    .filters {
+        gap: 0.5rem;
+        padding: 0;
+    }
+
+    .filters .search-bar {
+        flex: 1 1 100%;
+        min-width: 140px;
+    }
+
+    .filter-control select {
+        padding: 0.45rem 0.6rem;
     }
 }
 
