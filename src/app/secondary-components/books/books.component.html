@@ -47,18 +47,31 @@
                 </div>
 
                 <div class="books-list-wrapper">
-                    <!-- FILTERS -->
+                    <!-- FILTERS + SORT -->
                     <div class="filters">
                         <div class="filter-control search-bar" title="Search by title or author or description">
                             <span class="icon">🔎</span>
                             <input #searchInput type="text" placeholder="Search title or author or description..."
-                                (input)="applyFilters(searchInput.value, onlyThisYear.checked)">
+                                (input)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
                         </div>
 
                         <div class="filter-control checkbox-control">
                             <input #onlyThisYear type="checkbox" id="onlyYear"
-                                (change)="applyFilters(searchInput.value, onlyThisYear.checked)">
+                                (change)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
                             <label for="onlyYear">Only this year</label>
+                        </div>
+
+                        <!-- Sort select -->
+                        <div class="filter-control">
+                            <select #sortSelect
+                                (change)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
+                                <option value="recent">Most recent</option>
+                                <option value="oldest">Oldest</option>
+                                <option value="title_asc">Title A → Z</option>
+                                <option value="title_desc">Title Z → A</option>
+                                <option value="rating_desc">Rating ↓</option>
+                                <option value="rating_asc">Rating ↑</option>
+                            </select>
                         </div>
                     </div>
 

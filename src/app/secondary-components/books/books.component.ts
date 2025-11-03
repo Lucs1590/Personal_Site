@@ -21,6 +21,7 @@ export class BooksComponent implements OnInit, OnDestroy {
     books: Book[] = [];
     private readBooksOriginal: Book[] = [];
     filteredReadBooks: Book[] = [];
+    currentSort: string = 'recent';
 
     private readonly destroy$ = new Subject<void>();
     constructor(
@@ -47,6 +48,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
                 this.readBooksOriginal = this.books.filter(book => book.shelves.includes('read'));
                 this.filteredReadBooks = [...this.readBooksOriginal];
+                this.sortFiltered(this.currentSort);
             } else {
                 this.readBooksOriginal = [];
                 this.filteredReadBooks = [];
@@ -73,9 +75,10 @@ export class BooksComponent implements OnInit, OnDestroy {
         return Array(5).fill(false).map((_, i) => i < numericRating);
     }
 
-    applyFilters(query: string = '', onlyThisYear: boolean = false): void {
-        const searchQuery = query.trim().toLowerCase();
+    applyFilters(query: string = '', onlyThisYear: boolean = false, sortOrder: string = 'recent'): void {
+        const searchQuery = (query || '').trim().toLowerCase();
         const yearNow = new Date().getFullYear();
+        this.currentSort = sortOrder || this.currentSort;
 
         this.filteredReadBooks = this.readBooksOriginal.filter(book => {
             if (onlyThisYear) {
@@ -93,5 +96,42 @@ export class BooksComponent implements OnInit, OnDestroy {
 
             return title.includes(searchQuery) || author.includes(searchQuery) || description.includes(searchQuery);
         });
+
+        this.sortFiltered(this.currentSort);
+    }
+
+
+    private sortFiltered(sortOrder: string): void {
+        const copy = [...this.filteredReadBooks];
+        switch (sortOrder) {
+            case 'oldest':
+                copy.sort((a, b) => {
+                    const da = a.user_read_at ? new Date(a.user_read_at).getTime() : 0;
+                    const db = b.user_read_at ? new Date(b.user_read_at).getTime() : 0;
+                    return da - db;
+                });
+                break;
+            case 'title_asc':
+                copy.sort((a, b) => (a.title ?? '').localeCompare(b.title ?? ''));
+                break;
+            case 'title_desc':
+                copy.sort((a, b) => (b.title ?? '').localeCompare(a.title ?? ''));
+                break;
+            case 'rating_desc':
+                copy.sort((a, b) => (Number(b.rating) || 0) - (Number(a.rating) || 0));
+                break;
+            case 'rating_asc':
+                copy.sort((a, b) => (Number(a.rating) || 0) - (Number(b.rating) || 0));
+                break;
+            case 'recent':
+            default:
+                copy.sort((a, b) => {
+                    const da = a.user_read_at ? new Date(a.user_read_at).getTime() : 0;
+                    const db = b.user_read_at ? new Date(b.user_read_at).getTime() : 0;
+                    return db - da;
+                });
+                break;
+        }
+        this.filteredReadBooks = copy;
     }
 }
