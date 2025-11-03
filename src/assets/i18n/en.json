@@ -45,4 +45,25 @@
     "privacy_policy.contact_information": "Contact Information",
     "privacy_policy.contact_information_text": "If you have questions or concerns about this Privacy Policy, please feel free to contact us.",
     "privacy_policy.additional_text": "The detailed information regarding our privacy practices is provided below."
+    ,
+    "books": {
+        "title": "BOOKS",
+        "currently_reading": "Currently<br>Reading",
+        "description": "Description",
+        "read_books": "Read Books",
+        "search_title": "Search by title or author or description",
+        "search_placeholder": "Search title or author or description...",
+        "only_this_year": "Only this year",
+        "sort": {
+            "most_recent": "Most recent",
+            "oldest": "Oldest",
+            "title_asc": "Title A → Z",
+            "title_desc": "Title Z → A",
+            "rating_desc": "Rating ↓",
+            "rating_asc": "Rating ↑"
+        },
+        "read_at": "Read at",
+        "goodreads_review": "My Goodreads Review",
+        "no_results": "No books found with current filters."
+    }
 }
