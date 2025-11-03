@@ -3,12 +3,7 @@ import { firstValueFrom, Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { Book } from 'src/app/models/book.model';
-
-interface Author {
-    name: string;
-    collectionCount: number;
-    image: string;
-}
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
     selector: 'app-books',
@@ -25,7 +20,7 @@ export class BooksComponent implements OnInit, OnDestroy {
         cover: 'assets/the-last-thing-he-told-me.jpg',
         description: 'Before Owen Michaels disappears, he smuggles a note to his beloved wife of one year: Protect her. Despite her confusion and fear, Hannah Hall knows exactly to whom the note refers: Owen’s sixteen-year-old daughter, Bailey...'
     };
-
+    isLoading = true;
     books: Book[] = [];
     readBooks: Book[] = [];
 
@@ -33,10 +28,13 @@ export class BooksComponent implements OnInit, OnDestroy {
     constructor(
         private apiService: ApiService,
         private utilsService: UtilsService,
+        private ngxLoader: NgxUiLoaderService
     ) { }
 
     async ngOnInit(): Promise<void> {
+        this.ngxLoader.start();
         await this.getAllBooks();
+        this.ngxLoader.stop();
     }
 
     async getAllBooks(): Promise<void> {
