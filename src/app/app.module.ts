@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 
@@ -34,7 +34,6 @@ import { FooterComponent } from './secondary-components/footer/footer.component'
 import { ScrollService } from './services/scroll.service';
 import { BooksComponent } from './secondary-components/books/books.component';
 
-export const httpLoaderFactory = () => new TranslateHttpLoader();
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bgsColor: '#e69c24',
   bgsOpacity: 0.5,
@@ -94,16 +93,16 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     NgOptimizedImage,
     NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
     TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient]
-      }
+      loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
     }),
     FontAwesomeModule,
     AppRoutingModule
   ],
-  providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
+  providers: [
+    CookieService,
+    provideHttpClient(withInterceptorsFromDi()),
+    ScrollService,
+  ]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
