@@ -34,7 +34,7 @@ import { FooterComponent } from './secondary-components/footer/footer.component'
 import { ScrollService } from './services/scroll.service';
 import { BooksComponent } from './secondary-components/books/books.component';
 
-export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
+export const httpLoaderFactory = () => new TranslateHttpLoader();
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bgsColor: '#e69c24',
   bgsOpacity: 0.5,
