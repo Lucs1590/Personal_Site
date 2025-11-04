@@ -19,12 +19,10 @@ export class Publication implements Deserializable {
     title: string;
     pubDate: string | Date;
     link: string;
-    guid: string;
     author: string;
     thumbnail: string;
     description: string;
     content: string;
-    enclosure: any;
     categories: string[];
     venue?: string;
     year?: number;

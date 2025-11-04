@@ -11,7 +11,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgOptimizedImage } from '@angular/common';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +32,7 @@ import { OfflineModalComponent } from './secondary-components/offline-modal/offl
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
 import { FooterComponent } from './secondary-components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
+import { BooksComponent } from './secondary-components/books/books.component';
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
@@ -84,6 +84,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     ProjectDetailComponent,
     PrivacyPolicyComponent,
     FooterComponent,
+    BooksComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -100,7 +101,6 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
       }
     }),
     FontAwesomeModule,
-    NgxSkeletonLoaderModule,
     AppRoutingModule
   ],
   providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]

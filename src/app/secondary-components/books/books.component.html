@@ -1,0 +1,108 @@
+<div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto">
+    <app-navbar></app-navbar>
+    <ngx-ui-loader></ngx-ui-loader>
+
+    <main class="top-section mt-5">
+        <header class="header">
+            <h1 class="logo" translate>books.title</h1>
+            <!-- <nav class="tabs">
+                <button class="tab" [class.active]="activeTab === 'books'" (click)="setActiveTab('books')">
+                    <span class="icon">📖</span> Books
+                </button>
+                <button class="tab" [class.active]="activeTab === 'audiobooks'" (click)="setActiveTab('audiobooks')">
+                    <span class="icon">🎧</span> AudioBooks
+                </button>
+            </nav> -->
+        </header>
+
+        <!-- Current Reading Section -->
+        <div class="current-reading-grid">
+            <div class="reading-info">
+                <h2 [innerHTML]="'books.currently_reading' | translate"></h2>
+            </div>
+
+            <div class="current-book-display">
+                <div class="book-cover-wrapper">
+                    <img *ngIf="currentBook" [src]="currentBook.cover" [alt]="currentBook.title">
+                </div>
+            </div>
+
+            <div class="book-description-display">
+                <span class="vertical-title" translate>books.description</span>
+                <p *ngIf="currentBook" class="book-description" [innerHTML]="currentBook.description"></p>
+            </div>
+        </div>
+
+        <!-- Shelf Decoration -->
+        <div class="shelf">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
+
+        <!-- Read Books Section -->
+        <footer class="bottom-section">
+            <div class="read-books-grid">
+                <div class="read-books-info" [attr.data-title]="'books.read_books' | translate">
+                    <span class="vertical-title" translate>books.read_books</span>
+                </div>
+
+                <div class="books-list-wrapper">
+                    <!-- FILTERS + SORT -->
+                    <div class="filters">
+                        <div class="filter-control search-bar" [attr.title]="'books.search_title' | translate">
+                            <span class="icon">🔎</span>
+                            <input #searchInput type="text" [placeholder]="'books.search_placeholder' | translate"
+                                (input)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
+                        </div>
+
+                        <div class="filter-control checkbox-control">
+                            <input #onlyThisYear type="checkbox" id="onlyYear"
+                                (change)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
+                            <label for="onlyYear" translate>books.only_this_year</label>
+                        </div>
+
+                        <!-- Sort select -->
+                        <div class="filter-control">
+                            <select #sortSelect
+                                (change)="applyFilters(searchInput.value, onlyThisYear.checked, sortSelect.value)">
+                                <option value="recent" translate>books.sort.most_recent</option>
+                                <option value="oldest" translate>books.sort.oldest</option>
+                                <option value="title_asc" translate>books.sort.title_asc</option>
+                                <option value="title_desc" translate>books.sort.title_desc</option>
+                                <option value="rating_desc" translate>books.sort.rating_desc</option>
+                                <option value="rating_asc" translate>books.sort.rating_asc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- BOOKS LIST -->
+                    <div class="books-list">
+                        <div class="book-card" *ngFor="let book of filteredReadBooks">
+                            <div class="book-cover-wrapper">
+                                <img [src]="book.cover" [alt]="book.title">
+                            </div>
+                            <div class="stars">
+                                <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
+                                    <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
+                                        {{ isFilled ? '★' : '☆' }}
+                                    </span>
+                                </ng-container>
+                            </div>
+                            <h4 class="book-title">{{ book.title }}</h4>
+                            <p class="book-author">{{ book.author }}</p>
+                            <p class="book-year">{{ 'books.read_at' | translate }} {{ book.user_read_at | date: 'dd/MM/yyyy' }}</p>
+                            <a [href]="book.link" class="read-more" target="_blank" rel="noopener noreferrer">
+                                <span translate>books.goodreads_review</span>
+                            </a>
+                        </div>
+
+                        <div class="no-results" *ngIf="filteredReadBooks.length === 0">
+                            <span translate>books.no_results</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+</div>

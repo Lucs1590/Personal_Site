@@ -2,6 +2,228 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.6.0 (2025-11-03)
+
+### Feat
+
+- add sorting functionality to book filters
+- add filters for book search and year selection in books component
+- update date format for book reading year to 'dd/MM/yyyy'
+- update currentBook details and add default cover image
+- adjust font sizes for logo and reading info for better readability
+- integrate ngx-ui-loader for improved loading experience in books component
+- add styling for book year and adjust shelf margins for consistency
+- update book card to display reading date and link to Goodreads review
+- adjust layout and spacing for improved book display and readability
+- enhance book display with description and improve current book logic
+- update Read More link to direct to user review for each book
+- add description property to Book model and update deserialize method
+- add shelves property to Book model and update API service to fetch user shelves
+- enhance title deserialization to remove additional text
+- update title deserialization to remove subtitle
+- implement Book model and integrate Goodreads API for book fetching
+-  improve structure and add lifecycle methods
+- add Books section and update navigation, sitemap, and translations
+- add new publication
+- remove unused ngx-skeleton-loader dependencies and clean up publications component
+- add styles for dataset publication type
+- implement 3D book cover effect and improve shelf styling in BooksComponent
+- enhance BooksComponent layout and functionality with improved structure and tab navigation
+- add route for BooksComponent in app routing module
+- implement BooksComponent with styling and functionality for displaying books and authors
+
+### Fix
+
+- update search title and placeholder for clarity
+- add timers package as a dependency
+- restore margin-bottom for book cover wrapper in current book display
+- update padding in host selector for improved layout
+- adjust padding in container-fluid for better layout
+- correct book assignment logic in getAllBooks method
+- adjust margin for social media icons in publications component
+- update image paths in BooksComponent to correct directory structure
+- correct file extension for Malibu Rising cover image
+
+### Refactor
+
+- refine search and review labels in i18n files for clarity
+- rename variable for clarity in applyFilters method
+- clean up HTML structure and CSS styles for better readability
+- update Sci Publications section to remove link from title
+- remove unused properties from Publication model
+
+## v1.5.0 (2025-10-29)
+
+### Feat
+
+- add image display for blog publications in publications component
+- add comprehensive Copilot instructions for AI agents
+- enhance CanonicalService to set canonical URL with improved URL cleaning
+- update website name and search target URL in index.html
+- update personal branding in meta tags and routing titles
+- add CanonicalService to manage canonical URLs and update app.component to set canonical URL on navigation
+- add changes
+- refactor addUtmSource to addUtmParameters for improved URL parameter handling
+- enhance URL handling in publications component by adding UTM source
+- add @angular/localize/init to polyfills for localization support
+- add target="_blank" to external links in publications component for better user experience
+- :memo: add missing papaers
+- update navbar translations and add missing entries for portfolio and privacy policy
+- add showInfo property to Repository model
+- enhance portfolio layout with improved filtering and search functionality
+
+### Fix
+
+- add timeout to API requests for improved error handling
+- clean up whitespace and improve link accessibility in publications component
+- add missing radix
+- clean up package-lock.json by removing unused dependencies
+- update eslint plugins to latest versions and remove unused dependencies
+- correct route path for privacy policy
+- :bug: downgrade version
+- exclude e2e directory from TypeScript compilation
+- update project info display logic to use repo name instead of id
+- remove popularity sorting from portfolio component
+- update import path for PrivacyPolicyComponent to secondary-components directory
+- update privacy policy text for clarity and compliance with data protection standards
+- update privacy policy text for i18n support
+
+### Refactor
+
+- move MenuItem interface to a separate model file for better organization
+- simplify trackBy functions by removing unused index parameter
+- remove unused imports from app.module.ts for cleaner code
+- add type annotations for publication mapping in getBlogPublications
+- refine image assignment logic in Publication model
+- updating params according to new version
+- simplify angular.json structure and improve build configurations
+- update utils to utilsService for clarity in navbar component
+- rename utils to utilsService for clarity in NavbarComponent
+- addUtmSource to addUtmParameters for consistency in URL parameter handling
+- simplify portfolio and publications components by removing unused methods and updating promise handling
+- remove unused modifyLinks method from MHomeComponent
+- update component metadata to include standalone option and adjust tsconfig settings
+- update footer styles for improved layout and alignment
+- remove back-to-top link from footer component
+- clean up footer component and improve privacy policy link
+- restructure project detail components and remove unused files
+- move ProjectDetailComponent tests to secondary-components directory
+- move ProjectDetailComponent to secondary-components directory
+
+## v1.4.0 (2025-10-29)
+
+### Feat
+
+- add image display for blog publications in publications component
+- add comprehensive Copilot instructions for AI agents
+- enhance CanonicalService to set canonical URL with improved URL cleaning
+- update website name and search target URL in index.html
+- update personal branding in meta tags and routing titles
+- add CanonicalService to manage canonical URLs and update app.component to set canonical URL on navigation
+- add changes
+- refactor addUtmSource to addUtmParameters for improved URL parameter handling
+- enhance URL handling in publications component by adding UTM source
+- add @angular/localize/init to polyfills for localization support
+- add target="_blank" to external links in publications component for better user experience
+- :memo: add missing papaers
+- update navbar translations and add missing entries for portfolio and privacy policy
+- add showInfo property to Repository model
+- enhance portfolio layout with improved filtering and search functionality
+
+### Fix
+
+- add timeout to API requests for improved error handling
+- clean up whitespace and improve link accessibility in publications component
+- add missing radix
+- clean up package-lock.json by removing unused dependencies
+- update eslint plugins to latest versions and remove unused dependencies
+- correct route path for privacy policy
+- :bug: downgrade version
+- exclude e2e directory from TypeScript compilation
+- update project info display logic to use repo name instead of id
+- remove popularity sorting from portfolio component
+- update import path for PrivacyPolicyComponent to secondary-components directory
+- update privacy policy text for clarity and compliance with data protection standards
+- update privacy policy text for i18n support
+
+### Refactor
+
+- move MenuItem interface to a separate model file for better organization
+- simplify trackBy functions by removing unused index parameter
+- remove unused imports from app.module.ts for cleaner code
+- add type annotations for publication mapping in getBlogPublications
+- refine image assignment logic in Publication model
+- updating params according to new version
+- simplify angular.json structure and improve build configurations
+- update utils to utilsService for clarity in navbar component
+- rename utils to utilsService for clarity in NavbarComponent
+- addUtmSource to addUtmParameters for consistency in URL parameter handling
+- simplify portfolio and publications components by removing unused methods and updating promise handling
+- remove unused modifyLinks method from MHomeComponent
+- update component metadata to include standalone option and adjust tsconfig settings
+- update footer styles for improved layout and alignment
+- remove back-to-top link from footer component
+- clean up footer component and improve privacy policy link
+- restructure project detail components and remove unused files
+- move ProjectDetailComponent tests to secondary-components directory
+- move ProjectDetailComponent to secondary-components directory
+
+## v1.4.0 (2024-11-06)
+
+### Feat
+
+- using agibank english page
+- preventing undefined error
+- update about description
+- iconList initialization using external data source
+
+### Fix
+
+- update home component title for improved SEO relevance
+- add portfolio URL to sitemap.xml for improved SEO and indexing
+- update robots.txt to improve search engine crawling and indexing directives
+- update home component headings to include relevant keywords for better SEO
+
+### Refactor
+
+- improving code
+- removing duplicated code
+- using a simpler approach
+- update language preference logic in navbar and utils service
+- update language preference logic in navbar and utils service
+- removing cookie consent page
+
+## v1.3.0 (2024-03-25)
+
+### Feat
+
+- improving code
+- Updated src/app/secondary-components/cookie-
+- set language when accept cookies
+- add a default language
+- remove wrong code
+- add missing spec file
+- Updated src/app/secondary-components/cookie-
+- Updated src/app/secondary-components/navbar/
+- Updated src/app/app.component.ts
+- Updated src/app/services/utils.service.ts
+- Updated src/app/app.component.html
+- Updated src/app/app.module.ts
+- Add stylish cookie consent UI matching websi
+- Added HTML structure for cookie consent UI
+- Implement cookie consent component
+
+### Fix
+
+- remove setting lang pref in navbar component
+
+### Refactor
+
+- send setLanguage to utils
+- color theme
+- using bootstrap instead of css
+- transform function to private
+
 ## [1.3.0](https://github.com/Lucs1590/Personal_Site/compare/v1.2.0...v1.3.0) (2024-03-25)
 
 
