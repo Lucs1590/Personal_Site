@@ -11,6 +11,15 @@
     margin-bottom: 1rem;
 }
 
+.sub_title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+    margin-top: -20px;
+}
+
 .sobre_text {
     font-family: var(--font-primary);
     font-weight: 300;
