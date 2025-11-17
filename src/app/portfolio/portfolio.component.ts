@@ -3,6 +3,7 @@ import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -20,11 +21,21 @@ export class PortfolioComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private seoService: SeoService
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.updateSeoMetadata();
     await this.getRepositories();
+  }
+
+  private updateSeoMetadata(): void {
+    this.seoService.updateMetadata({
+      title: 'Lucas Brito - Portfolio | Open Source Projects & Development',
+      description: 'Explore Lucas Brito\'s portfolio featuring open source projects, software development work, and innovative solutions in AI, Machine Learning, and Data Science.',
+      keywords: 'Lucas Brito Portfolio, Open Source Projects, Software Development, GitHub Projects, AI Projects, Machine Learning Projects'
+    });
   }
 
   async getRepositories(): Promise<void> {

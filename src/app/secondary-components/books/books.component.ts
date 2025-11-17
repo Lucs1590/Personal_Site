@@ -3,6 +3,7 @@ import { firstValueFrom, Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Book } from 'src/app/models/book.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
     selector: 'app-books',
@@ -26,13 +27,23 @@ export class BooksComponent implements OnInit, OnDestroy {
     private readonly destroy$ = new Subject<void>();
     constructor(
         private apiService: ApiService,
-        private ngxLoader: NgxUiLoaderService
+        private ngxLoader: NgxUiLoaderService,
+        private seoService: SeoService
     ) { }
 
     async ngOnInit(): Promise<void> {
+        this.updateSeoMetadata();
         this.ngxLoader.start();
         await this.getAllBooks();
         this.ngxLoader.stop();
+    }
+
+    private updateSeoMetadata(): void {
+        this.seoService.updateMetadata({
+            title: 'Lucas Brito - Books | Reading List & Reviews',
+            description: 'Discover Lucas Brito\'s reading list including books on AI, Machine Learning, Software Development, and personal growth. See what books are being read and reviews.',
+            keywords: 'Lucas Brito Books, Reading List, Book Reviews, AI Books, Machine Learning Books, Software Development Books'
+        });
     }
 
     async getAllBooks(): Promise<void> {

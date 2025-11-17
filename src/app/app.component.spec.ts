@@ -1,16 +1,26 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { UtilsService } from './services/utils.service';
+import { CanonicalService } from './services/canonical.service';
+import { SeoService } from './services/seo.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TranslateModule.forRoot()
       ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        UtilsService,
+        CanonicalService,
+        SeoService
+      ]
     }).compileComponents();
   }));
 
