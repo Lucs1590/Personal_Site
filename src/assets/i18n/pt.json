@@ -2,7 +2,16 @@
     "home": {
         "sub_title": "Tecnólogo em Big Data no Agronegócio",
         "about": "Sobre",
-        "description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" class=\"text-white\" target=\"_blank\">Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, finalizei o mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site."
+        "description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" class=\"text-white\" target=\"_blank\">Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, finalizei o mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site.",
+        "subtitles": [
+            "Tecnólogo em Big Data no Agronegócio",
+            "Mestrado em Ciência da Computação",
+            "Machine Learning Engineer",
+            "Marido",
+            "Pai",
+            "Atleta",
+            "Leitor"
+        ]
     },
     "lang": "en",
     "nav": {
