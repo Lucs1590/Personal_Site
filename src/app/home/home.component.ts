@@ -2,10 +2,10 @@ import { Component, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@ang
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+  standalone: false
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   idade: number;
@@ -44,24 +44,44 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private setupSubtitleRotation(): void {
     const subtitleEl: HTMLElement | null = this.elementRef.nativeElement.querySelector('#sub_title');
     if (!subtitleEl) return;
-
-    this.translate.get('home.subtitles').subscribe((subs: string[] | undefined) => {
+    this.translate.stream('home.subtitles').subscribe((subs: any) => {
       if (!subs || !Array.isArray(subs) || subs.length === 0) return;
-      this.subtitles = subs;
+      this.subtitles = subs as string[];
 
-      this.updateSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+      if (this.subtitleInterval) {
+        clearInterval(this.subtitleInterval);
+        this.subtitleInterval = undefined;
+      }
+
+      this.subtitleIndex = 0;
+      this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
 
       this.subtitleInterval = window.setInterval(() => {
         this.subtitleIndex = (this.subtitleIndex + 1) % this.subtitles.length;
-        this.updateSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
-      }, 1000) as unknown as number;
+        this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+      }, 3000) as unknown as number;
     });
   }
 
-  private updateSubtitle(text: string, el: HTMLElement): void {
-    const safeText = text;
-    const html = `<span class=\"glitch-subtitle\"><span>${safeText}</span><span>${safeText}</span><span>${safeText}</span></span>`;
-    this.renderer.setProperty(el, 'innerHTML', html);
+  private renderGlitchSubtitle(text: string, container: HTMLElement): void {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+
+    const wrapper = this.renderer.createElement('span');
+    this.renderer.addClass(wrapper, 'glitch-subtitle');
+
+    for (let i = 0; i < 3; i++) {
+      const span = this.renderer.createElement('span');
+      if (i !== 1) {
+        this.renderer.setAttribute(span, 'aria-hidden', 'true');
+      }
+      const textNode = this.renderer.createText(text);
+      this.renderer.appendChild(span, textNode);
+      this.renderer.appendChild(wrapper, span);
+    }
+
+    this.renderer.appendChild(container, wrapper);
   }
 
   private calculateAge(): number {
