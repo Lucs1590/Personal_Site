@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.7.0 (2025-11-16)
+
+### Feat
+
+- **home**: enhance glitch subtitle animations for smoother transitions and effects
+- add subtitles to home section for enhanced personal branding
+- **home**: enhance glitch subtitle effect with improved styling and animation timing
+- **home**: rotating glitch subtitle (translations + interval + styles)
+- update sub_title styling and apply class to HTML structure
+
+### Fix
+
+- update LinkedIn profile URL in JSON-LD structured data
+- change heading level for 'home.about' section for better semantics
+- downgrade @ngx-translate/http-loader to version 16.0.0
+- update translate loader configuration to use TranslateLoader and HttpClient
+- remove unused HttpClient and simplify translate loader configuration
+- simplify httpLoaderFactory by removing unnecessary HttpClient parameter
+- update eslint plugins to latest versions and remove unused dependencies
+- simplify httpLoaderFactory by removing unnecessary parameters
+
+### Refactor
+
+- streamline metadata update process by removing redundant comments and improving clarity
+- update job title and description in JSON-LD structured data; enhance SEO metadata in SeparadorComponent
+
+### Perf
+
+- **home**: smooth enter/leave transitions for rotating subtitle (glitch wrapper)
+
 ## v1.6.0 (2025-11-03)
 
 ### Feat
