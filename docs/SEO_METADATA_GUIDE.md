@@ -27,6 +27,7 @@ this.seoService.initializeDefaultMetadata();
 ```
 
 This sets up:
+
 - Default title, description, and keywords
 - Robots meta tag
 - Base Open Graph and Twitter Card tags
@@ -93,10 +94,12 @@ private updateSeoMetadata(): void {
 ## Metadata Fields
 
 ### Required Fields
+
 - **title**: The page title (appears in browser tab and search results)
 - **description**: Brief description for search engines and social media (150-160 characters recommended)
 
 ### Optional Fields
+
 - **keywords**: Comma-separated list of relevant keywords
 - **image**: Full URL to an image for social media sharing (recommended size: 1200x630px)
 - **type**: Open Graph type (website, article, profile, etc.)
@@ -105,23 +108,27 @@ private updateSeoMetadata(): void {
 ## Best Practices
 
 ### Title Tags
+
 - Keep titles under 60 characters
 - Include primary keywords near the beginning
 - Make each title unique
 - Follow pattern: "Primary Keyword - Secondary Keyword | Brand"
 
 ### Description Tags
+
 - Keep between 150-160 characters
 - Include a clear call-to-action
 - Make it compelling and accurate
 - Include target keywords naturally
 
 ### Keywords
+
 - Focus on 5-10 relevant keywords per page
 - Use long-tail keywords
 - Don't keyword stuff
 
 ### Images for Social Sharing
+
 - Use high-quality images
 - Recommended size: 1200x630px (16:9 aspect ratio)
 - Keep file size under 1MB
@@ -156,14 +163,18 @@ Twitter Card tags are also automatically managed:
 The site uses JSON-LD structured data in `src/index.html`:
 
 ### Person Schema
+
 Describes the site owner with professional information:
+
 - Name
 - Job title
 - Social media profiles
 - Skills and expertise
 
 ### WebSite Schema
+
 Describes the website itself:
+
 - Name and URL
 - Description
 - Search functionality
@@ -206,18 +217,23 @@ Canonical URLs are automatically managed by the `CanonicalService` and updated o
 ## Robots.txt and Sitemap.xml
 
 ### robots.txt
+
 Located at `src/robots.txt`. Update to:
+
 - Allow/disallow specific paths
 - Add crawl delays if needed
 - Reference sitemap location
 
 ### sitemap.xml
+
 Located at `src/sitemap.xml`. Update when:
+
 - Adding new routes
 - Changing page priorities
 - Updating change frequencies
 
 Format:
+
 ```xml
 <url>
   <loc>https://lucasbrito.com.br/new-page</loc>
@@ -231,11 +247,11 @@ Format:
 
 ### Tools for Validation
 
-1. **Facebook Sharing Debugger**: https://developers.facebook.com/tools/debug/
-2. **Twitter Card Validator**: https://cards-dev.twitter.com/validator
-3. **LinkedIn Post Inspector**: https://www.linkedin.com/post-inspector/
-4. **Google Rich Results Test**: https://search.google.com/test/rich-results
-5. **Schema Markup Validator**: https://validator.schema.org/
+1. **Facebook Sharing Debugger**: <https://developers.facebook.com/tools/debug/>
+2. **Twitter Card Validator**: <https://cards-dev.twitter.com/validator>
+3. **LinkedIn Post Inspector**: <https://www.linkedin.com/post-inspector/>
+4. **Google Rich Results Test**: <https://search.google.com/test/rich-results>
+5. **Schema Markup Validator**: <https://validator.schema.org/>
 
 ### Manual Testing
 
@@ -248,6 +264,7 @@ Format:
 ### Lighthouse SEO Audit
 
 Run Google Lighthouse in Chrome DevTools:
+
 1. Open Chrome DevTools (F12)
 2. Go to "Lighthouse" tab
 3. Select "SEO" category
@@ -259,6 +276,7 @@ Run Google Lighthouse in Chrome DevTools:
 ### Meta Tags Not Updating
 
 If meta tags aren't updating between routes:
+
 - Ensure `SeoService` is injected in the component
 - Verify `updateMetadata()` is called in `ngOnInit()`
 - Check browser console for errors
@@ -266,6 +284,7 @@ If meta tags aren't updating between routes:
 ### Social Media Previews Not Showing
 
 If social media platforms don't show previews:
+
 - Verify image URLs are absolute and publicly accessible
 - Clear social media cache using platform debugging tools
 - Check that Open Graph tags are using `property` attribute (not `name`)
@@ -331,6 +350,7 @@ export class MyPageComponent implements OnInit {
 ## Support
 
 For questions or issues related to SEO metadata management, please refer to:
+
 - Angular Meta and Title services documentation
 - The `SeoService` implementation in `src/app/services/seo.service.ts`
 - This guide
