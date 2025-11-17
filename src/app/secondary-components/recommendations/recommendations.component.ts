@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recommendation } from 'src/app/models/recommendation.model';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
     selector: 'app-recommendations',
@@ -7,7 +8,21 @@ import { Recommendation } from 'src/app/models/recommendation.model';
     styleUrls: ['./recommendations.component.css'],
     standalone: false
 })
-export class RecommendationsComponent {
+export class RecommendationsComponent implements OnInit {
+
+  constructor(private seoService: SeoService) { }
+
+  ngOnInit(): void {
+    this.updateSeoMetadata();
+  }
+
+  private updateSeoMetadata(): void {
+    this.seoService.updateMetadata({
+      title: 'Lucas Brito - Recommendations | Professional Testimonials',
+      description: 'Read professional recommendations and testimonials from colleagues who have worked with Lucas Brito. Discover insights about his professional skills and work ethic.',
+      keywords: 'Lucas Brito Recommendations, Professional Testimonials, Work References, Colleague Reviews'
+    });
+  }
 
   readonly recommendations = [
     {

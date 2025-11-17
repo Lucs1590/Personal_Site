@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-publications',
@@ -29,13 +30,23 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private elementRef: ElementRef,
     private utilsService: UtilsService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private seoService: SeoService
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.updateSeoMetadata();
     this.getSciPublications();
     await this.getBlogPublications();
     this.filterPublications();
+  }
+
+  private updateSeoMetadata(): void {
+    this.seoService.updateMetadata({
+      title: 'Lucas Brito - Publications | Research Papers & Blog Articles',
+      description: 'Browse Lucas Brito\'s scientific publications, research papers, and blog articles on AI, Machine Learning, Computer Vision, and Data Science.',
+      keywords: 'Lucas Brito Publications, Research Papers, Scientific Articles, Machine Learning Research, AI Research, Computer Vision Papers'
+    });
   }
 
   ngAfterViewInit(): void {

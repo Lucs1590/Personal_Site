@@ -38,16 +38,49 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer alt="Particles.js Script"></script>
 
-    <!-- JSON-LD structured data -->
+    <!-- JSON-LD structured data for Person and WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lucas de Brito Silva",
+        "alternateName": "Lucas Brito",
+        "url": "https://lucasbrito.com.br",
+        "image": "https://www.lucasbrito.com.br/assets/img/principal-min-mob.png",
+        "sameAs": [
+            "https://twitter.com/lucs1590",
+            "https://github.com/Lucs1590",
+            "https://linkedin.com/in/lucas-brito100/"
+        ],
+        "jobTitle": "Machine Learning Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Agibank S.A."
+        },
+        "description": "AI Engineer, Machine Learning Engineer and Data Scientist specializing in computer vision, deep learning, and software development.",
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Data Science",
+            "Computer Vision",
+            "Software Development"
+        ]
+    }
+    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Lucas de Brito Silva",
         "url": "https://lucasbrito.com.br",
+        "description": "Personal website and portfolio of Lucas de Brito Silva - AI, Machine Learning, and Data Science",
+        "author": {
+            "@type": "Person",
+            "name": "Lucas de Brito Silva"
+        },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://lucasbrito.com.br/publications?search?q={search_term_string}",
+            "target": "https://lucasbrito.com.br/publications?search={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }

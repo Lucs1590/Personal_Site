@@ -1,5 +1,6 @@
-import { AfterViewChecked, AfterViewInit, Component } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
     selector: 'app-not-found',
@@ -7,11 +8,24 @@ import { UtilsService } from 'src/app/services/utils.service';
     styleUrls: ['./not-found.component.css'],
     standalone: false
 })
-export class NotFoundComponent implements AfterViewChecked {
+export class NotFoundComponent implements OnInit, AfterViewChecked {
 
   constructor(
-    public utils: UtilsService
+    public utils: UtilsService,
+    private seoService: SeoService
   ) { }
+
+  ngOnInit(): void {
+    this.updateSeoMetadata();
+  }
+
+  private updateSeoMetadata(): void {
+    this.seoService.updateMetadata({
+      title: '404 - Page Not Found | Lucas Brito',
+      description: 'The page you are looking for could not be found. Return to Lucas Brito\'s homepage or explore other sections.',
+      keywords: '404, Not Found, Lucas Brito'
+    });
+  }
 
   ngAfterViewChecked(): void {
     const windowSize = this.defineWindowSize();
