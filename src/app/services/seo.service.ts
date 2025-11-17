@@ -38,15 +38,12 @@ export class SeoService {
     const pageMetadata = { ...this.defaultMetadata, ...metadata };
     const currentUrl = `https://lucasbrito.com.br${this.router.url.split('?')[0]}`;
 
-    // Update title
     this.title.setTitle(pageMetadata.title);
 
-    // Update or add standard meta tags
     this.meta.updateTag({ name: 'description', content: pageMetadata.description });
     this.meta.updateTag({ name: 'keywords', content: pageMetadata.keywords || this.defaultMetadata.keywords });
     this.meta.updateTag({ name: 'author', content: pageMetadata.author || this.defaultMetadata.author || '' });
 
-    // Update Open Graph tags (use 'property' attribute)
     this.meta.updateTag({ property: 'og:title', content: pageMetadata.title });
     this.meta.updateTag({ property: 'og:description', content: pageMetadata.description });
     this.meta.updateTag({ property: 'og:image', content: pageMetadata.image || this.defaultMetadata.image || '' });
@@ -55,7 +52,6 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:site_name', content: 'Lucas Brito' });
     this.meta.updateTag({ property: 'og:locale', content: 'pt_BR' });
 
-    // Update Twitter Card tags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:site', content: '@lucs1590' });
     this.meta.updateTag({ name: 'twitter:creator', content: '@lucs1590' });
@@ -70,10 +66,8 @@ export class SeoService {
   initializeDefaultMetadata(): void {
     this.updateMetadata(this.defaultMetadata);
 
-    // Add robots meta tag
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
 
-    // Add viewport if not present
     if (!this.meta.getTag('name="viewport"')) {
       this.meta.addTag({ name: 'viewport', content: 'width=device-width, initial-scale=1' });
     }
@@ -86,8 +80,6 @@ export class SeoService {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        // Metadata will be updated by individual components
-        // This is just to ensure canonical URL and base metadata are set
         this.updateMetadata({});
       });
   }
