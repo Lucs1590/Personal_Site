@@ -64,12 +64,19 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
 
   private renderGlitchSubtitle(text: string, container: HTMLElement): void {
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
+    const existing = container.querySelector('.glitch-subtitle');
+    if (existing) {
+      this.renderer.addClass(existing, 'leaving');
+      setTimeout(() => {
+        if (existing.parentNode) {
+          existing.parentNode.removeChild(existing);
+        }
+      }, 300);
     }
 
     const wrapper = this.renderer.createElement('span');
     this.renderer.addClass(wrapper, 'glitch-subtitle');
+    this.renderer.addClass(wrapper, 'entering');
 
     for (let i = 0; i < 3; i++) {
       const span = this.renderer.createElement('span');
@@ -82,6 +89,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     }
 
     this.renderer.appendChild(container, wrapper);
+
+    setTimeout(() => {
+      this.renderer.removeClass(wrapper, 'entering');
+    }, 300);
   }
 
   private calculateAge(): number {
