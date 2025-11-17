@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-home',
@@ -6,8 +7,11 @@ import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
     styleUrls: ['./home.component.css'],
     standalone: false
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   idade: number;
+  subtitles: string[] = [];
+  private subtitleIndex = 0;
+  private subtitleInterval: number | undefined;
 
   private readonly birthDate = new Date(1999, 3, 27); // April (month index is 0-based)
   private readonly imageOption1 = 'url("../../assets/img/perfil_site.png")';
@@ -19,7 +23,7 @@ export class HomeComponent implements AfterViewInit {
     interactive: ['animated', 'pulse']
   } as const;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private translate: TranslateService) {
     this.idade = this.calculateAge();
   }
 
@@ -27,6 +31,37 @@ export class HomeComponent implements AfterViewInit {
     this.applyInitialStyles();
     this.setupIntersectionObserver();
     this.addInteractiveElementListeners();
+    this.setupSubtitleRotation();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subtitleInterval) {
+      clearInterval(this.subtitleInterval);
+      this.subtitleInterval = undefined;
+    }
+  }
+
+  private setupSubtitleRotation(): void {
+    const subtitleEl: HTMLElement | null = this.elementRef.nativeElement.querySelector('#sub_title');
+    if (!subtitleEl) return;
+
+    this.translate.get('home.subtitles').subscribe((subs: string[] | undefined) => {
+      if (!subs || !Array.isArray(subs) || subs.length === 0) return;
+      this.subtitles = subs;
+
+      this.updateSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+
+      this.subtitleInterval = window.setInterval(() => {
+        this.subtitleIndex = (this.subtitleIndex + 1) % this.subtitles.length;
+        this.updateSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+      }, 1000) as unknown as number;
+    });
+  }
+
+  private updateSubtitle(text: string, el: HTMLElement): void {
+    const safeText = text;
+    const html = `<span class=\"glitch-subtitle\"><span>${safeText}</span><span>${safeText}</span><span>${safeText}</span></span>`;
+    this.renderer.setProperty(el, 'innerHTML', html);
   }
 
   private calculateAge(): number {
