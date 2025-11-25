@@ -36,8 +36,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
-
-    - name: 'notify vercel'
-      uses: 'vercel/repository-dispatch/actions/status@v1'
-      with:
-        name: "Vercel - personal-site: lint"
