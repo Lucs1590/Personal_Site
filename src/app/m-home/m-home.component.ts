@@ -1,4 +1,5 @@
 import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../services/utils.service';
 
@@ -11,7 +12,8 @@ import { UtilsService } from '../services/utils.service';
 export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestroy {
   subtitles: string[] = [];
   private subtitleIndex = 0;
-  private subtitleInterval: number | undefined;
+  private subtitleInterval: ReturnType<typeof setInterval> | undefined;
+  private translateSubscription: Subscription | undefined;
 
   constructor(
     public utils: UtilsService,
@@ -50,12 +52,16 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestro
       clearInterval(this.subtitleInterval);
       this.subtitleInterval = undefined;
     }
+    if (this.translateSubscription) {
+      this.translateSubscription.unsubscribe();
+      this.translateSubscription = undefined;
+    }
   }
 
   private setupSubtitleRotation(): void {
     const subtitleEl: HTMLElement | null = this.elementRef.nativeElement.querySelector('#sub_title');
     if (!subtitleEl) return;
-    this.translate.stream('home.subtitles').subscribe((subs: unknown) => {
+    this.translateSubscription = this.translate.stream('home.subtitles').subscribe((subs: unknown) => {
       if (!subs || !Array.isArray(subs) || subs.length === 0) return;
       this.subtitles = subs as string[];
 
@@ -67,10 +73,10 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestro
       this.subtitleIndex = 0;
       this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
 
-      this.subtitleInterval = window.setInterval(() => {
+      this.subtitleInterval = setInterval(() => {
         this.subtitleIndex = (this.subtitleIndex + 1) % this.subtitles.length;
         this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
-      }, 3000) as unknown as number;
+      }, 3000);
     });
   }
 
@@ -79,9 +85,7 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestro
     if (existing) {
       this.renderer.addClass(existing, 'leaving');
       setTimeout(() => {
-        if (existing.parentNode) {
-          existing.parentNode.removeChild(existing);
-        }
+        existing.remove();
       }, 300);
     }
 
