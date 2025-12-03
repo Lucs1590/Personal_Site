@@ -81,13 +81,14 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestro
   }
 
   private renderGlitchSubtitle(text: string, container: HTMLElement): void {
-    const existing = container.querySelector('.glitch-subtitle');
-    if (existing) {
+    // Remove all existing glitch subtitles to prevent duplicates on rapid language changes
+    const existingElements = container.querySelectorAll('.glitch-subtitle');
+    existingElements.forEach((existing) => {
       this.renderer.addClass(existing, 'leaving');
       setTimeout(() => {
         existing.remove();
       }, 300);
-    }
+    });
 
     const wrapper = this.renderer.createElement('span');
     this.renderer.addClass(wrapper, 'glitch-subtitle');
