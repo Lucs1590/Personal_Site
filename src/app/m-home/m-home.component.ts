@@ -1,4 +1,5 @@
-import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../services/utils.service';
 
 @Component({
@@ -7,22 +8,23 @@ import { UtilsService } from '../services/utils.service';
   styleUrls: ['./m-home.component.css'],
   standalone: false
 })
-export class MHomeComponent implements AfterContentInit, AfterViewInit {
+export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestroy {
+  subtitles: string[] = [];
+  private subtitleIndex = 0;
+  private subtitleInterval: number | undefined;
+
   constructor(
     public utils: UtilsService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private translate: TranslateService
   ) { }
 
   ngAfterContentInit(): void {
     const title = document.getElementById('title_name');
-    const subtitle = document.getElementById('sub_title');
 
     if (title) {
       title.classList.add('animated', 'zoomIn');
-    }
-    if (subtitle) {
-      subtitle.classList.add('animated', 'zoomIn');
     }
   }
 
@@ -39,5 +41,68 @@ export class MHomeComponent implements AfterContentInit, AfterViewInit {
         this.renderer.removeClass(element, 'pulse');
       });
     });
+
+    this.setupSubtitleRotation();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subtitleInterval) {
+      clearInterval(this.subtitleInterval);
+      this.subtitleInterval = undefined;
+    }
+  }
+
+  private setupSubtitleRotation(): void {
+    const subtitleEl: HTMLElement | null = this.elementRef.nativeElement.querySelector('#sub_title');
+    if (!subtitleEl) return;
+    this.translate.stream('home.subtitles').subscribe((subs: unknown) => {
+      if (!subs || !Array.isArray(subs) || subs.length === 0) return;
+      this.subtitles = subs as string[];
+
+      if (this.subtitleInterval) {
+        clearInterval(this.subtitleInterval);
+        this.subtitleInterval = undefined;
+      }
+
+      this.subtitleIndex = 0;
+      this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+
+      this.subtitleInterval = window.setInterval(() => {
+        this.subtitleIndex = (this.subtitleIndex + 1) % this.subtitles.length;
+        this.renderGlitchSubtitle(this.subtitles[this.subtitleIndex], subtitleEl);
+      }, 3000) as unknown as number;
+    });
+  }
+
+  private renderGlitchSubtitle(text: string, container: HTMLElement): void {
+    const existing = container.querySelector('.glitch-subtitle');
+    if (existing) {
+      this.renderer.addClass(existing, 'leaving');
+      setTimeout(() => {
+        if (existing.parentNode) {
+          existing.parentNode.removeChild(existing);
+        }
+      }, 300);
+    }
+
+    const wrapper = this.renderer.createElement('span');
+    this.renderer.addClass(wrapper, 'glitch-subtitle');
+    this.renderer.addClass(wrapper, 'entering');
+
+    for (let i = 0; i < 3; i++) {
+      const span = this.renderer.createElement('span');
+      if (i !== 1) {
+        this.renderer.setAttribute(span, 'aria-hidden', 'true');
+      }
+      const textNode = this.renderer.createText(text);
+      this.renderer.appendChild(span, textNode);
+      this.renderer.appendChild(wrapper, span);
+    }
+
+    this.renderer.appendChild(container, wrapper);
+
+    setTimeout(() => {
+      this.renderer.removeClass(wrapper, 'entering');
+    }, 300);
   }
 }
