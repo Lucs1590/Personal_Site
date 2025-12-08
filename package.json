@@ -59,7 +59,7 @@
     "@angular-eslint/template-parser": "20.3.0",
     "@angular/cli": "^20.3.13",
     "@angular/compiler-cli": "^20.3.0",
-    "@angular/language-service": "^20.3.7",
+    "@angular/language-service": "^21.0.3",
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@types/jasmine": "~5.1.9",
     "@types/jasminewd2": "~2.0.13",
