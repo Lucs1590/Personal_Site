@@ -25,6 +25,10 @@ export class ApiService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', Accept: 'application/json' })
   };
 
+  private readonly BOOKS_CACHE_KEY = 'goodreads_books_cache';
+  private readonly BOOKS_CACHE_TIMESTAMP_KEY = 'goodreads_books_cache_timestamp';
+  private readonly CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
+
   constructor(private httpService: HttpClient) { }
 
   private handleError(error: unknown): Observable<never> {
@@ -71,6 +75,12 @@ export class ApiService {
   }
 
   fetchBooksFromGoodreads(): Observable<Book[]> {
+    // Check if we have cached data
+    const cachedData = this.getBooksFromCache();
+    if (cachedData) {
+      return of(cachedData);
+    }
+
     const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
     return this.httpService.get(proxyUrl, { responseType: 'text' })
@@ -98,9 +108,13 @@ export class ApiService {
                     description: item.book_description[0],
                     cover: item.book_large_image_url[0] || item.book_medium_image_url[0] || item.book_small_image_url[0],
                     shelves: item.user_shelves[0],
+                    num_pages: item.book?.[0]?.num_pages?.[0],
                   };
                   return new Book().deserialize(bookData);
                 });
+
+                // Cache the data
+                this.saveBooksToCache(parsedData);
 
                 subscriber.next(parsedData);
                 subscriber.complete();
@@ -114,5 +128,54 @@ export class ApiService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  private getBooksFromCache(): Book[] | null {
+    try {
+      const cachedTimestamp = localStorage.getItem(this.BOOKS_CACHE_TIMESTAMP_KEY);
+      if (!cachedTimestamp) {
+        return null;
+      }
+
+      const timestamp = parseInt(cachedTimestamp, 10);
+      const now = Date.now();
+
+      // Check if cache is expired
+      if (now - timestamp > this.CACHE_DURATION_MS) {
+        this.clearBooksCache();
+        return null;
+      }
+
+      const cachedData = localStorage.getItem(this.BOOKS_CACHE_KEY);
+      if (!cachedData) {
+        return null;
+      }
+
+      const parsedCache = JSON.parse(cachedData);
+      // Deserialize cached books to ensure they are proper Book instances
+      return parsedCache.map((bookData: any) => new Book().deserialize(bookData));
+    } catch (error) {
+      console.error('Error reading from cache:', error);
+      this.clearBooksCache();
+      return null;
+    }
+  }
+
+  private saveBooksToCache(books: Book[]): void {
+    try {
+      localStorage.setItem(this.BOOKS_CACHE_KEY, JSON.stringify(books));
+      localStorage.setItem(this.BOOKS_CACHE_TIMESTAMP_KEY, Date.now().toString());
+    } catch (error) {
+      console.error('Error saving to cache:', error);
+    }
+  }
+
+  private clearBooksCache(): void {
+    try {
+      localStorage.removeItem(this.BOOKS_CACHE_KEY);
+      localStorage.removeItem(this.BOOKS_CACHE_TIMESTAMP_KEY);
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+    }
   }
 }
