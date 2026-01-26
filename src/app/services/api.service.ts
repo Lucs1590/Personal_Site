@@ -15,7 +15,7 @@ const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https:
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
-const IPAPI_API_BASE_URL = 'https://ipapi.co/json';
+const IPAPI_API_BASE_URL = 'http://ip-api.com/json/';
 
 @Injectable({
   providedIn: 'root'
