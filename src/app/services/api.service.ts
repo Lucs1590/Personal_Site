@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, map, switchMap, timeout } from 'rxjs/operators';
+import { Observable, throwError, of, timer } from 'rxjs';
+import { catchError, map, switchMap, timeout, retry, retryWhen, mergeMap, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -31,7 +31,34 @@ export class ApiService {
   private readonly PUBLICATIONS_CACHE_TIMESTAMP_KEY = 'medium_publications_cache_timestamp';
   private readonly CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
 
+  // API request configuration
+  private readonly REQUEST_TIMEOUT_MS = 15000; // 15 seconds
+  private readonly RETRY_ATTEMPTS = 3;
+  private readonly RETRY_DELAY_MS = 1000; // 1 second
+
   constructor(private httpService: HttpClient) { }
+
+  /**
+   * Generic retry strategy with exponential backoff
+   */
+  private retryStrategy = (attempts: number = this.RETRY_ATTEMPTS) => {
+    return (errors: Observable<any>) => errors.pipe(
+      mergeMap((error, index) => {
+        const retryAttempt = index + 1;
+        
+        // Don't retry if we've exceeded max attempts or if it's a client error (4xx)
+        if (retryAttempt > attempts || (error.status >= 400 && error.status < 500)) {
+          return throwError(() => error);
+        }
+
+        console.log(`Retry attempt ${retryAttempt}/${attempts} after error:`, error.message);
+        
+        // Exponential backoff: 1s, 2s, 4s, etc.
+        const delayMs = this.RETRY_DELAY_MS * Math.pow(2, index);
+        return timer(delayMs);
+      })
+    );
+  };
 
   private handleError(error: unknown): Observable<never> {
     console.error('API Error:', error);
@@ -47,6 +74,8 @@ export class ApiService {
 
     return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
         map(publication => {
           const publications = publication.items
             .filter(item => item.categories.length > 0)
@@ -74,6 +103,8 @@ export class ApiService {
     const url = `${GITHUB_API_BASE_URL}/users/${username}/repos`;
     return this.httpService.get<Repository[]>(url, this.httpOptions)
       .pipe(
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
         catchError(this.handleError)
       );
@@ -82,7 +113,8 @@ export class ApiService {
   getIPInfo(): Observable<IPInfo> {
     return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
       .pipe(
-        timeout(2000),
+        timeout(5000), // Shorter timeout for IP info since it's not critical
+        retry(2), // Simple retry for non-critical data
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
@@ -99,6 +131,8 @@ export class ApiService {
 
     return this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
         switchMap((booksXml: string) => {
           return new Observable<Book[]>(subscriber => {
             parseString(booksXml, (err, result) => {
