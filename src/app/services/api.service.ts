@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, of, timer } from 'rxjs';
 import { catchError, map, switchMap, timeout, retry, retryWhen, mergeMap, finalize } from 'rxjs/operators';
@@ -42,8 +42,8 @@ export class ApiService {
    * Generic retry strategy with exponential backoff
    */
   private retryStrategy = (attempts: number = this.RETRY_ATTEMPTS) => {
-    return (errors: Observable<any>) => errors.pipe(
-      mergeMap((error, index) => {
+    return (errors: Observable<HttpErrorResponse>) => errors.pipe(
+      mergeMap((error: HttpErrorResponse, index: number) => {
         const retryAttempt = index + 1;
         
         // Don't retry if we've exceeded max attempts or if it's a client error (4xx)
@@ -51,7 +51,10 @@ export class ApiService {
           return throwError(() => error);
         }
 
-        console.log(`Retry attempt ${retryAttempt}/${attempts} after error:`, error.message);
+        // Log retry attempts (only in development or for debugging)
+        if (typeof console !== 'undefined' && console.warn) {
+          console.warn(`API retry attempt ${retryAttempt}/${attempts} for: ${error.url || 'unknown'}`);
+        }
         
         // Exponential backoff: 1s, 2s, 4s, etc.
         const delayMs = this.RETRY_DELAY_MS * Math.pow(2, index);
@@ -114,7 +117,7 @@ export class ApiService {
     return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
       .pipe(
         timeout(5000), // Shorter timeout for IP info since it's not critical
-        retry(2), // Simple retry for non-critical data
+        retryWhen(this.retryStrategy(2)), // Use retry strategy with 2 attempts for consistency
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
