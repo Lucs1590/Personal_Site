@@ -27,6 +27,8 @@ export class ApiService {
 
   private readonly BOOKS_CACHE_KEY = 'goodreads_books_cache';
   private readonly BOOKS_CACHE_TIMESTAMP_KEY = 'goodreads_books_cache_timestamp';
+  private readonly PUBLICATIONS_CACHE_KEY = 'medium_publications_cache';
+  private readonly PUBLICATIONS_CACHE_TIMESTAMP_KEY = 'medium_publications_cache_timestamp';
   private readonly CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
 
   constructor(private httpService: HttpClient) { }
@@ -37,12 +39,24 @@ export class ApiService {
   }
 
   getAllPublications(): Observable<Publication[]> {
+    // Check if we have cached data
+    const cachedData = this.getPublicationsFromCache();
+    if (cachedData) {
+      return of(cachedData);
+    }
+
     return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
-        map(publication =>
-          publication.items
+        map(publication => {
+          const publications = publication.items
             .filter(item => item.categories.length > 0)
-            .map(item => new Publication().deserialize(item))),
+            .map(item => new Publication().deserialize(item));
+          
+          // Cache the data
+          this.savePublicationsToCache(publications);
+          
+          return publications;
+        }),
         catchError(this.handleError)
       );
   }
@@ -176,6 +190,55 @@ export class ApiService {
       localStorage.removeItem(this.BOOKS_CACHE_TIMESTAMP_KEY);
     } catch (error) {
       console.error('Error clearing cache:', error);
+    }
+  }
+
+  private getPublicationsFromCache(): Publication[] | null {
+    try {
+      const cachedTimestamp = localStorage.getItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY);
+      if (!cachedTimestamp) {
+        return null;
+      }
+
+      const timestamp = parseInt(cachedTimestamp, 10);
+      const now = Date.now();
+
+      // Check if cache is expired
+      if (now - timestamp > this.CACHE_DURATION_MS) {
+        this.clearPublicationsCache();
+        return null;
+      }
+
+      const cachedData = localStorage.getItem(this.PUBLICATIONS_CACHE_KEY);
+      if (!cachedData) {
+        return null;
+      }
+
+      const parsedCache = JSON.parse(cachedData);
+      // Deserialize cached publications to ensure they are proper Publication instances
+      return parsedCache.map((pubData: any) => new Publication().deserialize(pubData));
+    } catch (error) {
+      console.error('Error reading publications from cache:', error);
+      this.clearPublicationsCache();
+      return null;
+    }
+  }
+
+  private savePublicationsToCache(publications: Publication[]): void {
+    try {
+      localStorage.setItem(this.PUBLICATIONS_CACHE_KEY, JSON.stringify(publications));
+      localStorage.setItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY, Date.now().toString());
+    } catch (error) {
+      console.error('Error saving publications to cache:', error);
+    }
+  }
+
+  private clearPublicationsCache(): void {
+    try {
+      localStorage.removeItem(this.PUBLICATIONS_CACHE_KEY);
+      localStorage.removeItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY);
+    } catch (error) {
+      console.error('Error clearing publications cache:', error);
     }
   }
 }
