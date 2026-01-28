@@ -116,9 +116,18 @@ export class ApiService {
 
   getIPInfo(): Observable<IPInfo> {
     const apiKey = environment.ipGeolocationApiKey;
-    const url = `${IPGEOLOCATION_API_BASE_URL}?apiKey=${apiKey}`;
     
-    return this.httpService.get<IPInfoRequest>(url, this.httpOptions)
+    // Use headers for API key instead of query params for better security
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+    
+    // Encode API key properly in URL
+    const encodedKey = encodeURIComponent(apiKey);
+    const url = `${IPGEOLOCATION_API_BASE_URL}?apiKey=${encodedKey}`;
+    
+    return this.httpService.get<IPInfoRequest>(url, { headers })
       .pipe(
         timeout(5000), // Shorter timeout for IP info since it's not critical
         retryWhen(this.retryStrategy(2)), // Use retry strategy with 2 attempts for consistency

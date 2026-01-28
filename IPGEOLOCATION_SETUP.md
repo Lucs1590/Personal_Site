@@ -50,7 +50,7 @@ If deploying to Vercel:
 3. Add a build command in `vercel.json` or project settings:
    ```json
    {
-     "buildCommand": "sed -i 's/${IPGEOLOCATION_API_KEY}/'$IPGEOLOCATION_API_KEY'/g' src/environments/environment.prod.ts && npm run build"
+     "buildCommand": "sed -i \"s/\\${IPGEOLOCATION_API_KEY}/\"$IPGEOLOCATION_API_KEY\"/g\" src/environments/environment.prod.ts && npm run build"
    }
    ```
 
