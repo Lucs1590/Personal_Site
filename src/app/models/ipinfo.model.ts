@@ -20,10 +20,14 @@ export class IPInfo implements Deserializable {
     country_name?: string;
     ip?: string;
     languages?: string;
-    latitude?: number;
-    longitude?: number;
+    latitude?: string | number;
+    longitude?: string | number;
     region?: string;
+    state_prov?: string;
     timezone?: string;
+    time_zone?: {
+        name?: string;
+    };
   }): this {
     Object.assign(this, {});
     this.city = input?.city;
@@ -32,10 +36,11 @@ export class IPInfo implements Deserializable {
     this.countryName = input?.country_name;
     this.ip = input?.ip;
     this.languages = input?.languages;
-    this.latitude = input?.latitude;
-    this.longitude = input?.longitude;
-    this.region = input?.region;
-    this.timezone = input?.timezone;
+    // Handle both string and number types for latitude/longitude from ipgeolocation API
+    this.latitude = typeof input?.latitude === 'string' ? parseFloat(input.latitude) : input?.latitude;
+    this.longitude = typeof input?.longitude === 'string' ? parseFloat(input.longitude) : input?.longitude;
+    this.region = input?.region || input?.state_prov;
+    this.timezone = input?.timezone || input?.time_zone?.name;
     return this;
   }
 }

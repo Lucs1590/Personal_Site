@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  appVersion: require('../../package.json').version + '-dev'
+  appVersion: require('../../package.json').version + '-dev',
+  ipGeolocationApiKey: 'YOUR_DEV_API_KEY_HERE' // Replace with your dev API key or use the same placeholder
 };
 
 /*

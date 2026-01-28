@@ -10,12 +10,13 @@ import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
 import { parseString } from 'xml2js';
 import { Book } from '../models/book.model';
+import { environment } from 'src/environments/environment';
 
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
-const IPAPI_API_BASE_URL = 'http://ip-api.com/json/';
+const IPGEOLOCATION_API_BASE_URL = 'https://api.ipgeolocation.io/v2/ipgeo';
 
 @Injectable({
   providedIn: 'root'
@@ -114,7 +115,10 @@ export class ApiService {
   }
 
   getIPInfo(): Observable<IPInfo> {
-    return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
+    const apiKey = environment.ipGeolocationApiKey;
+    const url = `${IPGEOLOCATION_API_BASE_URL}?apiKey=${apiKey}`;
+    
+    return this.httpService.get<IPInfoRequest>(url, this.httpOptions)
       .pipe(
         timeout(5000), // Shorter timeout for IP info since it's not critical
         retryWhen(this.retryStrategy(2)), // Use retry strategy with 2 attempts for consistency

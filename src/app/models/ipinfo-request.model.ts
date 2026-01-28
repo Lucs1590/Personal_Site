@@ -1,28 +1,44 @@
+// Response structure from ipgeolocation.io API
 export interface IPInfoRequest {
-    asn?: string;
-    city?: string;
-    continent_code?: string;
-    country?: string;
-    country_area?: number;
-    country_calling_code?: string;
-    country_capital?: string;
-    country_code?: string;
-    country_code_iso3?: string;
-    country_name?: string;
-    country_population?: number;
-    country_tld?: string;
-    currency?: string;
-    currency_name?: string;
-    in_eu?: boolean;
     ip?: string;
+    hostname?: string;
+    continent_code?: string;
+    continent_name?: string;
+    country_code2?: string;
+    country_code3?: string;
+    country_name?: string;
+    country_capital?: string;
+    state_prov?: string;
+    state_code?: string;
+    district?: string;
+    city?: string;
+    zipcode?: string;
+    latitude?: string;
+    longitude?: string;
+    is_eu?: boolean;
+    calling_code?: string;
+    country_tld?: string;
     languages?: string;
-    latitude?: number;
-    longitude?: number;
-    org?: string;
-    postal?: string;
-    region?: string;
-    region_code?: string;
-    timezone?: string;
-    utc_offset?: string;
-    version?: string;
+    country_flag?: string;
+    geoname_id?: string;
+    isp?: string;
+    connection_type?: string;
+    organization?: string;
+    currency?: {
+        code?: string;
+        name?: string;
+        symbol?: string;
+    };
+    time_zone?: {
+        name?: string;
+        offset?: number;
+        offset_with_dst?: number;
+        current_time?: string;
+        current_time_unix?: number;
+        is_dst?: boolean;
+        dst_savings?: number;
+        dst_exists?: boolean;
+        dst_start?: string;
+        dst_end?: string;
+    };
 }
