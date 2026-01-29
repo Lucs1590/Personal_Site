@@ -312,7 +312,27 @@ export class ApiService {
       }
 
       const parsedCache = JSON.parse(cachedData);
-      return parsedCache.map((pubData: any) => new Publication().deserialize(pubData));
+      return parsedCache.map((pubData: any) => {
+        const normalizedInput: any = {
+          title: pubData.title,
+          // support both shapes: `pubDate` (from RSS) or `publicationDate` (from cached Publication)
+          pubDate: pubData.pubDate || pubData.publicationDate || pubData.publicationDateISO || undefined,
+          link: pubData.link || pubData.url,
+          author: pubData.author,
+          thumbnail: pubData.thumbnail || pubData.image,
+          description: pubData.description || pubData.content || pubData.summary || '',
+          content: pubData.content || pubData.description || '',
+          categories: pubData.categories || [],
+          venue: pubData.venue,
+          year: pubData.year,
+          doi: pubData.doi,
+          pdfUrl: pubData.pdfUrl,
+          githubUrl: pubData.githubUrl,
+          type: pubData.type
+        };
+
+        return new Publication().deserialize(normalizedInput);
+      });
     } catch (error) {
       console.error('Error reading publications from cache:', error);
       this.clearPublicationsCache();

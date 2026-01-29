@@ -82,8 +82,18 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
             publication.url = this.utilsService.addUtmParameters(publication.url);
           }
 
-          const rawDate: any = (publication as any).publicationDate;
-          if (rawDate) {
+          // Try common date fields returned by different APIs / payloads
+          const anyPub = publication as any;
+          const rawDate: any =
+            anyPub.publicationDate ??
+            anyPub.date ??
+            anyPub.publishedAt ??
+            anyPub.createdAt ??
+            anyPub.pubDate ??
+            anyPub.isoDate ??
+            undefined;
+
+          if (rawDate !== undefined && rawDate !== null && rawDate !== '') {
             const parsed = rawDate instanceof Date ? rawDate : new Date(rawDate);
             publication.publicationDate = Number.isNaN(parsed.getTime()) ? undefined : parsed;
           } else {
@@ -92,7 +102,14 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
 
           return publication;
         })
-        .sort((a: Publication, b: Publication) => (b.publicationDate?.getTime() ?? 0) - (a.publicationDate?.getTime() ?? 0));
+        .sort((a: Publication, b: Publication) => {
+          const aTime = a.publicationDate instanceof Date ? a.publicationDate.getTime() : 0;
+          const bTime = b.publicationDate instanceof Date ? b.publicationDate.getTime() : 0;
+          return bTime - aTime;
+        });
+
+
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error fetching blog publications:', error);
       this.blogPublications = [];
