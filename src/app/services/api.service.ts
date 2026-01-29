@@ -35,7 +35,6 @@ export class ApiService {
   private readonly RETRY_ATTEMPTS = 3;
   private readonly RETRY_DELAY_MS = 5000; // 5 seconds
 
-  // In-flight request observables to prevent concurrent requests
   private booksRequest$: Observable<Book[]> | null = null;
   private publicationsRequest$: Observable<Publication[]> | null = null;
 
@@ -52,12 +51,10 @@ export class ApiService {
       return of(cachedData);
     }
 
-    // Return in-flight request if one exists
     if (this.publicationsRequest$) {
       return this.publicationsRequest$;
     }
 
-    // Create new request with shareReplay to prevent concurrent requests
     this.publicationsRequest$ = this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
@@ -169,14 +166,12 @@ export class ApiService {
       return of(cachedData);
     }
 
-    // Return in-flight request if one exists
     if (this.booksRequest$) {
       return this.booksRequest$;
     }
 
     const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
-    // Create new request with shareReplay to prevent concurrent requests
     this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
