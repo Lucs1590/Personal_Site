@@ -1,0 +1,4 @@
+{
+  "buildCommand": "chmod +x build-vercel.sh && ./build-vercel.sh",
+  "outputDirectory": "dist/personal-site/browser"
+}

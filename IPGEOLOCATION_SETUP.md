@@ -46,15 +46,12 @@ If deploying to Vercel:
 2. Add a new variable:
    - Key: `IPGEOLOCATION_API_KEY`
    - Value: Your API key
-   - Environments: Production, Preview (optional)
+   - Environments: Production, Preview
 
-3. Add a build command in `vercel.json` or project settings:
+The `vercel.json` file in the project root is configured to:
+- Automatically replace the API key placeholder during build time
 
-   ```json
-   {
-     "buildCommand": "sed -i \"s/\\${IPGEOLOCATION_API_KEY}/\"$IPGEOLOCATION_API_KEY\"/g\" src/environments/environment.prod.ts && npm run build"
-   }
-   ```
+No additional build commands need to be configured in Vercel's dashboard - the `vercel.json` file handles everything automatically.
 
 ## API Usage
 
@@ -104,3 +101,18 @@ Monitor your usage at [ipgeolocation.io/dashboard](https://app.ipgeolocation.io/
 - Use environment variables for all environments
 - Keep `environment.ts` with placeholder values in version control
 - Production keys should only be in CI/CD secrets
+
+## Troubleshooting
+
+### CORS Errors
+
+If you encounter CORS (Cross-Origin Resource Sharing) errors when calling the ipgeolocation.io API from your deployed application, this is typically caused by the API provider's server configuration, not your application.
+
+**Note:** The ipgeolocation.io API should already support CORS for client-side requests. If you're experiencing CORS issues:
+
+1. Verify your API key is valid and properly replaced in the production build
+2. Check that you're using the correct API endpoint (should be `https://api.ipgeolocation.io/v2/ipgeo`)
+3. Ensure you're making the request with proper headers (Content-Type: application/json)
+4. Contact ipgeolocation.io support if CORS issues persist
+
+**Important:** Adding CORS headers to your application's responses (via vercel.json or other means) will NOT fix CORS errors when making outbound requests to external APIs. CORS headers must be set by the API server being called, not by the client application.

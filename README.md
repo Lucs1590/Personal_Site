@@ -39,6 +39,8 @@ npm install --force
 npm start # or ng serve
 ```
 
+For IP geolocation functionality setup (optional), see [IPGEOLOCATION_SETUP.md](IPGEOLOCATION_SETUP.md).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/Lucs1590/Personal_Site/blob/master/LICENCE) for more details.
