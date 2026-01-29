@@ -178,7 +178,7 @@ export class ApiService {
         retry({
           count: this.RETRY_ATTEMPTS,
           delay: (error, retryCount) => {
-            if (error.status >= 400 && error.status < 500) {
+            if ((error as any)?.status >= 400 && (error as any)?.status < 500) {
               return throwError(() => error);
             }
             const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
@@ -315,7 +315,6 @@ export class ApiService {
       return parsedCache.map((pubData: any) => {
         const normalizedInput: any = {
           title: pubData.title,
-          // support both shapes: `pubDate` (from RSS) or `publicationDate` (from cached Publication)
           pubDate: pubData.pubDate || pubData.publicationDate || pubData.publicationDateISO || undefined,
           link: pubData.link || pubData.url,
           author: pubData.author,
