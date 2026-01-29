@@ -87,7 +87,6 @@
         },
         "read_at": "Read at",
         "goodreads_review": "My Goodreads Review",
-        "no_results": "No books found with current filters.",
-        "completed": "completed"
+        "no_results": "No books found with current filters."
     }
 }

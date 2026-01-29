@@ -21,9 +21,6 @@ export class BooksComponent implements OnInit, OnDestroy {
     private readBooksOriginal: Book[] = [];
     filteredReadBooks: Book[] = [];
     currentSort: string = 'recent';
-    
-    // Make Math available in the template
-    Math = Math;
 
     private readonly destroy$ = new Subject<void>();
     constructor(
