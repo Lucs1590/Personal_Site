@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, of, timer } from 'rxjs';
-import { catchError, map, switchMap, timeout, retry, retryWhen, mergeMap, finalize } from 'rxjs/operators';
+import { catchError, map, switchMap, timeout, retry, shareReplay, tap, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -35,29 +35,11 @@ export class ApiService {
   private readonly RETRY_ATTEMPTS = 3;
   private readonly RETRY_DELAY_MS = 5000; // 5 seconds
 
+  // In-flight request observables to prevent concurrent requests
+  private booksRequest$: Observable<Book[]> | null = null;
+  private publicationsRequest$: Observable<Publication[]> | null = null;
+
   constructor(private httpService: HttpClient) { }
-
-  /**
-   * Generic retry strategy with exponential backoff
-   */
-  private retryStrategy = (attempts: number = this.RETRY_ATTEMPTS) => {
-    return (errors: Observable<HttpErrorResponse>) => errors.pipe(
-      mergeMap((error: HttpErrorResponse, index: number) => {
-        const retryAttempt = index + 1;
-
-        if (retryAttempt > attempts || (error.status >= 400 && error.status < 500)) {
-          return throwError(() => error);
-        }
-
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn(`API retry attempt ${retryAttempt}/${attempts} for: ${error.url || 'unknown'}`);
-        }
-
-        const delayMs = this.RETRY_DELAY_MS * Math.pow(2, index);
-        return timer(delayMs);
-      })
-    );
-  };
 
   private handleError(error: unknown): Observable<never> {
     console.error('API Error:', error);
@@ -70,7 +52,13 @@ export class ApiService {
       return of(cachedData);
     }
 
-    return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
+    // Return in-flight request if one exists
+    if (this.publicationsRequest$) {
+      return this.publicationsRequest$;
+    }
+
+    // Create new request with shareReplay to prevent concurrent requests
+    this.publicationsRequest$ = this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
         retry({
@@ -81,7 +69,7 @@ export class ApiService {
             }
             const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
             if (typeof console !== 'undefined' && console.warn) {
-              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+              console.warn(`Publications API retry ${retryCount}/${this.RETRY_ATTEMPTS}`);
             }
             return timer(delayMs);
           }
@@ -95,8 +83,20 @@ export class ApiService {
 
           return publications;
         }),
-        catchError(this.handleError)
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        }),
+        finalize(() => {
+          this.publicationsRequest$ = null;
+        }),
+        catchError((error) => {
+          this.publicationsRequest$ = null;
+          return this.handleError(error);
+        })
       );
+
+    return this.publicationsRequest$;
   }
 
   getAllSciPublications(): Publication[] {
@@ -169,9 +169,15 @@ export class ApiService {
       return of(cachedData);
     }
 
+    // Return in-flight request if one exists
+    if (this.booksRequest$) {
+      return this.booksRequest$;
+    }
+
     const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
-    return this.httpService.get(proxyUrl, { responseType: 'text' })
+    // Create new request with shareReplay to prevent concurrent requests
+    this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
         retry({
@@ -182,7 +188,7 @@ export class ApiService {
             }
             const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
             if (typeof console !== 'undefined' && console.warn) {
-              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+              console.warn(`Books API retry ${retryCount}/${this.RETRY_ATTEMPTS}`);
             }
             return timer(delayMs);
           }
@@ -227,8 +233,20 @@ export class ApiService {
             });
           });
         }),
-        catchError(this.handleError)
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        }),
+        finalize(() => {
+          this.booksRequest$ = null;
+        }),
+        catchError((error) => {
+          this.booksRequest$ = null;
+          return this.handleError(error);
+        })
       );
+
+    return this.booksRequest$;
   }
 
   private getBooksFromCache(): Book[] | null {
