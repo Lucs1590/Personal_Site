@@ -222,6 +222,8 @@ body {
     background-color: #ccc;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: none;
+    padding: 0;
 }
 
 .carousel-indicators .indicator.active {

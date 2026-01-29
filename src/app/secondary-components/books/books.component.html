@@ -19,9 +19,9 @@
         <div class="current-reading-grid">
             <div class="reading-info">
                 <h2 [innerHTML]="'books.currently_reading' | translate"></h2>
-                <div *ngIf="currentBook && currentBook.reading_percentage !== undefined" class="book-progress-info">
+                <div *ngIf="currentBook && currentBook.reading_percentage != null" class="book-progress-info">
                     <div class="progress-container">
-                        <div class="progress-bar" [style.width.%]="currentBook.reading_percentage"></div>
+                        <div class="progress-bar" [style.width.%]="Math.max(0, Math.min(100, currentBook.reading_percentage))"></div>
                     </div>
                     <span class="progress-text">{{ currentBook.reading_percentage }}% <span translate>books.completed</span></span>
                 </div>
@@ -52,12 +52,13 @@
 
                 <!-- Carousel Indicators -->
                 <div *ngIf="currentlyReadingBooks.length > 1" class="carousel-indicators">
-                    <span *ngFor="let book of currentlyReadingBooks; let i = index"
+                    <button *ngFor="let book of currentlyReadingBooks; let i = index"
                           class="indicator"
                           [class.active]="i === currentCarouselIndex"
                           (click)="goToBook(i)"
-                          [attr.aria-label]="'Go to book ' + (i + 1)">
-                    </span>
+                          [attr.aria-label]="'Go to book ' + (i + 1)"
+                          [attr.aria-current]="i === currentCarouselIndex ? 'true' : 'false'">
+                    </button>
                 </div>
             </div>
 

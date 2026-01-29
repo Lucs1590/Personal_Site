@@ -21,6 +21,9 @@ export class BooksComponent implements OnInit, OnDestroy {
     private readBooksOriginal: Book[] = [];
     filteredReadBooks: Book[] = [];
     currentSort: string = 'recent';
+    
+    // Make Math available in the template
+    Math = Math;
 
     private readonly destroy$ = new Subject<void>();
     constructor(
@@ -54,12 +57,17 @@ export class BooksComponent implements OnInit, OnDestroy {
 
                 if (currentlyReading.length > 0) {
                     this.currentlyReadingBooks = currentlyReading;
+                    // Reset carousel index if it's out of bounds
+                    if (this.currentCarouselIndex >= currentlyReading.length) {
+                        this.currentCarouselIndex = 0;
+                    }
                 } else {
                     // Default placeholder if no books are currently being read
                     this.currentlyReadingBooks = [{
                         cover: 'assets/img/cover.png',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed nisl neque. Nulla at fermentum massa, eget egestas orci. Cras convallis enim ex, sit amet posuere diam maximus sed. Phasellus pharetra dui risus, vitae dapibus est placerat id. Nullam eget velit ex. Donec a feugiat libero. Maecenas condimentum lacus vitae arcu pulvinar, eu rhoncus dui tincidunt. Suspendisse nec libero sit amet velit finibus mollis. Pellentesque placerat porta dolor et mattis. Suspendisse quis metus at metus condimentum ultrices eget sed nunc.'
                     }];
+                    this.currentCarouselIndex = 0;
                 }
 
                 this.readBooksOriginal = this.books.filter(book => book.shelves.includes('read'));
@@ -67,6 +75,7 @@ export class BooksComponent implements OnInit, OnDestroy {
                 this.sortFiltered(this.currentSort);
             } else {
                 this.currentlyReadingBooks = [];
+                this.currentCarouselIndex = 0;
                 this.readBooksOriginal = [];
                 this.filteredReadBooks = [];
             }
@@ -74,6 +83,7 @@ export class BooksComponent implements OnInit, OnDestroy {
             console.error("Failed to fetch books:", error);
             this.books = [];
             this.currentlyReadingBooks = [];
+            this.currentCarouselIndex = 0;
             this.readBooksOriginal = [];
             this.filteredReadBooks = [];
         }
@@ -166,7 +176,9 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
 
     goToBook(index: number): void {
-        this.currentCarouselIndex = index;
+        if (index >= 0 && index < this.currentlyReadingBooks.length) {
+            this.currentCarouselIndex = index;
+        }
     }
 
     get currentBook(): Partial<Book> {
