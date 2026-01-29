@@ -1,0 +1,23 @@
+{
+  "buildCommand": "sed -i \"s/\\${IPGEOLOCATION_API_KEY}/$IPGEOLOCATION_API_KEY/g\" src/environments/environment.prod.ts && npm run build",
+  "outputDirectory": "dist/personal-site/browser",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Content-Type, Accept, Authorization"
+        }
+      ]
+    }
+  ]
+}
