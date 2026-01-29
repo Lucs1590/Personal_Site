@@ -23,7 +23,7 @@ jobs:
         run: npm ci --prefer-offline --no-audit --progress=false --force
 
       - name: Replace IP Geolocation API key
-        if: env.IPGEOLOCATION_API_KEY != ''
+        if: ${{ secrets.IPGEOLOCATION_API_KEY != '' }}
         env:
           IPGEOLOCATION_API_KEY: ${{ env.IPGEOLOCATION_API_KEY }}
         run: |
