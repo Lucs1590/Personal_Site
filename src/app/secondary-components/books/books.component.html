@@ -29,18 +29,18 @@
                 <button *ngIf="currentlyReadingBooks.length > 1" 
                         class="carousel-btn carousel-btn-prev" 
                         (click)="previousBook()"
-                        aria-label="Previous book">
+                        [attr.aria-label]="'books.carousel.previous' | translate">
                     ‹
                 </button>
                 
                 <div class="book-cover-wrapper">
-                    <img *ngIf="currentBook" [src]="currentBook.cover" [alt]="currentBook.title">
+                    <img *ngIf="currentBook?.cover" [src]="currentBook.cover" [alt]="currentBook.title">
                 </div>
 
                 <button *ngIf="currentlyReadingBooks.length > 1" 
                         class="carousel-btn carousel-btn-next" 
                         (click)="nextBook()"
-                        aria-label="Next book">
+                        [attr.aria-label]="'books.carousel.next' | translate">
                     ›
                 </button>
 
@@ -50,7 +50,7 @@
                           class="indicator"
                           [class.active]="i === currentCarouselIndex"
                           (click)="goToBook(i)"
-                          [attr.aria-label]="'Go to book ' + (i + 1)"
+                          [attr.aria-label]="('books.carousel.go_to_book' | translate) + ' ' + (i + 1)"
                           [attr.aria-current]="i === currentCarouselIndex ? 'true' : 'false'">
                     </button>
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="book-description-display">
                 <span class="vertical-title" translate>books.description</span>
-                <p *ngIf="currentBook" class="book-description" [innerHTML]="currentBook.description"></p>
+                <p *ngIf="currentBook?.description" class="book-description" [innerHTML]="currentBook.description"></p>
             </div>
         </div>
 

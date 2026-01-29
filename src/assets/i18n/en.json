@@ -87,6 +87,11 @@
         },
         "read_at": "Read at",
         "goodreads_review": "My Goodreads Review",
-        "no_results": "No books found with current filters."
+        "no_results": "No books found with current filters.",
+        "carousel": {
+            "previous": "Previous book",
+            "next": "Next book",
+            "go_to_book": "Go to book"
+        }
     }
 }
