@@ -19,41 +19,30 @@
         <div class="current-reading-grid">
             <div class="reading-info">
                 <h2 [innerHTML]="'books.currently_reading' | translate"></h2>
-                <div *ngIf="currentBook && currentBook.num_pages" class="book-progress-info">
-                    <span class="pages-info">📖 {{ currentBook.num_pages }} <span translate>books.pages</span></span>
-                </div>
             </div>
 
-            <div class="current-book-display" 
-                 (touchstart)="onTouchStart($event)" 
-                 (touchend)="onTouchEnd($event)">
+            <div class="current-book-display" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
                 <!-- Carousel Navigation -->
-                <button *ngIf="currentlyReadingBooks.length > 1" 
-                        class="carousel-btn carousel-btn-prev" 
-                        (click)="previousBook()"
-                        [attr.aria-label]="'books.carousel.previous' | translate">
+                <button *ngIf="currentlyReadingBooks.length > 1" class="carousel-btn carousel-btn-prev"
+                    (click)="previousBook()" [attr.aria-label]="'books.carousel.previous' | translate">
                     ‹
                 </button>
-                
+
                 <div class="book-cover-wrapper">
                     <img *ngIf="currentBook?.cover" [src]="currentBook.cover" [alt]="currentBook.title">
                 </div>
 
-                <button *ngIf="currentlyReadingBooks.length > 1" 
-                        class="carousel-btn carousel-btn-next" 
-                        (click)="nextBook()"
-                        [attr.aria-label]="'books.carousel.next' | translate">
+                <button *ngIf="currentlyReadingBooks.length > 1" class="carousel-btn carousel-btn-next"
+                    (click)="nextBook()" [attr.aria-label]="'books.carousel.next' | translate">
                     ›
                 </button>
 
                 <!-- Carousel Indicators -->
                 <div *ngIf="currentlyReadingBooks.length > 1" class="carousel-indicators">
-                    <button *ngFor="let book of currentlyReadingBooks; let i = index"
-                          class="indicator"
-                          [class.active]="i === currentCarouselIndex"
-                          (click)="goToBook(i)"
-                          [attr.aria-label]="('books.carousel.go_to_book' | translate) + ' ' + (i + 1)"
-                          [attr.aria-current]="i === currentCarouselIndex ? 'true' : 'false'">
+                    <button *ngFor="let book of currentlyReadingBooks; let i = index" class="indicator"
+                        [class.active]="i === currentCarouselIndex" (click)="goToBook(i)"
+                        [attr.aria-label]="('books.carousel.go_to_book' | translate) + ' ' + (i + 1)"
+                        [attr.aria-current]="i === currentCarouselIndex ? 'true' : 'false'">
                     </button>
                 </div>
             </div>
@@ -121,7 +110,8 @@
                             </div>
                             <h4 class="book-title">{{ book.title }}</h4>
                             <p class="book-author">{{ book.author }}</p>
-                            <p class="book-year">{{ 'books.read_at' | translate }} {{ book.user_read_at | date: 'dd/MM/yyyy' }}</p>
+                            <p class="book-year">{{ 'books.read_at' | translate }} {{ book.user_read_at | date:
+                                'dd/MM/yyyy' }}</p>
                             <a [href]="book.link" class="read-more" target="_blank" rel="noopener noreferrer">
                                 <span translate>books.goodreads_review</span>
                             </a>
