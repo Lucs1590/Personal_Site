@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host=127.0.0.1 --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "start": "ng serve --host=127.0.0.1 --proxy-config proxy.conf.json --configuration=local",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",

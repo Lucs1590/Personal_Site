@@ -72,6 +72,17 @@
                 }
               ]
             },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ],
+              "sourceMap": true,
+              "optimization": false,
+              "namedChunks": true
+            },
             "development": {
               "sourceMap": true,
               "optimization": false,
@@ -88,6 +99,9 @@
           "configurations": {
             "production": {
               "buildTarget": "personal-site:build:production"
+            },
+            "local": {
+              "buildTarget": "personal-site:build:local"
             },
             "development": {
               "buildTarget": "personal-site:build:development"
