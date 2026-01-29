@@ -61,17 +61,24 @@ The `vercel.json` file in the project root contains:
 
 ```json
 {
-  "buildCommand": "sed -i \"s/\\${IPGEOLOCATION_API_KEY}/$IPGEOLOCATION_API_KEY/g\" src/environments/environment.prod.ts && npm run build",
+  "buildCommand": "chmod +x build-vercel.sh && ./build-vercel.sh",
   "outputDirectory": "dist/personal-site/browser"
 }
 ```
 
+The `build-vercel.sh` script:
+
+1. Checks if the `IPGEOLOCATION_API_KEY` environment variable is set
+2. Uses `sed` to replace the placeholder `${IPGEOLOCATION_API_KEY}` in `environment.prod.ts` with the actual value
+3. Runs the Angular build command (`npm run build`)
+4. Outputs the compiled files to `dist/personal-site/browser`
+
 During the build:
 
-1. Vercel reads the `IPGEOLOCATION_API_KEY` environment variable
-2. The `sed` command replaces the placeholder `${IPGEOLOCATION_API_KEY}` in `environment.prod.ts` with the actual value
+1. Vercel reads the `IPGEOLOCATION_API_KEY` environment variable from project settings
+2. The build script replaces the placeholder with the actual value
 3. Angular builds the application with the real API key embedded
-4. The compiled files are served from `dist/personal-site/browser`
+4. The compiled files are served from the output directory
 
 ### Security Note
 
@@ -86,9 +93,15 @@ During the build:
 **Problem:** The URL shows `apiKey=%24%7BIPGEOLOCATION_API_KEY%7D`
 
 **Solution:**
-1. Verify the environment variable is set in Vercel
+1. Verify the environment variable is set in Vercel (Settings → Environment Variables)
 2. Check the variable name is exactly `IPGEOLOCATION_API_KEY` (case-sensitive)
-3. Redeploy after adding/updating the variable
+3. **Check the Vercel build logs** to see if the replacement is happening:
+   - Go to your deployment in Vercel
+   - Click on the "Building" step to see logs
+   - Look for "Replacing API key placeholder..." and "Replacement complete"
+   - If you see "WARNING: IPGEOLOCATION_API_KEY is not set", the variable isn't being passed to the build
+4. Ensure the environment variable is enabled for the deployment environment (Production/Preview)
+5. Redeploy after adding/updating the variable
 
 ### Issue: CORS Errors
 
