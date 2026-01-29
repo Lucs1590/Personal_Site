@@ -30,12 +30,10 @@ export class ApiService {
   private readonly BOOKS_CACHE_TIMESTAMP_KEY = 'goodreads_books_cache_timestamp';
   private readonly PUBLICATIONS_CACHE_KEY = 'medium_publications_cache';
   private readonly PUBLICATIONS_CACHE_TIMESTAMP_KEY = 'medium_publications_cache_timestamp';
-  private readonly CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
-
-  // API request configuration
-  private readonly REQUEST_TIMEOUT_MS = 15000; // 15 seconds
+  private readonly CACHE_DURATION_MS = 60 * 60 * 8000; // 8 hours
+  private readonly REQUEST_TIMEOUT_MS = 25000; // 25 seconds
   private readonly RETRY_ATTEMPTS = 3;
-  private readonly RETRY_DELAY_MS = 1000; // 1 second
+  private readonly RETRY_DELAY_MS = 5000; // 5 seconds
 
   constructor(private httpService: HttpClient) { }
 
@@ -46,18 +44,15 @@ export class ApiService {
     return (errors: Observable<HttpErrorResponse>) => errors.pipe(
       mergeMap((error: HttpErrorResponse, index: number) => {
         const retryAttempt = index + 1;
-        
-        // Don't retry if we've exceeded max attempts or if it's a client error (4xx)
+
         if (retryAttempt > attempts || (error.status >= 400 && error.status < 500)) {
           return throwError(() => error);
         }
 
-        // Log retry attempts (only in development or for debugging)
         if (typeof console !== 'undefined' && console.warn) {
           console.warn(`API retry attempt ${retryAttempt}/${attempts} for: ${error.url || 'unknown'}`);
         }
-        
-        // Exponential backoff: 1s, 2s, 4s, etc.
+
         const delayMs = this.RETRY_DELAY_MS * Math.pow(2, index);
         return timer(delayMs);
       })
@@ -70,7 +65,6 @@ export class ApiService {
   }
 
   getAllPublications(): Observable<Publication[]> {
-    // Check if we have cached data
     const cachedData = this.getPublicationsFromCache();
     if (cachedData) {
       return of(cachedData);
@@ -79,15 +73,26 @@ export class ApiService {
     return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
-        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         map(publication => {
           const publications = publication.items
             .filter(item => item.categories.length > 0)
             .map(item => new Publication().deserialize(item));
-          
-          // Cache the data
+
           this.savePublicationsToCache(publications);
-          
+
           return publications;
         }),
         catchError(this.handleError)
@@ -108,7 +113,19 @@ export class ApiService {
     return this.httpService.get<Repository[]>(url, this.httpOptions)
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
-        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
         catchError(this.handleError)
       );
@@ -116,28 +133,37 @@ export class ApiService {
 
   getIPInfo(): Observable<IPInfo> {
     const apiKey = environment.ipGeolocationApiKey;
-    
-    // Use headers for API key instead of query params for better security
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
-    
-    // Encode API key properly in URL
+
     const encodedKey = encodeURIComponent(apiKey);
     const url = `${IPGEOLOCATION_API_BASE_URL}?apiKey=${encodedKey}`;
-    
+
     return this.httpService.get<IPInfoRequest>(url, { headers })
       .pipe(
-        timeout(5000), // Shorter timeout for IP info since it's not critical
-        retryWhen(this.retryStrategy(2)), // Use retry strategy with 2 attempts for consistency
+        timeout(5000),
+        retry({
+          count: 2,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/2 for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
   }
 
   fetchBooksFromGoodreads(): Observable<Book[]> {
-    // Check if we have cached data
     const cachedData = this.getBooksFromCache();
     if (cachedData) {
       return of(cachedData);
@@ -148,7 +174,19 @@ export class ApiService {
     return this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
         timeout(this.REQUEST_TIMEOUT_MS),
-        retryWhen(this.retryStrategy(this.RETRY_ATTEMPTS)),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         switchMap((booksXml: string) => {
           return new Observable<Book[]>(subscriber => {
             parseString(booksXml, (err, result) => {
@@ -177,7 +215,6 @@ export class ApiService {
                   return new Book().deserialize(bookData);
                 });
 
-                // Cache the data
                 this.saveBooksToCache(parsedData);
 
                 subscriber.next(parsedData);
@@ -204,7 +241,6 @@ export class ApiService {
       const timestamp = parseInt(cachedTimestamp, 10);
       const now = Date.now();
 
-      // Check if cache is expired
       if (now - timestamp > this.CACHE_DURATION_MS) {
         this.clearBooksCache();
         return null;
@@ -216,7 +252,6 @@ export class ApiService {
       }
 
       const parsedCache = JSON.parse(cachedData);
-      // Deserialize cached books to ensure they are proper Book instances
       return parsedCache.map((bookData: any) => new Book().deserialize(bookData));
     } catch (error) {
       console.error('Error reading from cache:', error);
@@ -253,7 +288,6 @@ export class ApiService {
       const timestamp = parseInt(cachedTimestamp, 10);
       const now = Date.now();
 
-      // Check if cache is expired
       if (now - timestamp > this.CACHE_DURATION_MS) {
         this.clearPublicationsCache();
         return null;
@@ -265,7 +299,6 @@ export class ApiService {
       }
 
       const parsedCache = JSON.parse(cachedData);
-      // Deserialize cached publications to ensure they are proper Publication instances
       return parsedCache.map((pubData: any) => new Publication().deserialize(pubData));
     } catch (error) {
       console.error('Error reading publications from cache:', error);
