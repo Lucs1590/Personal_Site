@@ -21,6 +21,8 @@ This document provides step-by-step instructions for deploying this application 
    - **Environments:** Select all environments (Production, Preview, Development)
 5. Click **Save**
 
+**Important:** The API key should contain only alphanumeric characters, hyphens, and underscores. If your API key contains special characters like `/`, `&`, or `\`, the build process may fail. If you encounter issues, contact ipgeolocation.io support for a compatible key format.
+
 ### 2. Trigger a New Deployment
 
 After adding the environment variable, trigger a new deployment:

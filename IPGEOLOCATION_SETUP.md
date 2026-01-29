@@ -50,7 +50,6 @@ If deploying to Vercel:
 
 The `vercel.json` file in the project root is configured to:
 - Automatically replace the API key placeholder during build time
-- Add necessary CORS headers to prevent cross-origin issues
 
 No additional build commands need to be configured in Vercel's dashboard - the `vercel.json` file handles everything automatically.
 
