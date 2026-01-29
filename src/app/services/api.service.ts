@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+const BOOKS_PROXY_ROUTE = '/api/goodreads';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
 const IPGEOLOCATION_API_BASE_URL = 'https://api.ipgeolocation.io/v2/ipgeo';
 
@@ -170,7 +171,9 @@ export class ApiService {
       return this.booksRequest$;
     }
 
-    const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
+    // Use a same-origin serverless proxy in production to avoid CORS issues on deployed sites.
+    // Fall back to the public CORS proxy during local development.
+    const proxyUrl = environment.production ? BOOKS_PROXY_ROUTE : `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
     this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
@@ -190,7 +193,7 @@ export class ApiService {
         }),
         switchMap((booksXml: string) => {
           return new Observable<Book[]>(subscriber => {
-            parseString(booksXml, (err, result) => {
+            parseString(booksXml, (err: Error | null, result: any) => {
               if (err) {
                 console.error('Failed to parse XML:', err);
                 subscriber.error(err);
