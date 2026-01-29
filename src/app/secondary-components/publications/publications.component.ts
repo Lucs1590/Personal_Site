@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
@@ -26,6 +26,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private elementRef: ElementRef,
@@ -35,6 +36,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.loading = false;
     this.updateSeoMetadata();
     this.getSciPublications();
     await this.getBlogPublications();
@@ -51,8 +53,11 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
-    this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
-    this.modifyLinks();
+    setTimeout(() => {
+      this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
+      this.cdr.detectChanges();
+      this.modifyLinks();
+    });
   }
 
   ngOnDestroy(): void {
@@ -95,7 +100,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.availableYears = [...new Set(this.sciPublications.map(p => p.year).filter((y): y is number => y !== undefined))].sort((a, b) => b - a);
-    this.availableTypes = [...new Set(this.sciPublications.map(p => p.type).filter((t): t is string => t !== undefined))];
+    this.availableTypes = [...new Set(this.sciPublications.map(p => p.type).filter((t): t is string => t !== undefined))].sort((a, b) => b.localeCompare(a));
     this.applyFilters();
   }
 
