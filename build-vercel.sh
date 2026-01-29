@@ -4,31 +4,36 @@
 set -e
 
 echo "Starting Vercel build process..."
-echo "Replacing API key placeholder..."
 
 # Check if IPGEOLOCATION_API_KEY is set
 if [ -z "$IPGEOLOCATION_API_KEY" ]; then
-  echo "WARNING: IPGEOLOCATION_API_KEY is not set. Using placeholder."
-else
-  echo "IPGEOLOCATION_API_KEY is set, replacing placeholder..."
-  # Use a more robust sed command that works on both macOS and Linux
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    sed -i '' "s/\${IPGEOLOCATION_API_KEY}/$IPGEOLOCATION_API_KEY/g" src/environments/environment.prod.ts
-  else
-    # Linux (including Vercel)
-    sed -i "s/\${IPGEOLOCATION_API_KEY}/$IPGEOLOCATION_API_KEY/g" src/environments/environment.prod.ts
-  fi
-  echo "Replacement complete"
+  echo "ERROR: IPGEOLOCATION_API_KEY environment variable is not set."
+  echo "Please add it in Vercel Project Settings -> Environment Variables"
+  exit 1
 fi
 
-# Display the environment file (without the actual key for security)
-echo "Environment file contents (redacted):"
-grep -v "apiKey" src/environments/environment.prod.ts || true
-echo "ipGeolocationApiKey: [REDACTED]"
+echo "IPGEOLOCATION_API_KEY is set, replacing placeholder..."
+
+# Escape special characters in the API key for use in sed
+# This handles /, &, \, and other special regex characters
+ESCAPED_KEY=$(printf '%s\n' "$IPGEOLOCATION_API_KEY" | sed -e 's/[\/&]/\\&/g')
+
+# Use | as delimiter to avoid issues with / in the key
+sed -i "s|\${IPGEOLOCATION_API_KEY}|$ESCAPED_KEY|g" src/environments/environment.prod.ts
+
+echo "API key replacement complete"
+
+# Verify the replacement worked (without exposing the key)
+if grep -q '${IPGEOLOCATION_API_KEY}' src/environments/environment.prod.ts; then
+  echo "ERROR: Placeholder was not replaced successfully"
+  exit 1
+fi
+
+echo "Verified: placeholder successfully replaced"
 
 # Run the Angular build
 echo "Building Angular application..."
 npm run build
 
 echo "Build complete!"
+

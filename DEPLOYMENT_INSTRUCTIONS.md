@@ -95,11 +95,15 @@ During the build:
 **Solution:**
 1. Verify the environment variable is set in Vercel (Settings → Environment Variables)
 2. Check the variable name is exactly `IPGEOLOCATION_API_KEY` (case-sensitive)
-3. **Check the Vercel build logs** to see if the replacement is happening:
+3. **Check the Vercel build logs** to see what's happening:
    - Go to your deployment in Vercel
    - Click on the "Building" step to see logs
-   - Look for "Replacing API key placeholder..." and "Replacement complete"
-   - If you see "WARNING: IPGEOLOCATION_API_KEY is not set", the variable isn't being passed to the build
+   - Look for these messages:
+     - `"IPGEOLOCATION_API_KEY is set, replacing placeholder..."` - means it's working
+     - `"API key replacement complete"` - confirms successful replacement
+     - `"Verified: placeholder successfully replaced"` - final verification passed
+     - `"ERROR: IPGEOLOCATION_API_KEY environment variable is not set"` - the variable isn't available
+     - `"ERROR: Placeholder was not replaced successfully"` - replacement failed
 4. Ensure the environment variable is enabled for the deployment environment (Production/Preview)
 5. Redeploy after adding/updating the variable
 
