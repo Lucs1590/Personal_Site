@@ -73,6 +73,7 @@
         "currently_reading": "Currently<br>Reading",
         "description": "Description",
         "read_books": "Read Books",
+        "pages": "pages",
         "search_title": "Search by title, author or description",
         "search_placeholder": "Search title, author or description...",
         "only_this_year": "Only this year",

@@ -1,6 +1,6 @@
 <div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto">
     <app-navbar></app-navbar>
-    <ngx-ui-loader></ngx-ui-loader>
+    <!-- <ngx-ui-loader></ngx-ui-loader> -->
 
     <main class="top-section mt-5">
         <header class="header">
@@ -19,6 +19,9 @@
         <div class="current-reading-grid">
             <div class="reading-info">
                 <h2 [innerHTML]="'books.currently_reading' | translate"></h2>
+                <div *ngIf="currentBook && currentBook.num_pages" class="book-progress-info">
+                    <span class="pages-info">📖 {{ currentBook.num_pages }} <span translate>books.pages</span></span>
+                </div>
             </div>
 
             <div class="current-book-display">

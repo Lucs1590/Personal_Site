@@ -60,7 +60,12 @@
                         <span class="pub-authors" *ngIf="pub.author">{{ pub.author }}</span>
                         <span class="pub-venue">
                             <fa-icon icon="calendar" class="me-1"></fa-icon>
-                            {{ pub.publicationDate | date:'mediumDate'}}
+                            <ng-container *ngIf="pub.publicationDate; else noDate">
+                                {{ pub.publicationDate | date:'mediumDate' }}
+                            </ng-container>
+                            <ng-template #noDate>
+                                <span translate>publi.no-date</span>
+                            </ng-template>
                         </span>
                         <span class="pub-type-badge type-blog">
                             Blog

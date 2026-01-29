@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, map, switchMap, timeout } from 'rxjs/operators';
+import { Observable, throwError, of, timer } from 'rxjs';
+import { catchError, map, switchMap, timeout, retry, shareReplay, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -10,12 +10,14 @@ import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
 import { parseString } from 'xml2js';
 import { Book } from '../models/book.model';
+import { environment } from 'src/environments/environment';
 
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+const BOOKS_PROXY_ROUTE = '/api/goodreads';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
-const IPAPI_API_BASE_URL = 'http://ip-api.com/json/';
+const IPGEOLOCATION_API_BASE_URL = 'https://api.ipgeolocation.io/v2/ipgeo';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,18 @@ export class ApiService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', Accept: 'application/json' })
   };
 
+  private readonly BOOKS_CACHE_KEY = 'goodreads_books_cache';
+  private readonly BOOKS_CACHE_TIMESTAMP_KEY = 'goodreads_books_cache_timestamp';
+  private readonly PUBLICATIONS_CACHE_KEY = 'medium_publications_cache';
+  private readonly PUBLICATIONS_CACHE_TIMESTAMP_KEY = 'medium_publications_cache_timestamp';
+  private readonly CACHE_DURATION_MS = 60 * 60 * 8000; // 8 hours
+  private readonly REQUEST_TIMEOUT_MS = 25000; // 25 seconds
+  private readonly RETRY_ATTEMPTS = 3;
+  private readonly RETRY_DELAY_MS = 5000; // 5 seconds
+
+  private booksRequest$: Observable<Book[]> | null = null;
+  private publicationsRequest$: Observable<Publication[]> | null = null;
+
   constructor(private httpService: HttpClient) { }
 
   private handleError(error: unknown): Observable<never> {
@@ -33,14 +47,54 @@ export class ApiService {
   }
 
   getAllPublications(): Observable<Publication[]> {
-    return this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
+    const cachedData = this.getPublicationsFromCache();
+    if (cachedData) {
+      return of(cachedData);
+    }
+
+    if (this.publicationsRequest$) {
+      return this.publicationsRequest$;
+    }
+
+    this.publicationsRequest$ = this.httpService.get<PublicationRequest>(MEDIUM_API_BASE_URL, this.httpOptions)
       .pipe(
-        map(publication =>
-          publication.items
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`Publications API retry ${retryCount}/${this.RETRY_ATTEMPTS}`);
+            }
+            return timer(delayMs);
+          }
+        }),
+        map(publication => {
+          const publications = publication.items
             .filter(item => item.categories.length > 0)
-            .map(item => new Publication().deserialize(item))),
-        catchError(this.handleError)
+            .map(item => new Publication().deserialize(item));
+
+          this.savePublicationsToCache(publications);
+
+          return publications;
+        }),
+        finalize(() => {
+          this.publicationsRequest$ = null;
+        }),
+        catchError((error) => {
+          this.publicationsRequest$ = null;
+          return this.handleError(error);
+        }),
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        })
       );
+
+    return this.publicationsRequest$;
   }
 
   getAllSciPublications(): Publication[] {
@@ -56,28 +110,90 @@ export class ApiService {
     const url = `${GITHUB_API_BASE_URL}/users/${username}/repos`;
     return this.httpService.get<Repository[]>(url, this.httpOptions)
       .pipe(
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/${this.RETRY_ATTEMPTS} for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         map(repositories => repositories.map(repo => new Repository().deserialize(repo)) as Repository[]),
         catchError(this.handleError)
       );
   }
 
   getIPInfo(): Observable<IPInfo> {
-    return this.httpService.get<IPInfoRequest>(IPAPI_API_BASE_URL, this.httpOptions)
+    const apiKey = environment.ipGeolocationApiKey;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+
+    const encodedKey = encodeURIComponent(apiKey);
+    const url = `${IPGEOLOCATION_API_BASE_URL}?apiKey=${encodedKey}`;
+
+    return this.httpService.get<IPInfoRequest>(url, { headers })
       .pipe(
-        timeout(2000),
+        timeout(5000),
+        retry({
+          count: 2,
+          delay: (error, retryCount) => {
+            if (error.status >= 400 && error.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`API retry attempt ${retryCount}/2 for: ${error.url || 'unknown'}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         map(response => new IPInfo().deserialize(response)),
         catchError(this.handleError)
       );
   }
 
   fetchBooksFromGoodreads(): Observable<Book[]> {
-    const proxyUrl = `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
+    const cachedData = this.getBooksFromCache();
+    if (cachedData) {
+      return of(cachedData);
+    }
 
-    return this.httpService.get(proxyUrl, { responseType: 'text' })
+    if (this.booksRequest$) {
+      return this.booksRequest$;
+    }
+
+    // Use a same-origin serverless proxy in production to avoid CORS issues on deployed sites.
+    // Fall back to the public CORS proxy during local development.
+    const proxyUrl = environment.production ? BOOKS_PROXY_ROUTE : `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
+
+    this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
       .pipe(
+        timeout(this.REQUEST_TIMEOUT_MS),
+        retry({
+          count: this.RETRY_ATTEMPTS,
+          delay: (error, retryCount) => {
+            if ((error as any)?.status >= 400 && (error as any)?.status < 500) {
+              return throwError(() => error);
+            }
+            const delayMs = this.RETRY_DELAY_MS * Math.pow(2, retryCount - 1);
+            if (typeof console !== 'undefined' && console.warn) {
+              console.warn(`Books API retry ${retryCount}/${this.RETRY_ATTEMPTS}`);
+            }
+            return timer(delayMs);
+          }
+        }),
         switchMap((booksXml: string) => {
           return new Observable<Book[]>(subscriber => {
-            parseString(booksXml, (err, result) => {
+            parseString(booksXml, (err: Error | null, result: any) => {
               if (err) {
                 console.error('Failed to parse XML:', err);
                 subscriber.error(err);
@@ -98,9 +214,12 @@ export class ApiService {
                     description: item.book_description[0],
                     cover: item.book_large_image_url[0] || item.book_medium_image_url[0] || item.book_small_image_url[0],
                     shelves: item.user_shelves[0],
+                    num_pages: item.book?.[0]?.num_pages?.[0],
                   };
                   return new Book().deserialize(bookData);
                 });
+
+                this.saveBooksToCache(parsedData);
 
                 subscriber.next(parsedData);
                 subscriber.complete();
@@ -112,7 +231,132 @@ export class ApiService {
             });
           });
         }),
-        catchError(this.handleError)
+        finalize(() => {
+          this.booksRequest$ = null;
+        }),
+        catchError((error) => {
+          this.booksRequest$ = null;
+          return this.handleError(error);
+        }),
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        })
       );
+
+    return this.booksRequest$;
+  }
+
+  private getBooksFromCache(): Book[] | null {
+    try {
+      const cachedTimestamp = localStorage.getItem(this.BOOKS_CACHE_TIMESTAMP_KEY);
+      if (!cachedTimestamp) {
+        return null;
+      }
+
+      const timestamp = parseInt(cachedTimestamp, 10);
+      const now = Date.now();
+
+      if (now - timestamp > this.CACHE_DURATION_MS) {
+        this.clearBooksCache();
+        return null;
+      }
+
+      const cachedData = localStorage.getItem(this.BOOKS_CACHE_KEY);
+      if (!cachedData) {
+        return null;
+      }
+
+      const parsedCache = JSON.parse(cachedData);
+      return parsedCache.map((bookData: any) => new Book().deserialize(bookData));
+    } catch (error) {
+      console.error('Error reading from cache:', error);
+      this.clearBooksCache();
+      return null;
+    }
+  }
+
+  private saveBooksToCache(books: Book[]): void {
+    try {
+      localStorage.setItem(this.BOOKS_CACHE_KEY, JSON.stringify(books));
+      localStorage.setItem(this.BOOKS_CACHE_TIMESTAMP_KEY, Date.now().toString());
+    } catch (error) {
+      console.error('Error saving to cache:', error);
+    }
+  }
+
+  private clearBooksCache(): void {
+    try {
+      localStorage.removeItem(this.BOOKS_CACHE_KEY);
+      localStorage.removeItem(this.BOOKS_CACHE_TIMESTAMP_KEY);
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+    }
+  }
+
+  private getPublicationsFromCache(): Publication[] | null {
+    try {
+      const cachedTimestamp = localStorage.getItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY);
+      if (!cachedTimestamp) {
+        return null;
+      }
+
+      const timestamp = parseInt(cachedTimestamp, 10);
+      const now = Date.now();
+
+      if (now - timestamp > this.CACHE_DURATION_MS) {
+        this.clearPublicationsCache();
+        return null;
+      }
+
+      const cachedData = localStorage.getItem(this.PUBLICATIONS_CACHE_KEY);
+      if (!cachedData) {
+        return null;
+      }
+
+      const parsedCache = JSON.parse(cachedData);
+      return parsedCache.map((pubData: any) => {
+        const normalizedInput: any = {
+          title: pubData.title,
+          pubDate: pubData.pubDate || pubData.publicationDate || pubData.publicationDateISO || undefined,
+          link: pubData.link || pubData.url,
+          author: pubData.author,
+          thumbnail: pubData.thumbnail || pubData.image,
+          description: pubData.description || pubData.content || pubData.summary || '',
+          content: pubData.content || pubData.description || '',
+          categories: pubData.categories || [],
+          venue: pubData.venue,
+          year: pubData.year,
+          doi: pubData.doi,
+          pdfUrl: pubData.pdfUrl,
+          githubUrl: pubData.githubUrl,
+          type: pubData.type
+        };
+
+        return new Publication().deserialize(normalizedInput);
+      });
+    } catch (error) {
+      console.error('Error reading publications from cache:', error);
+      this.clearPublicationsCache();
+      return null;
+    }
+  }
+
+  private savePublicationsToCache(publications: Publication[]): void {
+    try {
+      localStorage.setItem(this.PUBLICATIONS_CACHE_KEY, JSON.stringify(publications));
+      localStorage.setItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY, Date.now().toString());
+    } catch (error) {
+      console.error('Error saving publications to cache:', error);
+    }
+  }
+
+  private clearPublicationsCache(): void {
+    try {
+      localStorage.removeItem(this.PUBLICATIONS_CACHE_KEY);
+      localStorage.removeItem(this.PUBLICATIONS_CACHE_TIMESTAMP_KEY);
+    } catch (error) {
+      console.error('Error clearing publications cache:', error);
+    }
   }
 }
