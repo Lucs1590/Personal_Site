@@ -7,6 +7,7 @@ This project uses [ipgeolocation.io](https://ipgeolocation.io) for IP geolocatio
 1. Sign up for a free account at [ipgeolocation.io](https://ipgeolocation.io)
 2. Get your API key from the dashboard
 3. Update `src/environments/environment.ts` with your API key:
+
    ```typescript
    export const environment = {
      production: false,
@@ -48,6 +49,7 @@ If deploying to Vercel:
    - Environments: Production, Preview (optional)
 
 3. Add a build command in `vercel.json` or project settings:
+
    ```json
    {
      "buildCommand": "sed -i \"s/\\${IPGEOLOCATION_API_KEY}/\"$IPGEOLOCATION_API_KEY\"/g\" src/environments/environment.prod.ts && npm run build"
@@ -76,6 +78,7 @@ getIPInfo(): Observable<IPInfo> {
 ## API Response Structure
 
 The ipgeolocation.io API returns a comprehensive response including:
+
 - IP address
 - Country, city, region
 - Latitude/longitude
@@ -89,6 +92,7 @@ See `src/app/models/ipinfo-request.model.ts` for the complete interface.
 ## Rate Limits
 
 Free tier includes:
+
 - 30,000 requests/month
 - 1,000 requests/day
 
