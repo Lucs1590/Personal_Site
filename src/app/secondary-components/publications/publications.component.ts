@@ -78,10 +78,21 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
       const publications = await firstValueFrom(this.apiService.getAllPublications());
       this.blogPublications = publications
         .map((publication: Publication) => {
-          publication.url = this.utilsService.addUtmParameters(publication.url);
+          if (publication.url) {
+            publication.url = this.utilsService.addUtmParameters(publication.url);
+          }
+
+          const rawDate: any = (publication as any).publicationDate;
+          if (rawDate) {
+            const parsed = rawDate instanceof Date ? rawDate : new Date(rawDate);
+            publication.publicationDate = Number.isNaN(parsed.getTime()) ? undefined : parsed;
+          } else {
+            publication.publicationDate = undefined;
+          }
+
           return publication;
         })
-        .sort((a: Publication, b: Publication) => b.publicationDate.getTime() - a.publicationDate.getTime());
+        .sort((a: Publication, b: Publication) => (b.publicationDate?.getTime() ?? 0) - (a.publicationDate?.getTime() ?? 0));
     } catch (error) {
       console.error('Error fetching blog publications:', error);
       this.blogPublications = [];
@@ -135,13 +146,13 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
         if (!searchQuery) return;
 
         this.blogPublications = this.blogPublications.filter(publication =>
-          publication.title.toLowerCase().includes(searchQuery) ||
-          publication.description.toLowerCase().includes(searchQuery)
+          (publication.title || '').toLowerCase().includes(searchQuery) ||
+          (publication.description || '').toLowerCase().includes(searchQuery)
         );
 
         this.sciPublications = this.sciPublications.filter(publication =>
-          publication.title.toLowerCase().includes(searchQuery) ||
-          publication.description.toLowerCase().includes(searchQuery)
+          (publication.title || '').toLowerCase().includes(searchQuery) ||
+          (publication.description || '').toLowerCase().includes(searchQuery)
         );
       });
   }
