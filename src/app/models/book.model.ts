@@ -11,6 +11,8 @@ export class Book implements Deserializable {
     cover?: string;
     shelves?: string[];
     num_pages?: number;
+    current_page?: number;
+    reading_percentage?: number;
 
     deserialize(input: any): this {
         Object.assign(this, {});
@@ -34,6 +36,15 @@ export class Book implements Deserializable {
             this.shelves = ['read'];
         }
         this.num_pages = input.num_pages ? parseInt(input.num_pages, 10) : undefined;
+        this.current_page = input.current_page ? parseInt(input.current_page, 10) : undefined;
+        
+        // Calculate reading percentage if we have both current_page and num_pages
+        if (this.current_page && this.num_pages && this.num_pages > 0) {
+            this.reading_percentage = Math.round((this.current_page / this.num_pages) * 100);
+        } else if (input.reading_percentage) {
+            this.reading_percentage = parseInt(input.reading_percentage, 10);
+        }
+        
         return this;
     }
 }
