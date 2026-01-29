@@ -20,7 +20,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --progress=false
+        run: npm ci --prefer-offline --no-audit --progress=false --force
 
       - name: Replace IP Geolocation API key
         if: env.IPGEOLOCATION_API_KEY != ''
