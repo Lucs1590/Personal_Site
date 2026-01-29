@@ -1,0 +1,38 @@
+name: CI - Build and Replace Secrets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --progress=false
+
+      - name: Replace IP Geolocation API key
+        if: ${{ secrets.IPGEOLOCATION_API_KEY != '' }}
+        run: |
+          echo "Replacing placeholder in src/environments/environment.prod.ts"
+          sed -i 's/\${IPGEOLOCATION_API_KEY}/${{ secrets.IPGEOLOCATION_API_KEY }}/g' src/environments/environment.prod.ts
+
+      - name: Build (production)
+        run: npm run build --if-present || ng build --configuration production
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-dist
+          path: dist/**
