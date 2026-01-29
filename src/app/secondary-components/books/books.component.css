@@ -142,11 +142,6 @@ body {
     text-align: center;
     position: relative;
     touch-action: pan-y; /* Allow vertical scrolling but enable horizontal swipe detection */
-    cursor: grab;
-}
-
-.current-book-display:active {
-    cursor: grabbing;
 }
 
 .carousel-btn {
@@ -169,12 +164,11 @@ body {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    pointer-events: none;
 }
 
-.current-book-display:hover .carousel-btn {
+.current-book-display:hover .carousel-btn,
+.carousel-btn:focus-visible {
     opacity: 1;
-    pointer-events: auto;
 }
 
 .carousel-btn:hover {
@@ -607,7 +601,6 @@ body {
 
     .carousel-btn {
         opacity: 1;
-        pointer-events: auto;
     }
 
     .carousel-btn-prev {
@@ -659,7 +652,6 @@ body {
         height: 40px;
         font-size: 1.75rem;
         opacity: 1;
-        pointer-events: auto;
     }
 
     .carousel-btn-prev {

@@ -187,19 +187,22 @@ export class BooksComponent implements OnInit, OnDestroy {
     private touchEndX = 0;
 
     onTouchStart(event: TouchEvent): void {
-        this.touchStartX = event.changedTouches[0].screenX;
+        this.touchStartX = event.changedTouches[0].clientX;
     }
 
     onTouchEnd(event: TouchEvent): void {
-        this.touchEndX = event.changedTouches[0].screenX;
-        this.handleSwipe();
+        this.touchEndX = event.changedTouches[0].clientX;
+        this.handleSwipe(event);
     }
 
-    private handleSwipe(): void {
+    private handleSwipe(event: TouchEvent): void {
         const swipeThreshold = 50; // minimum distance for swipe
         const diff = this.touchStartX - this.touchEndX;
 
         if (Math.abs(diff) > swipeThreshold) {
+            // Prevent default behavior for valid swipes
+            event.preventDefault();
+            
             if (diff > 0) {
                 // Swipe left - go to next book
                 this.nextBook();
