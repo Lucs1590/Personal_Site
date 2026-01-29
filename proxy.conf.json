@@ -1,0 +1,11 @@
+{
+  "/api/goodreads": {
+    "target": "https://www.goodreads.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "warn",
+    "pathRewrite": {
+      "^/api/goodreads": "/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz"
+    }
+  }
+}

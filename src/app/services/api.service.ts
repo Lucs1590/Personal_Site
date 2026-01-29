@@ -32,7 +32,7 @@ export class ApiService {
   private readonly PUBLICATIONS_CACHE_KEY = 'medium_publications_cache';
   private readonly PUBLICATIONS_CACHE_TIMESTAMP_KEY = 'medium_publications_cache_timestamp';
   private readonly CACHE_DURATION_MS = 60 * 60 * 8000; // 8 hours
-  private readonly REQUEST_TIMEOUT_MS = 25000; // 25 seconds
+  private readonly REQUEST_TIMEOUT_MS = 60000; // 60 seconds
   private readonly RETRY_ATTEMPTS = 3;
   private readonly RETRY_DELAY_MS = 5000; // 5 seconds
 

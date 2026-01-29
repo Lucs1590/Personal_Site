@@ -141,6 +141,78 @@ body {
 .current-book-display {
     text-align: center;
     position: relative;
+    touch-action: pan-y; /* Allow vertical scrolling but enable horizontal swipe detection */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(230, 126, 34, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.current-book-display:hover .carousel-btn,
+.carousel-btn:focus-visible {
+    opacity: 1;
+}
+
+.carousel-btn:hover {
+    background-color: var(--color-primary, #e67e22);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn-prev {
+    left: 10px;
+}
+
+.carousel-btn-next {
+    right: 10px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 15;
+}
+
+.carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.carousel-indicators .indicator.active {
+    background-color: var(--color-primary, #e67e22);
+    transform: scale(1.3);
+}
+
+.carousel-indicators .indicator:hover {
+    background-color: #999;
 }
 
 .current-book-display::after {
@@ -526,6 +598,18 @@ body {
         max-width: 240px;
         margin-bottom: -40px;
     }
+
+    .carousel-btn {
+        opacity: 1;
+    }
+
+    .carousel-btn-prev {
+        left: 5px;
+    }
+
+    .carousel-btn-next {
+        right: 5px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -561,6 +645,21 @@ body {
 
     .current-book-display .book-cover-wrapper {
         margin-bottom: -40px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.75rem;
+        opacity: 1;
+    }
+
+    .carousel-btn-prev {
+        left: 5px;
+    }
+
+    .carousel-btn-next {
+        right: 5px;
     }
 
     .book-description-display {
@@ -640,5 +739,23 @@ body {
 
     .current-book-display .book-cover-wrapper {
         max-width: 200px;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+
+    .carousel-btn-prev {
+        left: 5px;
+    }
+
+    .carousel-btn-next {
+        right: 5px;
+    }
+
+    .carousel-indicators {
+        bottom: -40px;
     }
 }
