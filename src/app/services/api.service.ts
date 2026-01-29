@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, of, timer } from 'rxjs';
-import { catchError, map, switchMap, timeout, retry, shareReplay, tap, finalize } from 'rxjs/operators';
+import { catchError, map, switchMap, timeout, retry, shareReplay, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -83,16 +83,16 @@ export class ApiService {
 
           return publications;
         }),
-        shareReplay({
-          bufferSize: 1,
-          refCount: true
-        }),
         finalize(() => {
           this.publicationsRequest$ = null;
         }),
         catchError((error) => {
           this.publicationsRequest$ = null;
           return this.handleError(error);
+        }),
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
         })
       );
 
@@ -233,16 +233,16 @@ export class ApiService {
             });
           });
         }),
-        shareReplay({
-          bufferSize: 1,
-          refCount: true
-        }),
         finalize(() => {
           this.booksRequest$ = null;
         }),
         catchError((error) => {
           this.booksRequest$ = null;
           return this.handleError(error);
+        }),
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
         })
       );
 
