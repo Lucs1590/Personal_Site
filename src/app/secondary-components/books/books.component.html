@@ -24,7 +24,9 @@
                 </div>
             </div>
 
-            <div class="current-book-display">
+            <div class="current-book-display" 
+                 (touchstart)="onTouchStart($event)" 
+                 (touchend)="onTouchEnd($event)">
                 <!-- Carousel Navigation -->
                 <button *ngIf="currentlyReadingBooks.length > 1" 
                         class="carousel-btn carousel-btn-prev" 

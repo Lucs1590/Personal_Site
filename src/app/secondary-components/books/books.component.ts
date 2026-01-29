@@ -181,4 +181,32 @@ export class BooksComponent implements OnInit, OnDestroy {
     get currentBook(): Partial<Book> {
         return this.currentlyReadingBooks[this.currentCarouselIndex] || {};
     }
+
+    // Touch/swipe support for mobile
+    private touchStartX = 0;
+    private touchEndX = 0;
+
+    onTouchStart(event: TouchEvent): void {
+        this.touchStartX = event.changedTouches[0].screenX;
+    }
+
+    onTouchEnd(event: TouchEvent): void {
+        this.touchEndX = event.changedTouches[0].screenX;
+        this.handleSwipe();
+    }
+
+    private handleSwipe(): void {
+        const swipeThreshold = 50; // minimum distance for swipe
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - go to next book
+                this.nextBook();
+            } else {
+                // Swipe right - go to previous book
+                this.previousBook();
+            }
+        }
+    }
 }

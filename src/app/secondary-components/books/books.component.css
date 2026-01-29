@@ -141,6 +141,12 @@ body {
 .current-book-display {
     text-align: center;
     position: relative;
+    touch-action: pan-y; /* Allow vertical scrolling but enable horizontal swipe detection */
+    cursor: grab;
+}
+
+.current-book-display:active {
+    cursor: grabbing;
 }
 
 .carousel-btn {
@@ -162,6 +168,13 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.current-book-display:hover .carousel-btn {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .carousel-btn:hover {
@@ -171,11 +184,11 @@ body {
 }
 
 .carousel-btn-prev {
-    left: -60px;
+    left: 10px;
 }
 
 .carousel-btn-next {
-    right: -60px;
+    right: 10px;
 }
 
 .carousel-indicators {
@@ -592,12 +605,17 @@ body {
         margin-bottom: -40px;
     }
 
+    .carousel-btn {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
     .carousel-btn-prev {
-        left: -50px;
+        left: 5px;
     }
 
     .carousel-btn-next {
-        right: -50px;
+        right: 5px;
     }
 }
 
@@ -640,14 +658,16 @@ body {
         width: 40px;
         height: 40px;
         font-size: 1.75rem;
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .carousel-btn-prev {
-        left: -45px;
+        left: 5px;
     }
 
     .carousel-btn-next {
-        right: -45px;
+        right: 5px;
     }
 
     .book-description-display {
