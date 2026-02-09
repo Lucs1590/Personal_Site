@@ -12,4 +12,5 @@ if (environment.production) {
 platformBrowser().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
+// Initialize Vercel Web Analytics
 inject();

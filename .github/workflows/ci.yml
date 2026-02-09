@@ -12,10 +12,10 @@ jobs:
     permissions: read-all
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
@@ -23,9 +23,9 @@ jobs:
         run: npm ci --prefer-offline --no-audit --progress=false --force
 
       - name: Replace IP Geolocation API key
-        if: ${{ secrets.IPGEOLOCATION_API_KEY != '' }}
+        if: ${{ env.IPGEOLOCATION_API_KEY != '' }}
         env:
-          IPGEOLOCATION_API_KEY: ${{ secrets.IPGEOLOCATION_API_KEY }}
+          IPGEOLOCATION_API_KEY: ${{ env.IPGEOLOCATION_API_KEY }}
         run: |
           echo "Replacing placeholder in src/environments/environment.prod.ts"
           sed -i 's/\${IPGEOLOCATION_API_KEY}/'"$IPGEOLOCATION_API_KEY"'/g' src/environments/environment.prod.ts
@@ -34,7 +34,7 @@ jobs:
         run: npm run build --if-present || ng build --configuration production
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: angular-dist
           path: dist/**
