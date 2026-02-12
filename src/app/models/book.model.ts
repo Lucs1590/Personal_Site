@@ -10,6 +10,7 @@ export class Book implements Deserializable {
     link?: string;
     cover?: string;
     shelves?: string[];
+    num_pages?: number;
 
     deserialize(input: any): this {
         Object.assign(this, {});
@@ -21,7 +22,18 @@ export class Book implements Deserializable {
         this.user_review = input.user_review;
         this.link = input.link;
         this.cover = input.cover;
-        this.shelves = input.shelves ? input.shelves.split(',').map((shelf: string) => shelf.trim()) : ['read'];
+        if (input.shelves) {
+            if (typeof input.shelves === 'string') {
+                this.shelves = input.shelves.split(',').map((shelf: string) => shelf.trim());
+            } else if (Array.isArray(input.shelves)) {
+                this.shelves = input.shelves.map((shelf: string) => shelf.trim());
+            } else {
+                this.shelves = ['read'];
+            }
+        } else {
+            this.shelves = ['read'];
+        }
+        this.num_pages = input.num_pages ? parseInt(input.num_pages, 10) : undefined;
         return this;
     }
 }

@@ -73,6 +73,7 @@
         "currently_reading": "Currently<br>Reading",
         "description": "Description",
         "read_books": "Read Books",
+        "pages": "pages",
         "search_title": "Search by title, author or description",
         "search_placeholder": "Search title, author or description...",
         "only_this_year": "Only this year",
@@ -86,6 +87,11 @@
         },
         "read_at": "Read at",
         "goodreads_review": "My Goodreads Review",
-        "no_results": "No books found with current filters."
+        "no_results": "No books found with current filters.",
+        "carousel": {
+            "previous": "Previous book",
+            "next": "Next book",
+            "go_to_book": "Go to book"
+        }
     }
 }
