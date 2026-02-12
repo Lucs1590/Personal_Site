@@ -47,3 +47,6 @@ testem.log
 Thumbs.db
 
 .vercel
+
+# Environment files with API keys (keep templates only)
+/src/environments/environment.local.ts

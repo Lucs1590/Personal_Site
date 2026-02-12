@@ -30,19 +30,19 @@ export class UtilsService {
   }
 
   async setLanguage(): Promise<void> {
-    this.translate.setDefaultLang(this.currentLang);
+    this.translate.setFallbackLang(this.currentLang);
 
     const langPref = this.cookieService.get('langPref');
 
     if (langPref) {
-      this.translate.setDefaultLang(langPref);
+      this.translate.setFallbackLang(langPref);
     } else {
       try {
         const ipInfo = await firstValueFrom(this.apiService.getIPInfo());
         const userCountry = ipInfo?.country?.toUpperCase();
         const preferredLang = userCountry === 'BR' ? 'pt' : 'en';
 
-        this.translate.setDefaultLang(preferredLang);
+        this.translate.setFallbackLang(preferredLang);
         this.cookieService.set('langPref', preferredLang);
         this.currentLang = preferredLang;
       } catch (error) {

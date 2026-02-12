@@ -14,10 +14,8 @@ import { SeoService } from 'src/app/services/seo.service';
 export class BooksComponent implements OnInit, OnDestroy {
     activeTab: 'books' | 'audiobooks' = 'books';
 
-    currentBook: Partial<Book> = {
-        cover: 'assets/img/cover.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed nisl neque. Nulla at fermentum massa, eget egestas orci. Cras convallis enim ex, sit amet posuere diam maximus sed. Phasellus pharetra dui risus, vitae dapibus est placerat id. Nullam eget velit ex. Donec a feugiat libero. Maecenas condimentum lacus vitae arcu pulvinar, eu rhoncus dui tincidunt. Suspendisse nec libero sit amet velit finibus mollis. Pellentesque placerat porta dolor et mattis. Suspendisse quis metus at metus condimentum ultrices eget sed nunc.'
-    };
+    currentlyReadingBooks: Partial<Book>[] = [];
+    currentCarouselIndex = 0;
     isLoading = true;
     books: Book[] = [];
     private readBooksOriginal: Book[] = [];
@@ -51,22 +49,38 @@ export class BooksComponent implements OnInit, OnDestroy {
             const books = await firstValueFrom(this.apiService.fetchBooksFromGoodreads());
             this.books = books;
             if (this.books.length > 0) {
-                const currentlyReadingBook = this.books.find(book => book.shelves.includes('currently-reading'));
+                // Get all currently reading books
+                const currentlyReading = this.books.filter(book => book.shelves.includes('currently-reading'));
 
-                if (currentlyReadingBook) {
-                    this.currentBook = currentlyReadingBook;
+                if (currentlyReading.length > 0) {
+                    this.currentlyReadingBooks = currentlyReading;
+                    // Reset carousel index if it's out of bounds
+                    if (this.currentCarouselIndex >= currentlyReading.length) {
+                        this.currentCarouselIndex = 0;
+                    }
+                } else {
+                    // Default placeholder if no books are currently being read
+                    this.currentlyReadingBooks = [{
+                        cover: 'assets/img/cover.png',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed nisl neque. Nulla at fermentum massa, eget egestas orci. Cras convallis enim ex, sit amet posuere diam maximus sed. Phasellus pharetra dui risus, vitae dapibus est placerat id. Nullam eget velit ex. Donec a feugiat libero. Maecenas condimentum lacus vitae arcu pulvinar, eu rhoncus dui tincidunt. Suspendisse nec libero sit amet velit finibus mollis. Pellentesque placerat porta dolor et mattis. Suspendisse quis metus at metus condimentum ultrices eget sed nunc.'
+                    }];
+                    this.currentCarouselIndex = 0;
                 }
 
                 this.readBooksOriginal = this.books.filter(book => book.shelves.includes('read'));
                 this.filteredReadBooks = [...this.readBooksOriginal];
                 this.sortFiltered(this.currentSort);
             } else {
+                this.currentlyReadingBooks = [];
+                this.currentCarouselIndex = 0;
                 this.readBooksOriginal = [];
                 this.filteredReadBooks = [];
             }
         } catch (error) {
             console.error("Failed to fetch books:", error);
             this.books = [];
+            this.currentlyReadingBooks = [];
+            this.currentCarouselIndex = 0;
             this.readBooksOriginal = [];
             this.filteredReadBooks = [];
         }
@@ -144,5 +158,58 @@ export class BooksComponent implements OnInit, OnDestroy {
                 break;
         }
         this.filteredReadBooks = copy;
+    }
+
+    nextBook(): void {
+        if (this.currentlyReadingBooks.length > 1) {
+            this.currentCarouselIndex = (this.currentCarouselIndex + 1) % this.currentlyReadingBooks.length;
+        }
+    }
+
+    previousBook(): void {
+        if (this.currentlyReadingBooks.length > 1) {
+            this.currentCarouselIndex = (this.currentCarouselIndex - 1 + this.currentlyReadingBooks.length) % this.currentlyReadingBooks.length;
+        }
+    }
+
+    goToBook(index: number): void {
+        if (index >= 0 && index < this.currentlyReadingBooks.length) {
+            this.currentCarouselIndex = index;
+        }
+    }
+
+    get currentBook(): Partial<Book> {
+        return this.currentlyReadingBooks[this.currentCarouselIndex] || {};
+    }
+
+    // Touch/swipe support for mobile
+    private touchStartX = 0;
+    private touchEndX = 0;
+
+    onTouchStart(event: TouchEvent): void {
+        this.touchStartX = event.changedTouches[0].clientX;
+    }
+
+    onTouchEnd(event: TouchEvent): void {
+        this.touchEndX = event.changedTouches[0].clientX;
+        this.handleSwipe(event);
+    }
+
+    private handleSwipe(event: TouchEvent): void {
+        const swipeThreshold = 50; // minimum distance for swipe
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            // Prevent default behavior for valid swipes
+            event.preventDefault();
+            
+            if (diff > 0) {
+                // Swipe left - go to next book
+                this.nextBook();
+            } else {
+                // Swipe right - go to previous book
+                this.previousBook();
+            }
+        }
     }
 }

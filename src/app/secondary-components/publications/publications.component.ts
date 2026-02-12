@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
@@ -26,6 +26,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private elementRef: ElementRef,
@@ -35,6 +36,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.loading = false;
     this.updateSeoMetadata();
     this.getSciPublications();
     await this.getBlogPublications();
@@ -51,8 +53,11 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const contentElement = this.elementRef.nativeElement.querySelector('.container-fluid');
-    this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
-    this.modifyLinks();
+    setTimeout(() => {
+      this.loading = !!contentElement && contentElement.innerHTML.trim() !== '';
+      this.cdr.detectChanges();
+      this.modifyLinks();
+    });
   }
 
   ngOnDestroy(): void {
@@ -73,10 +78,38 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
       const publications = await firstValueFrom(this.apiService.getAllPublications());
       this.blogPublications = publications
         .map((publication: Publication) => {
-          publication.url = this.utilsService.addUtmParameters(publication.url);
+          if (publication.url) {
+            publication.url = this.utilsService.addUtmParameters(publication.url);
+          }
+
+          // Try common date fields returned by different APIs / payloads
+          const anyPub = publication as any;
+          const rawDate: any =
+            anyPub.publicationDate ??
+            anyPub.date ??
+            anyPub.publishedAt ??
+            anyPub.createdAt ??
+            anyPub.pubDate ??
+            anyPub.isoDate ??
+            undefined;
+
+          if (rawDate !== undefined && rawDate !== null && rawDate !== '') {
+            const parsed = rawDate instanceof Date ? rawDate : new Date(rawDate);
+            publication.publicationDate = Number.isNaN(parsed.getTime()) ? undefined : parsed;
+          } else {
+            publication.publicationDate = undefined;
+          }
+
           return publication;
         })
-        .sort((a: Publication, b: Publication) => b.publicationDate.getTime() - a.publicationDate.getTime());
+        .sort((a: Publication, b: Publication) => {
+          const aTime = a.publicationDate instanceof Date ? a.publicationDate.getTime() : 0;
+          const bTime = b.publicationDate instanceof Date ? b.publicationDate.getTime() : 0;
+          return bTime - aTime;
+        });
+
+
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error fetching blog publications:', error);
       this.blogPublications = [];
@@ -95,7 +128,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.availableYears = [...new Set(this.sciPublications.map(p => p.year).filter((y): y is number => y !== undefined))].sort((a, b) => b - a);
-    this.availableTypes = [...new Set(this.sciPublications.map(p => p.type).filter((t): t is string => t !== undefined))];
+    this.availableTypes = [...new Set(this.sciPublications.map(p => p.type).filter((t): t is string => t !== undefined))].sort((a, b) => b.localeCompare(a));
     this.applyFilters();
   }
 
@@ -130,13 +163,13 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
         if (!searchQuery) return;
 
         this.blogPublications = this.blogPublications.filter(publication =>
-          publication.title.toLowerCase().includes(searchQuery) ||
-          publication.description.toLowerCase().includes(searchQuery)
+          (publication.title || '').toLowerCase().includes(searchQuery) ||
+          (publication.description || '').toLowerCase().includes(searchQuery)
         );
 
         this.sciPublications = this.sciPublications.filter(publication =>
-          publication.title.toLowerCase().includes(searchQuery) ||
-          publication.description.toLowerCase().includes(searchQuery)
+          (publication.title || '').toLowerCase().includes(searchQuery) ||
+          (publication.description || '').toLowerCase().includes(searchQuery)
         );
       });
   }
