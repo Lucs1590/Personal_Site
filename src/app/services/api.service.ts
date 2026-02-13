@@ -171,8 +171,6 @@ export class ApiService {
       return this.booksRequest$;
     }
 
-    // Use a same-origin serverless proxy in production to avoid CORS issues on deployed sites.
-    // Fall back to the public CORS proxy during local development.
     const proxyUrl = environment.production ? BOOKS_PROXY_ROUTE : `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
     this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
