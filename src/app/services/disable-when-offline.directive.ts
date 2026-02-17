@@ -1,9 +1,9 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
-import * as bootstrap from "bootstrap";
+import Modal from 'bootstrap/js/dist/modal';
 
 @Directive({
-    selector: '[disableWhenOffline]',
-    standalone: false
+  selector: '[disableWhenOffline]',
+  standalone: false
 })
 export class DisableWhenOfflineDirective {
   private isOffline = false;
@@ -28,7 +28,7 @@ export class DisableWhenOfflineDirective {
     if (this.isOffline) {
       event.preventDefault();
       event.stopPropagation();
-      new bootstrap.Modal(document.getElementById('offlineModal')).toggle()
+      new Modal(document.getElementById('offlineModal')).toggle();
     }
   }
 }

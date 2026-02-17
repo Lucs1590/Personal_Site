@@ -4,9 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faInfoCircle, faCalendar, faLink, faBookOpen, faFilePdf, faBookmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faMedium, faDev, faResearchgate, faStackOverflow, faTwitter, faLinkedin, faInstagram, faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -107,6 +106,24 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, far, fab);
+    library.addIcons(
+      faInfoCircle,
+      faCalendar,
+      faLink,
+      faBookOpen,
+      faFilePdf,
+      faBookmark,
+      faEnvelope,
+      faGithub,
+      faMedium,
+      faDev,
+      faResearchgate,
+      faStackOverflow,
+      faTwitter,
+      faLinkedin,
+      faInstagram,
+      faFacebookF,
+      faWhatsapp
+    );
   }
 }

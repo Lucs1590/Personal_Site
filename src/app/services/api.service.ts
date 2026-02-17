@@ -8,7 +8,7 @@ import { Repository } from '../models/repository.model';
 import { IPInfoRequest } from '../models/ipinfo-request.model';
 import { IPInfo } from '../models/ipinfo.model';
 import { sciPublications } from 'src/assets/static_data/sciPublications';
-import { parseString } from 'xml2js';
+import { XMLParser } from 'fast-xml-parser';
 import { Book } from '../models/book.model';
 import { environment } from 'src/environments/environment';
 
@@ -171,8 +171,6 @@ export class ApiService {
       return this.booksRequest$;
     }
 
-    // Use a same-origin serverless proxy in production to avoid CORS issues on deployed sites.
-    // Fall back to the public CORS proxy during local development.
     const proxyUrl = environment.production ? BOOKS_PROXY_ROUTE : `${CORS_PROXY}${encodeURIComponent(BOOKS_API_BASE_URL)}`;
 
     this.booksRequest$ = this.httpService.get(proxyUrl, { responseType: 'text' })
@@ -193,42 +191,52 @@ export class ApiService {
         }),
         switchMap((booksXml: string) => {
           return new Observable<Book[]>(subscriber => {
-            parseString(booksXml, (err: Error | null, result: any) => {
-              if (err) {
-                console.error('Failed to parse XML:', err);
-                subscriber.error(err);
-                return;
-              }
+            try {
+              const parser = new XMLParser();
+              const result: any = parser.parse(booksXml);
 
-              try {
-                const items = result.rss.channel[0].item;
-                const parsedData: Book[] = items.map((item: any) => {
-                  const bookData = {
-                    author: item.author_name[0],
-                    title: item.title[0],
-                    rating: item.user_rating[0],
-                    user_read_at: item.user_read_at[0],
-                    user_review: item.user_review[0],
-                    user_review_link: item.guid[0],
-                    link: item.link[0],
-                    description: item.book_description[0],
-                    cover: item.book_large_image_url[0] || item.book_medium_image_url[0] || item.book_small_image_url[0],
-                    shelves: item.user_shelves[0],
-                    num_pages: item.book?.[0]?.num_pages?.[0],
-                  };
-                  return new Book().deserialize(bookData);
-                });
+              const channel = result?.rss?.channel;
+              const channelObj = Array.isArray(channel) ? channel[0] : channel;
+              const itemsRaw = channelObj?.item;
+              const items = itemsRaw ? (Array.isArray(itemsRaw) ? itemsRaw : [itemsRaw]) : [];
 
-                this.saveBooksToCache(parsedData);
+              const normalize = (val: any) => {
+                if (val == null) return undefined;
+                if (Array.isArray(val)) val = val[0];
+                if (typeof val === 'object') {
+                  if ('#text' in val) return val['#text'];
+                  const keys = Object.keys(val);
+                  if (keys.length === 1) return val[keys[0]];
+                  return JSON.stringify(val);
+                }
+                return val;
+              };
 
-                subscriber.next(parsedData);
-                subscriber.complete();
+              const parsedData: Book[] = items.map((item: any) => {
+                const bookData = {
+                  author: normalize(item.author_name),
+                  title: normalize(item.title),
+                  rating: normalize(item.user_rating),
+                  user_read_at: normalize(item.user_read_at),
+                  user_review: normalize(item.user_review),
+                  user_review_link: normalize(item.guid),
+                  link: normalize(item.link),
+                  description: normalize(item.book_description),
+                  cover: normalize(item.book_large_image_url) || normalize(item.book_medium_image_url) || normalize(item.book_small_image_url),
+                  shelves: normalize(item.user_shelves),
+                  num_pages: normalize(item.book?.num_pages),
+                };
+                return new Book().deserialize(bookData);
+              });
 
-              } catch (parseError) {
-                console.error('Failed to process parsed XML:', parseError);
-                subscriber.error(parseError);
-              }
-            });
+              this.saveBooksToCache(parsedData);
+
+              subscriber.next(parsedData);
+              subscriber.complete();
+            } catch (err) {
+              console.error('Failed to parse/process XML:', err);
+              subscriber.error(err);
+            }
           });
         }),
         finalize(() => {
