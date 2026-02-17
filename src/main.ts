@@ -4,6 +4,7 @@ import { platformBrowser } from '@angular/platform-browser';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 if (environment.production) {
   enableProdMode();
@@ -14,3 +15,6 @@ platformBrowser().bootstrapModule(AppModule)
 
 // Initialize Vercel Web Analytics
 inject();
+
+// Initialize Vercel Speed Insights
+injectSpeedInsights();
