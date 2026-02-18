@@ -46,7 +46,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
     async getAllBooks(): Promise<void> {
         try {
-            const books = await firstValueFrom(this.apiService.fetchBooksFromGoodreads());
+            const books = await firstValueFrom(this.apiService.fetchBooksFromLocal());
             this.books = books;
             if (this.books.length > 0) {
                 // Get all currently reading books

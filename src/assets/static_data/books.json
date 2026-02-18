@@ -1,0 +1,36 @@
+[
+  {
+    "author": "Robert C. Martin",
+    "title": "Clean Code",
+    "description": "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn't have to be that way.",
+    "rating": 5,
+    "user_read_at": "2024-01-15T00:00:00.000Z",
+    "user_review": "Excellent book about writing maintainable code",
+    "link": "https://www.goodreads.com/book/show/3735293-clean-code",
+    "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1436202607i/3735293.jpg",
+    "shelves": ["read"],
+    "num_pages": 464
+  },
+  {
+    "author": "Martin Fowler",
+    "title": "Refactoring",
+    "description": "As the application of object technology--particularly the Java programming language--has become commonplace, a new problem has emerged to confront the software development community.",
+    "rating": 4,
+    "user_read_at": "2023-12-20T00:00:00.000Z",
+    "user_review": "Great insights on improving code structure",
+    "link": "https://www.goodreads.com/book/show/44936.Refactoring",
+    "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386925632i/44936.jpg",
+    "shelves": ["read"],
+    "num_pages": 431
+  },
+  {
+    "author": "Eric Evans",
+    "title": "Domain-Driven Design",
+    "description": "The software development community widely acknowledges that domain modeling is central to software design. Through domain models, software developers are able to express rich functionality and translate it into a software implementation that truly serves the needs of its users.",
+    "rating": 5,
+    "link": "https://www.goodreads.com/book/show/179133.Domain_Driven_Design",
+    "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1287493789i/179133.jpg",
+    "shelves": ["currently-reading"],
+    "num_pages": 560
+  }
+]

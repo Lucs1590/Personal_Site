@@ -161,6 +161,28 @@ export class ApiService {
       );
   }
 
+  fetchBooksFromLocal(): Observable<Book[]> {
+    const cachedData = this.getBooksFromCache();
+    if (cachedData) {
+      return of(cachedData);
+    }
+
+    return this.httpService.get('/assets/static_data/books.json').pipe(
+      map((booksData: any) => {
+        if (!Array.isArray(booksData)) {
+          throw new Error('Invalid books data format');
+        }
+        const books = booksData.map((bookData: any) => new Book().deserialize(bookData));
+        this.saveBooksToCache(books);
+        return books;
+      }),
+      catchError((error) => {
+        console.error('Failed to load local books data, falling back to API:', error);
+        return this.fetchBooksFromGoodreads();
+      })
+    );
+  }
+
   fetchBooksFromGoodreads(): Observable<Book[]> {
     const cachedData = this.getBooksFromCache();
     if (cachedData) {
