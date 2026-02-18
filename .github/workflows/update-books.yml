@@ -2,8 +2,8 @@ name: Update Books Data
 
 on:
   schedule:
-    # Run every 2 weeks on Sunday at 00:00 UTC
-    - cron: '0 0 */14 * *'
+    # Run every 2 weeks on Sunday at 00:00 UTC (on weeks 2 and 4 of each month)
+    - cron: '0 0 1,15 * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
