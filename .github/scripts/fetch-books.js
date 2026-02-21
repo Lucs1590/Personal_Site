@@ -4,7 +4,7 @@ const path = require('path');
 
 // Constants from api.service.ts
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
-const OUTPUT_PATH = path.join(__dirname, '../../src/assets/static_data/books.json');
+const OUTPUT_PATH = path.join(__dirname, '../../src/assets/static_data/books.ts');
 
 // Install fast-xml-parser for XML parsing
 const { XMLParser } = require('fast-xml-parser');
@@ -141,9 +141,10 @@ async function fetchAndSaveBooks() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    // Save to JSON file
+    // Save to TypeScript file exporting the books array
     const jsonData = JSON.stringify(books, null, 2);
-    fs.writeFileSync(OUTPUT_PATH, jsonData, 'utf8');
+    const tsData = `export const books = ${jsonData};\n`;
+    fs.writeFileSync(OUTPUT_PATH, tsData, 'utf8');
 
     console.log(`✓ Successfully saved ${books.length} books to ${OUTPUT_PATH}`);
     console.log(`✓ Last updated: ${new Date().toISOString()}`);
