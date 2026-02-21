@@ -2,11 +2,9 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// Constants from api.service.ts
 const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
 const OUTPUT_PATH = path.join(__dirname, '../../src/assets/static_data/books.ts');
 
-// Install fast-xml-parser for XML parsing
 const { XMLParser } = require('fast-xml-parser');
 
 /**
@@ -40,7 +38,6 @@ function deserializeBook(input) {
     num_pages: input.num_pages ? parseInt(input.num_pages, 10) : undefined,
   };
 
-  // Process shelves
   if (input.shelves) {
     if (typeof input.shelves === 'string') {
       book.shelves = input.shelves.split(',').map(shelf => shelf.trim());
@@ -102,14 +99,12 @@ async function fetchAndSaveBooks() {
   try {
     console.log('Starting books data fetch...');
 
-    // Fetch XML from Goodreads via CORS proxy
     const xmlData = await fetchWithRetry(BOOKS_API_BASE_URL);
 
     console.log('Parsing XML data...');
     const parser = new XMLParser();
     const result = parser.parse(xmlData);
 
-    // Extract items (same logic as api.service.ts)
     const channel = result?.rss?.channel;
     const channelObj = Array.isArray(channel) ? channel[0] : channel;
     const itemsRaw = channelObj?.item;
@@ -117,7 +112,6 @@ async function fetchAndSaveBooks() {
 
     console.log(`Found ${items.length} books`);
 
-    // Parse books data
     const books = items.map(item => {
       const bookData = {
         author: normalize(item.author_name),
@@ -135,13 +129,11 @@ async function fetchAndSaveBooks() {
       return deserializeBook(bookData);
     });
 
-    // Create output directory if it doesn't exist
     const outputDir = path.dirname(OUTPUT_PATH);
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    // Save to TypeScript file exporting the books array
     const jsonData = JSON.stringify(books, null, 2);
     const tsData = `export const books = ${jsonData};\n`;
     fs.writeFileSync(OUTPUT_PATH, tsData, 'utf8');
@@ -155,5 +147,4 @@ async function fetchAndSaveBooks() {
   }
 }
 
-// Run the script
 fetchAndSaveBooks();

@@ -202,7 +202,7 @@ export class BooksComponent implements OnInit, OnDestroy {
         if (Math.abs(diff) > swipeThreshold) {
             // Prevent default behavior for valid swipes
             event.preventDefault();
-            
+
             if (diff > 0) {
                 // Swipe left - go to next book
                 this.nextBook();
