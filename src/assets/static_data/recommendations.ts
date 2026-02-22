@@ -1,6 +1,6 @@
 import { LinkedInRecommendation } from 'src/app/models/recommendation.model';
 
-export { LinkedInRecommendation };
+export type { LinkedInRecommendation };
 
 export const linkedInRecommendations: LinkedInRecommendation[] = [
     {
@@ -67,7 +67,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         id: 7,
         name: 'Rafael Petraca',
         role: 'Data Analyst | Power BI | SQL Server',
-        company: 'BRO Soluçoes',
+        company: 'BRO Soluções',
         relationship: 'Rafael and Lucas worked together in the same team',
         recommendationText: 'Ótimo profissional, com valores e ética. Sempre compartilhando conhecimento com os demais! E acima de tudo um grande amigo.',
         date: '2021-02-02',
