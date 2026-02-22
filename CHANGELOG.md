@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.8.0 (2026-02-21)
+
+### Feat
+
+- disable animations and transitions for recommendation cards on reduced motion preference
+- update LinkedIn recommendations with new profile images and company details
+- add new LinkedIn recommendation images and remove outdated ones
+- update subtitles in recommendations section for improved clarity
+- randomize and limit LinkedIn recommendations displayed
+- update LinkedIn recommendations with new entries and details
+- add GitHub Actions workflow and local JSON for books data
+- replace xml2js with fast-xml-parser for XML parsing in ApiService
+- add local environment configuration and update start script
+
+### Fix
+
+- correct export syntax for LinkedInRecommendation and update company name spelling
+- update button type and aria-label for better accessibility in recommendations
+- update eslint plugin versions to latest and remove peer dependencies
+- replace mock books with empty array in books.json
+- update workflow schedule to run biweekly
+- update FontAwesome icon imports and add icons to FaIconLibrary
+- add bootstrap modal to allowedCommonJsDependencies in angular.json
+- update bootstrap modal import for consistency in DisableWhenOfflineDirective
+- update condition for IP Geolocation API key replacement in CI workflow
+- update IP Geolocation API key reference in CI workflow
+- add newline at end of environment.prod.ts file
+- **ci**: update Node.js version to 22 in CI workflow
+- **ci**: add --force flag to npm install command
+- **ci**: Geolocation API key replacement in CI workflow
+- increase request timeout to 60 seconds for better API response handling
+- update CI workflow to trigger on master branch instead of main
+- update start script to include proxy configuration and add proxy configuration file
+- **api**: update IPAPI base URL to use correct protocol
+- add missing newline at end of file in CodeQL workflow
+
+### Refactor
+
+- replace inline shuffling logic with a dedicated method for recommendations
+- clean up HTML formatting in recommendations component
+- update personal descriptions in English and Portuguese localization files
+- streamline book fetching logic and utilize static data for books
+- change output format from JSON to TypeScript for books data
+- remove CORS proxy and clean up fetch logic in fetch-books.js
+- **utils.service**: update language handling to use fallback instead of default
+- **api.service**: improve books API proxy handling for production and development environments
+- **api.service**: enhance error handling and clean up publication date normalization
+- **publications.component**: streamline publication date handling and improve sorting logic
+- **publications.component**: improve publication date display with fallback for missing dates
+- **publications.component**: enhance blog publication date parsing and filter logic
+- **publications.component**: enhance loading state management and sort available types
+- **book.model**: improve shelves assignment logic for better clarity
+- **api.service**: remove comments on in-flight requests for clarity
+- **books.component**: comment out ngx-ui-loader for improved rendering performance
+- **api.service**: improve caching duration and retry logic for API requests
+
 ## v1.7.0 (2025-11-16)
 
 ### Feat
