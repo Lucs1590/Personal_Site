@@ -12,7 +12,7 @@ export class RecommendationsComponent implements OnInit {
 
   @Input() isEmbedded = false;
 
-  recommendations: LinkedInRecommendation[] = linkedInRecommendations.sort(() => Math.random() - 0.5).slice(0, 8);
+  recommendations: LinkedInRecommendation[] = this.getShuffledRecommendations();
   expandedMap: { [id: number]: boolean } = {};
   readonly truncateLength = 200;
 
@@ -53,5 +53,14 @@ export class RecommendationsComponent implements OnInit {
 
   trackById(index: number, recommendation: LinkedInRecommendation): number {
     return recommendation.id;
+  }
+
+  private getShuffledRecommendations(): LinkedInRecommendation[] {
+    const copied = [...linkedInRecommendations];
+    for (let i = copied.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copied[i], copied[j]] = [copied[j], copied[i]];
+    }
+    return copied.slice(0, 8);
   }
 }
