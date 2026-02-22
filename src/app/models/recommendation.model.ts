@@ -16,3 +16,15 @@ export class Recommendation implements Deserializable {
     return this;
   }
 }
+
+export interface LinkedInRecommendation {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  relationship?: string;
+  recommendationText: string;
+  linkedinUrl?: string;
+  date: string;
+  profileImage?: string;
+}
