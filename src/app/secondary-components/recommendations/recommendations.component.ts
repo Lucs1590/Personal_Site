@@ -3,16 +3,16 @@ import { LinkedInRecommendation, linkedInRecommendations } from 'src/assets/stat
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
-    selector: 'app-recommendations',
-    templateUrl: './recommendations.component.html',
-    styleUrls: ['./recommendations.component.css'],
-    standalone: false
+  selector: 'app-recommendations',
+  templateUrl: './recommendations.component.html',
+  styleUrls: ['./recommendations.component.css'],
+  standalone: false
 })
 export class RecommendationsComponent implements OnInit {
 
   @Input() isEmbedded = false;
 
-  recommendations: LinkedInRecommendation[] = linkedInRecommendations;
+  recommendations: LinkedInRecommendation[] = linkedInRecommendations.sort(() => Math.random() - 0.5).slice(0, 8);
   expandedMap: { [id: number]: boolean } = {};
   readonly truncateLength = 200;
 
