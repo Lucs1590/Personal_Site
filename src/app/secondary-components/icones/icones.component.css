@@ -10,6 +10,16 @@ a.disabled {
 .icons_div {
     margin-top: 7rem;
     font-size: 2rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    row-gap: 1rem;
+}
+
+@media (max-width: 991px) {
+    .icons_div {
+        margin-top: 2rem;
+        font-size: 1.75rem;
+    }
 }
 
 .icon:hover {
