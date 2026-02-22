@@ -11,7 +11,7 @@
           {{ getDisplayText(rec) }}
         </p>
 
-        <button *ngIf="isTruncatable(rec)" class="read-more-btn" (click)="toggleExpanded(rec.id)"
+        <button type="button" *ngIf="isTruncatable(rec)" class="read-more-btn" (click)="toggleExpanded(rec.id)"
           [attr.aria-expanded]="isExpanded(rec.id)"
           [attr.aria-label]="(isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate)) + ' - ' + rec.name">
           {{ isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate)
@@ -29,7 +29,7 @@
 
           <div class="author-info">
             <a *ngIf="rec.linkedinUrl; else nameOnly" [href]="rec.linkedinUrl" target="_blank" rel="noopener noreferrer"
-              class="author-name" [attr.aria-label]="rec.name + ' LinkedIn profile'">
+              class="author-name" [attr.aria-label]="rec.name + ' - LinkedIn'">
               {{ rec.name }}
             </a>
             <ng-template #nameOnly>
