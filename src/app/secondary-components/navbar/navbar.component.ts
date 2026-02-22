@@ -69,12 +69,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         desktop: false
       },
       {
-        name: firstValueFrom(this.translate.get('nav.recommendations')),
-        ref: ['/recommendations'],
-        mobile: true,
-        desktop: true
-      },
-      {
         name: firstValueFrom(this.translate.get('nav.books')),
         ref: ['/books'],
         mobile: true,
