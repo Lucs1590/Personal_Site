@@ -18,6 +18,7 @@
         "home": "Home",
         "publications": "Publications",
         "portfolio": "Portfolio",
+        "recommendations": "Recommendations",
         "books": "Books",
         "privacy_policy": "Privacy Policy"
     },
@@ -47,7 +48,9 @@
         "close": "Close"
     },
     "recommendations": {
-        "title": "Recommendations"
+        "title": "Recommendations",
+        "read_more": "Read more",
+        "read_less": "Read less"
     },
     "privacy_policy": {
         "title": "Privacy Policy",

@@ -1,26 +1,62 @@
-<div class="row" style="min-height:100%; overflow-y: auto;">
-	<div class="d-flex align-items-start ms-5 me-3">
-		<h5 translate>recommendations.title</h5>
-	</div>
-	<div id="carouselControls" class="carousel slide carousel-fade w-100" data-ride="carousel">
-		<div class="carousel-inner text-center">
-			<div [ngClass]="i === 0 ? 'carousel-item active': 'carousel-item'"
-				*ngFor="let recommendation of recommendations; let i = index; trackBy: trackByAuthor" data-interval="5000">
-				<img NgOptimizedImage class="imgAuthors" src="{{recommendation.authorImage}}" alt="author-image" loading="lazy">
-				<small>{{recommendation.state}}</small>
-				<p>{{recommendation.text}}</p>
-				<p class="blockquote-footer">{{recommendation.author}}</p>
-			</div>
-		</div>
+<section class="recommendations-section" aria-labelledby="recommendations-heading">
+  <div class="container-fluid px-3 px-md-5">
+    <h2 id="recommendations-heading" class="recommendations-title" translate>recommendations.title</h2>
 
-		<a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+    <div class="recommendations-grid" role="list">
+      <article
+        *ngFor="let rec of recommendations; trackBy: trackById"
+        class="recommendation-card"
+        role="listitem">
 
-	</div>
-</div>
+        <div class="card-quote-icon" aria-hidden="true">"</div>
+
+        <p class="card-text">
+          {{ getDisplayText(rec) }}
+        </p>
+
+        <button
+          *ngIf="isTruncatable(rec)"
+          class="read-more-btn"
+          (click)="toggleExpanded(rec.id)"
+          [attr.aria-expanded]="isExpanded(rec.id)"
+          [attr.aria-label]="(isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate)) + ' - ' + rec.name">
+          {{ isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate) }}
+        </button>
+
+        <footer class="card-footer">
+          <img
+            *ngIf="rec.profileImage; else avatarFallback"
+            class="author-avatar"
+            [src]="rec.profileImage"
+            [alt]="rec.name"
+            loading="lazy"
+            width="48"
+            height="48">
+          <ng-template #avatarFallback>
+            <div class="author-avatar author-avatar--fallback" aria-hidden="true">
+              {{ rec.name.charAt(0) }}
+            </div>
+          </ng-template>
+
+          <div class="author-info">
+            <a
+              *ngIf="rec.linkedinUrl; else nameOnly"
+              [href]="rec.linkedinUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="author-name"
+              [attr.aria-label]="rec.name + ' LinkedIn profile'">
+              {{ rec.name }}
+            </a>
+            <ng-template #nameOnly>
+              <span class="author-name">{{ rec.name }}</span>
+            </ng-template>
+            <span class="author-role">{{ rec.role }} · {{ rec.company }}</span>
+            <span *ngIf="rec.relationship" class="author-relationship">{{ rec.relationship }}</span>
+          </div>
+        </footer>
+
+      </article>
+    </div>
+  </div>
+</section>
