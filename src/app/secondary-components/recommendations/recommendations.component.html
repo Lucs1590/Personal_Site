@@ -3,10 +3,7 @@
     <h2 id="recommendations-heading" class="recommendations-title" translate>recommendations.title</h2>
 
     <div class="recommendations-grid" role="list">
-      <article
-        *ngFor="let rec of recommendations; trackBy: trackById"
-        class="recommendation-card"
-        role="listitem">
+      <article *ngFor="let rec of recommendations; trackBy: trackById" class="recommendation-card" role="listitem">
 
         <div class="card-quote-icon" aria-hidden="true">"</div>
 
@@ -14,24 +11,16 @@
           {{ getDisplayText(rec) }}
         </p>
 
-        <button
-          *ngIf="isTruncatable(rec)"
-          class="read-more-btn"
-          (click)="toggleExpanded(rec.id)"
+        <button *ngIf="isTruncatable(rec)" class="read-more-btn" (click)="toggleExpanded(rec.id)"
           [attr.aria-expanded]="isExpanded(rec.id)"
           [attr.aria-label]="(isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate)) + ' - ' + rec.name">
-          {{ isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate) }}
+          {{ isExpanded(rec.id) ? ('recommendations.read_less' | translate) : ('recommendations.read_more' | translate)
+          }}
         </button>
 
         <footer class="card-footer">
-          <img
-            *ngIf="rec.profileImage; else avatarFallback"
-            class="author-avatar"
-            [src]="rec.profileImage"
-            [alt]="rec.name"
-            loading="lazy"
-            width="48"
-            height="48">
+          <img *ngIf="rec.profileImage; else avatarFallback" class="author-avatar" [src]="rec.profileImage"
+            [alt]="rec.name" loading="lazy" width="48" height="48">
           <ng-template #avatarFallback>
             <div class="author-avatar author-avatar--fallback" aria-hidden="true">
               {{ rec.name.charAt(0) }}
@@ -39,13 +28,8 @@
           </ng-template>
 
           <div class="author-info">
-            <a
-              *ngIf="rec.linkedinUrl; else nameOnly"
-              [href]="rec.linkedinUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="author-name"
-              [attr.aria-label]="rec.name + ' LinkedIn profile'">
+            <a *ngIf="rec.linkedinUrl; else nameOnly" [href]="rec.linkedinUrl" target="_blank" rel="noopener noreferrer"
+              class="author-name" [attr.aria-label]="rec.name + ' LinkedIn profile'">
               {{ rec.name }}
             </a>
             <ng-template #nameOnly>
