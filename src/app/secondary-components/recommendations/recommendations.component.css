@@ -54,11 +54,23 @@
     border-color: rgba(255, 255, 255, 0.25);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .recommendation-card {
+        animation: none;
+        transition: none;
+    }
+
+    .recommendation-card:hover {
+        transform: none;
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(16px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
