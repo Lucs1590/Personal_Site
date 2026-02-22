@@ -11,7 +11,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         relationship: 'Guilherme directly supervised Lucas',
         recommendationText: 'Possui grandes conhecimentos nas seguintes áreas/tecnologias: Machine Learning, SageMaker, SQL, Python, Spark e R Language.',
         date: '2023-09-12',
-        profileImage: 'assets/img/recommendations/guilherme.jpeg'
+        profileImage: 'assets/img/recommendations/guilherme.png'
     },
     {
         id: 2,
@@ -21,12 +21,12 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         relationship: 'Allan directly supervised Lucas',
         recommendationText: 'Rapaz muito dedicado e que realmente busca conhecimento e aplica de forma exemplar, comunicativo e que trabalha de forma focada em atingir as metas. Como aluno não deixou pendências e sempre entrega mais do que o combinado.',
         date: '2023-02-02',
-        profileImage: 'assets/img/recommendations/allan.jpeg'
+        profileImage: 'assets/img/recommendations/allan.png'
     },
     {
         id: 3,
         name: 'Dennis Nakamura',
-        role: 'Digital Economy Specialist | Co-founder | Mentor',
+        role: 'Digital Economy Specialist | TED Speaker | Co-founder | Mentor',
         company: '—',
         relationship: 'Dennis worked with Lucas in different companies',
         recommendationText: 'Lucas é um excelente profissional. Organizado e extremamente humano, pudemos desenvolver alguns projetos bem inovadores nesses últimos anos da pandemia. Sem dúvidas é uma pessoa para se manter sempre por perto.',
@@ -57,7 +57,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         id: 6,
         name: 'Stephen Kunihiro',
         role: 'CEO',
-        company: '—',
+        company: 'NK',
         relationship: 'Stephen directly supervised Lucas',
         recommendationText: 'Valores morais e éticos consistentes, esforçado, dedicado, centrado, amigável e humilde.',
         date: '2021-02-15',
@@ -67,7 +67,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         id: 7,
         name: 'Rafael Petraca',
         role: 'Data Analyst | Power BI | SQL Server',
-        company: '—',
+        company: 'BRO Soluçoes',
         relationship: 'Rafael and Lucas worked together in the same team',
         recommendationText: 'Ótimo profissional, com valores e ética. Sempre compartilhando conhecimento com os demais! E acima de tudo um grande amigo.',
         date: '2021-02-02',
@@ -87,7 +87,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         id: 9,
         name: 'Renan Zulian',
         role: 'FullStack Developer | Backend Developer | AWS',
-        company: '—',
+        company: 'IPD Analytics',
         relationship: 'Renan and Lucas worked together in the same team',
         recommendationText: 'Foi e sempre será um prazer dividir uma mesa de trabalho com ele. Uma pessoa dedicada, que tem um ótimo espírito competitivo e que ama desafios. Esse seu estilo sempre motiva os colegas de trabalho a fazer o seu melhor.',
         date: '2020-02-11',
@@ -107,7 +107,7 @@ export const linkedInRecommendations: LinkedInRecommendation[] = [
         id: 11,
         name: 'Álvaro Leandro Cavalcante Carneiro',
         role: 'Data & AI Specialist | MSc. Computer Science',
-        company: '—',
+        company: 'Bulla',
         relationship: 'Álvaro and Lucas worked together in the same team',
         recommendationText: 'Ótimo profissional, muito dedicado em suas tarefas, visa executar tudo com excelência, se mostrando um profissional muito comprometido com o trabalho.',
         date: '2019-09-16',
