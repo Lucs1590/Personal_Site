@@ -5,6 +5,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SeoService } from 'src/app/services/seo.service';
 import { of } from 'rxjs';
+import { TranslateModule, TranslateService, TranslateNoOpLoader, TranslateLoader } from '@ngx-translate/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('BooksComponent', () => {
     let component: BooksComponent;
@@ -23,11 +25,21 @@ describe('BooksComponent', () => {
 
         await TestBed.configureTestingModule({
             declarations: [BooksComponent],
+            imports: [
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useClass: TranslateNoOpLoader
+                    }
+                })
+            ],
             providers: [
                 { provide: ApiService, useValue: mockApiService },
                 { provide: NgxUiLoaderService, useValue: mockNgxLoader },
-                { provide: SeoService, useValue: mockSeoService }
-            ]
+                { provide: SeoService, useValue: mockSeoService },
+                TranslateService
+            ],
+            schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
 
         fixture = TestBed.createComponent(BooksComponent);

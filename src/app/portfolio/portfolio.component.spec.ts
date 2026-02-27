@@ -34,8 +34,8 @@ describe('PortfolioComponent', () => {
 
   it('should filter projects by tag', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date() },
-      { id: '2', name: 'Repo2', topics: ['OTHERS'], private: false, updateDate: new Date() }
+      { name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date() } as Repository,
+      { name: 'Repo2', topics: ['OTHERS'], private: false, updateDate: new Date() } as Repository
     ];
     component.repos = repos;
     component.filterByTag('SOFTWARE');
@@ -51,8 +51,8 @@ describe('PortfolioComponent', () => {
 
   it('should filter projects by search query', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'Repo1', description: 'Description1', topics: ['SOFTWARE'], private: false, updateDate: new Date() },
-      { id: '2', name: 'Repo2', description: 'Description2', topics: ['OTHERS'], private: false, updateDate: new Date() }
+      { name: 'Repo1', description: 'Description1', topics: ['SOFTWARE'], private: false, updateDate: new Date() } as Repository,
+      { name: 'Repo2', description: 'Description2', topics: ['OTHERS'], private: false, updateDate: new Date() } as Repository
     ];
     component.repos = repos;
     component.searchQuery = 'Repo1';
@@ -63,8 +63,8 @@ describe('PortfolioComponent', () => {
 
   it('should sort projects by date', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date('2022-01-01') },
-      { id: '2', name: 'Repo2', topics: ['OTHERS'], private: false, updateDate: new Date('2023-01-01') }
+      { name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date('2022-01-01') } as Repository,
+      { name: 'Repo2', topics: ['OTHERS'], private: false, updateDate: new Date('2023-01-01') } as Repository
     ];
     component.repos = repos;
     component.sortOption = 'date';
@@ -74,8 +74,8 @@ describe('PortfolioComponent', () => {
 
   it('should sort projects by name', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'BRepo', topics: ['SOFTWARE'], private: false, updateDate: new Date() },
-      { id: '2', name: 'ARepo', topics: ['OTHERS'], private: false, updateDate: new Date() }
+      { name: 'BRepo', topics: ['SOFTWARE'], private: false, updateDate: new Date() } as Repository,
+      { name: 'ARepo', topics: ['OTHERS'], private: false, updateDate: new Date() } as Repository
     ];
     component.repos = repos;
     component.sortOption = 'name';
@@ -85,19 +85,19 @@ describe('PortfolioComponent', () => {
 
   it('should show project info on hover', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: false }
+      { name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: false } as Repository
     ];
     component.repos = repos;
-    component.showProjectInfo('1');
+    component.showProjectInfo('Repo1');
     expect(component.repos[0].showInfo).toBe(true);
   });
 
   it('should hide project info on mouse out', () => {
     const repos: Repository[] = [
-      { id: '1', name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: true }
+      { name: 'Repo1', topics: ['SOFTWARE'], private: false, updateDate: new Date(), showInfo: true } as Repository
     ];
     component.repos = repos;
-    component.hideProjectInfo('1');
+    component.hideProjectInfo('Repo1');
     expect(component.repos[0].showInfo).toBe(false);
   });
 });
