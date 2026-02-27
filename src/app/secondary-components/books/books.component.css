@@ -718,6 +718,11 @@ body {
         font-size: 2.25rem;
     }
 
+    .top-section,
+    .bottom-section {
+        padding: 1rem;
+    }
+
     .shelf {
         margin: 0;
     }
@@ -757,5 +762,14 @@ body {
 
     .carousel-indicators {
         bottom: -40px;
+    }
+
+    .book-card {
+        flex: 0 0 120px;
+    }
+
+    .book-card .book-cover-wrapper img {
+        width: 120px;
+        height: 175px;
     }
 }

@@ -46,6 +46,8 @@
     padding: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     animation: fadeInUp 0.4s ease both;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .recommendation-card:hover {
@@ -94,6 +96,7 @@
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 0.75rem;
     word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Read more button */
@@ -186,4 +189,10 @@ a.author-name:focus {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+    .recommendation-card {
+        padding: 1rem;
+    }
 }
