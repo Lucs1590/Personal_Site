@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install fast-xml-parser --save-dev
+          npm install fast-xml-parser --save-dev --force
 
       - name: Fetch books data
         run: |
