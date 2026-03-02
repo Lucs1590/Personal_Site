@@ -122,6 +122,11 @@
             "3": {
                 "title": "Overview of GitHub",
                 "description": "Talk on GitHub overview, covering badges, GitHub Actions, insights, security, PRs with Dependabot, releases and PyPI, and builds."
+            },
+            "4": {
+                "title": "Neo4j - First Steps",
+                "description": "A tutorial on Neo4j, a graph database management system. Lucas Brito and his colleague Maransatto guide viewers through the first steps with Neo4j, explaining its features and how it compares to traditional SQL and NoSQL databases. The repository for this workshop is available at https://github.com/Lucs1590/live_maransatto.",
+                "eventName": "NK Workshops"
             }
         }
     }

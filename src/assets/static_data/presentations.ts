@@ -29,5 +29,14 @@ export const presentationEvents: PresentationEvent[] = [
     videoUrl: 'https://youtu.be/FTPM2dpL-Rs?si=Y2bTQ_mLTDV3x92N',
     highlight: false,
     visibility: 'public'
+  },
+  {
+    id: 4,
+    date: '2020-06-05',
+    location: 'Pompeia, SP, Brasil',
+    videoUrl: 'https://www.youtube.com/watch?v=Zh-XW0s_LTc',
+    tags: ['Neo4j', 'Graph Database', 'Cypher', 'NoSQL', 'SQL'],
+    highlight: false,
+    visibility: 'public'
   }
 ];

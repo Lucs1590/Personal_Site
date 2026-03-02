@@ -122,6 +122,11 @@
             "3": {
                 "title": "Visão Geral do GitHub",
                 "description": "O vídeo oferece uma visão geral do GitHub, cobrindo badges, GitHub Actions, insights, segurança, PRs com Dependabot, releases e PyPI, e builds."
+            },
+            "4": {
+                "title": "Neo4j - Primeiros passos",
+                "description": "O vídeo é um tutorial sobre o Neo4j, um sistema de gerenciamento de banco de dados gráfico. O apresentador, Lucas Brito, e seu colega, Maransatto, guiam os espectadores pelos primeiros passos com o Neo4j, explicando seus recursos e como ele se compara aos bancos de dados SQL e NoSQL tradicionais. O link do repositório no git para esse workshop é https://github.com/Lucs1590/live_maransatto.",
+                "eventName": "NK Workshops"
             }
         }
     }
