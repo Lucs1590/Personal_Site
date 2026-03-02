@@ -55,7 +55,7 @@ export class PresentationsComponent implements OnInit, OnDestroy {
   }
 
   private localeFromLang(lang: string): string {
-    return lang === 'pt' ? 'pt-BR' : 'en-US';
+    return lang === 'pt' ? 'pt' : 'en-US';
   }
 
   private buildEventNameCache(): void {
