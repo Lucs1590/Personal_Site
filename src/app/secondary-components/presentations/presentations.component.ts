@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { PresentationEvent, presentationEvents } from 'src/assets/static_data/presentations';
 import { SeoService } from 'src/app/services/seo.service';
@@ -42,6 +42,12 @@ export class PresentationsComponent implements OnInit, OnDestroy {
         if (!this.isEmbedded) {
           this.updateSeoMetadata();
         }
+      });
+
+    this.translate.onTranslationChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((_event: TranslationChangeEvent) => {
+        this.buildEventNameCache();
       });
 
     if (!this.isEmbedded) {
