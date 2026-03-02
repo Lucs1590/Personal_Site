@@ -68,8 +68,8 @@
             <fa-icon [icon]="['fas', 'calendar']" aria-hidden="true"></fa-icon>
             {{ event.date | date:'mediumDate':'UTC':currentLocale }}
           </span>
-          <span *ngIf="event.location" class="card-location">
-            · {{ event.location }}
+          <span *ngIf="locationExists.has(event.id)" class="card-location">
+            · {{ itemKey(event, 'location') | translate }}
           </span>
           <span
             *ngIf="event.visibility"

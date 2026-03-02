@@ -21,6 +21,7 @@ export class PresentationsComponent implements OnInit, OnDestroy {
 
   currentLocale = 'en-US';
   eventNameExists = new Set<number>();
+  locationExists = new Set<number>();
 
   private readonly destroy$ = new Subject<void>();
 
@@ -69,6 +70,14 @@ export class PresentationsComponent implements OnInit, OnDestroy {
       this.presentations
         .filter(e => {
           const key = this.itemKey(e, 'eventName');
+          return this.translate.instant(key) !== key;
+        })
+        .map(e => e.id)
+    );
+    this.locationExists = new Set(
+      this.presentations
+        .filter(e => {
+          const key = this.itemKey(e, 'location');
           return this.translate.instant(key) !== key;
         })
         .map(e => e.id)
