@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
+
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faInfoCircle, faCalendar, faLink, faBookOpen, faFilePdf, faBookmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faMedium, faDev, faResearchgate, faStackOverflow, faTwitter, faLinkedin, faInstagram, faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -33,6 +37,7 @@ import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/pr
 import { FooterComponent } from './secondary-components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
 import { BooksComponent } from './secondary-components/books/books.component';
+import { PresentationsComponent } from './secondary-components/presentations/presentations.component';
 
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bgsColor: '#e69c24',
@@ -84,6 +89,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     PrivacyPolicyComponent,
     FooterComponent,
     BooksComponent,
+    PresentationsComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

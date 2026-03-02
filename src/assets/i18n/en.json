@@ -18,7 +18,8 @@
         "portfolio": "Portfolio",
         "recommendations": "Recommendations",
         "books": "Books",
-        "privacy_policy": "Privacy Policy"
+        "privacy_policy": "Privacy Policy",
+        "presentations": "Presentations"
     },
     "not_found": {
         "sub": "Something went wrong...",
@@ -93,6 +94,46 @@
             "previous": "Previous book",
             "next": "Next book",
             "go_to_book": "Go to book"
+        }
+    },
+    "presentations": {
+        "title": "Presentations & Events",
+        "nav": "Presentations",
+        "visibility": {
+            "public": "Public",
+            "private": "Private"
+        },
+        "seo": {
+            "title": "Lucas Brito - Presentations & Events | Talks and Lectures",
+            "description": "Explore talks, lectures, panels, and event participations by Lucas de Brito Silva on Machine Learning, Deep Learning, and Data Science.",
+            "keywords": "Lucas Brito Presentations, Tech Talks, Machine Learning Lectures, Events, Conference"
+        },
+        "items": {
+            "1": {
+                "title": "Machine Learning in Agriculture: Crop Disease Detection",
+                "description": "Presentation on computer vision and machine learning techniques applied to early disease detection in coffee and other agricultural crops.",
+                "eventName": "FATEC Shunji Nishimura"
+            },
+            "2": {
+                "title": "Deep Learning for Sign Language Recognition",
+                "description": "Lecture on master's research focused on developing deep learning models for Libras (Brazilian Sign Language) recognition, covering datasets, architectures, and results.",
+                "eventName": "UNESP - São Paulo State University"
+            },
+            "3": {
+                "title": "MLOps in Practice: From Model to Product",
+                "description": "Talk on MLOps best practices covering training pipelines, model versioning with MLflow, continuous deployment with Amazon SageMaker, and production model monitoring.",
+                "eventName": "Agibank Tech Talks"
+            },
+            "4": {
+                "title": "Introduction to Big Data in Agribusiness",
+                "description": "Inaugural lecture on the use of Big Data and data analysis in Brazilian agribusiness, presenting use cases, tools, and market opportunities for professionals.",
+                "eventName": "FATEC Shunji Nishimura"
+            },
+            "5": {
+                "title": "Semantic Segmentation with Convolutional Neural Networks",
+                "description": "Hands-on workshop on semantic segmentation applied to satellite imagery, using architectures like U-Net and DeepLab for land use analysis.",
+                "eventName": "Computer Vision Workshop - UNESP"
+            }
         }
     }
 }

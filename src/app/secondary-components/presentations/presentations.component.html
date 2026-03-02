@@ -1,0 +1,84 @@
+<section class="presentations-section" aria-labelledby="presentations-heading">
+  <div class="container-fluid px-3 px-md-5">
+    <h2 id="presentations-heading" class="presentations-title" translate>presentations.title</h2>
+
+    <div class="presentations-grid" role="list">
+      <article
+        *ngFor="let event of presentations; trackBy: trackById"
+        class="presentation-card"
+        [class.presentation-card--highlight]="event.highlight"
+        role="listitem">
+
+        <div class="card-media" *ngIf="event.videoUrl || (event.images && event.images.length)">
+          <ng-container *ngIf="event.videoUrl; else imageBlock">
+            <div class="video-wrapper" *ngIf="isYouTubeOrVimeo(event.videoUrl); else directVideo">
+              <iframe
+                [src]="getSafeEmbedUrl(event.videoUrl)"
+                [title]="itemKey(event, 'title') | translate"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="video-iframe">
+              </iframe>
+            </div>
+            <ng-template #directVideo>
+              <div class="video-wrapper">
+                <video
+                  [src]="event.videoUrl"
+                  controls
+                  preload="none"
+                  class="video-iframe"
+                  [attr.aria-label]="itemKey(event, 'title') | translate">
+                </video>
+              </div>
+            </ng-template>
+          </ng-container>
+
+          <ng-template #imageBlock>
+            <img
+              *ngIf="event.images && event.images[0]"
+              [src]="event.images[0]"
+              [alt]="itemKey(event, 'title') | translate"
+              class="card-image"
+              loading="lazy">
+          </ng-template>
+        </div>
+
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-date">
+              <fa-icon [icon]="['fas', 'calendar']" aria-hidden="true"></fa-icon>
+              {{ event.date | date:'mediumDate':'':currentLocale }}
+            </span>
+            <span *ngIf="event.location" class="card-location">
+              · {{ event.location }}
+            </span>
+            <span
+              *ngIf="event.visibility"
+              class="card-visibility"
+              [class.card-visibility--private]="event.visibility === 'private'"
+              [attr.aria-label]="('presentations.visibility.' + event.visibility) | translate">
+              {{ ('presentations.visibility.' + event.visibility) | translate }}
+            </span>
+          </div>
+
+          <h3 class="card-title">{{ itemKey(event, 'title') | translate }}</h3>
+
+          <p class="card-event-name">{{ itemKey(event, 'eventName') | translate }}</p>
+
+          <p class="card-description">{{ itemKey(event, 'description') | translate }}</p>
+
+          <div *ngIf="event.tags && event.tags.length" class="card-tags" role="list" aria-label="Tags">
+            <span
+              *ngFor="let tag of event.tags"
+              class="card-tag"
+              role="listitem">
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</section>

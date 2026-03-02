@@ -8,6 +8,7 @@ import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/pr
 import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { BooksComponent } from './secondary-components/books/books.component';
+import { PresentationsComponent } from './secondary-components/presentations/presentations.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
   { path: 'recommendations', component: RecommendationsComponent, title: 'Lucas Brito - Recommendations' },
   { path: 'books', component: BooksComponent, title: 'Lucas Brito - Books' },
+  { path: 'presentations', component: PresentationsComponent, title: 'Lucas Brito - Presentations & Events' },
   { path: '404', component: NotFoundComponent, title: '404 - Not Found' },
   { path: '**', redirectTo: '404', pathMatch: 'full', title: '404 - Not Found' }
 ];
