@@ -5,7 +5,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-registerLocaleData(localePt);
+registerLocaleData(localePt, 'pt');
+registerLocaleData(localePt, 'pt-BR');
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faInfoCircle, faCalendar, faLink, faBookOpen, faFilePdf, faBookmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
