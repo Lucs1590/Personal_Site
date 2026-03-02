@@ -20,6 +20,7 @@ export class PresentationsComponent implements OnInit, OnDestroy {
   );
 
   currentLocale = 'en-US';
+  eventNameExists = new Set<number>();
 
   private readonly destroy$ = new Subject<void>();
 
@@ -31,11 +32,13 @@ export class PresentationsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentLocale = this.localeFromLang(this.translate.getCurrentLang());
+    this.buildEventNameCache();
 
     this.translate.onLangChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((event: LangChangeEvent) => {
         this.currentLocale = this.localeFromLang(event.lang);
+        this.buildEventNameCache();
         if (!this.isEmbedded) {
           this.updateSeoMetadata();
         }
@@ -53,6 +56,17 @@ export class PresentationsComponent implements OnInit, OnDestroy {
 
   private localeFromLang(lang: string): string {
     return lang === 'pt' ? 'pt-BR' : 'en-US';
+  }
+
+  private buildEventNameCache(): void {
+    this.eventNameExists = new Set(
+      this.presentations
+        .filter(e => {
+          const key = this.itemKey(e, 'eventName');
+          return this.translate.instant(key) !== key;
+        })
+        .map(e => e.id)
+    );
   }
 
   private updateSeoMetadata(): void {

@@ -98,6 +98,7 @@
     },
     "presentations": {
         "title": "Presentations & Events",
+        "description": "A collection of my talks, workshops, lectures, and event participations on topics such as Machine Learning, Deep Learning, Computer Vision, and Data Science. Some sessions are private (internal company talks), while public ones include recorded videos where available.",
         "nav": "Presentations",
         "visibility": {
             "public": "Public",

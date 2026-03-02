@@ -4,6 +4,7 @@
   <main class="presentations-main">
     <header class="presentations-header">
       <h1 class="presentations-page-title" translate>presentations.title</h1>
+      <p class="presentations-page-description" translate>presentations.description</p>
     </header>
 
     <ng-container *ngTemplateOutlet="grid"></ng-container>
@@ -81,7 +82,7 @@
 
         <h3 class="card-title">{{ itemKey(event, 'title') | translate }}</h3>
 
-        <p class="card-event-name">{{ itemKey(event, 'eventName') | translate }}</p>
+        <p *ngIf="eventNameExists.has(event.id)" class="card-event-name">{{ itemKey(event, 'eventName') | translate }}</p>
 
         <p class="card-description">{{ itemKey(event, 'description') | translate }}</p>
 

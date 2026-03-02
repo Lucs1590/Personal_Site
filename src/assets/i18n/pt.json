@@ -98,6 +98,7 @@
     },
     "presentations": {
         "title": "Apresentações & Eventos",
+        "description": "Uma coleção das minhas palestras, workshops, aulas e participações em eventos sobre temas como Machine Learning, Deep Learning, Visão Computacional e Ciência de Dados. Algumas sessões são privadas (palestras internas em empresas), enquanto as públicas incluem vídeos gravados quando disponíveis.",
         "nav": "Apresentações",
         "visibility": {
             "public": "Público",
