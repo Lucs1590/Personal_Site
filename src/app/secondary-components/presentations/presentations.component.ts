@@ -27,10 +27,10 @@ export class PresentationsComponent implements OnInit, OnDestroy {
     private seoService: SeoService,
     private sanitizer: DomSanitizer,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.currentLocale = this.localeFromLang(this.translate.currentLang);
+    this.currentLocale = this.localeFromLang(this.translate.getCurrentLang());
 
     this.translate.onLangChange
       .pipe(takeUntil(this.destroy$))
