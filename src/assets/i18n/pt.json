@@ -1,98 +1,138 @@
 {
-    "home": {
-        "sub_title": "Tecnólogo em Big Data no Agronegócio",
-        "about": "Sobre",
-        "description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" class=\"text-white\" target=\"_blank\">Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, finalizei o mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site.",
-        "subtitles": [
-            "Tecnólogo em Big Data no Agronegócio",
-            "Mestre em Ciência da Computação",
-            "Engenheiro de Machine Learning",
-            "Atleta",
-            "Leitor e Escritor (por hobby)"
-        ]
+  "home": {
+    "sub_title": "Tecnólogo em Big Data no Agronegócio",
+    "about": "Sobre",
+    "description": "Olá, é um prazer recebê-lo em meu site! Meu nome é Lucas de Brito Silva, e aos {{idade}} anos, trilho uma jornada apaixonante na área de Tecnologia. Desde 2021, fiz uma transição da área de desenvolvimento de sistemas e aplicativos para o fascinante mundo dos dados. Atualmente, sou Machine Learning Engineer no <a href=\"https://agibank.com.br/\" class=\"text-white\" target=\"_blank\">Agibank</a>.<br><br>Minha trajetória inclui a formação no curso Técnico de Computação na ETEC Professor Massuyuki Kawano e o pioneirismo na primeira turma a se formar no Brasil em Big Data no Agronegócio, pela FATEC Shunji Nishimura. Além disso, finalizei o mestrado em Ciência da Computação na Universidade Estadual Paulista \"Júlio de Mesquita Filho\" (UNESP).<br><br>Meus interesses e paixões residem nas áreas de dados, inteligência computacional, <i>deep learning</i>, visão computacional e <i>machine learning engineering</i>. Espero que você aproveite sua visita ao meu site.",
+    "subtitles": [
+      "Tecnólogo em Big Data no Agronegócio",
+      "Mestre em Ciência da Computação",
+      "Engenheiro de Machine Learning",
+      "Atleta",
+      "Leitor e Escritor (por hobby)"
+    ]
+  },
+  "lang": "en",
+  "nav": {
+    "home": "Início",
+    "publications": "Publicações",
+    "portfolio": "Portfólio",
+    "recommendations": "Recomendações",
+    "books": "Livros",
+    "privacy_policy": "Política de Privacidade",
+    "presentations": "Apresentações"
+  },
+  "not_found": {
+    "sub": "Ops...",
+    "sub_2": "A página não foi encontrada!",
+    "back_button": "Voltar ao Início"
+  },
+  "publi": {
+    "title": "Publicações",
+    "description": "Gosto de escrever para contribuir com a comunidade e para consolidar meu conhecimento. Os assuntos normalmente são científicos ou de tecnologias digitais. Fique à vontade para ler minhas publicações de blog no Medium ou Dev Community, ou as publicações científicas no Google Scholar ou ResearchGate.",
+    "blog-subtitle": "Blog",
+    "sci-subtitle": "Publicações Científicas",
+    "read-more": "Leia mais...",
+    "blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
+    "sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
+    "tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
+    "filter-year": "Filtrar por Ano",
+    "filter-type": "Filtrar por Tipo",
+    "all-years": "Todos os Anos",
+    "all-types": "Todos os Tipos",
+    "view-publication": "Ver"
+  },
+  "modal-off": {
+    "title": "Você está offline!",
+    "description": "Parece que você está offline. Por favor, verifique sua conexão com a internet e tente novamente.",
+    "close": "Fechar"
+  },
+  "recommendations": {
+    "title": "Recomendações",
+    "read_more": "Ler mais",
+    "read_less": "Ler menos"
+  },
+  "privacy_policy": {
+    "title": "Política de Privacidade",
+    "introduction": "Introdução",
+    "information_collection": "Coleta de Informações",
+    "information_collection_text": "Este site não coleta dados pessoais dos usuários. A única informação processada é o endereço IP do usuário, que é consultado com um serviço de terceiros unicamente para adaptar a configuração de idioma do site (português ou inglês) com base na localização. Isso é feito através de cookies para uma experiência de navegação mais fluida.",
+    "use_of_information": "Uso das Informações",
+    "use_of_information_text": "As informações coletadas são limitadas às preferências de idioma, permitindo uma experiência personalizada ao exibir o conteúdo no idioma preferido do usuário.",
+    "data_sharing": "Compartilhamento de Dados",
+    "data_sharing_text": "Nenhum dado pessoal do usuário é coletado ou compartilhado com terceiros. O endereço IP é temporariamente processado por um serviço externo para adaptação do idioma, mas não é armazenado por este site.",
+    "data_security": "Segurança dos Dados",
+    "data_security_text": "Como nenhum dado pessoal é coletado, as medidas de segurança de dados se aplicam apenas para garantir a integração segura com serviços de terceiros e proteger a funcionalidade do site.",
+    "user_rights": "Direitos dos Usuários",
+    "user_rights_text": "Os usuários podem ajustar suas configurações de cookies para controlar o armazenamento de preferências de idioma. Como nenhum dado pessoal é armazenado, não há direitos adicionais aplicáveis.",
+    "changes_to_policy": "Alterações na Política",
+    "changes_to_policy_text": "Esta Política de Privacidade pode ser atualizada periodicamente, especialmente em caso de alterações nos serviços de terceiros que utilizamos.",
+    "contact_information": "Informações de Contato",
+    "contact_information_text": "Se você tiver dúvidas ou preocupações sobre esta Política de Privacidade, entre em contato conosco.",
+    "additional_text": "As informações detalhadas sobre nossas práticas de privacidade estão descritas abaixo."
+  },
+  "books": {
+    "title": "LIVROS",
+    "currently_reading": "Lendo<br>Atualmente",
+    "description": "Descrição",
+    "read_books": "Livros lidos",
+    "pages": "páginas",
+    "search_title": "Pesquisar por título, autor ou descrição",
+    "search_placeholder": "Pesquisar título, autor ou descrição...",
+    "only_this_year": "Apenas este ano",
+    "sort": {
+      "most_recent": "Mais recentes",
+      "oldest": "Mais antigos",
+      "title_asc": "Título A → Z",
+      "title_desc": "Título Z → A",
+      "rating_desc": "Avaliação ↓",
+      "rating_asc": "Avaliação ↑"
     },
-    "lang": "en",
-    "nav": {
-        "home": "Início",
-        "publications": "Publicações",
-        "portfolio": "Portfólio",
-        "recommendations": "Recomendações",
-        "books": "Livros",
-        "privacy_policy": "Política de Privacidade"
-    },
-    "not_found": {
-        "sub": "Ops...",
-        "sub_2": "A página não foi encontrada!",
-        "back_button": "Voltar ao Início"
-    },
-    "publi": {
-        "title": "Publicações",
-        "description": "Gosto de escrever para contribuir com a comunidade e para consolidar meu conhecimento. Os assuntos normalmente são científicos ou de tecnologias digitais. Fique à vontade para ler minhas publicações de blog no Medium ou Dev Community, ou as publicações científicas no Google Scholar ou ResearchGate.",
-        "blog-subtitle": "Blog",
-        "sci-subtitle": "Publicações Científicas",
-        "read-more": "Leia mais...",
-        "blog-not-found": "Nenhuma publicação de blog correspondeu aos seus critérios de pesquisa.",
-        "sci-not-found": "Nenhuma publicação científica correspondeu aos seus critérios de pesquisa.",
-        "tip": "Dica: Se você não encontrar o que procura, tente buscar adicionando \"?search=palavra-chave\" depois de /publication na URL.",
-        "filter-year": "Filtrar por Ano",
-        "filter-type": "Filtrar por Tipo",
-        "all-years": "Todos os Anos",
-        "all-types": "Todos os Tipos",
-        "view-publication": "Ver"
-    },
-    "modal-off": {
-        "title": "Você está offline!",
-        "description": "Parece que você está offline. Por favor, verifique sua conexão com a internet e tente novamente.",
-        "close": "Fechar"
-    },
-    "recommendations": {
-        "title": "Recomendações",
-        "read_more": "Ler mais",
-        "read_less": "Ler menos"
-    },
-    "privacy_policy": {
-        "title": "Política de Privacidade",
-        "introduction": "Introdução",
-        "information_collection": "Coleta de Informações",
-        "information_collection_text": "Este site não coleta dados pessoais dos usuários. A única informação processada é o endereço IP do usuário, que é consultado com um serviço de terceiros unicamente para adaptar a configuração de idioma do site (português ou inglês) com base na localização. Isso é feito através de cookies para uma experiência de navegação mais fluida.",
-        "use_of_information": "Uso das Informações",
-        "use_of_information_text": "As informações coletadas são limitadas às preferências de idioma, permitindo uma experiência personalizada ao exibir o conteúdo no idioma preferido do usuário.",
-        "data_sharing": "Compartilhamento de Dados",
-        "data_sharing_text": "Nenhum dado pessoal do usuário é coletado ou compartilhado com terceiros. O endereço IP é temporariamente processado por um serviço externo para adaptação do idioma, mas não é armazenado por este site.",
-        "data_security": "Segurança dos Dados",
-        "data_security_text": "Como nenhum dado pessoal é coletado, as medidas de segurança de dados se aplicam apenas para garantir a integração segura com serviços de terceiros e proteger a funcionalidade do site.",
-        "user_rights": "Direitos dos Usuários",
-        "user_rights_text": "Os usuários podem ajustar suas configurações de cookies para controlar o armazenamento de preferências de idioma. Como nenhum dado pessoal é armazenado, não há direitos adicionais aplicáveis.",
-        "changes_to_policy": "Alterações na Política",
-        "changes_to_policy_text": "Esta Política de Privacidade pode ser atualizada periodicamente, especialmente em caso de alterações nos serviços de terceiros que utilizamos.",
-        "contact_information": "Informações de Contato",
-        "contact_information_text": "Se você tiver dúvidas ou preocupações sobre esta Política de Privacidade, entre em contato conosco.",
-        "additional_text": "As informações detalhadas sobre nossas práticas de privacidade estão descritas abaixo."
-    },
-    "books": {
-        "title": "LIVROS",
-        "currently_reading": "Lendo<br>Atualmente",
-        "description": "Descrição",
-        "read_books": "Livros lidos",
-        "pages": "páginas",
-        "search_title": "Pesquisar por título, autor ou descrição",
-        "search_placeholder": "Pesquisar título, autor ou descrição...",
-        "only_this_year": "Apenas este ano",
-        "sort": {
-            "most_recent": "Mais recentes",
-            "oldest": "Mais antigos",
-            "title_asc": "Título A → Z",
-            "title_desc": "Título Z → A",
-            "rating_desc": "Avaliação ↓",
-            "rating_asc": "Avaliação ↑"
-        },
-        "read_at": "Lido em",
-        "goodreads_review": "Minha avaliação",
-        "no_results": "Nenhum livro encontrado com os filtros atuais.",
-        "carousel": {
-            "previous": "Livro anterior",
-            "next": "Próximo livro",
-            "go_to_book": "Ir para o livro"
-        }
+    "read_at": "Lido em",
+    "goodreads_review": "Minha avaliação",
+    "no_results": "Nenhum livro encontrado com os filtros atuais.",
+    "carousel": {
+      "previous": "Livro anterior",
+      "next": "Próximo livro",
+      "go_to_book": "Ir para o livro"
     }
+  },
+  "presentations": {
+    "title": "Apresentações & Eventos",
+    "description": "Uma coleção das minhas palestras, workshops, aulas e participações em eventos sobre temas como Machine Learning, Deep Learning, Visão Computacional e Ciência de Dados. Algumas sessões são privadas (palestras internas em empresas), enquanto as públicas incluem vídeos gravados quando disponíveis.",
+    "nav": "Apresentações",
+    "visibility": {
+      "public": "Público",
+      "private": "Privado"
+    },
+    "seo": {
+      "title": "Lucas Brito - Apresentações & Eventos | Palestras e Lectures",
+      "description": "Explore palestras, aulas, painéis e participações em eventos de Lucas de Brito Silva sobre Machine Learning, Deep Learning e Ciência de Dados.",
+      "keywords": "Lucas Brito Apresentações, Tech Talks, Palestras Machine Learning, Eventos, Conferência"
+    },
+    "items": {
+      "1": {
+        "title": "Reconhecimento Facial",
+        "description": "Apresentação demonstra um projeto de reconhecimento facial, abordando a utilização de datasets, modelos e métricas de avaliação.",
+        "eventName": "PID 2020 - UNESP",
+        "location": "Bauru, SP, Brasil"
+      },
+      "2": {
+        "title": "Registro de Imagens | Pedro Paiola e Lucas Brito",
+        "description": "A apresentação aborda o registro de imagens, métodos, transformações geométricas, interpolações e calibração de câmeras, com demonstração de código.",
+        "eventName": "PID 2020 - UNESP",
+        "location": "Bauru, SP, Brasil"
+      },
+      "3": {
+        "title": "Visão Geral do GitHub",
+        "description": "O vídeo oferece uma visão geral do GitHub, cobrindo badges, GitHub Actions, insights, segurança, PRs com Dependabot, releases e PyPI, e builds.",
+        "location": "Quintana, SP, Brasil"
+      },
+      "4": {
+        "title": "Neo4j - Primeiros passos",
+        "description": "O vídeo é um tutorial sobre o Neo4j, um sistema de gerenciamento de banco de dados gráfico. O apresentador, Lucas Brito, e seu colega, Maransatto, guiam os espectadores pelos primeiros passos com o Neo4j, explicando seus recursos e como ele se compara aos bancos de dados SQL e NoSQL tradicionais. O link do repositório no git para esse workshop é https://github.com/Lucs1590/live_maransatto.",
+        "eventName": "NK Workshops",
+        "location": "Pompeia, SP, Brasil"
+      }
+    }
+  }
 }

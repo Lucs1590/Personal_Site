@@ -1,98 +1,138 @@
 {
-    "home": {
-        "sub_title": "Technologist in Big Data in Agribusiness",
-        "about": "About me",
-        "description": "Hello, welcome to my website! My name is Lucas de Brito Silva, and at 24, I embark on an exciting journey in the field of Technology. Since 2021, I made a transition from the area of systems and application development to the fascinating world of data. Currently, I am a Machine Learning Engineer at <a href=\"https://agibank.com.br/en\" class=\"text-white\" target=\"_blank\">Agibank</a>. <br><br>My journey includes training in the Computer Technician course at ETEC Professor Massuyuki Kawano and pioneering in the first class to graduate in Big Data in Agribusiness, at FATEC Shunji Nishimura. Additionally, I've done a master's degree in Computer Science at São Paulo State University \"Júlio de Mesquita Filho\" (UNESP).<br><br>My interests and passions lie in the areas of data, computational intelligence, deep learning, computer vision, and machine learning engineering. I hope you enjoy your visit to my website.",
-        "subtitles": [
-            "Technologist in Big Data in Agribusiness",
-            "MSc. Computer Science",
-            "Machine Learning Engineer",
-            "Athlete",
-            "Reader and Writer (as a hobby)"
-        ]
+  "home": {
+    "sub_title": "Technologist in Big Data in Agribusiness",
+    "about": "About me",
+    "description": "Hello, welcome to my website! My name is Lucas de Brito Silva, and at 24, I embark on an exciting journey in the field of Technology. Since 2021, I made a transition from the area of systems and application development to the fascinating world of data. Currently, I am a Machine Learning Engineer at <a href=\"https://agibank.com.br/en\" class=\"text-white\" target=\"_blank\">Agibank</a>. <br><br>My journey includes training in the Computer Technician course at ETEC Professor Massuyuki Kawano and pioneering in the first class to graduate in Big Data in Agribusiness, at FATEC Shunji Nishimura. Additionally, I've done a master's degree in Computer Science at São Paulo State University \"Júlio de Mesquita Filho\" (UNESP).<br><br>My interests and passions lie in the areas of data, computational intelligence, deep learning, computer vision, and machine learning engineering. I hope you enjoy your visit to my website.",
+    "subtitles": [
+      "Technologist in Big Data in Agribusiness",
+      "MSc. Computer Science",
+      "Machine Learning Engineer",
+      "Athlete",
+      "Reader and Writer (as a hobby)"
+    ]
+  },
+  "lang": "pt",
+  "nav": {
+    "home": "Home",
+    "publications": "Publications",
+    "portfolio": "Portfolio",
+    "recommendations": "Recommendations",
+    "books": "Books",
+    "privacy_policy": "Privacy Policy",
+    "presentations": "Presentations"
+  },
+  "not_found": {
+    "sub": "Something went wrong...",
+    "sub_2": "Page not found!",
+    "back_button": "Back to Home"
+  },
+  "publi": {
+    "title": "Publications",
+    "description": "I enjoy writing to contribute to the community and enhance my knowledge. My topics usually revolve around science and digital technologies. Feel free to read my blog posts on Medium or Dev Community, or explore my scientific publications on Google Scholar or ResearchGate.",
+    "blog-subtitle": "Blog",
+    "sci-subtitle": "Scientific Publications",
+    "read-more": "Read more...",
+    "blog-not-found": "No blog posts matched your search criteria.",
+    "sci-not-found": "No scientific publications matched your search criteria.",
+    "tip": "Tip: If you can't find a specific text, try adding \"?search=tag\" after /publication in the URL.",
+    "filter-year": "Filter by Year",
+    "filter-type": "Filter by Type",
+    "all-years": "All Years",
+    "all-types": "All Types",
+    "view-publication": "View"
+  },
+  "modal-off": {
+    "title": "You are offline!",
+    "description": "This website is best viewed online. Please check your internet connection and try again.",
+    "close": "Close"
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "read_more": "Read more",
+    "read_less": "Read less"
+  },
+  "privacy_policy": {
+    "title": "Privacy Policy",
+    "introduction": "Introduction",
+    "information_collection": "Information Collection",
+    "information_collection_text": "This website does not collect any personal data from users. The only information processed is the user's IP address, which is checked with a third-party service solely to adapt the website's language settings (English or Portuguese) based on location. This is done via cookies for a seamless user experience.",
+    "use_of_information": "Use of Information",
+    "use_of_information_text": "The information gathered is limited to language preferences, enabling a customized experience for users by displaying content in their preferred language.",
+    "data_sharing": "Data Sharing",
+    "data_sharing_text": "No personal data of users is collected or shared with third parties. The IP address is briefly processed by a third-party language adaptation service, but it is not stored by this website.",
+    "data_security": "Data Security",
+    "data_security_text": "As no personal data is collected, data security measures apply only to ensure safe integration with third-party services and protect website functionality.",
+    "user_rights": "User Rights",
+    "user_rights_text": "Users can adjust their cookie settings to control language preference storage. Since no personal data is stored, there are no additional data rights applicable.",
+    "changes_to_policy": "Changes to Policy",
+    "changes_to_policy_text": "This Privacy Policy may be updated periodically, especially if there are changes to the third-party services we use.",
+    "contact_information": "Contact Information",
+    "contact_information_text": "If you have questions or concerns about this Privacy Policy, please feel free to contact us.",
+    "additional_text": "The detailed information regarding our privacy practices is provided below."
+  },
+  "books": {
+    "title": "BOOKS",
+    "currently_reading": "Currently<br>Reading",
+    "description": "Description",
+    "read_books": "Read Books",
+    "pages": "pages",
+    "search_title": "Search by title, author or description",
+    "search_placeholder": "Search title, author or description...",
+    "only_this_year": "Only this year",
+    "sort": {
+      "most_recent": "Most recent",
+      "oldest": "Oldest",
+      "title_asc": "Title A → Z",
+      "title_desc": "Title Z → A",
+      "rating_desc": "Rating ↓",
+      "rating_asc": "Rating ↑"
     },
-    "lang": "pt",
-    "nav": {
-        "home": "Home",
-        "publications": "Publications",
-        "portfolio": "Portfolio",
-        "recommendations": "Recommendations",
-        "books": "Books",
-        "privacy_policy": "Privacy Policy"
-    },
-    "not_found": {
-        "sub": "Something went wrong...",
-        "sub_2": "Page not found!",
-        "back_button": "Back to Home"
-    },
-    "publi": {
-        "title": "Publications",
-        "description": "I enjoy writing to contribute to the community and enhance my knowledge. My topics usually revolve around science and digital technologies. Feel free to read my blog posts on Medium or Dev Community, or explore my scientific publications on Google Scholar or ResearchGate.",
-        "blog-subtitle": "Blog",
-        "sci-subtitle": "Scientific Publications",
-        "read-more": "Read more...",
-        "blog-not-found": "No blog posts matched your search criteria.",
-        "sci-not-found": "No scientific publications matched your search criteria.",
-        "tip": "Tip: If you can't find a specific text, try adding \"?search=tag\" after /publication in the URL.",
-        "filter-year": "Filter by Year",
-        "filter-type": "Filter by Type",
-        "all-years": "All Years",
-        "all-types": "All Types",
-        "view-publication": "View"
-    },
-    "modal-off": {
-        "title": "You are offline!",
-        "description": "This website is best viewed online. Please check your internet connection and try again.",
-        "close": "Close"
-    },
-    "recommendations": {
-        "title": "Recommendations",
-        "read_more": "Read more",
-        "read_less": "Read less"
-    },
-    "privacy_policy": {
-        "title": "Privacy Policy",
-        "introduction": "Introduction",
-        "information_collection": "Information Collection",
-        "information_collection_text": "This website does not collect any personal data from users. The only information processed is the user's IP address, which is checked with a third-party service solely to adapt the website's language settings (English or Portuguese) based on location. This is done via cookies for a seamless user experience.",
-        "use_of_information": "Use of Information",
-        "use_of_information_text": "The information gathered is limited to language preferences, enabling a customized experience for users by displaying content in their preferred language.",
-        "data_sharing": "Data Sharing",
-        "data_sharing_text": "No personal data of users is collected or shared with third parties. The IP address is briefly processed by a third-party language adaptation service, but it is not stored by this website.",
-        "data_security": "Data Security",
-        "data_security_text": "As no personal data is collected, data security measures apply only to ensure safe integration with third-party services and protect website functionality.",
-        "user_rights": "User Rights",
-        "user_rights_text": "Users can adjust their cookie settings to control language preference storage. Since no personal data is stored, there are no additional data rights applicable.",
-        "changes_to_policy": "Changes to Policy",
-        "changes_to_policy_text": "This Privacy Policy may be updated periodically, especially if there are changes to the third-party services we use.",
-        "contact_information": "Contact Information",
-        "contact_information_text": "If you have questions or concerns about this Privacy Policy, please feel free to contact us.",
-        "additional_text": "The detailed information regarding our privacy practices is provided below."
-    },
-    "books": {
-        "title": "BOOKS",
-        "currently_reading": "Currently<br>Reading",
-        "description": "Description",
-        "read_books": "Read Books",
-        "pages": "pages",
-        "search_title": "Search by title, author or description",
-        "search_placeholder": "Search title, author or description...",
-        "only_this_year": "Only this year",
-        "sort": {
-            "most_recent": "Most recent",
-            "oldest": "Oldest",
-            "title_asc": "Title A → Z",
-            "title_desc": "Title Z → A",
-            "rating_desc": "Rating ↓",
-            "rating_asc": "Rating ↑"
-        },
-        "read_at": "Read at",
-        "goodreads_review": "My Goodreads Review",
-        "no_results": "No books found with current filters.",
-        "carousel": {
-            "previous": "Previous book",
-            "next": "Next book",
-            "go_to_book": "Go to book"
-        }
+    "read_at": "Read at",
+    "goodreads_review": "My Goodreads Review",
+    "no_results": "No books found with current filters.",
+    "carousel": {
+      "previous": "Previous book",
+      "next": "Next book",
+      "go_to_book": "Go to book"
     }
+  },
+  "presentations": {
+    "title": "Presentations & Events",
+    "description": "A collection of my talks, workshops, lectures, and event participations on topics such as Machine Learning, Deep Learning, Computer Vision, and Data Science. Some sessions are private (internal company talks), while public ones include recorded videos where available.",
+    "nav": "Presentations",
+    "visibility": {
+      "public": "Public",
+      "private": "Private"
+    },
+    "seo": {
+      "title": "Lucas Brito - Presentations & Events | Talks and Lectures",
+      "description": "Explore talks, lectures, panels, and event participations by Lucas de Brito Silva on Machine Learning, Deep Learning, and Data Science.",
+      "keywords": "Lucas Brito Presentations, Tech Talks, Machine Learning Lectures, Events, Conference"
+    },
+    "items": {
+      "1": {
+        "title": "Face Recognition",
+        "description": "Presentation showcasing a face recognition project, covering the use of datasets, models, and evaluation metrics.",
+        "eventName": "PID 2020 - UNESP",
+        "location": "Bauru, SP, Brazil"
+      },
+      "2": {
+        "title": "Image Registration | Pedro Paiola and Lucas Brito",
+        "description": "The presentation addresses image registration, methods, geometric transformations, interpolations, and camera calibration, with code demonstration.",
+        "eventName": "PID 2020 - UNESP",
+        "location": "Bauru, SP, Brazil"
+      },
+      "3": {
+        "title": "Overview of GitHub",
+        "description": "Talk on GitHub overview, covering badges, GitHub Actions, insights, security, PRs with Dependabot, releases and PyPI, and builds.",
+        "location": "Quintana, SP, Brazil"
+      },
+      "4": {
+        "title": "Neo4j - First Steps",
+        "description": "A tutorial on Neo4j, a graph database management system. Lucas Brito and his colleague Maransatto guide viewers through the first steps with Neo4j, explaining its features and how it compares to traditional SQL and NoSQL databases. The repository for this workshop is available at https://github.com/Lucs1590/live_maransatto.",
+        "eventName": "NK Workshops",
+        "location": "Pompeia, SP, Brazil"
+      }
+    }
+  }
 }

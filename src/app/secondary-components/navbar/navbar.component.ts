@@ -25,15 +25,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     translate.onLangChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((event: LangChangeEvent) => {
-        this.defineMenu();
-        this.filterItems();
+        this.refreshMenu();
       });
   }
 
   async ngOnInit(): Promise<void> {
+    this.refreshMenu();
     await this.utilsService.setLanguage();
-    this.defineMenu();
-    this.filterItems();
+    this.refreshMenu();
   }
 
   ngOnDestroy(): void {
@@ -45,6 +44,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onResize(event: UIEvent): void {
     const target = event.target as Window;
     this.mobile = target.innerWidth <= 991;
+    this.filterItems();
+  }
+
+  private refreshMenu(): void {
+    this.defineMenu();
     this.filterItems();
   }
 
@@ -71,6 +75,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       {
         name: firstValueFrom(this.translate.get('nav.books')),
         ref: ['/books'],
+        mobile: true,
+        desktop: true
+      },
+      {
+        name: firstValueFrom(this.translate.get('nav.presentations')),
+        ref: ['/presentations'],
         mobile: true,
         desktop: true
       }
