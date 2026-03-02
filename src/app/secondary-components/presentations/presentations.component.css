@@ -1,4 +1,49 @@
-/* Section layout */
+/* ===========================
+   Standalone full-page layout
+   =========================== */
+.presentations-page {
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
+    overflow-y: auto;
+    padding-bottom: 3rem;
+}
+
+.presentations-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+    .presentations-main {
+        padding: 2rem 3rem 0;
+    }
+}
+
+.presentations-header {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 1.25rem;
+}
+
+.presentations-page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: inherit;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .presentations-page-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* ===========================
+   Embedded section layout
+   =========================== */
 .presentations-section {
     padding: 3rem 0;
 }

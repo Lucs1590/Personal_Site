@@ -133,6 +133,11 @@
                 "title": "Semantic Segmentation with Convolutional Neural Networks",
                 "description": "Hands-on workshop on semantic segmentation applied to satellite imagery, using architectures like U-Net and DeepLab for land use analysis.",
                 "eventName": "Computer Vision Workshop - UNESP"
+            },
+            "6": {
+                "title": "Neo4j - First Steps",
+                "description": "A tutorial on Neo4j, a graph database management system. Lucas Brito and his colleague Maransatto guide viewers through the first steps with Neo4j, explaining its features and how it compares to traditional SQL and NoSQL databases. The repository for this workshop is available at https://github.com/Lucs1590/live_maransatto.",
+                "eventName": "NK Workshops"
             }
         }
     }

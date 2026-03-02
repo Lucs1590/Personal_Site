@@ -42,5 +42,14 @@ export const presentationEvents: PresentationEvent[] = [
     tags: ['Semantic Segmentation', 'CNN', 'Remote Sensing', 'Deep Learning'],
     highlight: false,
     visibility: 'private'
+  },
+  {
+    id: 6,
+    date: '2020-06-05',
+    location: 'Pompeia, SP, Brasil',
+    videoUrl: 'https://www.youtube.com/watch?v=Zh-XW0s_LTc',
+    tags: ['Neo4j', 'Graph Database', 'Cypher', 'NoSQL', 'SQL'],
+    highlight: false,
+    visibility: 'public'
   }
 ];
