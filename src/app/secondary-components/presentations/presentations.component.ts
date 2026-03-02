@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Subject, takeUntil } from 'rxjs';
+import { FallbackLangChangeEvent, LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { Subject, take, takeUntil } from 'rxjs';
 import { PresentationEvent, presentationEvents } from 'src/assets/static_data/presentations';
 import { SeoService } from 'src/app/services/seo.service';
 
@@ -49,6 +49,21 @@ export class PresentationsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((_event: TranslationChangeEvent) => {
         this.buildEventNameCache();
+        if (!this.isEmbedded) {
+          this.updateSeoMetadata();
+        }
+      });
+
+    this.translate.onFallbackLangChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event: FallbackLangChangeEvent) => {
+        if (!this.translate.getCurrentLang()) {
+          this.currentLocale = this.localeFromLang(event.lang);
+        }
+        this.buildEventNameCache();
+        if (!this.isEmbedded) {
+          this.updateSeoMetadata();
+        }
       });
 
     if (!this.isEmbedded) {
@@ -66,22 +81,30 @@ export class PresentationsComponent implements OnInit, OnDestroy {
   }
 
   private buildEventNameCache(): void {
-    this.eventNameExists = new Set(
-      this.presentations
-        .filter(e => {
-          const key = this.itemKey(e, 'eventName');
-          return this.translate.instant(key) !== key;
-        })
-        .map(e => e.id)
-    );
-    this.locationExists = new Set(
-      this.presentations
-        .filter(e => {
-          const key = this.itemKey(e, 'location');
-          return this.translate.instant(key) !== key;
-        })
-        .map(e => e.id)
-    );
+    const eventNameKeys = this.presentations.map(e => this.itemKey(e, 'eventName'));
+    const locationKeys = this.presentations.map(e => this.itemKey(e, 'location'));
+    const allKeys = [...eventNameKeys, ...locationKeys];
+
+    this.translate.get(allKeys)
+      .pipe(take(1), takeUntil(this.destroy$))
+      .subscribe(translations => {
+        this.eventNameExists = new Set(
+          this.presentations
+            .filter(e => {
+              const key = this.itemKey(e, 'eventName');
+              return translations[key] !== key;
+            })
+            .map(e => e.id)
+        );
+        this.locationExists = new Set(
+          this.presentations
+            .filter(e => {
+              const key = this.itemKey(e, 'location');
+              return translations[key] !== key;
+            })
+            .map(e => e.id)
+        );
+      });
   }
 
   private updateSeoMetadata(): void {
