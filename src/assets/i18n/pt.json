@@ -110,29 +110,18 @@
         },
         "items": {
             "1": {
-                "title": "Machine Learning na Agricultura: Detecção de Doenças em Culturas",
-                "description": "Apresentação sobre técnicas de visão computacional e aprendizado de máquina aplicadas à detecção precoce de doenças em plantações de café e outras culturas agrícolas.",
-                "eventName": "FATEC Shunji Nishimura"
+                "title": "Reconhecimento Facial",
+                "description": "Apresentação demonstra um projeto de reconhecimento facial, abordando a utilização de datasets, modelos e métricas de avaliação.",
+                "eventName": "PID 2020 - UNESP"
             },
             "2": {
-                "title": "Deep Learning para Reconhecimento de Linguagem de Sinais",
-                "description": "Palestra sobre a pesquisa de mestrado focada no desenvolvimento de modelos de deep learning para reconhecimento de Libras (Língua Brasileira de Sinais), abordando datasets, arquiteturas e resultados.",
-                "eventName": "UNESP - Universidade Estadual Paulista"
+                "title": "Registro de Imagens | Pedro Paiola e Lucas Brito",
+                "description": "A apresentação aborda o registro de imagens, métodos, transformações geométricas, interpolações e calibração de câmeras, com demonstração de código.",
+                "eventName": "PID 2020 - UNESP"
             },
             "3": {
-                "title": "MLOps na Prática: Do Modelo ao Produto",
-                "description": "Talk sobre boas práticas de MLOps, cobrindo pipelines de treinamento, versionamento de modelos com MLflow, deploy contínuo com Amazon SageMaker e monitoramento de modelos em produção.",
-                "eventName": "Agibank Tech Talks"
-            },
-            "4": {
-                "title": "Introdução ao Big Data no Agronegócio",
-                "description": "Aula inaugural sobre o uso de Big Data e análise de dados no agronegócio brasileiro, apresentando casos de uso, ferramentas e oportunidades de mercado para profissionais da área.",
-                "eventName": "FATEC Shunji Nishimura"
-            },
-            "5": {
-                "title": "Segmentação Semântica com Redes Neurais Convolucionais",
-                "description": "Workshop hands-on sobre segmentação semântica aplicada a imagens de satélite, utilizando arquiteturas como U-Net e DeepLab para análise de uso do solo.",
-                "eventName": "Workshop de Visão Computacional - UNESP"
+                "title": "Visão Geral do GitHub",
+                "description": "O vídeo oferece uma visão geral do GitHub, cobrindo badges, GitHub Actions, insights, segurança, PRs com Dependabot, releases e PyPI, e builds."
             }
         }
     }

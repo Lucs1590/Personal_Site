@@ -5,42 +5,29 @@ export type { PresentationEvent };
 export const presentationEvents: PresentationEvent[] = [
   {
     id: 1,
-    date: '2022-11-15',
-    location: 'Pompéia, SP, Brasil',
-    tags: ['Machine Learning', 'Computer Vision', 'Agriculture', 'Deep Learning'],
-    highlight: true,
+    date: '2020-12-29',
+    location: 'Bauru, SP, Brasil',
+    tags: ['Face Recognition', 'Image Processing', 'Machine Learning', 'Computer Vision'],
+    videoUrl: 'https://youtu.be/pKoY04Jn1U8?si=twd4zR5utXk5bGBu',
+    highlight: false,
     visibility: 'public'
   },
   {
     id: 2,
-    date: '2023-04-20',
+    date: '2020-12-29',
     location: 'Bauru, SP, Brasil',
-    tags: ['Deep Learning', 'Sign Language', 'Accessibility', 'Computer Vision'],
-    highlight: true,
+    tags: ['Digital Image Processing', 'Computer Vision', 'Image Registration', 'Geometric Transformations', 'Camera Calibration'],
+    videoUrl: 'https://youtu.be/nwN4Hpc_jTg?si=45ZydrlYlC1hNH7k',
+    highlight: false,
     visibility: 'public'
   },
   {
     id: 3,
-    date: '2023-08-10',
-    location: 'Porto Alegre, RS, Brasil',
-    tags: ['MLOps', 'SageMaker', 'MLflow', 'Machine Learning Engineering'],
-    highlight: false,
-    visibility: 'private'
-  },
-  {
-    id: 4,
-    date: '2022-03-05',
-    location: 'Pompéia, SP, Brasil',
-    tags: ['Big Data', 'Agriculture', 'Data Science'],
+    date: '2020-09-27',
+    location: 'Quintana, SP, Brasil',
+    tags: ['GitHub', 'Software Development', 'Version Control', 'CI/CD'],
+    videoUrl: 'https://youtu.be/FTPM2dpL-Rs?si=Y2bTQ_mLTDV3x92N',
     highlight: false,
     visibility: 'public'
-  },
-  {
-    id: 5,
-    date: '2023-09-28',
-    location: 'Bauru, SP, Brasil',
-    tags: ['Semantic Segmentation', 'CNN', 'Remote Sensing', 'Deep Learning'],
-    highlight: false,
-    visibility: 'private'
   }
 ];

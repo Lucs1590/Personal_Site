@@ -110,29 +110,18 @@
         },
         "items": {
             "1": {
-                "title": "Machine Learning in Agriculture: Crop Disease Detection",
-                "description": "Presentation on computer vision and machine learning techniques applied to early disease detection in coffee and other agricultural crops.",
-                "eventName": "FATEC Shunji Nishimura"
+                "title": "Face Recognition",
+                "description": "Presentation showcasing a face recognition project, covering the use of datasets, models, and evaluation metrics.",
+                "eventName": "PID 2020 - UNESP"
             },
             "2": {
-                "title": "Deep Learning for Sign Language Recognition",
-                "description": "Lecture on master's research focused on developing deep learning models for Libras (Brazilian Sign Language) recognition, covering datasets, architectures, and results.",
-                "eventName": "UNESP - São Paulo State University"
+                "title": "Image Registration | Pedro Paiola and Lucas Brito",
+                "description": "The presentation addresses image registration, methods, geometric transformations, interpolations, and camera calibration, with code demonstration.",
+                "eventName": "PID 2020 - UNESP"
             },
             "3": {
-                "title": "MLOps in Practice: From Model to Product",
-                "description": "Talk on MLOps best practices covering training pipelines, model versioning with MLflow, continuous deployment with Amazon SageMaker, and production model monitoring.",
-                "eventName": "Agibank Tech Talks"
-            },
-            "4": {
-                "title": "Introduction to Big Data in Agribusiness",
-                "description": "Inaugural lecture on the use of Big Data and data analysis in Brazilian agribusiness, presenting use cases, tools, and market opportunities for professionals.",
-                "eventName": "FATEC Shunji Nishimura"
-            },
-            "5": {
-                "title": "Semantic Segmentation with Convolutional Neural Networks",
-                "description": "Hands-on workshop on semantic segmentation applied to satellite imagery, using architectures like U-Net and DeepLab for land use analysis.",
-                "eventName": "Computer Vision Workshop - UNESP"
+                "title": "Overview of GitHub",
+                "description": "Talk on GitHub overview, covering badges, GitHub Actions, insights, security, PRs with Dependabot, releases and PyPI, and builds."
             }
         }
     }
