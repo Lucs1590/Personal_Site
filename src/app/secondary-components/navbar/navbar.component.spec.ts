@@ -33,4 +33,49 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialise with the mobile menu closed', () => {
+    expect(component.menuOpen).toBeFalse();
+  });
+
+  it('should initialise with navbar visible and not sticky', () => {
+    expect(component.isNavHidden).toBeFalse();
+    expect(component.isSticky).toBeFalse();
+  });
+
+  it('should open the mobile menu when toggleMenu is called', () => {
+    component.toggleMenu();
+    expect(component.menuOpen).toBeTrue();
+  });
+
+  it('should close the mobile menu when toggleMenu is called twice', () => {
+    component.toggleMenu();
+    component.toggleMenu();
+    expect(component.menuOpen).toBeFalse();
+  });
+
+  it('should close the mobile menu when closeMenu is called', () => {
+    component.menuOpen = true;
+    component.closeMenu();
+    expect(component.menuOpen).toBeFalse();
+  });
+
+  it('should close the mobile menu when ESC key is pressed', () => {
+    component.menuOpen = true;
+    component.onEscKey();
+    expect(component.menuOpen).toBeFalse();
+  });
+
+  it('should not error when ESC is pressed and menu is already closed', () => {
+    component.menuOpen = false;
+    expect(() => component.onEscKey()).not.toThrow();
+    expect(component.menuOpen).toBeFalse();
+  });
+
+  it('should close the mobile menu when the hamburger button is activated via keyboard', () => {
+    component.toggleMenu(); // open
+    expect(component.menuOpen).toBeTrue();
+    component.closeMenu();
+    expect(component.menuOpen).toBeFalse();
+  });
 });

@@ -28,6 +28,52 @@ Coming soon...
 - Contact -> <https://lucasbrito.com.br/contact>
 - Videos and Events -> <https://lucasbrito.com.br/videos-and-events>
 
+## Navbar
+
+The navigation bar has been built for usability, accessibility, and responsiveness across all device sizes.
+
+### Responsive Behaviour
+
+| Screen size | Layout |
+|---|---|
+| Desktop (≥ 992 px) | Horizontal link list to the right of the language toggle |
+| Tablet / Mobile (< 992 px) | Hamburger button; tapping it reveals a full-width slide-down menu |
+
+### Mobile Menu
+
+- **Hamburger button** with animated X transition when open.
+- Menu closes automatically when:
+  - a navigation link is tapped,
+  - the user presses **ESC**, or
+  - the user clicks/taps outside the navbar.
+- Touch targets are at least 44 × 44 px.
+
+### Sticky Navbar & Scroll Behaviour
+
+- The navbar uses `position: sticky` so it stays at the top of its scrollable container without causing layout shifts.
+- **Glass / blur effect** (`backdrop-filter: blur`) is applied once the user scrolls past 60 px, giving a modern translucent appearance that degrades gracefully in unsupported browsers.
+- **Smart visibility**: the navbar slides out of view when scrolling down (maximising content space) and reappears instantly when the user scrolls up.
+
+### Active Section Tracking
+
+Navigation links receive the `active-page` CSS class (via Angular's `routerLinkActive`) to highlight the current route at all times.
+
+### Accessibility
+
+- Semantic `<nav>` wrapper with `aria-label="Main navigation"`.
+- Proper `<ul>` / `<li>` list structure.
+- Hamburger `<button>` with `aria-expanded` and `aria-controls` attributes.
+- `aria-hidden` on the collapsed mobile menu.
+- `aria-current="page"` on the active link.
+- Visible focus rings on all interactive elements.
+- Keyboard-navigable; ESC closes the mobile menu.
+
+### Performance
+
+- `ChangeDetectionStrategy.OnPush` minimises unnecessary change-detection cycles.
+- Scroll tracking uses a native DOM scroll listener on the closest scrollable ancestor (not a costly `window` polling loop).
+- Scroll updates are gated by a minimum delta threshold to avoid repainting on micro-movements.
+
 ## Running Locally
 
 To run this application locally, ensure that you have Node.js installed on your machine. Then, follow these steps:
