@@ -72,10 +72,15 @@ describe('NavbarComponent', () => {
     expect(component.menuOpen).toBeFalse();
   });
 
-  it('should close the mobile menu when the hamburger button is activated via keyboard', () => {
-    component.toggleMenu(); // open
+  it('should toggle the mobile menu when the hamburger button is clicked (Enter/Space trigger a click on a native button)', () => {
+    const hamburger: HTMLButtonElement = fixture.nativeElement.querySelector('.hamburger-btn');
+
+    hamburger.click();
+    fixture.detectChanges();
     expect(component.menuOpen).toBeTrue();
-    component.closeMenu();
+
+    hamburger.click();
+    fixture.detectChanges();
     expect(component.menuOpen).toBeFalse();
   });
 });
