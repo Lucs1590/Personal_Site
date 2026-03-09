@@ -14,7 +14,7 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@angular/animations": "^21.1.5",
+    "@angular/animations": "^21.2.2",
     "@angular/common": "^21.1.4",
     "@angular/compiler": "^21.1.4",
     "@angular/core": "^21.1.6",
