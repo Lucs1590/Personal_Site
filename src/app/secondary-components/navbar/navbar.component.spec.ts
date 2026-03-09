@@ -1,14 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateNoOpLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateNoOpLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { NavbarComponent } from './navbar.component';
+import { UtilsService } from 'src/app/services/utils.service';
+
+function simulateKeyboardClick(element: HTMLElement, key = 'Enter'): void {
+  element.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+  element.click();
+}
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
+  let mockUtilsService: jasmine.SpyObj<UtilsService>;
 
   beforeEach(async () => {
+    mockUtilsService = jasmine.createSpyObj<UtilsService>(
+      'UtilsService',
+      { setLanguage: Promise.resolve(), useLanguage: undefined },
+      { currentLang: 'en' }
+    );
+
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent],
       imports: [
@@ -19,6 +33,9 @@ describe('NavbarComponent', () => {
             useClass: TranslateNoOpLoader
           }
         })
+      ],
+      providers: [
+        { provide: UtilsService, useValue: mockUtilsService }
       ]
     })
       .compileComponents();
@@ -72,14 +89,16 @@ describe('NavbarComponent', () => {
     expect(component.menuOpen).toBeFalse();
   });
 
-  it('should toggle the mobile menu when the hamburger button is clicked (Enter/Space trigger a click on a native button)', () => {
-    const hamburger: HTMLButtonElement = fixture.nativeElement.querySelector('.hamburger-btn');
+  it('should toggle the mobile menu when the hamburger button is activated via keyboard (Enter)', () => {
+    const hamburgerBtn: HTMLButtonElement =
+      fixture.debugElement.query(By.css('.hamburger-btn')).nativeElement;
 
-    hamburger.click();
+    // Pressing Enter/Space on a <button> fires a click event in browsers; replicate that sequence.
+    simulateKeyboardClick(hamburgerBtn);
     fixture.detectChanges();
     expect(component.menuOpen).toBeTrue();
 
-    hamburger.click();
+    simulateKeyboardClick(hamburgerBtn);
     fixture.detectChanges();
     expect(component.menuOpen).toBeFalse();
   });
