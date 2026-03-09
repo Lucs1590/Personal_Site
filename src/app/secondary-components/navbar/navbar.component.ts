@@ -147,7 +147,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.itemsList = [
       {
         name: firstValueFrom(this.translate.get('nav.home')),
-        ref: ['/'],
+        ref: ['/home'],
         mobile: true,
         desktop: true
       },
@@ -186,9 +186,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   isActive(route: string[]): boolean {
-    const normalizedRoute = route[0] === '/' ? ['/home'] : route;
     return this.router.isActive(
-      this.router.createUrlTree(normalizedRoute),
+      this.router.createUrlTree(route),
       {
         paths: 'exact',
         queryParams: 'exact',
