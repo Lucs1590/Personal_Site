@@ -109,11 +109,16 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private bindScrollListener(): void {
     const scrollContainer = this.getScrollContainer();
 
+    // Initialise state from the current scroll position so that a page that
+    // loads (or is restored) already scrolled past a threshold starts with the
+    // correct sticky / hidden state, rather than waiting for the first event.
+    const initialY = this.readScrollY(scrollContainer);
+    this.lastScrollY = initialY;
+    this.isSticky = initialY > this.stickyThreshold;
+    this.cdr.markForCheck();
+
     this.scrollUnlisten = this.renderer.listen(scrollContainer, 'scroll', () => {
-      const currentY =
-        scrollContainer === window
-          ? window.scrollY ?? 0
-          : (scrollContainer as HTMLElement).scrollTop;
+      const currentY = this.readScrollY(scrollContainer);
 
       const delta = currentY - this.lastScrollY;
       if (Math.abs(delta) >= this.scrollThreshold) {
@@ -123,6 +128,12 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         this.cdr.markForCheck();
       }
     });
+  }
+
+  private readScrollY(container: HTMLElement | Window): number {
+    return container === window
+      ? window.scrollY ?? 0
+      : (container as HTMLElement).scrollTop;
   }
 
   private getScrollContainer(): HTMLElement | Window {
