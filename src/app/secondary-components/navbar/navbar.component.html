@@ -39,10 +39,12 @@
   </div>
 
   <!-- Collapsible mobile navigation menu -->
+  <!-- inert removes all descendants from the tab order and accessibility tree when the menu is closed -->
   <div id="mobile-menu"
        class="mobile-menu"
        [class.open]="menuOpen"
        [attr.aria-hidden]="!menuOpen"
+       [attr.inert]="menuOpen ? null : true"
        role="region"
        aria-label="Mobile navigation">
     <ul role="list">

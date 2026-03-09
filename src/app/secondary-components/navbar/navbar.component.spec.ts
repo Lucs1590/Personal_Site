@@ -89,6 +89,24 @@ describe('NavbarComponent', () => {
     expect(component.menuOpen).toBeFalse();
   });
 
+  it('should set inert on the mobile menu when closed and remove it when open', () => {
+    const mobileMenu: HTMLElement =
+      fixture.debugElement.query(By.css('#mobile-menu')).nativeElement;
+
+    // Closed by default — inert must be present (beforeEach already ran detectChanges)
+    expect(mobileMenu.hasAttribute('inert')).toBeTrue();
+
+    // Open the menu via toggleMenu() so OnPush CD is properly marked and the DOM updates
+    component.toggleMenu();
+    fixture.detectChanges();
+    expect(mobileMenu.hasAttribute('inert')).toBeFalse();
+
+    // Close again — inert must return
+    component.toggleMenu();
+    fixture.detectChanges();
+    expect(mobileMenu.hasAttribute('inert')).toBeTrue();
+  });
+
   it('should toggle the mobile menu when the hamburger button is activated via keyboard (Enter)', () => {
     const hamburgerBtn: HTMLButtonElement =
       fixture.debugElement.query(By.css('.hamburger-btn')).nativeElement;
