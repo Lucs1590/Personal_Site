@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.8.1 (2026-03-11)
+
+### Fix
+
+- add inert attribute to mobile menu when closed to remove links from tab/a11y tree
+- initialise isSticky/lastScrollY from current scroll position when listener is bound
+- **tests**: replace misleading hamburger keyboard test with real DOM interaction
+- Home nav link always active — change ref from '/' to '/home'
+- use translate.get() in cache builder and add onTranslationChange/onFallbackLangChange for SEO metadata
+- correct method call for getting current language in PresentationsComponent
+
 ## v1.8.0 (2026-02-21)
 
 ### Feat
