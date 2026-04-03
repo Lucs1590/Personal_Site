@@ -1,7 +1,24 @@
 <footer>
   <div class="footer-container">
-    <div class="footer-section">
+
+    <div class="footer-section footer-social">
+      <a *ngFor="let link of socialLinks"
+         [href]="link.url"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="footer-social-link"
+         [attr.aria-label]="link.label">
+        <fa-icon [icon]="link.icon" aria-hidden="true"></fa-icon>
+      </a>
+    </div>
+
+    <div class="footer-section footer-copy">
+      <span>© {{ year }} Lucas de Brito Silva</span>
+    </div>
+
+    <div class="footer-section footer-links">
       <a translate [routerLink]="['/privacy-policy']" aria-label="Privacy Policy">privacy_policy.title</a>
     </div>
+
   </div>
 </footer>

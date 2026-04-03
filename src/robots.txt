@@ -5,25 +5,17 @@ Allow: /publications
 Allow: /books
 Allow: /portfolio
 Allow: /recommendations
-Allow: /privacy
+Allow: /presentations
+Allow: /contact
+Allow: /privacy-policy
 Allow: /sitemap.xml
 Allow: /robots.txt
 
 Disallow: /admin
 Disallow: /login
 Disallow: /logout
-Disallow: /cart
-Disallow: /checkout
-Disallow: /account
-Disallow: /reset-password
-Disallow: /search
-Disallow: /tag
-Disallow: /category
-Disallow: /archive
 Disallow: /404
 Disallow: /api
-Disallow: /config
-Disallow: /scripts
 
 # Sitemap location
 Sitemap: https://lucasbrito.com.br/sitemap.xml

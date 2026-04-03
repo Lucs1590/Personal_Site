@@ -1,0 +1,24 @@
+{
+  "name": "Lucas de Brito Silva",
+  "short_name": "Lucas Brito",
+  "description": "AI & Machine Learning Engineer — Portfolio, Publications, Books, and more.",
+  "start_url": "/home",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#E69C24",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/img/principal-min-mob.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["portfolio", "technology", "education"]
+}
