@@ -87,13 +87,4 @@ describe('ContactComponent', () => {
     component.resetForm();
     expect(component.submitted).toBeFalse();
   });
-
-  it('should expose 4 social links', () => {
-    expect(component.socialLinks.length).toBe(4);
-  });
-
-  it('trackBySocialUrl returns the url', () => {
-    const link = { icon: ['fab', 'github'], url: 'https://github.com', label: 'GitHub' };
-    expect(component.trackBySocialUrl(0, link)).toBe('https://github.com');
-  });
 });

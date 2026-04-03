@@ -10,12 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { SeoService } from 'src/app/services/seo.service';
 
-interface SocialLink {
-  icon: string[];
-  url: string;
-  label: string;
-}
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -28,13 +22,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   submitted = false;
 
   readonly email = 'lucasbsilva29@gmail.com';
-
-  readonly socialLinks: SocialLink[] = [
-    { icon: ['fab', 'github'],   url: 'https://github.com/Lucs1590',                   label: 'GitHub'   },
-    { icon: ['fab', 'linkedin'], url: 'https://www.linkedin.com/in/lucas-brito100/',    label: 'LinkedIn' },
-    { icon: ['fab', 'twitter'],  url: 'https://twitter.com/Lucs1590',                   label: 'Twitter'  },
-    { icon: ['fab', 'medium'],   url: 'https://medium.com/@lucasbsilva29',               label: 'Medium'   }
-  ];
 
   private readonly destroy$ = new Subject<void>();
 
@@ -111,9 +98,5 @@ export class ContactComponent implements OnInit, OnDestroy {
   hasError(field: string, error: string): boolean {
     const control = this.form.get(field);
     return !!(control && control.hasError(error) && (control.dirty || control.touched));
-  }
-
-  trackBySocialUrl(_index: number, link: SocialLink): string {
-    return link.url;
   }
 }

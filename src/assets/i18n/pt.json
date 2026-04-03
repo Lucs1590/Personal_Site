@@ -142,8 +142,7 @@
     "info": {
       "aria_label": "Informações de contato",
       "email_label": "E-mail",
-      "email_aria": "Enviar um e-mail para Lucas Brito",
-      "socials_title": "Encontre-me em"
+      "email_aria": "Enviar um e-mail para Lucas Brito"
     },
     "form": {
       "aria_label": "Formulário de contato",

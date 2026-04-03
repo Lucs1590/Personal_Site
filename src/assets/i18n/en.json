@@ -142,8 +142,7 @@
     "info": {
       "aria_label": "Contact information",
       "email_label": "Email",
-      "email_aria": "Send an email to Lucas Brito",
-      "socials_title": "Find me on"
+      "email_aria": "Send an email to Lucas Brito"
     },
     "form": {
       "aria_label": "Contact form",
