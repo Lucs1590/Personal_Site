@@ -21,14 +21,43 @@ Feel free to use this repository as a template or contribute to it. 😊
 - [Publications](https://lucasbrito.com.br/publications)
 - [404 Page](https://lucasbrito.com.br/404)
 - [Books](https://lucasbrito.com.br/books)
+- [Contact](https://lucasbrito.com.br/contact)
 
 Coming soon...
 
 - Hobbies -> <https://lucasbrito.com.br/hobbies>
-- Contact -> <https://lucasbrito.com.br/contact>
 - Videos and Events -> <https://lucasbrito.com.br/videos-and-events>
 
-## Navbar
+## Contact Page
+
+The `/contact` route provides a dedicated page for visitors to get in touch.
+
+### Why it was added
+
+A contact section is the single most impactful missing feature in a professional portfolio — without it, recruiters and collaborators have no clear in-site path to reach the author. The README previously listed "Contact" as a *Coming soon* item, confirming it was planned.
+
+### What it includes
+
+- **Contact info card** — a direct mailto link displayed prominently.
+- **Social links** — GitHub, LinkedIn, Twitter, and Medium displayed in a scannable list.
+- **Accessible reactive form** — Name, Email, Subject, and Message fields with inline validation messages, `aria-invalid`, `aria-describedby`, and autocomplete attributes.
+- **Email-client integration** — on submit the browser opens the user's default email client with the form data pre-filled via a `mailto:` URL (no backend or third-party service required).
+- **Success state** — after submission the form is replaced by a confirmation panel with a "Send Another Message" button.
+- **Fully localised** — all strings exist in both `en.json` and `pt.json`.
+- **SEO metadata** — title, description, and keywords are updated on init and on language change.
+- **OnPush change detection** — consistent with the rest of the application.
+- **Reduced motion support** — animations are disabled when `prefers-reduced-motion` is set.
+
+### Extending / maintaining
+
+| Task | Where |
+|------|-------|
+| Change the destination email | `contact.component.ts` → `readonly email` property |
+| Add or remove social links | `contact.component.ts` → `readonly socialLinks` array |
+| Update copy / translations | `src/assets/i18n/en.json` and `pt.json` under the `contact` key |
+| Replace mailto with a backend | Swap `window.location.href = mailtoUrl` in `onSubmit()` with an `HttpClient` POST call to your endpoint |
+
+
 
 The navigation bar has been built for usability, accessibility, and responsiveness across all device sizes.
 

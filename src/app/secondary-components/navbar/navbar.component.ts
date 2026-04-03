@@ -185,6 +185,12 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         ref: ['/presentations'],
         mobile: true,
         desktop: true
+      },
+      {
+        name: firstValueFrom(this.translate.get('nav.contact')),
+        ref: ['/contact'],
+        mobile: true,
+        desktop: true
       }
     ];
   }
