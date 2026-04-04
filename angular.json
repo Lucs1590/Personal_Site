@@ -28,7 +28,8 @@
               "src/icon.ico",
               "src/robots.txt",
               "src/sitemap.xml",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",

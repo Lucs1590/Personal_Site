@@ -19,7 +19,8 @@
     "recommendations": "Recomendações",
     "books": "Livros",
     "privacy_policy": "Política de Privacidade",
-    "presentations": "Apresentações"
+    "presentations": "Apresentações",
+    "contact": "Contato"
   },
   "not_found": {
     "sub": "Ops...",
@@ -133,6 +134,47 @@
         "eventName": "NK Workshops",
         "location": "Pompeia, SP, Brasil"
       }
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "description": "Tem uma dúvida, ideia de projeto ou só quer dizer olá? Adoraria ouvir de você. Preencha o formulário e seu cliente de e-mail será aberto com tudo pronto para enviar.",
+    "info": {
+      "aria_label": "Informações de contato",
+      "email_label": "E-mail",
+      "email_aria": "Enviar um e-mail para Lucas Brito"
+    },
+    "form": {
+      "aria_label": "Formulário de contato",
+      "name": "Nome",
+      "name_placeholder": "Seu nome completo",
+      "email": "E-mail",
+      "email_placeholder": "seu@email.com",
+      "subject": "Assunto",
+      "subject_placeholder": "Como posso te ajudar?",
+      "message": "Mensagem",
+      "message_placeholder": "Escreva sua mensagem aqui...",
+      "submit": "Enviar Mensagem",
+      "required_note": "Campos obrigatórios",
+      "send_another": "Enviar Outra Mensagem",
+      "success_title": "Mensagem Pronta!",
+      "success_description": "Seu cliente de e-mail foi aberto com a mensagem preenchida. Caso não tenha aberto automaticamente, entre em contato diretamente pelo lucasbsilva29@gmail.com.",
+      "errors": {
+        "name_required": "O nome é obrigatório.",
+        "name_min": "O nome deve ter pelo menos 2 caracteres.",
+        "email_required": "O e-mail é obrigatório.",
+        "email_invalid": "Por favor, insira um endereço de e-mail válido.",
+        "subject_required": "O assunto é obrigatório.",
+        "subject_min": "O assunto deve ter pelo menos 4 caracteres.",
+        "message_required": "A mensagem é obrigatória.",
+        "message_min": "A mensagem deve ter pelo menos 20 caracteres."
+      }
+    },
+    "nav": "Contato",
+    "seo": {
+      "title": "Lucas Brito - Contato | Entre em Contato",
+      "description": "Entre em contato com Lucas de Brito Silva — Engenheiro de Machine Learning. Contate para colaborações, oportunidades de emprego ou só para dizer olá.",
+      "keywords": "Contato Lucas Brito, Contratar Engenheiro de Machine Learning, ML Engineer Contato, Portfólio Lucas Brito"
     }
   }
 }

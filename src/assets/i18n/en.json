@@ -19,7 +19,8 @@
     "recommendations": "Recommendations",
     "books": "Books",
     "privacy_policy": "Privacy Policy",
-    "presentations": "Presentations"
+    "presentations": "Presentations",
+    "contact": "Contact"
   },
   "not_found": {
     "sub": "Something went wrong...",
@@ -133,6 +134,47 @@
         "eventName": "NK Workshops",
         "location": "Pompeia, SP, Brazil"
       }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a question, project idea, or just want to say hello? I'd love to hear from you. Fill in the form and your email client will open with everything ready to send.",
+    "info": {
+      "aria_label": "Contact information",
+      "email_label": "Email",
+      "email_aria": "Send an email to Lucas Brito"
+    },
+    "form": {
+      "aria_label": "Contact form",
+      "name": "Name",
+      "name_placeholder": "Your full name",
+      "email": "Email",
+      "email_placeholder": "your@email.com",
+      "subject": "Subject",
+      "subject_placeholder": "How can I help you?",
+      "message": "Message",
+      "message_placeholder": "Write your message here...",
+      "submit": "Send Message",
+      "required_note": "Required fields",
+      "send_another": "Send Another Message",
+      "success_title": "Message Ready!",
+      "success_description": "Your email client has been opened with your message pre-filled. If it didn't open automatically, you can reach me directly at lucasbsilva29@gmail.com.",
+      "errors": {
+        "name_required": "Name is required.",
+        "name_min": "Name must be at least 2 characters.",
+        "email_required": "Email is required.",
+        "email_invalid": "Please enter a valid email address.",
+        "subject_required": "Subject is required.",
+        "subject_min": "Subject must be at least 4 characters.",
+        "message_required": "Message is required.",
+        "message_min": "Message must be at least 20 characters."
+      }
+    },
+    "nav": "Contact",
+    "seo": {
+      "title": "Lucas Brito - Contact | Get in Touch",
+      "description": "Get in touch with Lucas de Brito Silva — Machine Learning Engineer. Reach out for collaboration, job opportunities, or just to say hello.",
+      "keywords": "Contact Lucas Brito, Hire Machine Learning Engineer, ML Engineer Contact, Lucas Brito Portfolio"
     }
   }
 }

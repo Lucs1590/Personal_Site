@@ -39,6 +39,7 @@ import { FooterComponent } from './secondary-components/footer/footer.component'
 import { ScrollService } from './services/scroll.service';
 import { BooksComponent } from './secondary-components/books/books.component';
 import { PresentationsComponent } from './secondary-components/presentations/presentations.component';
+import { ContactComponent } from './secondary-components/contact/contact.component';
 
 const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   bgsColor: '#e69c24',
@@ -91,6 +92,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     FooterComponent,
     BooksComponent,
     PresentationsComponent,
+    ContactComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
