@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.9.0 (2026-04-04)
+
+### Feat
+
+- update README to enhance project description, features, and local development instructions
+- update features list in README to include Home, Presentations, and Recommendations
+- add Contact page with form, SEO integration, and update routing
+- add manifest, skip-nav, enhanced footer, and fix sitemap/robots
+- add Contact page component with accessible form and social links
+
+### Fix
+
+- ensure proper formatting by adding missing newlines in footer and main content styles
+- move contact to footer, remove /contact route, fix main-element sizing
+- add navbar to contact page; remove redundant social links block
+
 ## v1.8.1 (2026-03-11)
 
 ### Fix
