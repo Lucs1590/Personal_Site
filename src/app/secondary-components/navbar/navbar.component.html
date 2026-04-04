@@ -1,37 +1,25 @@
-<nav class="navbar-wrapper"
-     [class.nav-hidden]="isNavHidden"
-     [class.nav-sticky]="isSticky"
-     aria-label="Main navigation">
+<nav class="navbar-wrapper" [class.nav-hidden]="isNavHidden" [class.nav-sticky]="isSticky" aria-label="Main navigation">
 
   <div class="navbar-inner">
     <!-- Language toggle -->
-    <button translate
-            class="btn btn-outline-secondary btn-sm lang-btn"
-            (click)="utilsService.useLanguage()"
-            aria-label="Change Language">lang</button>
+    <button translate class="btn btn-outline-secondary btn-sm lang-btn" (click)="utilsService.useLanguage()"
+      aria-label="Change Language">lang</button>
 
     <!-- Desktop navigation links -->
     <ul class="nav-list" role="list">
-      <li *ngFor="let item of itemsList; trackBy: trackByItemRef" role="listitem">
-        <a translate
-           [routerLink]="item.ref"
-           [routerLinkActive]="'active-page'"
-           [attr.aria-current]="isActive(item.ref) ? 'page' : null"
-           class="itemnav"
-           (click)="closeMenu()">
+      @for (item of itemsList; track trackByItemRef($index, item)) {
+      <li role="listitem">
+        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav" (click)="closeMenu()">
           {{item.name | async}}
         </a>
       </li>
+      }
     </ul>
 
     <!-- Hamburger button (visible on mobile screens) -->
-    <button class="hamburger-btn"
-            [class.open]="menuOpen"
-            (click)="toggleMenu()"
-            [attr.aria-expanded]="menuOpen"
-            aria-controls="mobile-menu"
-            aria-label="Toggle navigation menu"
-            type="button">
+    <button class="hamburger-btn" [class.open]="menuOpen" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen"
+      aria-controls="mobile-menu" aria-label="Toggle navigation menu" type="button">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -40,24 +28,18 @@
 
   <!-- Collapsible mobile navigation menu -->
   <!-- inert removes all descendants from the tab order and accessibility tree when the menu is closed -->
-  <div id="mobile-menu"
-       class="mobile-menu"
-       [class.open]="menuOpen"
-       [attr.aria-hidden]="!menuOpen"
-       [attr.inert]="menuOpen ? null : true"
-       role="region"
-       aria-label="Mobile navigation">
+  <div id="mobile-menu" class="mobile-menu" [class.open]="menuOpen" [attr.aria-hidden]="!menuOpen"
+    [attr.inert]="menuOpen ? null : true" role="region" aria-label="Mobile navigation">
     <ul role="list">
-      <li *ngFor="let item of itemsList; trackBy: trackByItemRef" role="listitem">
-        <a translate
-           [routerLink]="item.ref"
-           [routerLinkActive]="'active-page'"
-           [attr.aria-current]="isActive(item.ref) ? 'page' : null"
-           class="itemnav mobile-nav-link"
-           (click)="closeMenu()">
+      @for (item of itemsList; track trackByItemRef($index, item)) {
+      <li role="listitem">
+        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav mobile-nav-link"
+          (click)="closeMenu()">
           {{item.name | async}}
         </a>
       </li>
+      }
     </ul>
   </div>
 

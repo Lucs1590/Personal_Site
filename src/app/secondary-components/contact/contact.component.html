@@ -30,7 +30,8 @@
         <div class="contact-form-wrapper animate__animated animate__fadeInRight">
 
           <!-- Success state -->
-          <div *ngIf="submitted" class="success-state" role="alert" aria-live="polite">
+          @if (submitted) {
+          <div class="success-state" role="alert" aria-live="polite">
             <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true" class="success-icon"></fa-icon>
             <h2 class="success-title">{{ 'contact.form.success_title' | translate }}</h2>
             <p class="success-description">{{ 'contact.form.success_description' | translate }}</p>
@@ -38,9 +39,9 @@
               {{ 'contact.form.send_another' | translate }}
             </button>
           </div>
-
+          } @else {
           <!-- Contact form -->
-          <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate
             aria-label="{{ 'contact.form.aria_label' | translate }}">
 
             <!-- Name -->
@@ -55,12 +56,12 @@
                 aria-describedby="name-error" [placeholder]="'contact.form.name_placeholder' | translate"
                 autocomplete="name" />
               <span id="name-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('name', 'required')">
-                  {{ 'contact.form.errors.name_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('name', 'minlength')">
-                  {{ 'contact.form.errors.name_min' | translate }}
-                </ng-container>
+                @if (hasError('name', 'required')) {
+                {{ 'contact.form.errors.name_required' | translate }}
+                }
+                @if (hasError('name', 'minlength')) {
+                {{ 'contact.form.errors.name_min' | translate }}
+                }
               </span>
             </div>
 
@@ -76,12 +77,12 @@
                 aria-describedby="email-error" [placeholder]="'contact.form.email_placeholder' | translate"
                 autocomplete="email" />
               <span id="email-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('email', 'required')">
-                  {{ 'contact.form.errors.email_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('email', 'email')">
-                  {{ 'contact.form.errors.email_invalid' | translate }}
-                </ng-container>
+                @if (hasError('email', 'required')) {
+                {{ 'contact.form.errors.email_required' | translate }}
+                }
+                @if (hasError('email', 'email')) {
+                {{ 'contact.form.errors.email_invalid' | translate }}
+                }
               </span>
             </div>
 
@@ -96,12 +97,12 @@
                 [attr.aria-invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
                 aria-describedby="subject-error" [placeholder]="'contact.form.subject_placeholder' | translate" />
               <span id="subject-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('subject', 'required')">
-                  {{ 'contact.form.errors.subject_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('subject', 'minlength')">
-                  {{ 'contact.form.errors.subject_min' | translate }}
-                </ng-container>
+                @if (hasError('subject', 'required')) {
+                {{ 'contact.form.errors.subject_required' | translate }}
+                }
+                @if (hasError('subject', 'minlength')) {
+                {{ 'contact.form.errors.subject_min' | translate }}
+                }
               </span>
             </div>
 
@@ -117,12 +118,12 @@
                 aria-describedby="message-error" [placeholder]="'contact.form.message_placeholder' | translate"
                 rows="5"></textarea>
               <span id="message-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('message', 'required')">
-                  {{ 'contact.form.errors.message_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('message', 'minlength')">
-                  {{ 'contact.form.errors.message_min' | translate }}
-                </ng-container>
+                @if (hasError('message', 'required')) {
+                {{ 'contact.form.errors.message_required' | translate }}
+                }
+                @if (hasError('message', 'minlength')) {
+                {{ 'contact.form.errors.message_min' | translate }}
+                }
               </span>
             </div>
 
@@ -136,6 +137,7 @@
             </button>
 
           </form>
+          }
         </div>
 
       </div>

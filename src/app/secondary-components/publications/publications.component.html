@@ -1,6 +1,7 @@
 <div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
     <app-navbar></app-navbar>
-    <div *ngIf="loading">
+    @if (loading) {
+    <div>
         <div class="row ps-4 pt-5 mt-5">
             <h1 translate>publi.title</h1>
         </div>
@@ -40,6 +41,7 @@
             </div>
         </div>
     </div>
+    }
 
     <div class="row text-white ps-3 mt-5 mb-3">
         <h2 translate>publi.blog-subtitle</h2>
@@ -47,8 +49,8 @@
 
     <!-- Blog Publications List -->
     <div class="publications-container pb-4">
-        <div class="publication-card"
-            *ngFor="let pub of (blogPublications?.slice(0, 6) || []); trackBy: trackByPublicationId">
+        @for (pub of (blogPublications?.slice(0, 6) || []); track trackByPublicationId($index, pub)) {
+        <div class="publication-card">
             <div class="pub-content">
                 <div class="pub-header">
                     <h3 class="pub-title">
@@ -57,15 +59,16 @@
                         </a>
                     </h3>
                     <div class="pub-meta">
-                        <span class="pub-authors" *ngIf="pub.author">{{ pub.author }}</span>
+                        @if (pub.author) {
+                        <span class="pub-authors">{{ pub.author }}</span>
+                        }
                         <span class="pub-venue">
                             <fa-icon icon="calendar" class="me-1"></fa-icon>
-                            <ng-container *ngIf="pub.publicationDate; else noDate">
-                                {{ pub.publicationDate | date:'mediumDate' }}
-                            </ng-container>
-                            <ng-template #noDate>
-                                <span translate>publi.no-date</span>
-                            </ng-template>
+                            @if (pub.publicationDate) {
+                            {{ pub.publicationDate | date:'mediumDate' }}
+                            } @else {
+                            <span translate>publi.no-date</span>
+                            }
                         </span>
                         <span class="pub-type-badge type-blog">
                             Blog
@@ -83,17 +86,22 @@
                     </a>
                 </div>
             </div>
-            <div class="pub-image" *ngIf="pub.image">
+            @if (pub.image) {
+            <div class="pub-image">
                 <img [src]="pub.image" [alt]="pub.title" class="img-fluid" loading="lazy">
             </div>
+            }
         </div>
+        }
 
-        <div *ngIf="blogPublications && blogPublications.length === 0" class="text-center text-white mt-5">
+        @if (blogPublications && blogPublications.length === 0) {
+        <div class="text-center text-white mt-5">
             <div class="alert new-info-alert" role="alert">
                 <fa-icon icon="info-circle" class="me-2"></fa-icon>
                 <span class="text-dark" translate>publi.blog-not-found</span>
             </div>
         </div>
+        }
 
     </div>
 
@@ -102,13 +110,16 @@
     </div>
 
     <!-- Filter Controls -->
-    <div class="row ps-3 mb-4" *ngIf="loading">
+    @if (loading) {
+    <div class="row ps-3 mb-4">
         <div class="col-12 col-md-6 col-lg-4 mb-2">
             <label class="text-white mb-2 filter-label" translate>publi.filter-year</label>
             <select class="form-select filter-select" [(ngModel)]="selectedYear" (change)="onYearChange(selectedYear)"
                 aria-label="Filter by year">
                 <option value="all" translate>publi.all-years</option>
-                <option *ngFor="let year of availableYears; trackBy: trackByYear" [value]="year">{{ year }}</option>
+                @for (year of availableYears; track trackByYear($index, year)) {
+                <option [value]="year">{{ year }}</option>
+                }
             </select>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mb-2">
@@ -116,15 +127,19 @@
             <select class="form-select filter-select" [(ngModel)]="selectedType" (change)="onTypeChange(selectedType)"
                 aria-label="Filter by type">
                 <option value="all" translate>publi.all-types</option>
-                <option *ngFor="let type of availableTypes; trackBy: trackByType" [value]="type">{{ type | titlecase }}
+                @for (type of availableTypes; track trackByType($index, type)) {
+                <option [value]="type">{{ type | titlecase }}
                 </option>
+                }
             </select>
         </div>
     </div>
+    }
 
     <!-- Sci Publications -->
     <div class="publications-container pb-4">
-        <div class="publication-card" *ngFor="let pub of filteredSciPublications; trackBy: trackByPublicationId">
+        @for (pub of filteredSciPublications; track trackByPublicationId($index, pub)) {
+        <div class="publication-card">
             <div class="pub-content">
                 <div class="pub-header">
                     <h3 class="pub-title">
@@ -132,10 +147,12 @@
                     </h3>
                     <div class="pub-meta">
                         <span class="pub-authors">{{ pub.author }}</span>
-                        <span class="pub-venue" *ngIf="pub.venue">
+                        @if (pub.venue) {
+                        <span class="pub-venue">
                             <fa-icon icon="book-open" class="me-1"></fa-icon>
                             {{ pub.venue }}, {{ pub.year }}
                         </span>
+                        }
                         <span class="pub-type-badge" [ngClass]="'type-' + pub.type">
                             {{ pub.type | titlecase }}
                         </span>
@@ -150,33 +167,44 @@
                         <fa-icon icon="link" class="me-1"></fa-icon>
                         <span translate>publi.view-publication</span>
                     </a>
-                    <a *ngIf="pub.pdfUrl" [href]="pub.pdfUrl" class="pub-link-btn" target="_blank" disableWhenOffline
+                    @if (pub.pdfUrl) {
+                    <a [href]="pub.pdfUrl" class="pub-link-btn" target="_blank" disableWhenOffline
                         [attr.aria-label]="'Download PDF: ' + pub.title">
                         <fa-icon icon="file-pdf" class="me-1"></fa-icon>
                         <span>PDF</span>
                     </a>
-                    <a *ngIf="pub.doi" [href]="'https://doi.org/' + pub.doi" class="pub-link-btn" target="_blank"
-                        disableWhenOffline [attr.aria-label]="'View DOI: ' + pub.title">
+                    }
+                    @if (pub.doi) {
+                    <a [href]="'https://doi.org/' + pub.doi" class="pub-link-btn" target="_blank" disableWhenOffline
+                        [attr.aria-label]="'View DOI: ' + pub.title">
                         <fa-icon icon="bookmark" class="me-1"></fa-icon>
                         <span>DOI</span>
                     </a>
-                    <a *ngIf="pub.githubUrl" [href]="pub.githubUrl" class="pub-link-btn" target="_blank"
-                        disableWhenOffline [attr.aria-label]="'View code: ' + pub.title">
+                    }
+                    @if (pub.githubUrl) {
+                    <a [href]="pub.githubUrl" class="pub-link-btn" target="_blank" disableWhenOffline
+                        [attr.aria-label]="'View code: ' + pub.title">
                         <fa-icon [icon]="['fab', 'github']" class="me-1"></fa-icon>
                         <span>Code</span>
                     </a>
+                    }
                 </div>
             </div>
-            <div class="pub-image" *ngIf="pub.image">
+            @if (pub.image) {
+            <div class="pub-image">
                 <img [src]="pub.image" [alt]="pub.title" class="img-fluid" loading="lazy">
             </div>
+            }
         </div>
+        }
 
-        <div *ngIf="filteredSciPublications.length === 0" class="text-center text-white mt-5">
+        @if (filteredSciPublications.length === 0) {
+        <div class="text-center text-white mt-5">
             <div class="alert new-info-alert" role="alert">
                 <fa-icon icon="info-circle" class="me-2"></fa-icon>
                 <span class="text-dark" translate>publi.sci-not-found</span>
             </div>
         </div>
+        }
     </div>
 </div>

@@ -11,10 +11,12 @@
                     (click)="filterByTag('All')">
                     All
                 </li>
-                <li *ngFor="let tag of tags; trackBy: trackByTag" class="list-group-item" [ngClass]="{'active': selectedTags.includes(tag)}"
+                @for (tag of tags; track trackByTag(tag)) {
+                <li class="list-group-item" [ngClass]="{'active': selectedTags.includes(tag)}"
                     (click)="filterByTag(tag)">
                     {{ tag }}
                 </li>
+                }
             </ul>
         </div>
 
@@ -42,43 +44,52 @@
 
             <!-- Portfolio Grid -->
             <div class="row">
-                <ng-container *ngFor="let repo of filteredRepos; trackBy: trackByRepoName">
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                        <div class="card project-card" (mouseover)="showProjectInfo(repo.name)"
-                            (mouseout)="hideProjectInfo(repo.name)">
-                            <img *ngIf="repo.imageUrl" [src]="repo.imageUrl" class="card-img-top" [alt]="repo.name">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ repo.name }}</h5>
-                                <p class="card-text">{{ repo.description }}</p>
-                                <div class="tags">
-                                    <span class="badge bg-primary text-light me-1" *ngFor="let tag of repo.topics; trackBy: trackByTag">
-                                        {{ tag }}
-                                    </span>
-                                </div>
-                                <div class="additional-info" [ngClass]="{'d-none': !repo.showInfo}">
-                                    <p>Status: {{ repo.status }}</p>
-                                    <p>Key Features: {{ repo.keyFeatures }}</p>
-                                </div>
-                                <a [routerLink]="['/portfolio', 1]" class="btn btn-outline-primary mt-3">
-                                    View Details
-                                </a>
+                @for (repo of filteredRepos; track trackByRepoName(repo)) {
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card project-card" (mouseover)="showProjectInfo(repo.name)"
+                        (mouseout)="hideProjectInfo(repo.name)">
+                        @if (repo.imageUrl) {
+                        <img [src]="repo.imageUrl" class="card-img-top" [alt]="repo.name">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">{{ repo.name }}</h5>
+                            <p class="card-text">{{ repo.description }}</p>
+                            <div class="tags">
+                                @for (tag of repo.topics; track trackByTag($index, tag)) {
+                                <span class="badge bg-primary text-light me-1">
+                                    {{ tag }}
+                                </span>
+                                }
                             </div>
+                            <div class="additional-info" [ngClass]="{'d-none': !repo.showInfo}">
+                                <p>Status: {{ repo.status }}</p>
+                                <p>Key Features: {{ repo.keyFeatures }}</p>
+                            </div>
+                            <a [routerLink]="['/portfolio', 1]" class="btn btn-outline-primary mt-3">
+                                View Details
+                            </a>
                         </div>
                     </div>
-                </ng-container>
+                </div>
+                }
             </div>
 
             <!-- Carousel for Project Images and Videos -->
             <div id="projectCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item" *ngFor="let repo of filteredRepos; let i = index; trackBy: trackByRepoName"
-                        [ngClass]="{'active': i === 0}">
-                        <img *ngIf="repo.imageUrl" [src]="repo.imageUrl" class="d-block w-100" [alt]="repo.name">
-                        <video *ngIf="repo.videoUrl" class="d-block w-100" controls>
+                    @for (repo of filteredRepos; track trackByRepoName(repo); let i = $index) {
+                    <div class="carousel-item" [ngClass]="{'active': i === 0}">
+                        @if (repo.imageUrl) {
+                        <img [src]="repo.imageUrl" class="d-block w-100" [alt]="repo.name">
+                        }
+                        @if (repo.videoUrl) {
+                        <video class="d-block w-100" controls>
                             <source [src]="repo.videoUrl" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        }
                     </div>
+                    }
                 </div>
                 <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

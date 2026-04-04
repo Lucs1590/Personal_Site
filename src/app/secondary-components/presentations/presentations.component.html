@@ -1,4 +1,5 @@
-<div *ngIf="!isEmbedded" class="container-fluid presentations-page">
+@if (!isEmbedded) {
+<div class="container-fluid presentations-page">
   <app-navbar></app-navbar>
 
   <main class="presentations-main">
@@ -10,57 +11,47 @@
     <ng-container *ngTemplateOutlet="grid"></ng-container>
   </main>
 </div>
+}
 
-<section *ngIf="isEmbedded" class="presentations-section" aria-labelledby="presentations-heading">
+@if (isEmbedded) {
+<section class="presentations-section" aria-labelledby="presentations-heading">
   <div class="container-fluid px-3 px-md-5">
     <h2 id="presentations-heading" class="presentations-title" translate>presentations.title</h2>
 
     <ng-container *ngTemplateOutlet="grid"></ng-container>
   </div>
 </section>
+}
 
 <ng-template #grid>
   <div class="presentations-grid" role="list">
-    <article
-      *ngFor="let event of presentations; trackBy: trackById"
-      class="presentation-card"
-      [class.presentation-card--highlight]="event.highlight"
-      role="listitem">
+    @for (event of presentations; track event.id) {
+    <article class="presentation-card" [class.presentation-card--highlight]="event.highlight" role="listitem">
 
-      <div class="card-media" *ngIf="event.videoUrl || (event.images && event.images.length)">
-        <ng-container *ngIf="event.videoUrl; else imageBlock">
-          <div class="video-wrapper" *ngIf="isYouTubeOrVimeo(event.videoUrl); else directVideo">
-            <iframe
-              [src]="getSafeEmbedUrl(event.videoUrl)"
-              [title]="itemKey(event, 'title') | translate"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              class="video-iframe">
-            </iframe>
-          </div>
-          <ng-template #directVideo>
-            <div class="video-wrapper">
-              <video
-                [src]="event.videoUrl"
-                controls
-                preload="none"
-                class="video-iframe"
-                [attr.aria-label]="itemKey(event, 'title') | translate">
-              </video>
-            </div>
-          </ng-template>
-        </ng-container>
-
-        <ng-template #imageBlock>
-          <img
-            *ngIf="event.images && event.images[0]"
-            [src]="event.images[0]"
-            [alt]="itemKey(event, 'title') | translate"
-            class="card-image"
-            loading="lazy">
-        </ng-template>
+      @if (event.videoUrl || (event.images && event.images.length)) {
+      <div class="card-media">
+        @if (event.videoUrl) {
+        @if (isYouTubeOrVimeo(event.videoUrl)) {
+        <div class="video-wrapper">
+          <iframe [src]="getSafeEmbedUrl(event.videoUrl)" [title]="itemKey(event, 'title') | translate" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen class="video-iframe">
+          </iframe>
+        </div>
+        } @else {
+        <div class="video-wrapper">
+          <video [src]="event.videoUrl" controls preload="none" class="video-iframe"
+            [attr.aria-label]="itemKey(event, 'title') | translate">
+          </video>
+        </div>
+        }
+        } @else {
+        @if (event.images && event.images[0]) {
+        <img [src]="event.images[0]" [alt]="itemKey(event, 'title') | translate" class="card-image" loading="lazy">
+        }
+        }
       </div>
+      }
 
       <div class="card-body">
         <div class="card-meta">
@@ -68,34 +59,39 @@
             <fa-icon [icon]="['fas', 'calendar']" aria-hidden="true"></fa-icon>
             {{ event.date | date:'mediumDate':'UTC':currentLocale }}
           </span>
-          <span *ngIf="locationExists.has(event.id)" class="card-location">
+          @if (locationExists.has(event.id)) {
+          <span class="card-location">
             · {{ itemKey(event, 'location') | translate }}
           </span>
-          <span
-            *ngIf="event.visibility"
-            class="card-visibility"
-            [class.card-visibility--private]="event.visibility === 'private'"
+          }
+          @if (event.visibility) {
+          <span class="card-visibility" [class.card-visibility--private]="event.visibility === 'private'"
             [attr.aria-label]="('presentations.visibility.' + event.visibility) | translate">
             {{ ('presentations.visibility.' + event.visibility) | translate }}
           </span>
+          }
         </div>
 
         <h3 class="card-title">{{ itemKey(event, 'title') | translate }}</h3>
 
-        <p *ngIf="eventNameExists.has(event.id)" class="card-event-name">{{ itemKey(event, 'eventName') | translate }}</p>
+        @if (eventNameExists.has(event.id)) {
+        <p class="card-event-name">{{ itemKey(event, 'eventName') | translate }}</p>
+        }
 
         <p class="card-description">{{ itemKey(event, 'description') | translate }}</p>
 
-        <div *ngIf="event.tags && event.tags.length" class="card-tags" role="list" aria-label="Tags">
-          <span
-            *ngFor="let tag of event.tags"
-            class="card-tag"
-            role="listitem">
+        @if (event.tags && event.tags.length) {
+        <div class="card-tags" role="list" aria-label="Tags">
+          @for (tag of event.tags; track tag) {
+          <span class="card-tag" role="listitem">
             {{ tag }}
           </span>
+          }
         </div>
+        }
       </div>
 
     </article>
+    }
   </div>
 </ng-template>

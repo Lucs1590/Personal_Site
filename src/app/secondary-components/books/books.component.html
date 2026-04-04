@@ -23,33 +23,44 @@
 
             <div class="current-book-display" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
                 <!-- Carousel Navigation -->
-                <button *ngIf="currentlyReadingBooks.length > 1" class="carousel-btn carousel-btn-prev"
-                    (click)="previousBook()" [attr.aria-label]="'books.carousel.previous' | translate">
+                @if (currentlyReadingBooks.length > 1) {
+                <button class="carousel-btn carousel-btn-prev" (click)="previousBook()"
+                    [attr.aria-label]="'books.carousel.previous' | translate">
                     ‹
                 </button>
+                }
 
                 <div class="book-cover-wrapper">
-                    <img *ngIf="currentBook?.cover" [src]="currentBook.cover" [alt]="currentBook.title">
+                    @if (currentBook?.cover) {
+                    <img [src]="currentBook.cover" [alt]="currentBook.title">
+                    }
                 </div>
 
-                <button *ngIf="currentlyReadingBooks.length > 1" class="carousel-btn carousel-btn-next"
-                    (click)="nextBook()" [attr.aria-label]="'books.carousel.next' | translate">
+                @if (currentlyReadingBooks.length > 1) {
+                <button class="carousel-btn carousel-btn-next" (click)="nextBook()"
+                    [attr.aria-label]="'books.carousel.next' | translate">
                     ›
                 </button>
+                }
 
                 <!-- Carousel Indicators -->
-                <div *ngIf="currentlyReadingBooks.length > 1" class="carousel-indicators">
-                    <button *ngFor="let book of currentlyReadingBooks; let i = index" class="indicator"
-                        [class.active]="i === currentCarouselIndex" (click)="goToBook(i)"
+                @if (currentlyReadingBooks.length > 1) {
+                <div class="carousel-indicators">
+                    @for (book of currentlyReadingBooks; track $index; let i = $index) {
+                    <button class="indicator" [class.active]="i === currentCarouselIndex" (click)="goToBook(i)"
                         [attr.aria-label]="('books.carousel.go_to_book' | translate) + ' ' + (i + 1)"
                         [attr.aria-current]="i === currentCarouselIndex ? 'true' : 'false'">
                     </button>
+                    }
                 </div>
+                }
             </div>
 
             <div class="book-description-display">
                 <span class="vertical-title" translate>books.description</span>
-                <p *ngIf="currentBook?.description" class="book-description" [innerHTML]="currentBook.description"></p>
+                @if (currentBook?.description) {
+                <p class="book-description" [innerHTML]="currentBook.description"></p>
+                }
             </div>
         </div>
 
@@ -97,16 +108,17 @@
 
                     <!-- BOOKS LIST -->
                     <div class="books-list">
-                        <div class="book-card" *ngFor="let book of filteredReadBooks">
+                        @for (book of filteredReadBooks; track $index) {
+                        <div class="book-card">
                             <div class="book-cover-wrapper">
                                 <img [src]="book.cover" [alt]="book.title">
                             </div>
                             <div class="stars">
-                                <ng-container *ngFor="let isFilled of getStarRating(book.rating); let i = index">
-                                    <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
-                                        {{ isFilled ? '★' : '☆' }}
-                                    </span>
-                                </ng-container>
+                                @for (isFilled of getStarRating(book.rating); track $index) {
+                                <span class="star" [class.filled]="isFilled" [class.empty]="!isFilled">
+                                    {{ isFilled ? '★' : '☆' }}
+                                </span>
+                                }
                             </div>
                             <h4 class="book-title">{{ book.title }}</h4>
                             <p class="book-author">{{ book.author }}</p>
@@ -116,10 +128,13 @@
                                 <span translate>books.goodreads_review</span>
                             </a>
                         </div>
+                        }
 
-                        <div class="no-results" *ngIf="filteredReadBooks.length === 0">
+                        @if (filteredReadBooks.length === 0) {
+                        <div class="no-results">
                             <span translate>books.no_results</span>
                         </div>
+                        }
                     </div>
                 </div>
             </div>
