@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 
 import { PortfolioComponent } from './portfolio.component';
