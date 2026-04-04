@@ -22,7 +22,7 @@ export class CanonicalService {
     cleanUrl = cleanUrl.split('?')[0];
     cleanUrl = cleanUrl.replace(/^https?:\/\/www\./, 'https://'); // Removendo "www."
 
-    let link: HTMLLinkElement = this.document.querySelector('link[rel="canonical"]') ||
+    const link: HTMLLinkElement = this.document.querySelector('link[rel="canonical"]') ||
       this.document.createElement('link');
 
     if (!link.parentElement) {
