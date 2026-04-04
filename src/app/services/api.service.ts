@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, throwError, of, timer } from 'rxjs';
-import { catchError, map, switchMap, timeout, retry, shareReplay, finalize } from 'rxjs/operators';
+import { catchError, map, timeout, retry, shareReplay, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { PublicationRequest } from '../models/publication-request.model';
 import { Repository } from '../models/repository.model';
@@ -13,7 +13,6 @@ import { Book } from '../models/book.model';
 import { environment } from 'src/environments/environment';
 
 const MEDIUM_API_BASE_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lucasbsilva29';
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const GITHUB_API_BASE_URL = 'https://api.github.com';
 const IPGEOLOCATION_API_BASE_URL = 'https://api.ipgeolocation.io/v2/ipgeo';
 

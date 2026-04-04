@@ -8,7 +8,6 @@ describe('SeoService', () => {
   let service: SeoService;
   let metaSpy: jasmine.SpyObj<Meta>;
   let titleSpy: jasmine.SpyObj<Title>;
-  let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(() => {
     const metaSpyObj = jasmine.createSpyObj('Meta', ['updateTag', 'addTag', 'getTag']);
