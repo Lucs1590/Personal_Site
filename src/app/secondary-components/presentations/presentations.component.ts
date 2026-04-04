@@ -45,7 +45,7 @@ export class PresentationsComponent implements OnInit, OnDestroy {
 
     this.translate.onTranslationChange
       .pipe(takeUntil(this.destroy$))
-      .subscribe((_event: TranslationChangeEvent) => {
+      .subscribe((_: TranslationChangeEvent) => {
         this.buildEventNameCache();
         if (!this.isEmbedded) {
           this.updateSeoMetadata();

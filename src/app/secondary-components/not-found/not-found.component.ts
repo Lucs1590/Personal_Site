@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit, inject } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, inject } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils.service';
 import { SeoService } from 'src/app/services/seo.service';
 
