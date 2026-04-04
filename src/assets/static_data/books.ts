@@ -765,7 +765,7 @@ export const books = [
   },
   {
     "author": "Florian Bartunek",
-    "title": "Fora da Curva. Os Segredos dos Grandes Investidores do Brasil e o que Você Pode Aprender com Eles",
+    "title": "Fora da Curva",
     "description": "Organizado pelo investidor Florian Bartunek, pelo advogado e sócio da Casa do Saber Pierre Moreau e pela jornalista Giuliana Napolitano, ''Fora da curva'' reúne depoimentos de alguns dos maiores investidores do país — como André Jakurski, Antonio Bonchristiano, Luis Stuhlberger, Guilherme Affonso Ferreira, Guilherme Aché, José Carlos Reis de Magalhães Neto, Luiz Fernando Figueiredo, Meyer Joseph Nigri, Pedro Damasceno e o próprio Bartunek. No total, eles administram cerca de 80 bilhões de reais. Muitas dessas personalidades são avessas a entrevistas, mas decidiram contar a história de suas carreiras a fim de espalhar valiosas lições de negócios para o público brasileiro.",
     "rating": 4,
     "user_read_at": "2023-06-14T00:00:00.000Z",
