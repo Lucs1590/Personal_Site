@@ -1,5 +1,31 @@
 export const books = [
   {
+    "author": "Timothy J. Keller",
+    "title": "O Deus Pródigo",
+    "description": "Em 'O Deus Pródigo', o autor Timothy Keller passeia pela parábola de Jesus. Uma obra sobre como resgatar a essência da fé Cristã nos dias modernos.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8422884191?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1371421200l/18079144.jpg",
+    "num_pages": 176,
+    "shelves": [
+      "currently-reading"
+    ]
+  },
+  {
+    "author": "Haemin Sunim",
+    "title": "As Coisas Que Você Só Vê Quando Desacelera",
+    "description": "De tempos em tempos, surge um livro que, com sua maneira original de iluminar importantes temas espirituais, se torna um fenômeno tão grande em seu país de origem que acaba chamando a atenção e encantando leitores de todo o mundo.<br /><br />Escrito pelo mestre zen-budista sul-coreano Haemin Sunim, As coisas que você só vê quando desacelera é um desses raros e tão necessários livros para quem deseja tranquilizar os pensamentos e cultivar a calma e a autocompaixão.<br /><br />Ilustrado com extrema delicadeza, ele nos ajuda a entender nossos relacionamentos, nosso trabalho, nossas aspirações e nossa espiritualidade sob um novo prisma, revelando como a prática da atenção plena pode transformar nosso modo de ser e de lidar com tudo o que fazemos.<br /><br />Você vai descobrir que a forma como percebemos o mundo é um reflexo do que se passa em nossa mente. Quando nossa mente está alegre e compassiva, o mundo também está. Quando ela está repleta de pensamentos negativos, o mundo parece sombrio. E quando nossa mente descansa, o mundo faz o mesmo.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8388132330?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1533650183l/36457899._SX318_.jpg",
+    "num_pages": 256,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
     "author": "Samuel Whitefield",
     "title": "Você Escolherá o Deserto?",
     "description": "Fazemos o nosso melhor para evitar o deserto, mas o homem que Jesus considerou o maior, abraçou uma vida inteira no deserto. Somos muito movidos por definições não bíblicas de sucesso para seguir nossos caminhos? Se você está satisfeito com influência, popularidade, conforto e sucesso, você pode evitar o deserto. Entretanto, existem alguns encontros com Deus que simplesmente só se encontram no deserto. Multidões seduzem, mas o deserto é onde o fogo arde, a sarça ardente aparece e Deus fala. Muitas pessoas usam as palavras \"vivendo um deserto\" apenas para descrever um período de tempo que parece difícil ou improdutivo, por isso tornou-se comum chamar as pessoas para suportar o deserto e aguardar um tempo de maior realização fora do deserto. No entanto, é hora de fazer um novo é hora de desafiar uma geração a abraçar uma vida inteira no deserto. O chamado ao deserto não é um chamado ao isolamento. Não é um chamado para abandonar nossas famílias ou fugir de nossas responsabilidades e, para a maioria, não é um chamado para deixar o lugar onde o Senhor os colocou. O chamado para o deserto é um convite para escolher uma vida diante do Senhor, que não é possível enquanto continuarmos a dar lugar e tempo a distrações concorrentes e afeições cotidianas. Jesus considerou João Batista um dos maiores de todos os seres humanos, mas quantos examinaram cuidadosamente a vida de João para descobrir a definição de grandeza de Jesus? Enquanto muitas pessoas evitam o deserto, a vida de João o forçará a responder a uma você escolherá o deserto?",
@@ -1285,32 +1311,6 @@ export const books = [
     "link": "https://www.goodreads.com/review/show/4462603306?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1716234700l/52208698._SY475_.jpg",
     "num_pages": 220,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "Joe Friel",
-    "title": "The Triathlete's Training Bible",
-    "description": "This new edition of The Triathlete's Training Bible covers all of the specialized training needs of triathletes, including completely updated nutrition, recovery, and weight training information. The book also contains seasoned advice on the mental aspects of training. Author Joe Friel shows how to achieve greater fitness by examining personal strengths and weaknesses, and devotes individual chapters to planning, racing, rest, and recovery. Appendices include annual training plan worksheets and suggested swim, bike, run, and combined workouts.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4462591652?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388261176l/202197.jpg",
-    "num_pages": 368,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "USA Triathlon",
-    "title": "Guia completo de triatlo",
-    "description": "Alegrem-se, triatletas! Pela primeira vez, a USA Triathlon (USAT), os seus atletas de elite e os treinadores mais respeitados dos Estados Unidos compartilham seus segredos, suas estratégias e seus conselhos para cada etapa, evento e aspecto do esporte mais exigente do mundo. Do treinamento às técnicas, passando pelo período de recuperação, se o tema é essencial ao esporte, é devidamente abordado no Guia completo de triatlo. Este livro apresenta técnicas valiosas de ciclismo usadas pelos profissionais e ensina como avaliar sua forma de corrida, melhorar sua cadência e seu ritmo, solucionar problemas em seu estilo de braçada e melhorar seu tempo durante começos e transições. E você entrará a fundo no esporte para aprender com os maiores nomes do Joe Friel, Linda Cleveland, Gordon Byrn, George Dallam, Bob Seebohar, Steve Tarpinian, Sage Rountree, Krista Austin, Ian Murray, Iñigo Mujika, Sarah McLarty. Com o Guia completo de triatlo, você vai aprimorar seu treinamento com os exercícios mais eficientes, incluindo programas com etapas específicas para natação, ciclismo e corrida; programas para força, flexibilidade e resistência; táticas para lidar com fraquezas individuais; e conselhos para garantir que você esteja em forma no dia da competição. Este guia cobre qualquer coisa que você precise saber, como os mais novos equipamentos e tecnologias para evitar lesões e desidratação. Não importa se você esteja se preparando para a sua primeira competição ou seja um competidor veterano buscando liderar o pelotão, o Guia completo de triatlo é o único livro do qual você não pode abrir mão.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4462590815?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535162623l/41452697._SX318_.jpg",
-    "num_pages": 664,
     "shelves": [
       "to-read"
     ]
