@@ -68,18 +68,12 @@ describe('ContactComponent', () => {
     });
 
     // Suppress the mailto navigation in the test environment
-    const originalLocation = window.location;
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { ...originalLocation, href: '' }
-    });
+    spyOnProperty(window.location, 'href', 'set');
 
     component.onSubmit();
 
     expect(component.submitted).toBeTrue();
     expect(component.form.pristine).toBeTrue();
-
-    Object.defineProperty(window, 'location', { writable: true, value: originalLocation });
   });
 
   it('should reset submitted flag when resetForm is called', () => {
