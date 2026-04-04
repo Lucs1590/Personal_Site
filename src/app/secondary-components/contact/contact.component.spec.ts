@@ -4,13 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ContactComponent } from './contact.component';
-import { SeoService } from 'src/app/services/seo.service';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
-
-  const seoServiceSpy = jasmine.createSpyObj<SeoService>('SeoService', ['updateMetadata']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,9 +16,6 @@ describe('ContactComponent', () => {
         ReactiveFormsModule,
         FontAwesomeModule,
         TranslateModule.forRoot()
-      ],
-      providers: [
-        { provide: SeoService, useValue: seoServiceSpy }
       ]
     }).compileComponents();
 
@@ -53,10 +47,8 @@ describe('ContactComponent', () => {
   });
 
   it('should not submit when form is invalid', () => {
-    const spy = spyOn(component as any, 'updateSeoMetadata');
     component.onSubmit();
     expect(component.submitted).toBeFalse();
-    spy.calls.reset();
   });
 
   it('should mark submitted and reset form after valid submit', () => {

@@ -1,14 +1,9 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit
+  Component
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
-import { Subject, takeUntil } from 'rxjs';
-import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -17,18 +12,14 @@ import { SeoService } from 'src/app/services/seo.service';
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactComponent {
   form: FormGroup;
   submitted = false;
 
   readonly email = 'lucasbsilva29@gmail.com';
 
-  private readonly destroy$ = new Subject<void>();
-
   constructor(
     private fb: FormBuilder,
-    private seoService: SeoService,
-    private translate: TranslateService,
     private cdr: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
@@ -36,29 +27,6 @@ export class ContactComponent implements OnInit, OnDestroy {
       email:   ['', [Validators.required, Validators.email]],
       subject: ['', [Validators.required, Validators.minLength(4)]],
       message: ['', [Validators.required, Validators.minLength(20)]]
-    });
-  }
-
-  ngOnInit(): void {
-    this.updateSeoMetadata();
-    this.translate.onLangChange
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.updateSeoMetadata();
-        this.cdr.markForCheck();
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  private updateSeoMetadata(): void {
-    this.seoService.updateMetadata({
-      title:       this.translate.instant('contact.seo.title'),
-      description: this.translate.instant('contact.seo.description'),
-      keywords:    this.translate.instant('contact.seo.keywords')
     });
   }
 

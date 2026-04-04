@@ -1,21 +1,22 @@
 /* Section layout */
 .contact-section {
-    padding: 3rem 0 4rem;
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contact-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--color-white);
     letter-spacing: 0.02em;
 }
 
 .contact-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     max-width: 640px;
 }
 
@@ -216,7 +217,7 @@
 }
 
 .success-title {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-white);
 }
@@ -245,10 +246,6 @@
 @media (max-width: 480px) {
     .contact-form-wrapper {
         padding: 1.25rem;
-    }
-
-    .contact-title {
-        font-size: 1.4rem;
     }
 }
 

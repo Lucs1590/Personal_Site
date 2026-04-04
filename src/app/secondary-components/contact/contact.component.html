@@ -1,165 +1,161 @@
-<div class="container-fluid" style="min-height: -webkit-fill-available; overflow-y: auto;">
-  <app-navbar></app-navbar>
+<section class="contact-section" aria-labelledby="contact-heading">
+  <div class="px-3 px-md-5">
 
-  <section class="contact-section" aria-labelledby="contact-heading">
-    <div class="px-3 px-md-5">
+    <h2 id="contact-heading" class="contact-title">
+      {{ 'contact.title' | translate }}
+    </h2>
+    <p class="contact-description">{{ 'contact.description' | translate }}</p>
 
-      <h1 id="contact-heading" class="contact-title animate__animated animate__fadeInDown">
-        {{ 'contact.title' | translate }}
-      </h1>
-      <p class="contact-description">{{ 'contact.description' | translate }}</p>
+    <div class="contact-layout">
 
-      <div class="contact-layout">
+      <!-- ── Left column: info card ── -->
+      <aside class="contact-info" aria-label="{{ 'contact.info.aria_label' | translate }}">
 
-        <!-- ── Left column: info card ── -->
-        <aside class="contact-info" aria-label="{{ 'contact.info.aria_label' | translate }}">
-
-          <div class="info-card animate__animated animate__fadeInLeft">
-            <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true" class="info-icon"></fa-icon>
-            <div class="info-content">
-              <span class="info-label">{{ 'contact.info.email_label' | translate }}</span>
-              <a [href]="'mailto:' + email"
-                 class="info-value"
-                 aria-label="{{ 'contact.info.email_aria' | translate }}">
-                {{ email }}
-              </a>
-            </div>
+        <div class="info-card">
+          <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true" class="info-icon"></fa-icon>
+          <div class="info-content">
+            <span class="info-label">{{ 'contact.info.email_label' | translate }}</span>
+            <a [href]="'mailto:' + email"
+               class="info-value"
+               aria-label="{{ 'contact.info.email_aria' | translate }}">
+              {{ email }}
+            </a>
           </div>
-
-        </aside>
-
-        <!-- ── Right column: form / success ── -->
-        <div class="contact-form-wrapper animate__animated animate__fadeInRight">
-
-          <!-- Success state -->
-          <div *ngIf="submitted" class="success-state" role="alert" aria-live="polite">
-            <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true" class="success-icon"></fa-icon>
-            <h2 class="success-title">{{ 'contact.form.success_title' | translate }}</h2>
-            <p class="success-description">{{ 'contact.form.success_description' | translate }}</p>
-            <button type="button" class="btn-send" (click)="resetForm()">
-              {{ 'contact.form.send_another' | translate }}
-            </button>
-          </div>
-
-          <!-- Contact form -->
-          <form *ngIf="!submitted"
-                [formGroup]="form"
-                (ngSubmit)="onSubmit()"
-                novalidate
-                aria-label="{{ 'contact.form.aria_label' | translate }}">
-
-            <!-- Name -->
-            <div class="form-group">
-              <label for="contact-name" class="form-label">
-                {{ 'contact.form.name' | translate }}
-                <span class="required-mark" aria-hidden="true">*</span>
-              </label>
-              <input id="contact-name"
-                     type="text"
-                     formControlName="name"
-                     class="form-control"
-                     [class.is-invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
-                     [attr.aria-invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
-                     aria-describedby="name-error"
-                     [placeholder]="'contact.form.name_placeholder' | translate"
-                     autocomplete="name" />
-              <span id="name-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('name', 'required')">
-                  {{ 'contact.form.errors.name_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('name', 'minlength')">
-                  {{ 'contact.form.errors.name_min' | translate }}
-                </ng-container>
-              </span>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-              <label for="contact-email" class="form-label">
-                {{ 'contact.form.email' | translate }}
-                <span class="required-mark" aria-hidden="true">*</span>
-              </label>
-              <input id="contact-email"
-                     type="email"
-                     formControlName="email"
-                     class="form-control"
-                     [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email')"
-                     [attr.aria-invalid]="hasError('email', 'required') || hasError('email', 'email')"
-                     aria-describedby="email-error"
-                     [placeholder]="'contact.form.email_placeholder' | translate"
-                     autocomplete="email" />
-              <span id="email-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('email', 'required')">
-                  {{ 'contact.form.errors.email_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('email', 'email')">
-                  {{ 'contact.form.errors.email_invalid' | translate }}
-                </ng-container>
-              </span>
-            </div>
-
-            <!-- Subject -->
-            <div class="form-group">
-              <label for="contact-subject" class="form-label">
-                {{ 'contact.form.subject' | translate }}
-                <span class="required-mark" aria-hidden="true">*</span>
-              </label>
-              <input id="contact-subject"
-                     type="text"
-                     formControlName="subject"
-                     class="form-control"
-                     [class.is-invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
-                     [attr.aria-invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
-                     aria-describedby="subject-error"
-                     [placeholder]="'contact.form.subject_placeholder' | translate" />
-              <span id="subject-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('subject', 'required')">
-                  {{ 'contact.form.errors.subject_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('subject', 'minlength')">
-                  {{ 'contact.form.errors.subject_min' | translate }}
-                </ng-container>
-              </span>
-            </div>
-
-            <!-- Message -->
-            <div class="form-group">
-              <label for="contact-message" class="form-label">
-                {{ 'contact.form.message' | translate }}
-                <span class="required-mark" aria-hidden="true">*</span>
-              </label>
-              <textarea id="contact-message"
-                        formControlName="message"
-                        class="form-control form-textarea"
-                        [class.is-invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
-                        [attr.aria-invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
-                        aria-describedby="message-error"
-                        [placeholder]="'contact.form.message_placeholder' | translate"
-                        rows="5"></textarea>
-              <span id="message-error" class="form-error" role="alert">
-                <ng-container *ngIf="hasError('message', 'required')">
-                  {{ 'contact.form.errors.message_required' | translate }}
-                </ng-container>
-                <ng-container *ngIf="hasError('message', 'minlength')">
-                  {{ 'contact.form.errors.message_min' | translate }}
-                </ng-container>
-              </span>
-            </div>
-
-            <p class="required-note">
-              <span aria-hidden="true">*</span> {{ 'contact.form.required_note' | translate }}
-            </p>
-
-            <button type="submit" class="btn-send" [disabled]="form.invalid && form.touched">
-              <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true"></fa-icon>
-              {{ 'contact.form.submit' | translate }}
-            </button>
-
-          </form>
         </div>
 
+      </aside>
+
+      <!-- ── Right column: form / success ── -->
+      <div class="contact-form-wrapper">
+
+        <!-- Success state -->
+        <div *ngIf="submitted" class="success-state" role="alert" aria-live="polite">
+          <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true" class="success-icon"></fa-icon>
+          <h4 class="success-title">{{ 'contact.form.success_title' | translate }}</h4>
+          <p class="success-description">{{ 'contact.form.success_description' | translate }}</p>
+          <button type="button" class="btn-send" (click)="resetForm()">
+            {{ 'contact.form.send_another' | translate }}
+          </button>
+        </div>
+
+        <!-- Contact form -->
+        <form *ngIf="!submitted"
+              [formGroup]="form"
+              (ngSubmit)="onSubmit()"
+              novalidate
+              aria-label="{{ 'contact.form.aria_label' | translate }}">
+
+          <!-- Name -->
+          <div class="form-group">
+            <label for="contact-name" class="form-label">
+              {{ 'contact.form.name' | translate }}
+              <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input id="contact-name"
+                   type="text"
+                   formControlName="name"
+                   class="form-control"
+                   [class.is-invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
+                   [attr.aria-invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
+                   aria-describedby="name-error"
+                   [placeholder]="'contact.form.name_placeholder' | translate"
+                   autocomplete="name" />
+            <span id="name-error" class="form-error" role="alert">
+              <ng-container *ngIf="hasError('name', 'required')">
+                {{ 'contact.form.errors.name_required' | translate }}
+              </ng-container>
+              <ng-container *ngIf="hasError('name', 'minlength')">
+                {{ 'contact.form.errors.name_min' | translate }}
+              </ng-container>
+            </span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="contact-email" class="form-label">
+              {{ 'contact.form.email' | translate }}
+              <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input id="contact-email"
+                   type="email"
+                   formControlName="email"
+                   class="form-control"
+                   [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email')"
+                   [attr.aria-invalid]="hasError('email', 'required') || hasError('email', 'email')"
+                   aria-describedby="email-error"
+                   [placeholder]="'contact.form.email_placeholder' | translate"
+                   autocomplete="email" />
+            <span id="email-error" class="form-error" role="alert">
+              <ng-container *ngIf="hasError('email', 'required')">
+                {{ 'contact.form.errors.email_required' | translate }}
+              </ng-container>
+              <ng-container *ngIf="hasError('email', 'email')">
+                {{ 'contact.form.errors.email_invalid' | translate }}
+              </ng-container>
+            </span>
+          </div>
+
+          <!-- Subject -->
+          <div class="form-group">
+            <label for="contact-subject" class="form-label">
+              {{ 'contact.form.subject' | translate }}
+              <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <input id="contact-subject"
+                   type="text"
+                   formControlName="subject"
+                   class="form-control"
+                   [class.is-invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
+                   [attr.aria-invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
+                   aria-describedby="subject-error"
+                   [placeholder]="'contact.form.subject_placeholder' | translate" />
+            <span id="subject-error" class="form-error" role="alert">
+              <ng-container *ngIf="hasError('subject', 'required')">
+                {{ 'contact.form.errors.subject_required' | translate }}
+              </ng-container>
+              <ng-container *ngIf="hasError('subject', 'minlength')">
+                {{ 'contact.form.errors.subject_min' | translate }}
+              </ng-container>
+            </span>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="contact-message" class="form-label">
+              {{ 'contact.form.message' | translate }}
+              <span class="required-mark" aria-hidden="true">*</span>
+            </label>
+            <textarea id="contact-message"
+                      formControlName="message"
+                      class="form-control form-textarea"
+                      [class.is-invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
+                      [attr.aria-invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
+                      aria-describedby="message-error"
+                      [placeholder]="'contact.form.message_placeholder' | translate"
+                      rows="5"></textarea>
+            <span id="message-error" class="form-error" role="alert">
+              <ng-container *ngIf="hasError('message', 'required')">
+                {{ 'contact.form.errors.message_required' | translate }}
+              </ng-container>
+              <ng-container *ngIf="hasError('message', 'minlength')">
+                {{ 'contact.form.errors.message_min' | translate }}
+              </ng-container>
+            </span>
+          </div>
+
+          <p class="required-note">
+            <span aria-hidden="true">*</span> {{ 'contact.form.required_note' | translate }}
+          </p>
+
+          <button type="submit" class="btn-send" [disabled]="form.invalid && form.touched">
+            <fa-icon [icon]="['fas', 'envelope']" aria-hidden="true"></fa-icon>
+            {{ 'contact.form.submit' | translate }}
+          </button>
+
+        </form>
       </div>
+
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
