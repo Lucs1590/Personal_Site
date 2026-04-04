@@ -17,16 +17,18 @@ Feel free to use this repository as a template or contribute to it. 😊
 
 ## Features
 
-- [About](https://lucasbrito.com.br/)
+- [Home](https://lucasbrito.com.br/)
 - [Publications](https://lucasbrito.com.br/publications)
-- [404 Page](https://lucasbrito.com.br/404)
 - [Books](https://lucasbrito.com.br/books)
+- [Presentations](https://lucasbrito.com.br/presentations)
+- [Recommendations](https://lucasbrito.com.br/recommendations)
 - [Contact](https://lucasbrito.com.br/contact)
+- [404 Page](https://lucasbrito.com.br/404)
 
 Coming soon...
 
 - Hobbies -> <https://lucasbrito.com.br/hobbies>
-- Videos and Events -> <https://lucasbrito.com.br/videos-and-events>
+- Portfolio -> <https://lucasbrito.com.br/portfolio>
 
 ## Contact Page
 
@@ -56,8 +58,6 @@ A contact section is the single most impactful missing feature in a professional
 | Add or remove social links | `contact.component.ts` → `readonly socialLinks` array |
 | Update copy / translations | `src/assets/i18n/en.json` and `pt.json` under the `contact` key |
 | Replace mailto with a backend | Swap `window.location.href = mailtoUrl` in `onSubmit()` with an `HttpClient` POST call to your endpoint |
-
-
 
 The navigation bar has been built for usability, accessibility, and responsiveness across all device sizes.
 
