@@ -48,9 +48,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private setupSubtitleRotation(): void {
     const subtitleEl: HTMLElement | null = this.elementRef.nativeElement.querySelector('#sub_title');
     if (!subtitleEl) return;
-    this.translate.stream('home.subtitles').subscribe((subs: any) => {
+    this.translate.stream('home.subtitles').subscribe((subs: string[]) => {
       if (!subs || !Array.isArray(subs) || subs.length === 0) return;
-      this.subtitles = subs as string[];
+      this.subtitles = subs;
 
       if (this.subtitleInterval) {
         clearInterval(this.subtitleInterval);
