@@ -1,15 +1,18 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Repository } from '../models/repository.model';
 import { ApiService } from '../services/api.service';
 import { SeoService } from '../services/seo.service';
+import { NavbarComponent } from '../secondary-components/navbar/navbar.component';
+import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css'],
-  standalone: false
+  imports: [NavbarComponent, NgClass, FormsModule, RouterLink]
 })
 export class PortfolioComponent implements OnInit {
   private apiService = inject(ApiService);
@@ -53,11 +56,13 @@ export class PortfolioComponent implements OnInit {
 
   private extractTags(repos: Repository[]): string[] {
     const allTags = repos.reduce<string[]>((tags, repo) => {
-      repo.topics.forEach(tag => {
-        if (!tags.includes(tag)) {
-          tags.push(tag);
-        }
-      });
+      if (repo.topics) {
+        repo.topics.forEach(tag => {
+          if (!tags.includes(tag)) {
+            tags.push(tag);
+          }
+        });
+      }
       return tags;
     }, []);
     return allTags.sort();
@@ -90,11 +95,17 @@ export class PortfolioComponent implements OnInit {
 
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.trim().toLowerCase();
-      filtered = filtered.filter(repo =>
-        repo.name.toLowerCase().includes(query) ||
-        repo.description.toLowerCase().includes(query) ||
-        repo.topics.some(topic => topic.toLowerCase().includes(query))
-      );
+      filtered = filtered.filter(repo => {
+        const repoName = repo.name?.toLowerCase() ?? '';
+        const repoDescription = repo.description?.toLowerCase() ?? '';
+        const repoTopics = repo.topics ?? [];
+
+        return (
+          repoName.includes(query) ||
+          repoDescription.includes(query) ||
+          repoTopics.some(topic => topic.toLowerCase().includes(query))
+        );
+      });
     }
 
     if (this.sortOption) {

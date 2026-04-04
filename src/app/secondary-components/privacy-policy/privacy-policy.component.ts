@@ -1,11 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { SeoService } from 'src/app/services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { TranslateDirective } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-privacy-policy',
-    templateUrl: './privacy-policy.component.html',
-    styleUrls: ['./privacy-policy.component.css'],
-    standalone: false
+  selector: 'app-privacy-policy',
+  templateUrl: './privacy-policy.component.html',
+  styleUrls: ['./privacy-policy.component.css'],
+  imports: [NavbarComponent, TranslateDirective]
 })
 export class PrivacyPolicyComponent implements OnInit {
   private seoService = inject(SeoService);

@@ -8,9 +8,9 @@ describe('SeparadorComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeparadorComponent ]
+      imports: [SeparadorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

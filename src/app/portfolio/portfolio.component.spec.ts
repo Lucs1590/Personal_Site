@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { PortfolioComponent } from './portfolio.component';
 import { ApiService } from '../services/api.service';
 import { Repository } from '../models/repository.model';
+import { RouterModule } from '@angular/router';
 
 describe('PortfolioComponent', () => {
   let component: PortfolioComponent;
@@ -14,9 +15,8 @@ describe('PortfolioComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PortfolioComponent],
       providers: [HttpClient, HttpHandler, ApiService],
-      imports: [RouterTestingModule]
+      imports: [RouterModule.forRoot([]), PortfolioComponent]
     })
       .compileComponents();
   }));

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { TranslateDirective } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
-    standalone: false
+    imports: [FaIconComponent, TranslateDirective, RouterLink]
 })
 export class FooterComponent {
     readonly year = new Date().getFullYear();

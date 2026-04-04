@@ -14,11 +14,11 @@ describe('ContactComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ContactComponent],
       imports: [
         ReactiveFormsModule,
         FontAwesomeModule,
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        ContactComponent
       ],
       providers: [
         { provide: SeoService, useValue: seoServiceSpy }

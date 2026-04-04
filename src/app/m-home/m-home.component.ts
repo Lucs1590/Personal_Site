@@ -2,12 +2,15 @@ import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2, OnDe
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../services/utils.service';
+import { NavbarComponent } from '../secondary-components/navbar/navbar.component';
+import { IconesComponent } from '../secondary-components/icones/icones.component';
+import { RecommendationsComponent } from '../secondary-components/recommendations/recommendations.component';
 
 @Component({
   selector: 'app-m-home',
   templateUrl: './m-home.component.html',
   styleUrls: ['./m-home.component.css'],
-  standalone: false
+  imports: [NavbarComponent, IconesComponent, RecommendationsComponent]
 })
 export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestroy {
   utils = inject(UtilsService);

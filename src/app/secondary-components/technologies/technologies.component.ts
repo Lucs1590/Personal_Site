@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 declare let particlesJS: any;
 
 @Component({
-    selector: 'app-technologies',
-    templateUrl: './technologies.component.html',
-    styleUrls: ['./technologies.component.css'],
-    standalone: false
+  selector: 'app-technologies',
+  templateUrl: './technologies.component.html',
+  styleUrls: ['./technologies.component.css']
 })
 export class TechnologiesComponent implements OnInit {
 

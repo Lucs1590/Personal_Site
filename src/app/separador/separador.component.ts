@@ -1,11 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { SeoService } from '../services/seo.service';
+import { MHomeComponent } from '../m-home/m-home.component';
+import { HomeComponent } from '../home/home.component';
+import { RecommendationsComponent } from '../secondary-components/recommendations/recommendations.component';
+import { PresentationsComponent } from '../secondary-components/presentations/presentations.component';
 
 @Component({
   selector: 'app-separador',
   templateUrl: './separador.component.html',
   styleUrls: ['./separador.component.css'],
-  standalone: false
+  imports: [MHomeComponent, HomeComponent, RecommendationsComponent, PresentationsComponent]
 })
 export class SeparadorComponent implements OnInit {
   private seoService = inject(SeoService);

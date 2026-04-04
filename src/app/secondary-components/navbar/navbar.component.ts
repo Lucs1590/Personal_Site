@@ -1,16 +1,17 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateService, TranslateDirective } from '@ngx-translate/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { MenuItem } from 'src/app/models/menu-item.model';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TranslateDirective, RouterLink, RouterLinkActive, AsyncPipe]
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   utilsService = inject(UtilsService);

@@ -9,14 +9,14 @@ describe('HomeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
       imports: [
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
             useClass: TranslateNoOpLoader
           }
-        })
+        }),
+        HomeComponent
       ],
       providers: [TranslateService]
     })

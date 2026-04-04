@@ -2,12 +2,14 @@ import { Component, AfterViewInit, ElementRef, Renderer2, inject } from '@angula
 import { Icon } from 'src/app/models/icon.model';
 import { iconList } from 'src/assets/static_data/iconList';
 import { UtilsService } from 'src/app/services/utils.service';
+import { DisableWhenOfflineDirective } from '../../services/disable-when-offline.directive';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
-    selector: 'app-icones',
-    templateUrl: './icones.component.html',
-    styleUrls: ['./icones.component.css'],
-    standalone: false
+  selector: 'app-icones',
+  templateUrl: './icones.component.html',
+  styleUrls: ['./icones.component.css'],
+  imports: [DisableWhenOfflineDirective, FaIconComponent]
 })
 export class IconesComponent implements AfterViewInit {
   private elementRef = inject(ElementRef);

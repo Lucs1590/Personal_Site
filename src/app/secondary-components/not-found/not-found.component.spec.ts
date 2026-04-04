@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 import { TranslateNoOpLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { NotFoundComponent } from './not-found.component';
@@ -10,15 +10,15 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NotFoundComponent],
       imports: [
-        RouterTestingModule,
+        RouterModule.forRoot([]),
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
             useClass: TranslateNoOpLoader
           }
-        })
+        }),
+        NotFoundComponent
       ],
       providers: [TranslateService]
     })

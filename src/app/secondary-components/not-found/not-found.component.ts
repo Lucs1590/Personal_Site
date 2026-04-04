@@ -1,12 +1,14 @@
 import { AfterViewChecked, Component, OnInit, inject } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils.service';
 import { SeoService } from 'src/app/services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { TranslateDirective } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-not-found',
-    templateUrl: './not-found.component.html',
-    styleUrls: ['./not-found.component.css'],
-    standalone: false
+  selector: 'app-not-found',
+  templateUrl: './not-found.component.html',
+  styleUrls: ['./not-found.component.css'],
+  imports: [NavbarComponent, TranslateDirective]
 })
 export class NotFoundComponent implements OnInit, AfterViewChecked {
   utils = inject(UtilsService);

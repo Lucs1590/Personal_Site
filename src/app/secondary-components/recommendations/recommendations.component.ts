@@ -1,12 +1,13 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { LinkedInRecommendation, linkedInRecommendations } from 'src/assets/static_data/recommendations';
 import { SeoService } from 'src/app/services/seo.service';
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recommendations',
   templateUrl: './recommendations.component.html',
   styleUrls: ['./recommendations.component.css'],
-  standalone: false
+  imports: [TranslateDirective, TranslatePipe]
 })
 export class RecommendationsComponent implements OnInit {
   private seoService = inject(SeoService);

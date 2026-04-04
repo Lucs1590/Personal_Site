@@ -1,15 +1,18 @@
 import { Component, Input, OnInit, OnDestroy, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { FallbackLangChangeEvent, LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { FallbackLangChangeEvent, LangChangeEvent, TranslateService, TranslationChangeEvent, TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 import { Subject, take, takeUntil } from 'rxjs';
 import { PresentationEvent, presentationEvents } from 'src/assets/static_data/presentations';
 import { SeoService } from 'src/app/services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { NgTemplateOutlet, DatePipe } from '@angular/common';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-presentations',
   templateUrl: './presentations.component.html',
   styleUrls: ['./presentations.component.css'],
-  standalone: false
+  imports: [NavbarComponent, TranslateDirective, NgTemplateOutlet, FaIconComponent, DatePipe, TranslatePipe]
 })
 export class PresentationsComponent implements OnInit, OnDestroy {
   private seoService = inject(SeoService);

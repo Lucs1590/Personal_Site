@@ -73,9 +73,21 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
 };
 
 @NgModule({
-  declarations: [
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
+    TranslateModule.forRoot({
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({ prefix: "./assets/i18n/", suffix: ".json" }),
+    }),
+    FontAwesomeModule,
+    AppRoutingModule,
     DisableWhenOfflineDirective,
-    AppComponent,
     HomeComponent,
     SeparadorComponent,
     MHomeComponent,
@@ -92,21 +104,7 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
     FooterComponent,
     BooksComponent,
     PresentationsComponent,
-    ContactComponent,
-  ],
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-    NgxUiLoaderModule.forRoot(ngxLoaderUiConfig),
-    TranslateModule.forRoot({
-      fallbackLang: 'en',
-      loader: provideTranslateHttpLoader({ prefix: "./assets/i18n/", suffix: ".json" }),
-    }),
-    FontAwesomeModule,
-    AppRoutingModule
+    ContactComponent
   ],
   providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
 })

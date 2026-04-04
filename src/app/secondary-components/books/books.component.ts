@@ -4,12 +4,16 @@ import { ApiService } from 'src/app/services/api.service';
 import { Book } from 'src/app/models/book.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SeoService } from 'src/app/services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-books',
     templateUrl: './books.component.html',
     styleUrls: ['./books.component.css'],
-    standalone: false
+    imports: [NavbarComponent, TranslateDirective, FormsModule, DatePipe, TranslatePipe]
 })
 export class BooksComponent implements OnInit, OnDestroy {
     private apiService = inject(ApiService);

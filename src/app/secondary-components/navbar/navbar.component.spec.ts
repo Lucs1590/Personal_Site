@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 import { TranslateNoOpLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Renderer2 } from '@angular/core';
 
@@ -25,15 +25,15 @@ describe('NavbarComponent', () => {
     );
 
     await TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
       imports: [
-        RouterTestingModule,
+        RouterModule.forRoot([]),
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
             useClass: TranslateNoOpLoader
           }
-        })
+        }),
+        NavbarComponent
       ],
       providers: [
         { provide: UtilsService, useValue: mockUtilsService }
@@ -216,7 +216,7 @@ describe('NavbarComponent', () => {
       spyOn(renderer, 'listen').and.callFake(
         (_target: unknown, event: string, cb: (e: unknown) => void) => {
           if (event === 'scroll') { capturedScrollCb = () => cb(new Event('scroll')); }
-          return () => {};
+          return () => { };
         }
       );
 

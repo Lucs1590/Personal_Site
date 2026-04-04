@@ -24,14 +24,14 @@ describe('BooksComponent', () => {
         mockApiService.fetchBooksFromLocal.and.returnValue(of([]));
 
         await TestBed.configureTestingModule({
-            declarations: [BooksComponent],
             imports: [
                 TranslateModule.forRoot({
                     loader: {
                         provide: TranslateLoader,
                         useClass: TranslateNoOpLoader
                     }
-                })
+                }),
+                BooksComponent
             ],
             providers: [
                 { provide: ApiService, useValue: mockApiService },
@@ -117,10 +117,10 @@ describe('BooksComponent', () => {
             { title: 'Book 2', cover: 'cover2.jpg' }
         ];
         component.currentCarouselIndex = 0;
-        
+
         component.nextBook();
         expect(component.currentCarouselIndex).toBe(1);
-        
+
         component.previousBook();
         expect(component.currentCarouselIndex).toBe(0);
     });
@@ -131,9 +131,9 @@ describe('BooksComponent', () => {
             { title: 'Book 2', cover: 'cover2.jpg' }
         ];
         component.currentCarouselIndex = 0;
-        
+
         expect(component.currentBook.title).toBe('Book 1');
-        
+
         component.currentCarouselIndex = 1;
         expect(component.currentBook.title).toBe('Book 2');
     });
@@ -145,14 +145,14 @@ describe('BooksComponent', () => {
             { title: 'Book 3', cover: 'cover3.jpg' }
         ];
         component.currentCarouselIndex = 0;
-        
+
         component.goToBook(2);
         expect(component.currentCarouselIndex).toBe(2);
-        
+
         // Should not change if index is out of bounds
         component.goToBook(5);
         expect(component.currentCarouselIndex).toBe(2);
-        
+
         component.goToBook(-1);
         expect(component.currentCarouselIndex).toBe(2);
     });
@@ -163,12 +163,12 @@ describe('BooksComponent', () => {
             { title: 'Book 2', cover: 'cover2.jpg' },
             { title: 'Book 3', cover: 'cover3.jpg' }
         ];
-        
+
         // Test wrapping forward at the end
         component.currentCarouselIndex = 2;
         component.nextBook();
         expect(component.currentCarouselIndex).toBe(0);
-        
+
         // Test wrapping backward at the start
         component.currentCarouselIndex = 0;
         component.previousBook();

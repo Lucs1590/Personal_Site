@@ -13,7 +13,7 @@ describe('PublicationsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PublicationsComponent],
+      imports: [PublicationsComponent],
       providers: [HttpClient, HttpHandler]
     })
       .compileComponents();
@@ -51,8 +51,7 @@ describe('PublicationsComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [PublicationsComponent],
-      imports: [],
+      imports: [PublicationsComponent],
       providers: [
         { provide: ApiService, useValue: mockApiService },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },

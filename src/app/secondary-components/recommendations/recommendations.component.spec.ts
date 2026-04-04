@@ -11,11 +11,10 @@ describe('RecommendationsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecommendationsComponent ],
-      imports: [ TranslateModule.forRoot() ],
+      imports: [TranslateModule.forRoot(), RecommendationsComponent],
       providers: [{ provide: SeoService, useValue: seoServiceSpy }]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

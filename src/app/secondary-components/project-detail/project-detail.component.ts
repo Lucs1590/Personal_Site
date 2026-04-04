@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { SeoService } from '../../services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
-    selector: 'app-project-detail',
-    templateUrl: './project-detail.component.html',
-    styleUrls: ['./project-detail.component.css'],
-    standalone: false
+  selector: 'app-project-detail',
+  templateUrl: './project-detail.component.html',
+  styleUrls: ['./project-detail.component.css'],
+  imports: [NavbarComponent]
 })
 export class ProjectDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);

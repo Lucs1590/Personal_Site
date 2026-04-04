@@ -17,12 +17,11 @@ describe('PresentationsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PresentationsComponent],
-      imports: [TranslateModule.forRoot(), BrowserModule],
+      imports: [TranslateModule.forRoot(), BrowserModule, PresentationsComponent],
       providers: [{ provide: SeoService, useValue: seoServiceSpy }],
       schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

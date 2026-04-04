@@ -1,11 +1,13 @@
 import { Component, AfterViewInit, ElementRef, Renderer2, OnDestroy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+import { NavbarComponent } from '../secondary-components/navbar/navbar.component';
+import { IconesComponent } from '../secondary-components/icones/icones.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  standalone: false
+  imports: [NavbarComponent, TranslateDirective, IconesComponent, TranslatePipe]
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   private elementRef = inject(ElementRef);

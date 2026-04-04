@@ -5,12 +5,18 @@ import { Publication } from 'src/app/models/publication.model';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { SeoService } from 'src/app/services/seo.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { TranslateDirective } from '@ngx-translate/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { DisableWhenOfflineDirective } from '../../services/disable-when-offline.directive';
+import { FormsModule } from '@angular/forms';
+import { NgClass, TitleCasePipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.css'],
-  standalone: false
+  imports: [NavbarComponent, TranslateDirective, FaIconComponent, DisableWhenOfflineDirective, FormsModule, NgClass, TitleCasePipe, DatePipe]
 })
 export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   private cdr = inject(ChangeDetectorRef);
