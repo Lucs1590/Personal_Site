@@ -1,15 +1,10 @@
 <footer>
-  <app-contact></app-contact>
 
   <div class="footer-container">
 
     <div class="footer-section footer-social">
-      <a *ngFor="let link of socialLinks"
-         [href]="link.url"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="footer-social-link"
-         [attr.aria-label]="link.label">
+      <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer"
+        class="footer-social-link" [attr.aria-label]="link.label">
         <fa-icon [icon]="link.icon" aria-hidden="true"></fa-icon>
       </a>
     </div>

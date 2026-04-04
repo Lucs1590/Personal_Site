@@ -6,6 +6,7 @@ Allow: /books
 Allow: /portfolio
 Allow: /recommendations
 Allow: /presentations
+Allow: /contact
 Allow: /privacy-policy
 Allow: /sitemap.xml
 Allow: /robots.txt
