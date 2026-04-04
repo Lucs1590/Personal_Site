@@ -28,7 +28,7 @@ function normalize(val) {
 function deserializeBook(input) {
   const book = {
     author: input.author,
-    title: input.title ? input.title.split(':')[0].split('(')[0].trim() : undefined,
+    title: input.title ? input.title.split(':')[0].split('(')[0].split('.')[0].trim() : undefined,
     description: input.description,
     rating: input.rating ? parseInt(input.rating, 10) : 0,
     user_read_at: input.user_read_at ? new Date(input.user_read_at).toISOString() : undefined,
