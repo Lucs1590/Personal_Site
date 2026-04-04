@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -16,6 +16,10 @@ export interface PageMetadata {
   providedIn: 'root'
 })
 export class SeoService {
+  private meta = inject(Meta);
+  private title = inject(Title);
+  private router = inject(Router);
+
   private readonly defaultMetadata: PageMetadata = {
     title: 'Lucas de Brito Silva',
     description: 'Lucas de Brito Silva - AI, Machine Learning, Data Science, Portfolio, Recommendations, Publications',
@@ -24,12 +28,6 @@ export class SeoService {
     type: 'website',
     author: 'Lucas de Brito Silva'
   };
-
-  constructor(
-    private meta: Meta,
-    private title: Title,
-    private router: Router
-  ) { }
 
   /**
    * Updates page metadata including title, description, Open Graph, and Twitter Card tags

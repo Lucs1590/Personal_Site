@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { SeoService } from '../services/seo.service';
   standalone: false
 })
 export class SeparadorComponent implements OnInit {
-  mobile: boolean;
+  private seoService = inject(SeoService);
 
-  constructor(private seoService: SeoService) { }
+  mobile: boolean;
 
   ngOnInit() {
     this.mobile = window.innerWidth <= 991 ? true : false;

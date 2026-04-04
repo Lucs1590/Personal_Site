@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,14 +9,12 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class UtilsService {
-  currentLang = 'en';
+  private translate = inject(TranslateService);
+  private router = inject(Router);
+  private cookieService = inject(CookieService);
+  private apiService = inject(ApiService);
 
-  constructor(
-    private translate: TranslateService,
-    private router: Router,
-    private cookieService: CookieService,
-    private apiService: ApiService
-  ) { }
+  currentLang = 'en';
 
   useLanguage(): void {
     if (this.currentLang === 'pt') {

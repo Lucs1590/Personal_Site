@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, throwError, of, timer } from 'rxjs';
 import { catchError, map, switchMap, timeout, retry, shareReplay, finalize } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
@@ -21,6 +21,8 @@ const IPGEOLOCATION_API_BASE_URL = 'https://api.ipgeolocation.io/v2/ipgeo';
   providedIn: 'root'
 })
 export class ApiService {
+  private httpService = inject(HttpClient);
+
   private readonly httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', Accept: 'application/json' })
   };
@@ -33,8 +35,6 @@ export class ApiService {
   private readonly RETRY_DELAY_MS = 5000; // 5 seconds
 
   private publicationsRequest$: Observable<Publication[]> | null = null;
-
-  constructor(private httpService: HttpClient) { }
 
   private handleError(error: unknown): Observable<never> {
     console.error('API Error:', error);

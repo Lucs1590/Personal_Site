@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { UtilsService } from './services/utils.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CanonicalService } from './services/canonical.service';
@@ -12,14 +12,12 @@ import { Subject, takeUntil } from 'rxjs';
   standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private readonly destroy$ = new Subject<void>();
+  private router = inject(Router);
+  private canonicalService = inject(CanonicalService);
+  private utilsService = inject(UtilsService);
+  private seoService = inject(SeoService);
 
-  constructor(
-    private router: Router,
-    private canonicalService: CanonicalService,
-    private utilsService: UtilsService,
-    private seoService: SeoService
-  ) { }
+  private readonly destroy$ = new Subject<void>();
 
   async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();

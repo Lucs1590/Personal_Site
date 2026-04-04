@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { SeoService } from 'src/app/services/seo.service';
     standalone: false
 })
 export class PrivacyPolicyComponent implements OnInit {
+  private seoService = inject(SeoService);
 
-  constructor(private seoService: SeoService) { }
 
   ngOnInit(): void {
     this.updateSeoMetadata();

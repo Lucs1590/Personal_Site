@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -111,7 +111,9 @@ const ngxLoaderUiConfig: NgxUiLoaderConfig = {
   providers: [CookieService, provideHttpClient(withInterceptorsFromDi()), ScrollService]
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
+  constructor() {
+    const library = inject(FaIconLibrary);
+
     library.addIcons(
       faInfoCircle,
       faCalendar,

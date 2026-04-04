@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
@@ -11,13 +11,11 @@ import { SeoService } from '../../services/seo.service';
     standalone: false
 })
 export class ProjectDetailComponent implements OnInit {
-  project: Project;
+  private route = inject(ActivatedRoute);
+  private projectService = inject(ProjectService);
+  private seoService = inject(SeoService);
 
-  constructor(
-    private route: ActivatedRoute,
-    private projectService: ProjectService,
-    private seoService: SeoService
-  ) { }
+  project: Project;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

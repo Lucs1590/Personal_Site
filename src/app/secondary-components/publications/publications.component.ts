@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
@@ -13,6 +13,14 @@ import { SeoService } from 'src/app/services/seo.service';
   standalone: false
 })
 export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
+  private cdr = inject(ChangeDetectorRef);
+  private apiService = inject(ApiService);
+  private activatedRoute = inject(ActivatedRoute);
+  private elementRef = inject(ElementRef);
+  private utilsService = inject(UtilsService);
+  private renderer = inject(Renderer2);
+  private seoService = inject(SeoService);
+
   blogPublications: Publication[] = [];
   sciPublications: Publication[] = [];
   filteredSciPublications: Publication[] = [];
@@ -24,16 +32,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
   availableTypes: string[] = [];
 
   private readonly destroy$ = new Subject<void>();
-
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private apiService: ApiService,
-    private activatedRoute: ActivatedRoute,
-    private elementRef: ElementRef,
-    private utilsService: UtilsService,
-    private renderer: Renderer2,
-    private seoService: SeoService
-  ) { }
 
   async ngOnInit(): Promise<void> {
     this.loading = false;

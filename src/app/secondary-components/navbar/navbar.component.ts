@@ -1,14 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  OnDestroy,
-  OnInit,
-  Renderer2
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
@@ -23,6 +13,13 @@ import { MenuItem } from 'src/app/models/menu-item.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
+  utilsService = inject(UtilsService);
+  private translate = inject(TranslateService);
+  private router = inject(Router);
+  private el = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private cdr = inject(ChangeDetectorRef);
+
   mobile = false;
   itemsList: MenuItem[] = [];
   menuOpen = false;
@@ -35,14 +32,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly scrollThreshold = 8;
   private readonly stickyThreshold = 60;
 
-  constructor(
-    public utilsService: UtilsService,
-    private translate: TranslateService,
-    private router: Router,
-    private el: ElementRef,
-    private renderer: Renderer2,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor() {
+    const translate = this.translate;
+
     translate.onLangChange
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {

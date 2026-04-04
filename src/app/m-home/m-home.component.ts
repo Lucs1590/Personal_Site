@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, AfterContentInit, AfterViewInit, ElementRef, Renderer2, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../services/utils.service';
@@ -10,17 +10,15 @@ import { UtilsService } from '../services/utils.service';
   standalone: false
 })
 export class MHomeComponent implements AfterContentInit, AfterViewInit, OnDestroy {
+  utils = inject(UtilsService);
+  private elementRef = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private translate = inject(TranslateService);
+
   subtitles: string[] = [];
   private subtitleIndex = 0;
   private subtitleInterval: ReturnType<typeof setInterval> | undefined;
   private translateSubscription: Subscription | undefined;
-
-  constructor(
-    public utils: UtilsService,
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private translate: TranslateService
-  ) { }
 
   ngAfterContentInit(): void {
     const title = document.getElementById('title_name');

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { LinkedInRecommendation, linkedInRecommendations } from 'src/assets/static_data/recommendations';
 import { SeoService } from 'src/app/services/seo.service';
 
@@ -9,14 +9,14 @@ import { SeoService } from 'src/app/services/seo.service';
   standalone: false
 })
 export class RecommendationsComponent implements OnInit {
+  private seoService = inject(SeoService);
+
 
   @Input() isEmbedded = false;
 
   recommendations: LinkedInRecommendation[] = this.getShuffledRecommendations();
   expandedMap: { [id: number]: boolean } = {};
   readonly truncateLength = 200;
-
-  constructor(private seoService: SeoService) { }
 
   ngOnInit(): void {
     if (!this.isEmbedded) {

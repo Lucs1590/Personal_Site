@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { Repository } from '../models/repository.model';
@@ -12,18 +12,16 @@ import { SeoService } from '../services/seo.service';
   standalone: false
 })
 export class PortfolioComponent implements OnInit {
+  private apiService = inject(ApiService);
+  private router = inject(Router);
+  private seoService = inject(SeoService);
+
   repos: Repository[] = [];
   filteredRepos: Repository[] = [];
   tags: string[] = [];
   searchQuery = '';
   selectedTags: string[] = [];
   sortOption = '';
-
-  constructor(
-    private apiService: ApiService,
-    private router: Router,
-    private seoService: SeoService
-  ) { }
 
   async ngOnInit(): Promise<void> {
     this.updateSeoMetadata();

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, OnDestroy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,6 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
   standalone: false
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
+  private elementRef = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private translate = inject(TranslateService);
+
   idade: number;
   subtitles: string[] = [];
   private subtitleIndex = 0;
@@ -23,7 +27,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     interactive: ['animated', 'pulse']
   } as const;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private translate: TranslateService) {
+  constructor() {
     this.idade = this.calculateAge();
   }
 

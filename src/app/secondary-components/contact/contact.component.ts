@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
@@ -18,6 +12,11 @@ import { SeoService } from 'src/app/services/seo.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactComponent implements OnInit, OnDestroy {
+  private fb = inject(FormBuilder);
+  private seoService = inject(SeoService);
+  private translate = inject(TranslateService);
+  private cdr = inject(ChangeDetectorRef);
+
   form: FormGroup;
   submitted = false;
 
@@ -25,12 +24,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(
-    private fb: FormBuilder,
-    private seoService: SeoService,
-    private translate: TranslateService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],

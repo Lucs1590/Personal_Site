@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, inject } from '@angular/core';
 import { Icon } from 'src/app/models/icon.model';
 import { iconList } from 'src/assets/static_data/iconList';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -10,10 +10,12 @@ import { UtilsService } from 'src/app/services/utils.service';
     standalone: false
 })
 export class IconesComponent implements AfterViewInit {
+  private elementRef = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private utilsService = inject(UtilsService);
+
 
   readonly iconList = iconList.map(icon => new Icon().deserialize(icon));
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private utilsService: UtilsService) { }
 
   ngAfterViewInit(): void {
     this.modifyLinks();

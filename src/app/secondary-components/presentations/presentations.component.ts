@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FallbackLangChangeEvent, LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subject, take, takeUntil } from 'rxjs';
@@ -12,6 +12,10 @@ import { SeoService } from 'src/app/services/seo.service';
   standalone: false
 })
 export class PresentationsComponent implements OnInit, OnDestroy {
+  private seoService = inject(SeoService);
+  private sanitizer = inject(DomSanitizer);
+  private translate = inject(TranslateService);
+
 
   @Input() isEmbedded = false;
 
@@ -24,12 +28,6 @@ export class PresentationsComponent implements OnInit, OnDestroy {
   locationExists = new Set<number>();
 
   private readonly destroy$ = new Subject<void>();
-
-  constructor(
-    private seoService: SeoService,
-    private sanitizer: DomSanitizer,
-    private translate: TranslateService
-  ) { }
 
   ngOnInit(): void {
     this.currentLocale = this.localeFromLang(this.translate.getCurrentLang());

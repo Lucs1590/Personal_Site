@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Book } from 'src/app/models/book.model';
@@ -12,6 +12,10 @@ import { SeoService } from 'src/app/services/seo.service';
     standalone: false
 })
 export class BooksComponent implements OnInit, OnDestroy {
+    private apiService = inject(ApiService);
+    private ngxLoader = inject(NgxUiLoaderService);
+    private seoService = inject(SeoService);
+
     activeTab: 'books' | 'audiobooks' = 'books';
 
     currentlyReadingBooks: Partial<Book>[] = [];
@@ -23,11 +27,6 @@ export class BooksComponent implements OnInit, OnDestroy {
     currentSort: string = 'recent';
 
     private readonly destroy$ = new Subject<void>();
-    constructor(
-        private apiService: ApiService,
-        private ngxLoader: NgxUiLoaderService,
-        private seoService: SeoService
-    ) { }
 
     async ngOnInit(): Promise<void> {
         this.updateSeoMetadata();
