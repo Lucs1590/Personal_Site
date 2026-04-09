@@ -57,7 +57,7 @@
     "@angular-eslint/eslint-plugin-template": "21.2.0",
     "@angular-eslint/schematics": "21.3.1",
     "@angular-eslint/template-parser": "21.1.0",
-    "@angular/cli": "^21.2.3",
+    "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "^21.2.4",
     "@angular/language-service": "^21.2.2",
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
