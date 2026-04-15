@@ -660,7 +660,7 @@ export const books = [
   },
   {
     "author": "Eduardo Buzzinari",
-    "title": "Pai de Menina 2 . Como Sobreviver com Duas Filhas",
+    "title": "Pai de Menina 2",
     "description": "UM GUIA BEM-HUMORADO PARA OS PAPAIS DE MENINAS. É menina! – disse a médica do ultrassom. De novo. Se você achava que a vida já estava fora de controle com uma filha só, imagine agora com duas! É, parceiro... A família cresceu. E este divertido guia vai acompanhá-lo na mais nova etapa desta louca viagem, abordando, de forma leve e descontraída, temas como a chegada do segundo bebê, as gafes da gravidez, as travessuras da filha mais velha, as relações entre irmãs, o primeiro dia na escolinha, a fase do não, a idade da birra, o medo do bicho-papão e por aí afora. Tudo de um jeito simples e descomplicado para que você possa continuar a enlouquecer lentamente, mas sem perder a ternura e o bom humor. Com uma variedade inesgotável de estilos, suas crônicas abrangem prosa, diálogos, textos explicativos e até versos livres. Este livro promete boas e calorosas risadas para os pobres papais de meninas, esses heróis!",
     "rating": 0,
     "user_review": "",
@@ -1104,7 +1104,7 @@ export const books = [
   },
   {
     "author": "Cole Nussbaumer Knaflic",
-    "title": "Storytelling com Dados. Um Guia Sobre Visualização de Dados Para Profissionais de Negócios",
+    "title": "Storytelling com Dados",
     "description": "“Storytelling com Dados é admiravelmente bem escrito, uma amostra magistral de rara arte no mundo dos negócios. Cole Nussbaumer Knaflic possui uma habilidade única — um dom — em contar histórias usando dados. No JP Morgan Chase, ela ajudou a melhorar nossa capacidade de explicar análises complicadas para a gerência executiva e para os reguladores com quem trabalhamos. O livro de Cole reúne seus talentos em um guia fácil de ler, com exemplos excelentes que qualquer um pode aprender para estimular a tomada de decisão mais inteligente.” —Mark R. Hillis, diretor-chefe do setor de riscos de hipoteca bancária do JPM Chase “Temos tantos dados que pode ser difícil para as pessoas prestarem atenção em nossas principais descobertas. Cole Nussbaumer Knaflic nos ensinou valiosas lições em seu workshop e é fantástico vê-las aprofundadas no Storytelling com Dados. Minha equipe já está usando as lições ensinadas por Cole para fazer as pessoas agirem ao identificarem novas pérolas de entendimento e fazer a diferença na vida de outros. Agora outras pessoas também podem fazer isso!” — Eleanor Bell, Diretora de Analítica Comercial da Bill &amp; Melinda Gates Foundation “Há algo de belo em ser coerente com seus próprios ensinamentos. Cole Nussbaumer Knaflic faz isso em seu primeiro livro. Ela defende a clareza e a concisão na visualização, e seu livro é claro, conciso e prático. Se você é iniciante em visualização ou se esforça para produzir bons gráficos em seu trabalho, com ferramentas como Excel, Tableau, Qlik e outros, este é um excelente lugar para começar a aprender os princípios básicos.” — Alberto Cairo, Knight Chair em jornalismo visual, professor de visualização na Universidade de Miami e autor do livro The Functional Art “O principal nos slides de dados não são exatamente os dados, e sim o significado dos dados. Cole Nussbaumer Knaflic entende isso e escreveu um guia simples e acessível que ajudará qualquer um que se comunica com dados a se conectar mais efetivamente com[...]",
     "rating": 0,
     "user_review": "",
