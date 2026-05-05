@@ -68,7 +68,7 @@ export const books = [
   {
     "author": "Chris   Bailey",
     "title": "Hiperfoco",
-    "description": "<b>\n  <b>Canada's productivity expert returns with a totally fresh angle on how to do more with less.</b>\n</b><br /><br />Throughout his experiments and research, Chris Bailey came across many little-known insights into how we focus (a key element of productivity), including the surprising idea that focus isn't so much a state of heightened awareness (as we'd assume), but a balance between two frames of mind. The most recent neuroscientific research on attention reveals that our brain has two powerful modes that can be unlocked when we use our attention well: a focused mode (hyperfocus), which is the foundation for being highly productive, and a creative mode (scatterfocus), which enables us to connect ideas in novel ways. <i>Hyperfocus</i> helps readers unlock both, so they can concentrate more deeply, think more clearly, and work and live more deliberately. Diving deep into the science and theories about how and why we bring our attention to bear on life's big goals and everyday tasks, Chris Bailey takes his unique approach to productivity to the next level in <i>Hyperfocus, </i> while retaining the approachable voice and perspective that made him a fast favourite.",
+    "description": "Você tem mil e uma tarefas ao longo do dia, seja no trabalho ou na vida pessoal. Mas muitas vezes, logo que começa uma delas, é interrompido por uma mensagem no celular ou por alguém que te chama. Às vezes, você mesmo se cansa da tarefa e resolve checar uma rede social. E aí entra numa espiral de distrações e nunca consegue finalizar o que começou. Parece familiar? Todo mundo sofre com a falta de foco hoje em dia. Nossa atenção se divide entre coisas demais, e, embora estejamos sempre ocupados, rendemos pouco. Será que é possível reverter esse cenário e nos tornarmos mais produtivos, fazendo mais em menos tempo? Neste livro, o especialista em produtividade Chris Bailey fornece dicas práticas que nos ajudam a controlar melhor nossa atenção. Ele revela como o cérebro alterna entre o modo hiperfoco (um estado de profunda concentração) e o modo foco disperso (ideal para despertar a criatividade), e que o caminho para sermos mais eficientes e criativos é saber combinar os dois na medida certa. Hiperfoco vai mudar definitivamente o modo como você trabalha.",
     "rating": 5,
     "user_read_at": "2023-08-28T00:00:00.000Z",
     "user_review": "PT-BR<br />O livro Hiperfoco é um excelente livro, com uma linguagem simples e uma mensagem clara. Basicamente, o livro foca em dois pontos principais: o Hiperfoco e o Foco Disperso! Mas as chaves para todas as técnicas do livro encontram-se na atenção e intesionalidade.<br />-----------<br />EN<br />The book Hyperfocus is an excellent book, written in simple language with a clear message. Basically, the book focuses on two main points: Hyperfocus and Scatterfocus! However, the keys to all the techniques in the book lie in attention and intentionality.",
@@ -224,7 +224,7 @@ export const books = [
     ]
   },
   {
-    "author": "Luciano e Kelly Subirá",
+    "author": "Luciano Subirá",
     "title": "Como flechas",
     "description": "A família é um glorioso projeto divino. Ter filhos é um projeto divino. Entender os princípios que regem a criação saudável de filhos nos ajudará não somente a ter uma vida melhor nas esferas social e emocional como também afetará o espiritual, a nossa relação com Deus. Este manual bíblico sobre a criação de filhos é uma ferramenta que se propõe a ajudar os pais em todas as áreas desse maravilhoso desafio. Com vinte e cinco anos de casados, dois filhos adultos já fora do ninho e em preparação para cumprirem seus próprios ministérios, Luciano &amp; Kelly Subirá entenderam que chegou o momento de ajudarem outros pais a cumprirem bem o papel e a missão dada por Deus na criação de filhos. O foco de Como flechas é apresentar valores bíblicos para a criação de filhos. Como os papéis da mãe e do pai são distintos e complementares, escreveram como casal; porém, em momentos específicos dão voz à individualidade de cada um, bem como à visão dos filhos, Israel e Lissa, sobre os acontecimentos.",
     "rating": 0,
@@ -1255,7 +1255,7 @@ export const books = [
     "user_review": "",
     "link": "https://www.goodreads.com/review/show/4509636972?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555084828l/45028173._SY475_.jpg",
-    "num_pages": 339,
+    "num_pages": 335,
     "shelves": [
       "to-read"
     ]
