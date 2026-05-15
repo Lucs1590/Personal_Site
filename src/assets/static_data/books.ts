@@ -1,15 +1,258 @@
 export const books = [
   {
+    "author": "Mario Sergio Cortella",
+    "title": "Não nascemos prontos!",
+    "description": "Este livro inspirador nos desafia a aprender sempre, olhando o mundo e a nós mesmos sob uma nova perspectiva. O autor mostra que quando estamos insatisfeitos somos capazes de inovar, mudar e nos construir aos poucos, pois o grande desafio humano é não se satisfazer com as coisas como estão. Quem assume este compromisso constrói uma existência significativa e gratificante.",
+    "rating": 4,
+    "user_read_at": "2022-10-30T00:00:00.000Z",
+    "user_review": "PT-BR<br />Livro muito bom para poder pensar nos pequenos detalhes da vida que muitas vezes passam desapercebidos ou nos esquecemos. Vi bastante traços que me levou a ler Provérbios em seguida. Além disso, lembrei também do sociólogo Zygmunt Bauman.<br />-------<br />EN<br />This book is very good for reflecting on the small details of life that often go unnoticed or are forgotten. I saw many elements in it that led me to read Proverbs afterward. Furthermore, it also reminded me of the sociologist Zygmunt Bauman.",
+    "link": "https://www.goodreads.com/review/show/5029487890?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1537923392l/13512418.jpg",
+    "num_pages": 134,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Paul Louis Cole",
+    "title": "Integridade Sexual",
+    "description": "At a time when sex has been degraded to crass adult humor and virginity is regarded by some as cheap merchandise, a new generation is bringing back what a previous generation threw awaythe understanding that sex is to be valued and respected. God made sex good!Possibly the most unusual and most important book about sex you will ever read, Sexual Integrity addresses sexuality with powerful insight.Understand today why God created you to be sexual and discover the pleasure of honoring your most precious gift. No matter who you areman or woman, teenager or adult, single or marriedthis book hold refreshing wisdom for whatever sexual questions or issues you may have.",
+    "rating": 3,
+    "user_read_at": "2023-02-18T00:00:00.000Z",
+    "user_review": "PT-BR<br />É um excelente livro para jovens adolescentes cristãos que precisam ser introduzidos ao tema sexualidade da maneira correta. Li esse livro em um seminário de final de semana e espero utiliza-lo para ajudar pessoas mais novas. O livro também aborda a temática de casamento, mas achei muito superficial, até porque não é o foco do livro.<br />-------<br />EN<br />This is an excellent book for young Christian teenagers who need to be introduced to the topic of sexuality in the right way. I read this book at a weekend seminar and hope to use it to help younger people. The book also touches on the topic of marriage, but I found it very superficial, especially since that's not the book's focus.",
+    "link": "https://www.goodreads.com/review/show/5366418710?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1697871008l/97084123._SX318_.jpg",
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Marcio Tunala",
+    "title": "#LideraJovem",
+    "description": "#Lidera jovem é resultado da experiência pessoal e ministerial.Resultados de desafios que foram superados com o absoluto sucesso, mas sempre na dependência de Deus. #Os temas abordados tem alcançado e transformado vida de jovens preparando-as para os desafios que se apresentam no dia a dia de quem ainda está decidindo a carreira profissional, cursando faculdade ou atuante no mercado de trabalho . #Com propriedade ENFOCA a geração tribal e seus históricos e costumes, sem no entanto, deixar de lado os jovens adultos solteiros, que também precisam de um espaço entre a juventude. #Repleto de DICAS ESSENCIAIS para quem tem trabalho com as faixas etárias, enfoca as dificuldades do namoro, discipulado e trabalho voluntário.",
+    "rating": 5,
+    "user_read_at": "2023-07-31T00:00:00.000Z",
+    "user_review": "PT-BR<br />Um excelente livro para quem quer começar a trabalhar com o ministério de jovens das igrejas. Embora ele tenha sido escrito há x anos atrás, ainda hoje pode ser considerado um livro muito atual, pois ele trata de temas da atualidade e em diversos momentos o livro cita eventos que possivelmente aconteceriam, sendo que hoje esses eventos já são realidade.<br />-------<br />EN<br />An excellent book for those who want to understand a bit about investing in the Brazilian context. I also recommend it to enthusiasts and professionals in the field, as the book inspires investment. I myself, for example, gained several investment insights for the current context in Brazil and the world, based on what I learned from the book.",
+    "link": "https://www.goodreads.com/review/show/5689358855?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1550520545l/44054978._SY475_.jpg",
+    "num_pages": 136,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Florian Bartunek",
+    "title": "Fora da Curva",
+    "description": "Organizado pelo investidor Florian Bartunek, pelo advogado e sócio da Casa do Saber Pierre Moreau e pela jornalista Giuliana Napolitano, ''Fora da curva'' reúne depoimentos de alguns dos maiores investidores do país — como André Jakurski, Antonio Bonchristiano, Luis Stuhlberger, Guilherme Affonso Ferreira, Guilherme Aché, José Carlos Reis de Magalhães Neto, Luiz Fernando Figueiredo, Meyer Joseph Nigri, Pedro Damasceno e o próprio Bartunek. No total, eles administram cerca de 80 bilhões de reais. Muitas dessas personalidades são avessas a entrevistas, mas decidiram contar a história de suas carreiras a fim de espalhar valiosas lições de negócios para o público brasileiro.",
+    "rating": 4,
+    "user_read_at": "2023-06-14T00:00:00.000Z",
+    "user_review": "PT-BR<br />Um excelente livro para aqueles que querem entender um pouco de investimentos no contexto brasileiro. Recomendo-o também para entusiastas e profissionais da área, pois o livro instiga a investir. Eu mesmo, por exemplo, tive vários insights de investimentos para o contexto atual de Brasil e Mundo, baseado no aprendizado que tive com o livro.<br />-------<br />EN<br />An excellent book for those who want to understand a bit about investing in the Brazilian context. I also recommend it to enthusiasts and professionals in the field, as the book inspires investment. I myself, for example, gained several investment insights for the current context in Brazil and the world, based on what I learned from the book.",
+    "link": "https://www.goodreads.com/review/show/5495005159?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535262874l/31948507._SX318_.jpg",
+    "num_pages": 160,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Eduardo Buzzinari",
+    "title": "Pai de menina",
+    "description": "É menina! – disse a médica do ultrassom. Se você acabou de ouvir essa frase e está com a ligeira sensação de que sua vida jamais será a mesma, este é o seu livro! Um guia bem-humorado que vai acompanhá-lo durante toda a gestação da sua filha, desde a grande notícia até o nascimento da princesa, abordando de maneira divertida e inusitada temas como a compra do enxoval, a escolha do nome, as piadinhas dos amigos, os desejos da madrugada, a montagem do berço, sexo e bebida na gravidez, o chá de fraldas, e por aí vai… Tudo de um jeito fácil e descomplicado, que vai lhe render boas risadas e prepará-lo para o exercício do mais doce dos martí ser pai de menina. Com uma variedade de gêneros narrativos, como crônica, prosa, tutorial passo a passo e até mesmo um teste de múltipla escolha, o livro promete uma leitura leve e descontraída para os futuros papais de meninas.",
+    "rating": 4,
+    "user_read_at": "2024-01-10T00:00:00.000Z",
+    "user_review": "PT-BR<br />Este livro é uma experiência extremamente divertida. Ri em várias partes, pois pude me identificar e sentir uma conexão especial com as situações descritas. A linguagem descontraída do autor torna a leitura incrivelmente acessível, até mesmo para aqueles que não têm o hábito de ler regularmente. Ao explorar mais sobre a obra, descobri que este é apenas o primeiro volume, e o segundo aborda com sensibilidade e humor as transformações e desafios trazidos pela chegada de uma segunda filha. Recomendo esta leitura não apenas pela diversão, mas também pela reflexão sobre as mudanças familiares e a alegria que elas podem trazer.<br />-------<br />EN<br />This book is an extremely fun experience. I laughed at several parts, because I could identify with and feel a special connection with the situations described. The author's relaxed language makes reading incredibly accessible, even for those who are not in the habit of reading regularly. When exploring more about the work, I discovered that this is only the first volume, and the second addresses with sensitivity and humor the transformations and challenges brought about by the arrival of a second daughter. I recommend this reading not only for fun, but also for reflection on family changes and the joy they can bring.",
+    "link": "https://www.goodreads.com/review/show/6156175722?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529238168l/40548794._SX318_.jpg",
+    "num_pages": 140,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Hernandes Dias Lopes",
+    "title": "HOMENS DE ORAÇÃO",
+    "description": "homem foi estabelecido por Deus como líder dafamília. É o sacerdote do lar. A ele compete aresponsabilidade de educar os filhos na disciplina e admoestaçãodo Senhor. Infelizmente, muitos homens têmsido negligentes a respeito desse sublime privilégio e dessagrande responsabilidade.Não poucos têm sido omissos. Outros têm delegado à esposaessa tarefa de consequências eternas. Não podemosacovardar-nos. Essa é uma incumbência nossa. Precisamoslevantar-nos e agir.HOMENS DE ORAÇÃO visa conclamar os homens, especialmenteos pais, a se levantar como intercessores, a assumirde fato a responsabilidade que lhe foi dada para o lare a sociedade.",
+    "rating": 5,
+    "user_read_at": "2024-01-29T00:00:00.000Z",
+    "user_review": "PT-BR<br />Uma obra de leitura incrivelmente fluida e profundamente edificante. O que realmente me impressionou foi a maneira habilidosa com que os autores utilizam passagens bíblicas para fundamentar cada ponto abordado. Este livro transcende o teórico, inspirando-nos a agir e nos envolvermos em oração genuína, levando nossas reflexões aos joelhos, fortalecendo nossa fé e transformando nossas práticas espirituais. Sinceramente, espero que esta obra abençoe e impacte tantos outros leitores quanto me impactou.<br />-------<br />EN<br />An incredibly fluid and deeply uplifting work of reading. What really impressed me was the skillful way in which the authors use biblical passages to support each point they make. This book transcends the theoretical, inspiring us to take action and engage in genuine prayer, bringing our reflections to our knees, strengthening our faith, and transforming our spiritual practices. I sincerely hope that this work blesses and impacts as many other readers as it has impacted me.",
+    "link": "https://www.goodreads.com/review/show/6156191250?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1640818100l/59972241._SX318_.jpg",
+    "num_pages": 125,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Seth Stephens-Davidowitz",
+    "title": "Everybody Lies",
+    "description": "Foreword by Steven Pinker<br /><br />Blending the informed analysis of The Signal and the Noise with the instructive iconoclasm of Think Like a Freak, a fascinating, illuminating, and witty look at what the vast amounts of information now instantly available to us reveals about ourselves and our world—provided we ask the right questions.<br /><br />By the end of an average day in the early twenty-first century, human beings searching the internet will amass eight trillion gigabytes of data. This staggering amount of information—unprecedented in history—can tell us a great deal about who we are—the fears, desires, and behaviors that drive us, and the conscious and unconscious decisions we make. From the profound to the mundane, we can gain astonishing knowledge about the human psyche that less than twenty years ago, seemed unfathomable.<br /><br />Everybody Lies offers fascinating, surprising, and sometimes laugh-out-loud insights into everything from economics to ethics to sports to race to sex, gender and more, all drawn from the world of big data. What percentage of white voters didn’t vote for Barack Obama because he’s black? Does where you go to school effect how successful you are in life? Do parents secretly favor boy children over girls? Do violent films affect the crime rate? Can you beat the stock market? How regularly do we lie about our sex lives and who’s more self-conscious about sex, men or women?<br /><br />Investigating these questions and a host of others, Seth Stephens-Davidowitz offers revelations that can help us understand ourselves and our lives better. Drawing on studies and experiments on how we really live and think, he demonstrates in fascinating and often funny ways the extent to which all the world is indeed a lab. With conclusions ranging from strange-but-true to thought-provoking to disturbing, he explores the power of this digital truth serum and its deeper potential—revealing biases deeply embedded within us, information we can use to change our culture, and the questions we’re afraid to ask that might be essential to our health—both emotional and physical. All of us are touched by big data everyday, and its influence is multiplying. Everybody Lies challenges us to think differently about how we see it and the world.",
+    "rating": 4,
+    "user_read_at": "2024-08-22T00:00:00.000Z",
+    "user_review": "PT-BR<br />\"Todo Mundo Mente\" é um livro que desafia muitas de nossas ideias fixas e quebra paradigmas enraizados. Mais do que ensinar técnicas específicas, o autor nos apresenta uma série de curiosidades fascinantes sobre a vida e o comportamento humano, que só podem ser reveladas por meio da análise de dados, justificando assim o subtítulo: \"O que a internet e os dados dizem sobre quem realmente somos\". Durante a leitura, somos frequentemente confrontados com a realidade de que muitas vezes mentimos para nós mesmos, acreditando em 'verdades' que, na verdade, não passam de auto-sabotagem. Essa obra me instigou a buscar uma compreensão mais profunda da verdade através dos dados, uma habilidade que, com certeza, será extremamente útil daqui para frente (espero que não esteja me enganando ao dizer isso, haha!).<br />--------<br />EN<br />\"Everybody Lies\" is a book that challenges many of our fixed ideas and breaks ingrained paradigms. More than teaching specific techniques, the author presents us with a series of fascinating curiosities about life and human behavior, which can only be revealed through data analysis, thus justifying the subtitle: \"What the internet and data say about who we really are.\" During the reading, we are frequently confronted with the reality that we often lie to ourselves, believing in 'truths' that, in fact, are nothing more than self-sabotage. This work has inspired me to seek a deeper understanding of truth through data, a skill that will certainly be extremely useful from now on (I hope I'm not fooling myself when I say that, haha!).",
+    "link": "https://www.goodreads.com/review/show/5944949108?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1489069766l/28512671._SY475_.jpg",
+    "num_pages": 338,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Augustus Nicodemus",
+    "title": "O que a Bíblia fala sobre dinheiro",
+    "description": "Organizado para leitura individual ou em pequenos grupos, O que a Bíblia fala sobre dinheiro desafia o leitor a repensar um tema complexo, porém essencial nos dias atuais. Com a habilidade didática que lhe é peculiar e que o assunto demanda, Augustus resgata a fundamentação bíblica a fim de oferecer uma visão equilibrada para o leitor.<br />Além de desmontar as premissas da teologia da prosperidade, Augustus lembra que Deus não só se importa com nosso sustento, como também conhece de antemão nossa necessidade. Por isso, perseguir um ideal financeiro a todo custo, como se a vida dependesse disso, acabará transformando dinheiro em divindade, relegando os valores do reino a uma posição inferior.<br />Revisitando o Antigo e o Novo Testamento, o autor analisa o significado da entrega do dízimo e de ofertas, mostrando que essa prática permanece válida e reflete o nível de entendimento e de comprometimento do cristão relativamente aos ensinos bíblicos.",
+    "rating": 5,
+    "user_read_at": "2025-03-15T00:00:00.000Z",
+    "user_review": "PT-BR<br />\"O Que a Bíblia Fala Sobre Dinheiro\", de Augustus Nicodemus, é um excelente livro que se destaca pelo embasamento sólido nas Escrituras. A cada capítulo, o autor apresenta ensinamentos bíblicos sobre a relação do cristão com o dinheiro, sempre acompanhados de reflexões e questionamentos que incentivam uma análise sincera da própria conduta. Ao longo da leitura, identifiquei áreas em que preciso melhorar e fui desafiado a repensar minhas atitudes à luz dos princípios apresentados. Recomendo este livro a todos que desejam alinhar sua vida financeira aos ensinamentos da Bíblia.<br />---<br />EN<br />\"O Que a Bíblia Fala Sobre Dinheiro\", by Augustus Nicodemus, is an excellent book that stands out for its strong biblical foundation. Each chapter presents biblical teachings on a Christian’s relationship with money, followed by reflections and thought-provoking questions that encourage a sincere self-examination. Throughout the reading, I identified areas in which I need to improve and felt challenged to rethink my attitudes in light of the principles presented. I highly recommend this book to anyone looking to align their financial life with biblical teachings.",
+    "link": "https://www.goodreads.com/review/show/7174088535?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1619655461l/57887567._SY475_.jpg",
+    "num_pages": 130,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Zygmunt Bauman",
+    "title": "44 cartas do mundo liquido moderno",
+    "description": "Nesta obra estão reunidos 44 textos escritos pelo autor de 2008 a 2009 para uma revista italiana voltada ao público feminino. Ele trata de temas contemporâneos em busca de significado nos atos simples do dia a dia, entre eles - iPod; Twitter; Facebook; Barack Obama; cartões de crédito e gripe suína.",
+    "rating": 3,
+    "user_read_at": "2025-05-10T00:00:00.000Z",
+    "user_review": "PT-BR<br />Como li em um dos comentários sobre esse livro, Bauman é excelente na identificação dos problemas, mas não dá alternativas e soluções para eles. Senti que, carta a carta, fui me afastando das realidades retratadas, ao ponto de ler no automático alguns capítulos, sem reflexão ou aplicação alguma. Gostei muito mais das reflexões de \"Não nascemos prontos\" do Mario Cortela, por exemplo, onde refletia mais sobre os assuntos. De qualquer forma, não posso descartar o fato de Bauman ser um excelente escritor e ser tão citado, afinal como ele descreve detalhes da sociedade, realmente faz dele uma excelente referência a ser citada em textos do ENEM, mas a conclusão e resolução, com certeza não é com ele.<br />------------<br />EN<br />As I read in one of the reviews about this book, Bauman is excellent at identifying problems, but he doesn't provide alternatives or solutions for them. I felt that, letter by letter, I was moving away from the realities portrayed, to the point that I read some chapters automatically, without any reflection or application. I liked the reflections in \"We are not born ready\" by Mario Cortela much more, for example, where he reflected more on the subjects. In any case, I can't rule out the fact that Bauman is an excellent writer and is so often cited, after all, the way he describes details of society really makes him an excellent reference to be cited in ENEM texts, but the conclusion and resolution are certainly not up to him.",
+    "link": "https://www.goodreads.com/review/show/4375425603?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1366498641l/17833888.jpg",
+    "num_pages": 288,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
     "author": "Timothy J. Keller",
     "title": "O Deus Pródigo",
     "description": "Em 'O Deus Pródigo', o autor Timothy Keller passeia pela parábola de Jesus. Uma obra sobre como resgatar a essência da fé Cristã nos dias modernos.",
-    "rating": 0,
-    "user_review": "",
+    "rating": 4,
+    "user_read_at": "2026-05-03T00:00:00.000Z",
+    "user_review": "PT-BR<br />Sempre ouvi a história do filho pródigo com um olhar voltado para o filho mais novo, que é levado ao arrependimento e retorna à casa do pai. Em aplicações práticas, isso nos mostra que, mesmo com nossos pecados, há espaço para arrependimento e para nos voltarmos a Deus.<br />No entanto, nunca havia refletido sobre o filho mais velho — aquele que muitas vezes nos representa: alguém que espera os arrependidos não com festa, mas com pedras nas mãos.<br />A leitura me fez enxergar que, em muitos momentos, eu fui esse irmão mais velho. Isso me levou ao arrependimento e à mudança de comportamento.<br />Que livro edificante!<br />------------<br />EN<br />I’ve always heard the story of the Prodigal Son from the perspective of the younger son—the one who repents and returns to his father. In practical terms, it reminds us that, despite our sins, there is always room for repentance and a path back to God.<br />However, I had never truly looked at the story through the eyes of the older brother—the one who often represents us more than we’d like to admit. The one who doesn’t welcome the repentant with celebration, but with judgment.<br />This book helped me realize how many times I’ve acted like that older brother. It led me to reflect, repent, and rethink my behavior.<br />What a powerful and edifying read!",
     "link": "https://www.goodreads.com/review/show/8422884191?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1371421200l/18079144.jpg",
     "num_pages": 176,
     "shelves": [
-      "currently-reading"
+      "read"
+    ]
+  },
+  {
+    "author": "Carlos Drummond de Andrade",
+    "title": "Receita de Ano Novo",
+    "description": "Mais um sucesso imediato para o Natal e as festas de fim de ano. Nesta antologia, organizada por Pedro e Luis Mauricio Drummond, estão reunidos os melhores textos de Drummond sobre festas de fim de ano, o espírito natalino e a esperança que todos temos de um próspero ano novo. <br />Em poemas bem-humorados e cheios de alegria, melancólicos ou reflexivos, está o melhor do poeta mineiro e sua visão sobre um período do ano em que rimos e choramos.",
+    "rating": 5,
+    "user_read_at": "2026-02-01T00:00:00.000Z",
+    "user_review": "PT-BR<br />Bom, breve e belo. Gostei muito de ler esse livro para aprender mais sobre o estilo literário do autor e pela época do ano, que muito convém. Gostei de refletir sobre o que o livro nos trás e sobre toda brasilidade envolvida no ano que há de raiar.<br />------------<br />EN<br />Good, brief, and beautiful. I really enjoyed reading this book to learn more about the author’s literary style and also because of the time of year, which suits it perfectly. I liked reflecting on what the book brings to us and on all the Brazilianness involved in the year that is about to dawn.",
+    "link": "https://www.goodreads.com/review/show/8047430634?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447532616l/13558282._SX318_.jpg",
+    "num_pages": 124,
+    "shelves": [
+      "read"
+    ]
+  },
+  {
+    "author": "Laurence Moroney",
+    "title": "AI and Machine Learning for Coders",
+    "description": "If you're looking to make a career move from programmer to AI specialist, this is the ideal place to start. Based on Laurence Moroney's extremely successful AI courses, this introductory book provides a hands-on, code-first approach to help you build confidence while you learn key topics. You'll understand how to implement the most common scenarios in machine learning, such as computer vision, natural language processing (NLP), and sequence modeling for web, mobile, cloud, and embedded runtimes. Most books on machine learning begin with a daunting amount of advanced math. This guide is built on practical lessons that let you work directly with the code. You'll ",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573534137?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602567450l/53483757.jpg",
+    "num_pages": 390,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Gióia Júnior",
+    "title": "Orações do Cotidiano",
+    "description": "",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573533442?utm_medium=api&utm_source=rss",
+    "cover": "https://s.gr-assets.com/assets/nophoto/book/111x148-675b3b2743c83e96e2540d2929d5f4d2.png",
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Leo Tolstoy",
+    "title": "A Morte de Ivan Ilitch",
+    "description": "Considerada por muitos críticos como a novela mais perfeita da literatura mundial, <i>A Morte de Ivan Ilitch</i> aborda um tema comum e inevitável na vida de qualquer ser humano - a morte, provocando reacções e emoções fortes e diferentes. Quando se apercebe de que a morte está perto, Ivan Ilitch começa a questionar as suas decisões e o percurso de vida.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573529196?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1313606711l/6876642.jpg",
+    "num_pages": 92,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Daniel H. Pink",
+    "title": "O Poder de se Arrepender",
+    "description": "É comum se arrepender. Com frequência, somos tomados por aquela sensação ruim de que estaríamos em uma situação melhor se tivéssemos tomado decisões diferentes. Isso é parte do ser humano, mas não é algo necessariamente negativo. Se aprendermos a lidar com o arrependimento de forma nova e criativa, ele se torna uma ótima ferramenta para a vida.<br />Com base em dezenas de estudos e com uma pesquisa inédita, Pink desmascara o mito de que uma vida sem arrependimentos é a que vale a pena. O autor argumenta que, na verdade, eles operam como o negativo fotográfico de uma boa vida, ou seja, ao entender do que as pessoas mais se arrependem, podemos entender o que mais valorizam. Nossos remorsos nos dão insights consistentes sobre o melhor caminho a seguir.<br />Repleto de estudos de caso e dicas práticas, O poder de se arrepender vai fazer você encarar o arrependimento como uma força positiva, para tomar melhores decisões e ter uma vida com mais significado.<br /><br />“Quaisquer que sejam os arrependimentos que você possa ter na vida, ler este livro não será um deles.” ― Susan Cain, autora do best-seller O poder dos quietos",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573528281?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1659642873l/61858970._SX318_.jpg",
+    "num_pages": 212,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Oliver Burkeman",
+    "title": "Meditações para mortais",
+    "description": "<b>Do mesmo autor de <i>Quatro mil semanas</i>, este livro é um verdadeiro antídoto contra a ansiedade, oferecendo consolo e inspiração tanto para quem luta contra a procrastinação quanto para quem está à beira do esgotamento físico e mental. Com uma abordagem leve e construtiva, <i>Meditações para mortais</i> nos encoraja a parar de lutar contra quem somos.</b><br /><br />Nosso tempo é finito, jamais conseguiremos alcançar a perfeição, e a vida oferece distrações demais para quem deseja se manter focado e produtivo. Então, como aceitar nossas limitações? Como evitar a ilusão de que a vida só começa para valer quando damos conta de tudo? Oliver Burkeman não acredita em fórmulas mágicas. Se no best-seller internacional <i>Quatro mil semanas</i> ele procura realinhar nossa relação com o tempo, neste livro o jornalista britânico rejeita a premissa de que a vida pode ser controlada. Em sua visão, a melhor forma de viver reside em abandonar a fantasia da superprodutividade e deixar de lado o anseio de estar antenado com tudo. Sempre haverá tarefas demais e tempo de menos para fazê-las.<br />Com referências extraídas da filosofia, da religião, da literatura e da psicologia, Oliver Burkeman apresenta, em breves capítulos, a perfeita combinação entre ferramentas práticas e reflexões lúcidas desprovidas de dogmas sobre a condição humana. O resultado é um livro divertido e profundo, que pode ser lido como uma espécie de \"retiro da mente\" ao longo de quatro semanas — ou devorado de uma vez só. Encarar a finitude, ser capaz de tomar decisões ousadas e imperfeitas, deixar de impor obstáculos a nós mesmos para permitir que as coisas aconteçam e, finalmente, aprender a viver o presente — e não em função de um futuro idealizado — são os pilares fundamentais do pensamento de Burkeman. Afinal, uma vida mais significativa começa de onde realmente estamos, não pela fantasia de onde gostaríamos de estar.<br /><br />\"Um guia prático para a transformação pessoal que ajuda a evitar o fascínio pela ocupação frenética e a encontrar uma alegria libertadora nas limitações da vida.\" — Cal Newport, autor de <i>Trabalho focado</i> e <i>Minimalismo digital</i><br /><br />\"Com uma sabedoria contraintuitiva, Burkeman mostra que não há problema em fazer menos, deixar algumas metas de lado e aceitar imperfeições.\" — Daniel H. Pink, autor de <i>Quando</i> e <i>O poder de se arrepender</i><br /><br />\"Repleto de conhecimento e conforto.\" — Chris van Tulleken, autor de <i>Gente ultraprocessada</i>",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573527749?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1742233258l/229255828._SX318_.jpg",
+    "num_pages": 212,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Robert M. Sapolsky",
+    "title": "Determinado",
+    "description": "O grande cientista Robert M. Sapolsky, autor do best-seller Comportamento, vai ao âmago da ciência e da filosofia da tomada de decisões para questionar a existência do livre-arbítrio, uma ideia com consequências profundas.<br /><br />Em Comportamento, uma obra já clássica onde explicita as razões pelas quais os seres humanos agem bem ou mal, Robert Sapolsky aponta uma conclusão perturbadora: podemos desconhecer a ligação precisa entre a natureza e a educação que cria a física e a química na base do comportamento humano, mas isso não significa que essa ligação não exista.<br /><br />No presente livro, Sapolsky vai ainda mais longe, montando um brilhante (e, no seu estilo inconfundível, delicioso) ataque à fantasia simpática de que existe um eu independente que diz à nossa biologia o que deve fazer.<br /><br />Sapolsky aplica este novo entendimento da vida sem livre-arbítrio a algumas questões humanas fundamentais, como a punição, a moralidade e a convivência pacífica.<br /><br />Por último, defende que, embora viver o quotidiano reconhecendo que não se tem livre-arbítrio possa ser tremendamente difícil, tal não tem de resultar em anarquia, falta de um propósito e mal-estar.<br /><br />Pelo contrário, produzirá um mundo muito mais humano.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573525548?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1732908742l/222082188.jpg",
+    "num_pages": 520,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Marshall B. Rosenberg",
+    "title": "Comunicação não-violenta",
+    "description": "Manual prático e didático que apresenta metodologia criada pelo autor, voltada para aprimorar os relacionamentos interpessoais e diminuir a violência no mundo. Aplicável em centenas de situações que exigem clareza na comunicação: em fábricas, escolas, comunidades carentes e até em graves conflitos políticos.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573474933?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1440030941l/26131898._SY475_.jpg",
+    "num_pages": 338,
+    "shelves": [
+      "to-read"
+    ]
+  },
+  {
+    "author": "Peter F. Drucker",
+    "title": "O Gestor Eficaz",
+    "description": "Os mais de 30 livros escritos por Drucker reúnem três características fundamentais: rigor intelectual, praticidade e profundo conhecimento das tendências administrativas que realmente viriam para ficar. Essas qualidades o tornaram um dos escritores mais lidos em todos os tempos na área de negócios, difundindo como nenhum outro a arte de bem administrar. Drucker foi o precursor daquilo que hoje se convencionou chamar de melhores práticas, muito antes de o termo virar moda, e seus ensinamentos primam pela simplicidade tanto quanto pela eficácia.<br /><br />Uma de suas obras mais importantes — The Effective Executive, de 1966 — é um dos melhores exemplos disso. Publicada no Brasil em 1990, com o título O Gerente Eficaz, até hoje o livro é um sucesso de vendas, sendo conhecido aqui, e em todo o mundo, como o guia definitivo para a arte de fazer acontecer.",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8573459247?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1452212479l/28483720.jpg",
+    "num_pages": 218,
+    "shelves": [
+      "to-read"
     ]
   },
   {
@@ -49,20 +292,6 @@ export const books = [
     "num_pages": 297,
     "shelves": [
       "currently-reading"
-    ]
-  },
-  {
-    "author": "Carlos Drummond de Andrade",
-    "title": "Receita de Ano Novo",
-    "description": "Mais um sucesso imediato para o Natal e as festas de fim de ano. Nesta antologia, organizada por Pedro e Luis Mauricio Drummond, estão reunidos os melhores textos de Drummond sobre festas de fim de ano, o espírito natalino e a esperança que todos temos de um próspero ano novo. <br />Em poemas bem-humorados e cheios de alegria, melancólicos ou reflexivos, está o melhor do poeta mineiro e sua visão sobre um período do ano em que rimos e choramos.",
-    "rating": 5,
-    "user_read_at": "2026-02-01T00:00:00.000Z",
-    "user_review": "PT-BR<br />Bom, breve e belo. Gostei muito de ler esse livro para aprender mais sobre o estilo literário do autor e pela época do ano, que muito convém. Gostei de refletir sobre o que o livro nos trás e sobre toda brasilidade envolvida no ano que há de raiar.<br /><br />EN<br />Good, brief, and beautiful. I really enjoyed reading this book to learn more about the author’s literary style and also because of the time of year, which suits it perfectly. I liked reflecting on what the book brings to us and on all the Brazilianness involved in the year that is about to dawn.",
-    "link": "https://www.goodreads.com/review/show/8047430634?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447532616l/13558282._SX318_.jpg",
-    "num_pages": 124,
-    "shelves": [
-      "read"
     ]
   },
   {
@@ -497,34 +726,6 @@ export const books = [
     ]
   },
   {
-    "author": "Zygmunt Bauman",
-    "title": "44 cartas do mundo liquido moderno",
-    "description": "Nesta obra estão reunidos 44 textos escritos pelo autor de 2008 a 2009 para uma revista italiana voltada ao público feminino. Ele trata de temas contemporâneos em busca de significado nos atos simples do dia a dia, entre eles - iPod; Twitter; Facebook; Barack Obama; cartões de crédito e gripe suína.",
-    "rating": 3,
-    "user_read_at": "2025-05-10T00:00:00.000Z",
-    "user_review": "Como li em um dos comentários sobre esse livro, Bauman é excelente na identificação dos problemas, mas não dá alternativas e soluções para eles. Senti que, carta a carta, fui me afastando das realidades retratadas, ao ponto de ler no automático alguns capítulos, sem reflexão ou aplicação alguma. Gostei muito mais das reflexões de \"Não nascemos prontos\" do Mario Cortela, por exemplo, onde refletia mais sobre os assuntos. De qualquer forma, não posso descartar o fato de Bauman ser um excelente escritor e ser tão citado, afinal como ele descreve detalhes da sociedade, realmente faz dele uma excelente referência a ser citada em textos do ENEM, mas a conclusão e resolução, com certeza não é com ele.<br /><br />---<br /><br />As I read in one of the reviews about this book, Bauman is excellent at identifying problems, but he doesn't provide alternatives or solutions for them. I felt that, letter by letter, I was moving away from the realities portrayed, to the point that I read some chapters automatically, without any reflection or application. I liked the reflections in \"We are not born ready\" by Mario Cortela much more, for example, where he reflected more on the subjects. In any case, I can't rule out the fact that Bauman is an excellent writer and is so often cited, after all, the way he describes details of society really makes him an excellent reference to be cited in ENEM texts, but the conclusion and resolution are certainly not up to him.",
-    "link": "https://www.goodreads.com/review/show/4375425603?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1366498641l/17833888.jpg",
-    "num_pages": 288,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "Augustus Nicodemus",
-    "title": "O que a Bíblia fala sobre dinheiro",
-    "description": "Organizado para leitura individual ou em pequenos grupos, O que a Bíblia fala sobre dinheiro desafia o leitor a repensar um tema complexo, porém essencial nos dias atuais. Com a habilidade didática que lhe é peculiar e que o assunto demanda, Augustus resgata a fundamentação bíblica a fim de oferecer uma visão equilibrada para o leitor.<br />Além de desmontar as premissas da teologia da prosperidade, Augustus lembra que Deus não só se importa com nosso sustento, como também conhece de antemão nossa necessidade. Por isso, perseguir um ideal financeiro a todo custo, como se a vida dependesse disso, acabará transformando dinheiro em divindade, relegando os valores do reino a uma posição inferior.<br />Revisitando o Antigo e o Novo Testamento, o autor analisa o significado da entrega do dízimo e de ofertas, mostrando que essa prática permanece válida e reflete o nível de entendimento e de comprometimento do cristão relativamente aos ensinos bíblicos.",
-    "rating": 5,
-    "user_read_at": "2025-03-15T00:00:00.000Z",
-    "user_review": "\"O Que a Bíblia Fala Sobre Dinheiro\", de Augustus Nicodemus, é um excelente livro que se destaca pelo embasamento sólido nas Escrituras. A cada capítulo, o autor apresenta ensinamentos bíblicos sobre a relação do cristão com o dinheiro, sempre acompanhados de reflexões e questionamentos que incentivam uma análise sincera da própria conduta. Ao longo da leitura, identifiquei áreas em que preciso melhorar e fui desafiado a repensar minhas atitudes à luz dos princípios apresentados. Recomendo este livro a todos que desejam alinhar sua vida financeira aos ensinamentos da Bíblia.<br /><br />---<br /><br />\"O Que a Bíblia Fala Sobre Dinheiro\", by Augustus Nicodemus, is an excellent book that stands out for its strong biblical foundation. Each chapter presents biblical teachings on a Christian’s relationship with money, followed by reflections and thought-provoking questions that encourage a sincere self-examination. Throughout the reading, I identified areas in which I need to improve and felt challenged to rethink my attitudes in light of the principles presented. I highly recommend this book to anyone looking to align their financial life with biblical teachings.",
-    "link": "https://www.goodreads.com/review/show/7174088535?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1619655461l/57887567._SY475_.jpg",
-    "num_pages": 130,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
     "author": "Augustus Nicodemus",
     "title": "O que a Bíblia fala sobre oração",
     "description": "<b>Aprenda a orar de acordo com o que a Bíblia diz!</b><br /><br /><b>Inspirador. Instrutivo. Pastoral.</b><br /><br /><b>  </b><br /><br />A Bíblia Sagrada apresenta a oração como um elo permanente de comunicação entre a criatura e o Criador. Trata-se, ao mesmo tempo, de uma manifestação de gratidão a Deus e de um meio de entregar-lhe anseios e inquietações bem como louvor, adoração, confissão e intercessão. Seu papel é relevante em qualquer momento e circunstância da vida.<br /><br />Por reconhecer o caráter essencial dessa prática da vida cristã, Augustus Nicodemus lança o livro <em>O que a Bíblia fala sobre oração</em>, um convite à maturidade espiritual e à fé bíblica. Na obra, Nicodemus desenvolve e esclarece vários aspectos da prática da oração e propõe aos leitores reflexões edificantes sobre o assunto.<br /><br /><em>O que a Bíblia fala sobre oração</em> ajuda o leitor não apenas a identificar falsos ensinamentos, mas a orar de acordo com a vontade do Pai, certo de que, independentemente da resposta, Deus continua sendo bom e atento às necessidades de seus filhos e de suas filhas.<br /><br />Escrito com cuidado pastoral e com viés inspirativo e explicativo, <em>O que a Bíblia fala sobre oração</em> é um ótimo recurso para o estudo individual, para o discipulado e a escola bíblica dominical e para pequenos grupos. Por aliar um texto leve com a profundidade teológica já conhecida de Augustus Nicodemus, é também fonte de consulta que pode ser usada por pastores e teólogos. Trata-se de uma leitura essencial para ter sempre à mão. <br /><br /><em>O que a Bíblia fala sobre oração</em> é um livro que revigorará sua fé e o motivará a fortalecer a comunicação com Deus. Leia, estude e pratique os ensinamentos da Palavra e inicie uma nova etapa em sua vida! <br /><br /> ",
@@ -560,20 +761,6 @@ export const books = [
     "link": "https://www.goodreads.com/review/show/4646020453?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586279242l/53026889._SX318_.jpg",
     "num_pages": 315,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "Seth Stephens-Davidowitz",
-    "title": "Everybody Lies",
-    "description": "Foreword by Steven Pinker<br /><br />Blending the informed analysis of The Signal and the Noise with the instructive iconoclasm of Think Like a Freak, a fascinating, illuminating, and witty look at what the vast amounts of information now instantly available to us reveals about ourselves and our world—provided we ask the right questions.<br /><br />By the end of an average day in the early twenty-first century, human beings searching the internet will amass eight trillion gigabytes of data. This staggering amount of information—unprecedented in history—can tell us a great deal about who we are—the fears, desires, and behaviors that drive us, and the conscious and unconscious decisions we make. From the profound to the mundane, we can gain astonishing knowledge about the human psyche that less than twenty years ago, seemed unfathomable.<br /><br />Everybody Lies offers fascinating, surprising, and sometimes laugh-out-loud insights into everything from economics to ethics to sports to race to sex, gender and more, all drawn from the world of big data. What percentage of white voters didn’t vote for Barack Obama because he’s black? Does where you go to school effect how successful you are in life? Do parents secretly favor boy children over girls? Do violent films affect the crime rate? Can you beat the stock market? How regularly do we lie about our sex lives and who’s more self-conscious about sex, men or women?<br /><br />Investigating these questions and a host of others, Seth Stephens-Davidowitz offers revelations that can help us understand ourselves and our lives better. Drawing on studies and experiments on how we really live and think, he demonstrates in fascinating and often funny ways the extent to which all the world is indeed a lab. With conclusions ranging from strange-but-true to thought-provoking to disturbing, he explores the power of this digital truth serum and its deeper potential—revealing biases deeply embedded within us, information we can use to change our culture, and the questions we’re afraid to ask that might be essential to our health—both emotional and physical. All of us are touched by big data everyday, and its influence is multiplying. Everybody Lies challenges us to think differently about how we see it and the world.",
-    "rating": 4,
-    "user_read_at": "2024-08-22T00:00:00.000Z",
-    "user_review": "\"Todo Mundo Mente\" é um livro que desafia muitas de nossas ideias fixas e quebra paradigmas enraizados. Mais do que ensinar técnicas específicas, o autor nos apresenta uma série de curiosidades fascinantes sobre a vida e o comportamento humano, que só podem ser reveladas por meio da análise de dados, justificando assim o subtítulo: \"O que a internet e os dados dizem sobre quem realmente somos\". Durante a leitura, somos frequentemente confrontados com a realidade de que muitas vezes mentimos para nós mesmos, acreditando em 'verdades' que, na verdade, não passam de auto-sabotagem. Essa obra me instigou a buscar uma compreensão mais profunda da verdade através dos dados, uma habilidade que, com certeza, será extremamente útil daqui para frente (espero que não esteja me enganando ao dizer isso, haha!).",
-    "link": "https://www.goodreads.com/review/show/5944949108?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1489069766l/28512671._SY475_.jpg",
-    "num_pages": 338,
     "shelves": [
       "read"
     ]
@@ -645,20 +832,6 @@ export const books = [
     ]
   },
   {
-    "author": "Hernandes Dias Lopes",
-    "title": "HOMENS DE ORAÇÃO",
-    "description": "homem foi estabelecido por Deus como líder dafamília. É o sacerdote do lar. A ele compete aresponsabilidade de educar os filhos na disciplina e admoestaçãodo Senhor. Infelizmente, muitos homens têmsido negligentes a respeito desse sublime privilégio e dessagrande responsabilidade.Não poucos têm sido omissos. Outros têm delegado à esposaessa tarefa de consequências eternas. Não podemosacovardar-nos. Essa é uma incumbência nossa. Precisamoslevantar-nos e agir.HOMENS DE ORAÇÃO visa conclamar os homens, especialmenteos pais, a se levantar como intercessores, a assumirde fato a responsabilidade que lhe foi dada para o lare a sociedade.",
-    "rating": 5,
-    "user_read_at": "2024-01-29T00:00:00.000Z",
-    "user_review": "An incredibly fluid and deeply uplifting work of reading. What really impressed me was the skillful way in which the authors use biblical passages to support each point they make. This book transcends the theoretical, inspiring us to take action and engage in genuine prayer, bringing our reflections to our knees, strengthening our faith, and transforming our spiritual practices. I sincerely hope that this work blesses and impacts as many other readers as it has impacted me.<br /><br />---<br /><br />Uma obra de leitura incrivelmente fluida e profundamente edificante. O que realmente me impressionou foi a maneira habilidosa com que os autores utilizam passagens bíblicas para fundamentar cada ponto abordado. Este livro transcende o teórico, inspirando-nos a agir e nos envolvermos em oração genuína, levando nossas reflexões aos joelhos, fortalecendo nossa fé e transformando nossas práticas espirituais. Sinceramente, espero que esta obra abençoe e impacte tantos outros leitores quanto me impactou.",
-    "link": "https://www.goodreads.com/review/show/6156191250?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1640818100l/59972241._SX318_.jpg",
-    "num_pages": 125,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
     "author": "Eduardo Buzzinari",
     "title": "Pai de Menina 2",
     "description": "UM GUIA BEM-HUMORADO PARA OS PAPAIS DE MENINAS. É menina! – disse a médica do ultrassom. De novo. Se você achava que a vida já estava fora de controle com uma filha só, imagine agora com duas! É, parceiro... A família cresceu. E este divertido guia vai acompanhá-lo na mais nova etapa desta louca viagem, abordando, de forma leve e descontraída, temas como a chegada do segundo bebê, as gafes da gravidez, as travessuras da filha mais velha, as relações entre irmãs, o primeiro dia na escolinha, a fase do não, a idade da birra, o medo do bicho-papão e por aí afora. Tudo de um jeito simples e descomplicado para que você possa continuar a enlouquecer lentamente, mas sem perder a ternura e o bom humor. Com uma variedade inesgotável de estilos, suas crônicas abrangem prosa, diálogos, textos explicativos e até versos livres. Este livro promete boas e calorosas risadas para os pobres papais de meninas, esses heróis!",
@@ -668,20 +841,6 @@ export const books = [
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1678578968l/91713311._SY475_.jpg",
     "shelves": [
       "to-read"
-    ]
-  },
-  {
-    "author": "Eduardo Buzzinari",
-    "title": "Pai de menina",
-    "description": "É menina! – disse a médica do ultrassom. Se você acabou de ouvir essa frase e está com a ligeira sensação de que sua vida jamais será a mesma, este é o seu livro! Um guia bem-humorado que vai acompanhá-lo durante toda a gestação da sua filha, desde a grande notícia até o nascimento da princesa, abordando de maneira divertida e inusitada temas como a compra do enxoval, a escolha do nome, as piadinhas dos amigos, os desejos da madrugada, a montagem do berço, sexo e bebida na gravidez, o chá de fraldas, e por aí vai… Tudo de um jeito fácil e descomplicado, que vai lhe render boas risadas e prepará-lo para o exercício do mais doce dos martí ser pai de menina. Com uma variedade de gêneros narrativos, como crônica, prosa, tutorial passo a passo e até mesmo um teste de múltipla escolha, o livro promete uma leitura leve e descontraída para os futuros papais de meninas.",
-    "rating": 4,
-    "user_read_at": "2024-01-10T00:00:00.000Z",
-    "user_review": "This book is an extremely fun experience. I laughed at several parts, because I could identify with and feel a special connection with the situations described. The author's relaxed language makes reading incredibly accessible, even for those who are not in the habit of reading regularly. When exploring more about the work, I discovered that this is only the first volume, and the second addresses with sensitivity and humor the transformations and challenges brought about by the arrival of a second daughter. I recommend this reading not only for fun, but also for reflection on family changes and the joy they can bring.<br /><br />---<br /><br />Este livro é uma experiência extremamente divertida. Ri em várias partes, pois pude me identificar e sentir uma conexão especial com as situações descritas. A linguagem descontraída do autor torna a leitura incrivelmente acessível, até mesmo para aqueles que não têm o hábito de ler regularmente. Ao explorar mais sobre a obra, descobri que este é apenas o primeiro volume, e o segundo aborda com sensibilidade e humor as transformações e desafios trazidos pela chegada de uma segunda filha. Recomendo esta leitura não apenas pela diversão, mas também pela reflexão sobre as mudanças familiares e a alegria que elas podem trazer.",
-    "link": "https://www.goodreads.com/review/show/6156175722?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529238168l/40548794._SX318_.jpg",
-    "num_pages": 140,
-    "shelves": [
-      "read"
     ]
   },
   {
@@ -712,33 +871,6 @@ export const books = [
     ]
   },
   {
-    "author": "Paul Louis Cole",
-    "title": "Integridade Sexual",
-    "description": "At a time when sex has been degraded to crass adult humor and virginity is regarded by some as cheap merchandise, a new generation is bringing back what a previous generation threw awaythe understanding that sex is to be valued and respected. God made sex good!Possibly the most unusual and most important book about sex you will ever read, Sexual Integrity addresses sexuality with powerful insight.Understand today why God created you to be sexual and discover the pleasure of honoring your most precious gift. No matter who you areman or woman, teenager or adult, single or marriedthis book hold refreshing wisdom for whatever sexual questions or issues you may have.",
-    "rating": 3,
-    "user_read_at": "2023-02-18T00:00:00.000Z",
-    "user_review": "É um excelente livro para jovens adolescentes cristãos que precisam ser introduzidos ao tema sexualidade da maneira correta. Li esse livro em um seminário de final de semana e espero utiliza-lo para ajudar pessoas mais novas. O livro também aborda a temática de casamento, mas achei muito superficial, até porque não é o foco do livro.",
-    "link": "https://www.goodreads.com/review/show/5366418710?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1697871008l/97084123._SX318_.jpg",
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "Marcio Tunala",
-    "title": "#LideraJovem",
-    "description": "#Lidera jovem é resultado da experiência pessoal e ministerial.Resultados de desafios que foram superados com o absoluto sucesso, mas sempre na dependência de Deus. #Os temas abordados tem alcançado e transformado vida de jovens preparando-as para os desafios que se apresentam no dia a dia de quem ainda está decidindo a carreira profissional, cursando faculdade ou atuante no mercado de trabalho . #Com propriedade ENFOCA a geração tribal e seus históricos e costumes, sem no entanto, deixar de lado os jovens adultos solteiros, que também precisam de um espaço entre a juventude. #Repleto de DICAS ESSENCIAIS para quem tem trabalho com as faixas etárias, enfoca as dificuldades do namoro, discipulado e trabalho voluntário.",
-    "rating": 5,
-    "user_read_at": "2023-07-31T00:00:00.000Z",
-    "user_review": "Um excelente livro para quem quer começar a trabalhar com o ministério de jovens das igrejas. Embora ele tenha sido escrito há x anos atrás, ainda hoje pode ser considerado um livro muito atual, pois ele trata de temas da atualidade e em diversos momentos o livro cita eventos que possivelmente aconteceriam, sendo que hoje esses eventos já são realidade.",
-    "link": "https://www.goodreads.com/review/show/5689358855?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1550520545l/44054978._SY475_.jpg",
-    "num_pages": 136,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
     "author": "Tish Harrison Warren",
     "title": "Liturgia do ordinário",
     "description": "Deus está aqui.<br />Rotina. Se Deus vai nos encontrar em algum lugar, com certeza não será aí, certo?<br />O Senhor só se mostraria em milagres e eventos extraordinários, experiências de outro mundo. Porém, deus está presente em todo lugar, até de formas surpreendentes no mais ordinário que há na vida. Como abraçamos o sagrado no ordinário e o ordinário no sagrado?<br />Cada capítulo neste livro olha para algo que a autora faz no dia dela – arrumar a cama, escovar os dentes, perder a chave, até brigar com o marido. Cada detalhe da vida é visto pelas lentes da liturgia: pequenas práticas e hábitos que nos formam. Com base nas várias facetas da sua vida como missionária universitária, amiga, esposa e mãe, Tish Harrison Warren desenvolve uma teologia prática do dia a dia. Cada atividade se relaciona a uma disciplina espiritual, bem como a um aspecto do nosso culto no domingo. Venha e descubra a santidade do seu dia a dia.",
@@ -761,20 +893,6 @@ export const books = [
     "num_pages": 192,
     "shelves": [
       "to-read"
-    ]
-  },
-  {
-    "author": "Florian Bartunek",
-    "title": "Fora da Curva",
-    "description": "Organizado pelo investidor Florian Bartunek, pelo advogado e sócio da Casa do Saber Pierre Moreau e pela jornalista Giuliana Napolitano, ''Fora da curva'' reúne depoimentos de alguns dos maiores investidores do país — como André Jakurski, Antonio Bonchristiano, Luis Stuhlberger, Guilherme Affonso Ferreira, Guilherme Aché, José Carlos Reis de Magalhães Neto, Luiz Fernando Figueiredo, Meyer Joseph Nigri, Pedro Damasceno e o próprio Bartunek. No total, eles administram cerca de 80 bilhões de reais. Muitas dessas personalidades são avessas a entrevistas, mas decidiram contar a história de suas carreiras a fim de espalhar valiosas lições de negócios para o público brasileiro.",
-    "rating": 4,
-    "user_read_at": "2023-06-14T00:00:00.000Z",
-    "user_review": "Um excelente livro para aqueles que querem entender um pouco de investimentos no contexto brasileiro. Recomendo-o também para entusiastas e profissionais da área, pois o livro instiga a investir. Eu mesmo, por exemplo, tive vários insights de investimentos para o contexto atual de Brasil e Mundo, baseado no aprendizado que tive com o livro.",
-    "link": "https://www.goodreads.com/review/show/5495005159?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535262874l/31948507._SX318_.jpg",
-    "num_pages": 160,
-    "shelves": [
-      "read"
     ]
   },
   {
@@ -802,20 +920,6 @@ export const books = [
     "num_pages": 292,
     "shelves": [
       "to-read"
-    ]
-  },
-  {
-    "author": "Mario Sergio Cortella",
-    "title": "Não nascemos prontos!",
-    "description": "Este livro inspirador nos desafia a aprender sempre, olhando o mundo e a nós mesmos sob uma nova perspectiva. O autor mostra que quando estamos insatisfeitos somos capazes de inovar, mudar e nos construir aos poucos, pois o grande desafio humano é não se satisfazer com as coisas como estão. Quem assume este compromisso constrói uma existência significativa e gratificante.",
-    "rating": 4,
-    "user_read_at": "2022-10-30T00:00:00.000Z",
-    "user_review": "Livro muito bom para poder pensar nos pequenos detalhes da vida que muitas vezes passam desapercebidos ou nos esquecemos. Vi bastante traços que me levou a ler Proverbios em seguida. Além disso, lembrei também do sociólogo zygmunt bauman.",
-    "link": "https://www.goodreads.com/review/show/5029487890?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1537923392l/13512418.jpg",
-    "num_pages": 134,
-    "shelves": [
-      "read"
     ]
   },
   {
@@ -1204,113 +1308,6 @@ export const books = [
     "link": "https://www.goodreads.com/review/show/4622377058?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1421110964l/24473410.jpg",
     "num_pages": 130,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "Rodrigo Bibo",
-    "title": "O Deus que destrói sonhos",
-    "description": "O Deus cristão não pode ser domesticado Uma tentação constante que cerca a vida cristã é a inversão do a presunção de que Deus precisa abençoar o meu caminho e me seguir em meus planos e sonhos. Essa postura é enganosa e faz parecer que Deus só é fiel quando me abençoa. Mas e se Deus derrubar o meu sorvete, ele deixa de ser fiel? Claro que não. Às vezes, ele só quer chamar a minha atenção para o caminho certo. Eu já testemunhei gente adulta se comportando como criança por não ter a vida que pediu a Deus. Pediu errado! Neste livro, apresento o caminho do discipulado, o caminho para \"sonhar\" o que Deus já planejou.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4622375303?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1618698038l/57767023._SY475_.jpg",
-    "num_pages": 132,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "Suhas Kshirsagar",
-    "title": "Mude seus horários, mude sua vida",
-    "description": "Como usar o relógio biológico para perder peso, reduzir o estresse, dormir melhor e ter mais saúde e energia. <br /><br />Hábitos como pular refeições, exercitar-se no meio do dia, trabalhar até tarde e tentar “recuperar o sono” no fim de semana atrapalham o ritmo natural do organismo e podem gerar consequências graves para nossa saúde.<br /><br />Nosso relógio biológico determina os horários mais propícios para as principais atividades do dia a dia. Ao fazer pequenas mudanças na rotina – como almoçar ao meio-dia, desligar os aparelhos eletrônicos às 20h e fazer exercícios antes do café da manhã –, podemos administrar com mais facilidade o peso, o sono, o estresse, a inflamação e muito mais.<br /><br />Combinando a antiga sabedoria ayurvédica com as mais recentes pesquisas científicas na área da cronobiologia, Dr. Suhas Kshirsagar explica como sincronizar nossa programação diária com o ciclo natural de luz e, assim, fazer com que todo o sistema trabalhe com menos esforço.<br /><br />Com dicas nutricionais, informações sobre a ciência do sono e testes para identificar seu tipo de corpo e seus padrões de comportamento, Mude seus horários, mude sua vida apresenta o cronograma ideal para suprir suas necessidades específicas de nutrição, trabalho, repouso e exercício.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4509638200?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1593471023l/51732616._SX318_.jpg",
-    "num_pages": 240,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "Greg McKeown",
-    "title": "Essencialismo",
-    "description": "O essencialista não faz mais coisas em menos tempo – ele faz apenas As coisas certas .<br /><br />Se você se sente sobrecarregado e ao mesmo tempo subutilizado, ocupado mas pouco produtivo, e se o seu tempo parece servir apenas aos interesses dos outros, você precisa conhecer o essencialismo.<br /><br />O essencialismo é mais do que uma estratégia de gestão de tempo ou uma técnica de produtividade. Trata-se de um método para identificar o que é vital e eliminar todo o resto, para que possamos dar a maior contribuição possível àquilo que realmente importa.<br /><br />Quando tentamos fazer tudo e ter tudo, realizamos concessões que nos afastam da nossa meta. Se não decidimos onde devemos concentrar nosso tempo e nossa energia, outras pessoas – chefes, colegas, clientes e até a família – decidem por nós, e logo perdemos de vista tudo o que é significativo.<br /><br />Neste livro, Greg McKeown mostra que, para equilibrar trabalho e vida pessoal, não basta recusar solicitações aleatoriamente: é preciso eliminar o que não é essencial e se livrar de desperdícios de tempo. Devemos aprender a reduzir, simplificar e manter o foco em nossos objetivos.<br /><br />Quando realizamos tarefas que não aproveitam nossos talentos e assumimos compromissos só para agradar aos outros, abrimos mão do nosso poder de escolha. O essencialista toma as próprias decisões – e só entra em ação se puder fazer a diferença.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4509637170?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1443972174l/26864131._SY475_.jpg",
-    "num_pages": 272,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "James Clear",
-    "title": "Hábitos atómicos",
-    "description": "<p>HÁBITOS ATÓMICOS parte de una simple pero poderosa pregunta: ¿Cómo podemos vivir mejor? Sabemos que unos buenos hábitos nos permiten mejorar significativamente nuestra vida, pero con frecuencia nos desviamos del camino: dejamos de hacer ejercicio, comemos mal, dormimos poco, despilfarramos. ¿Por qué es tan fácil caer en los malos hábitos y tan complicado seguir los buenos?<br />James Clear nos brinda fantásticas ideas basadas en investigaciones científicas, que le permiten revelarnos cómo podemos transformar pequeños hábitos cotidianos para cambiar nuestra vida y mejorarla. Esta guía pone al descubierto las fuerzas ocultas que moldean nuestro comportamiento<br />—desde nuestra mentalidad, pasando por el ambiente y hasta la genética— y nos demuestra cómo aplicar cada cambio a nuestra vida y a nuestro trabajo. Después de leer este libro, tendrás un método sencillo<br />para desarrollar un sistema eficaz que te conducirá al éxito.<br /><br />Aprende cómo…<br />• Darte tiempo para desarrollar nuevos hábitos<br />• Superar la falta de motivación y de fuerza de voluntad<br />• Diseñar un ambiente para que el éxito sea fácil de alcanzar<br />• Regresar al buen camino cuando te hayas desviado un poco</p>",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4509636972?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555084828l/45028173._SY475_.jpg",
-    "num_pages": 335,
-    "shelves": [
-      "to-read"
-    ]
-  },
-  {
-    "author": "Fábio Aguiar",
-    "title": "Product Backlog Building",
-    "description": "Times ágeis constantemente encontram-se frente a frente com algumas perguntas cruciais na hora de desenvolver um como chegar ao backlog do produto? Como construir algo que tenha valor? Como encontrar a real necessidade do cliente? Como definir o que é prioridade no primeiro momento? Como refinar os itens do backlog? Movido pelo objetivo de clarificar esse caminho muitas vezes complexo, Fábio Aguiar desenvolveu o método Product Backlog Building, o PBB. Junto de Paulo Caroli, criador do método Lean Inception, eles apresentam um guia prático para quem deseja construir um produto de sucesso, criando e refinando o backlog. Ao incorporar o PBB no fluxo de desenvolvimento de produtos, seguindo o passo a passo apresentado nesta obra, você e seu time conseguirão, de maneira • Construir um entendimento compartilhado da necessidade do produto; Facilitar a descoberta do produto e a escrita das histórias de usuário;Estruturar a granularidade dos itens do backlog;Priorizar os itens de maior importância para o produto e maior valor para o cliente;Melhorar o trabalho do time com a construção e refinamento do backlog.",
-    "rating": 4,
-    "user_read_at": "2022-01-19T00:00:00.000Z",
-    "user_review": "Iniciei esse livro quando trabalhava como Product Owner (PO) e estava enfrentando problemas para a construção do <i>backlog</i>, então entrei em contato com o Paulo Caroli, expliquei minha situação e ele mesmo recomendou esse livro. O livro é muito bacana, mas também precisa de uma boa dedicação prática para ser eficiente, o que não consegui fazer.",
-    "link": "https://www.goodreads.com/review/show/4488321803?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1624064755l/58370946._SY475_.jpg",
-    "num_pages": 144,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "Ava Dellaira",
-    "title": "Cartas de Amor aos Mortos",
-    "description": "Alguns segredos só conseguimos contar aos nossos maiores ídolos.<br /><br />Tudo começa com uma tarefa para a escola: escrever uma carta para alguém que já morreu. Logo o caderno de Laurel está repleto de mensagens para Kurt Cobain, Janis Joplin, Amy Winehouse, Heath Ledger, Judy Garland, Elizabeth Bishop… apesar de ela jamais entregá-las à professora. Nessas cartas, ela analisa a história de cada uma dessas personalidades e tenta desvendar os mistérios que envolvem suas mortes. Ao mesmo tempo, conta sobre sua própria vida, como as amizades no novo colégio e seu primeiro amor: um garoto misterioso chamado Sky. Mas Laurel não pode escapar de seu passado. Só quando ela escrever a verdade sobre o que se passou com ela e com a irmã é que poderá aceitar o que aconteceu e perdoar May e a si mesma. E só quando enxergar a irmã como realmente era — encantadora e incrível, mas imperfeita como qualquer um — é que poderá seguir em frente e descobrir seu próprio caminho. <br /><br />“Simplesmente amei este livro. Cartas de amor aos mortos é mais do que um livro de estreia impressionante. É o anúncio do surgimento de uma nova voz literária corajosa.” <br /><br />- Stephen Chbosky, autor de As vantagens de ser invisível<br /><br />“Assim como Kurt, Janis, Amelia e outros que já se foram mas de algum jeito permanecem aqui, Cartas de amor aos mortos deixa uma marca indelével.”<br /><br />- Gayle Forman, autora de Se eu ficar",
-    "rating": 4,
-    "user_read_at": "2017-01-01T00:00:00.000Z",
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4462606732?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1401307857l/22366064.jpg",
-    "num_pages": 378,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "R.J. Palacio",
-    "title": "Extraordinário",
-    "description": "August Pullman nasceu com uma síndrome genética cuja sequela é uma severa deformidade facial, que lhe impôs diversas cirurgias e complicações médicas. Por isso ele nunca frequentou uma escola de verdade… até agora. Todo mundo sabe que é difícil ser um aluno novo, mais ainda quando se tem um rosto tão diferente. Prestes a começar o quinto ano em um colégio particular de Nova York, Auggie tem uma missão nada fácil pela frente: convencer os colegas de que, apesar da aparência incomum, ele é um menino igual a todos os outros.",
-    "rating": 3,
-    "user_read_at": "2017-01-01T00:00:00.000Z",
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4462605607?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1365626041l/17382805.jpg",
-    "num_pages": 320,
-    "shelves": [
-      "read"
-    ]
-  },
-  {
-    "author": "Cal Newport",
-    "title": "Minimalismo Digital",
-    "description": "O minimalismo é a arte de saber quanto é suficiente. O minimalismo digital aplica essa ideia ao nosso uso da tecnologia. Ele é o segredo para vivermos uma vida focada em um mundo cada vez mais caótico. <br /> <br />Neste livro oportuno e esclarecedor, o autor do best-seller Trabalho Focado apresenta uma filosofia para o uso de tecnologia que já melhorou inúmeras vidas. <br /> <br />Minimalistas digitais estão ao nosso redor. São pessoas tranquilas e felizes, que estendem longas conversas sem olhares furtivos para seus smartphones. Eles se perdem em um bom livro, em um projeto de carpintaria ou em uma corrida matinal sem pressa. Divertem-se com amigos e familiares sem o desejo obsessivo de documentar a experiência. Eles se informam sobre as notícias do dia, mas não se sentem oprimidos por elas. Não experimentam um \"medo de perder alguma coisa\", porque já sabem quais atividades concedem significado a suas vidas e lhes satisfazem. <br /> <br />Agora, Newport nomeia esse movimento silencioso e traz um argumento persuasivo para sua urgência em nosso mundo saturado de tecnologia. Dicas advindas do senso comum, como desativar as notificações, ou rituais esporádicos, como tirar férias do universo digital, não são suficientes para nos ajudar a retomar o controle de nossas vidas no que tange às tecnologias; e as tentativas de se afastar completamente são complicadas por cobranças de familiares, amigos e do trabalho. Diferentemente, precisamos de um método ponderado para decidir quais ferramentas usar, com quais objetivos e sob quais condições. <br /> <br />Com base em uma variedade diversificada de exemplos da vida real, de agricultores amish a pais aflitos e programadores do Vale do Silício, Newport identifica as práticas comuns de minimalistas digitais e as ideias que as respaldam. Ele mostra como os minimalistas digitais têm repensado sua relação com as mídias sociais, redescobrindo os prazeres do mundo offline e se reconectando a sua essência através de períodos regulares de solidão. Por fim, ele compartilha estratégias para integrar essas práticas em sua vida, iniciando com um processo de \"faxina digital\" de 30 dias que já ajudou milhares de pessoas a se sentirem menos sobrecarregadas e com maior controle de suas vidas. <br /> <br />A tecnologia não é inerentemente boa nem ruim. O segredo é usá-la para viabilizar seus objetivos e valores, em vez de deixá-la usar você. Este livro o ensina a fazer isso.",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/4462603306?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1716234700l/52208698._SY475_.jpg",
-    "num_pages": 220,
     "shelves": [
       "to-read"
     ]
