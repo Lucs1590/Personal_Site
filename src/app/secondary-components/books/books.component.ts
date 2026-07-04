@@ -52,17 +52,14 @@ export class BooksComponent implements OnInit, OnDestroy {
             const books = await firstValueFrom(this.apiService.fetchBooksFromLocal());
             this.books = books;
             if (this.books.length > 0) {
-                // Get all currently reading books
-                const currentlyReading = this.books.filter(book => book.shelves.includes('currently-reading'));
+                const currentlyReading = this.books.filter(book => book?.shelves?.includes('currently-reading'));
 
                 if (currentlyReading.length > 0) {
                     this.currentlyReadingBooks = currentlyReading;
-                    // Reset carousel index if it's out of bounds
                     if (this.currentCarouselIndex >= currentlyReading.length) {
                         this.currentCarouselIndex = 0;
                     }
                 } else {
-                    // Default placeholder if no books are currently being read
                     this.currentlyReadingBooks = [{
                         cover: 'assets/img/cover.png',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed nisl neque. Nulla at fermentum massa, eget egestas orci. Cras convallis enim ex, sit amet posuere diam maximus sed. Phasellus pharetra dui risus, vitae dapibus est placerat id. Nullam eget velit ex. Donec a feugiat libero. Maecenas condimentum lacus vitae arcu pulvinar, eu rhoncus dui tincidunt. Suspendisse nec libero sit amet velit finibus mollis. Pellentesque placerat porta dolor et mattis. Suspendisse quis metus at metus condimentum ultrices eget sed nunc.'
@@ -70,7 +67,7 @@ export class BooksComponent implements OnInit, OnDestroy {
                     this.currentCarouselIndex = 0;
                 }
 
-                this.readBooksOriginal = this.books.filter(book => book.shelves.includes('read'));
+                this.readBooksOriginal = this.books.filter(book => book?.shelves?.includes('read'));
                 this.filteredReadBooks = [...this.readBooksOriginal];
                 this.sortFiltered(this.currentSort);
             } else {

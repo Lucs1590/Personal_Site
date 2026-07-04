@@ -43,7 +43,7 @@ export class PortfolioComponent implements OnInit {
     try {
       const repositories = await firstValueFrom(this.apiService.getAllRepositories('Lucs1590'));
       this.repos = repositories
-        .sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime())
+        .sort((a, b) => (b.updateDate?.getTime() ?? 0) - (a.updateDate?.getTime() ?? 0))
         .filter(repo => !repo.private);
       this.filteredRepos = [...this.repos];
       this.tags = this.extractTags(this.repos);
@@ -152,7 +152,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   trackByRepoName(repo: Repository): string {
-    return repo.name;
+    return repo.name ?? '';
   }
 
   trackByTag(tag: string): string {

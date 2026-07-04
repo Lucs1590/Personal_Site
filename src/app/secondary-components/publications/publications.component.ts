@@ -126,7 +126,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit, OnDestroy {
     const parser = new DOMParser();
 
     this.sciPublications.forEach((publication) => {
-      const parsedDescription = parser.parseFromString(publication.description, 'text/html');
+      const desc = publication.description || '';
+      const parsedDescription = parser.parseFromString(desc, 'text/html');
       const sanitizedDescription = this.sanitizeHTML(parsedDescription.body.textContent || '');
       publication.description = sanitizedDescription.slice(0, 152) + '..</p>';
     });

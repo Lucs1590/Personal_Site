@@ -16,7 +16,7 @@ export class ProjectDetailComponent implements OnInit {
   private projectService = inject(ProjectService);
   private seoService = inject(SeoService);
 
-  project: Project;
+  project: Project | undefined;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

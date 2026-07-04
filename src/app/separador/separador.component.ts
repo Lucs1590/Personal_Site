@@ -14,7 +14,7 @@ import { PresentationsComponent } from '../secondary-components/presentations/pr
 export class SeparadorComponent implements OnInit {
   private seoService = inject(SeoService);
 
-  mobile: boolean;
+  mobile: boolean = false;
 
   ngOnInit() {
     this.mobile = window.innerWidth <= 991 ? true : false;

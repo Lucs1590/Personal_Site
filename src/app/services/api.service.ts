@@ -93,7 +93,7 @@ export class ApiService {
 
   getAllSciPublications(): Publication[] {
     const dataset = sciPublications?.map((subset) => new Publication().deserialize(subset));
-    return dataset.sort((a, b) => b.publicationDate.getTime() - a.publicationDate.getTime());
+    return dataset.sort((a, b) => (b.publicationDate?.getTime() ?? 0) - (a.publicationDate?.getTime() ?? 0));
   }
 
   getAllRepositories(username: string): Observable<Repository[]> {

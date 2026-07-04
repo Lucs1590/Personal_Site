@@ -25,7 +25,10 @@ export class DisableWhenOfflineDirective {
     if (this.isOffline) {
       event.preventDefault();
       event.stopPropagation();
-      new Modal(document.getElementById('offlineModal')).toggle();
+      const offlineModal = document.getElementById('offlineModal');
+      if (offlineModal) {
+        new Modal(offlineModal).toggle();
+      }
     }
   }
 }

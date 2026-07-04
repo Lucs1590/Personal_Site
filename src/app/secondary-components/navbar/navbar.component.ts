@@ -208,6 +208,6 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   trackByItemRef(index: number, item: MenuItem): string {
-    return item.ref.join('/');
+    return item.ref?.join('/') ?? '';
   }
 }

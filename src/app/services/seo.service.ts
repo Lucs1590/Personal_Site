@@ -39,7 +39,7 @@ export class SeoService {
     this.title.setTitle(pageMetadata.title);
 
     this.meta.updateTag({ name: 'description', content: pageMetadata.description });
-    this.meta.updateTag({ name: 'keywords', content: pageMetadata.keywords || this.defaultMetadata.keywords });
+    this.meta.updateTag({ name: 'keywords', content: pageMetadata.keywords || this.defaultMetadata.keywords || '' });
     this.meta.updateTag({ name: 'author', content: pageMetadata.author || this.defaultMetadata.author || '' });
 
     this.meta.updateTag({ property: 'og:title', content: pageMetadata.title });
