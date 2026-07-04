@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.10.0 (2026-07-04)
+
+### Feat
+
+- migrate ESLint configuration to eslint.config.js and update dependencies
+- add @types/bootstrap dependency
+
+### Fix
+
+- add baseUrl option to compilerOptions in tsconfig.json
+- update ESLint dependencies and remove unused Angular ESLint packages
+- initialize properties in Icon model and ensure safe deserialization
+
 ## v1.9.2 (2026-07-04)
 
 ### Fix
