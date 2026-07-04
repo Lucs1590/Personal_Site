@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v1.9.2 (2026-07-04)
+
+### Fix
+
+- add optional chaining to prevent errors when accessing repository properties
+- **tsconfig**: remove baseUrl and update exclude paths
+- add null checks and default values to prevent runtime errors
+- **fetch**: refactor book data fetching to combine currently reading and read books
+- **fetch**: update fetch options with user-agent and timeout settings
+- **workflow**: update cron syntax and enhance commit process for books data
+- update book title for clarity in books data
+- refine title parsing logic in deserializeBook function
+- remove empty books data JSON file
+- update file extension for books data from JSON to TypeScript
+
+## v1.9.1 (2026-04-04)
+
+### Fix
+
+- add missing require declaration in environment files for consistency
+- update subtitle subscription type for improved type safety
+- update ESLint configuration to use recommended settings for TypeScript and Angular
+
+### Refactor
+
+- remove unused RouterTestingModule import in PortfolioComponent test file
+- update component imports for consistency and cleaner code structure
+- remove unused AfterViewInit import in NotFoundComponent for cleaner code
+- update template syntax for improved readability and consistency across components
+- change variable declaration from let to const for link in CanonicalService
+- remove unused CORS_PROXY constant and routerSpy in tests for cleaner code
+- replace constructor dependency injection with inject() for improved readability and consistency
+
 ### [1.9.1](https://github.com/Lucs1590/Personal_Site/compare/v1.9.0...v1.9.1) (2026-04-04)
 
 
