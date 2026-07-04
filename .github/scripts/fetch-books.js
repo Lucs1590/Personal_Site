@@ -61,7 +61,16 @@ function fetchWithRetry(url, retries = 3, delay = 5000) {
     const makeRequest = (attempt) => {
       console.log(`Fetching books data (attempt ${attempt}/${retries})...`);
 
-      https.get(url, { timeout: 60000 }, (res) => {
+      const options = {
+        timeout: 30000,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/rdf+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.5'
+        }
+      };
+
+      https.get(url, options, (res) => {
         let data = '';
 
         if (res.statusCode !== 200) {
