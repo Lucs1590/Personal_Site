@@ -2,7 +2,9 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const BOOKS_API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz';
+const API_BASE_URL = 'https://www.goodreads.com/review/list_rss/143641038?key=hjn8cKI_JcIl70XJBRdZu3qKOZpa_4Osfp86sTjvuktrxGPz'
+const READING_BOOKS_API_BASE_URL = `${API_BASE_URL}&shelf=currently-reading`;
+const READ_BOOKS_API_BASE_URL = `${API_BASE_URL}&shelf=read`;
 const OUTPUT_PATH = path.join(__dirname, '../../src/assets/static_data/books.ts');
 
 const { XMLParser } = require('fast-xml-parser');
@@ -108,15 +110,21 @@ async function fetchAndSaveBooks() {
   try {
     console.log('Starting books data fetch...');
 
-    const xmlData = await fetchWithRetry(BOOKS_API_BASE_URL);
+    // Fetch currently reading books and read books and combine them
+    const [readingBooksData, readBooksData] = await Promise.all([
+      fetchWithRetry(READING_BOOKS_API_BASE_URL),
+      fetchWithRetry(READ_BOOKS_API_BASE_URL)
+    ]);
+
+    const combinedXmlData = `<rss><channel>${readingBooksData}</channel><channel>${readBooksData}</channel></rss>`;
 
     console.log('Parsing XML data...');
     const parser = new XMLParser();
-    const result = parser.parse(xmlData);
+    const result = parser.parse(combinedXmlData);
 
     const channel = result?.rss?.channel;
-    const channelObj = Array.isArray(channel) ? channel[0] : channel;
-    const itemsRaw = channelObj?.item;
+    const channelObj = Array.isArray(channel) ? channel.map(c => c?.rss?.channel) : channel;
+    const itemsRaw = channelObj.flatMap(c => c?.item || []);
     const items = itemsRaw ? (Array.isArray(itemsRaw) ? itemsRaw : [itemsRaw]) : [];
 
     console.log(`Found ${items.length} books`);
