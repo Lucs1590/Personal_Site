@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "esModuleInterop": true,
     "sourceMap": true,
@@ -25,6 +24,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "exclude": [
-    "e2e"
+    "e2e",
+    "dist"
   ]
 }
