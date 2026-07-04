@@ -90,7 +90,7 @@ export class PortfolioComponent implements OnInit {
     let filtered = [...this.repos];
 
     if (this.selectedTags.length > 0) {
-      filtered = filtered.filter(repo => this.selectedTags.every(tag => repo.topics.includes(tag)));
+      filtered = filtered.filter(repo => this.selectedTags.every(tag => repo?.topics?.includes(tag)));
     }
 
     if (this.searchQuery.trim()) {
@@ -118,9 +118,9 @@ export class PortfolioComponent implements OnInit {
   sortProjects(repos: Repository[], sortOption: string): Repository[] {
     switch (sortOption) {
       case 'date':
-        return repos.sort((a, b) => b.updateDate.getTime() - a.updateDate.getTime());
+        return repos.sort((a, b) => (b.updateDate?.getTime() ?? 0) - (a.updateDate?.getTime() ?? 0));
       case 'name':
-        return repos.sort((a, b) => a.name.localeCompare(b.name));
+        return repos.sort((a, b) => (a.name?.localeCompare(b.name ?? '') ?? 0));
       default:
         return repos;
     }
