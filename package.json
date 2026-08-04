@@ -61,7 +61,7 @@
     "@types/jasmine": "~6.0.0",
     "@types/jasminewd2": "~2.0.13",
     "@types/jest": "^30.0.0",
-    "@types/jquery": "^4.0.0",
+    "@types/jquery": "^4.0.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "^26.1.0",
     "angular-eslint": "21.3.1",
