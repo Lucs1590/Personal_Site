@@ -10,7 +10,7 @@
       class="btn btn-outline-secondary btn-sm theme-btn"
       (click)="toggleTheme()"
       [attr.aria-label]="(isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate">
-      <fa-icon [icon]="isLightTheme ? 'moon' : 'sun'" aria-hidden="true"></fa-icon>
+      <fa-icon [icon]="isLightTheme ? ['fas', 'moon'] : ['fas', 'sun']" aria-hidden="true"></fa-icon>
       <span class="visually-hidden">{{ (isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate }}</span>
     </button>
 
