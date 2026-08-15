@@ -34,14 +34,16 @@ export class ThemeService {
   private applyTheme(theme: ThemeName): void {
     this.currentTheme = theme;
     this.document.documentElement.setAttribute('data-theme', theme);
-    this.document.body.classList.remove('theme-dark', 'theme-light');
-    this.document.body.classList.add(`theme-${theme}`);
     this.persistTheme(theme);
   }
 
   private readStoredTheme(): ThemeName | null {
-    const stored = localStorage.getItem(this.storageKey);
-    return stored === 'dark' || stored === 'light' ? stored : null;
+    try {
+      const stored = localStorage.getItem(this.storageKey);
+      return stored === 'dark' || stored === 'light' ? stored : null;
+    } catch {
+      return null;
+    }
   }
 
   private persistTheme(theme: ThemeName): void {
