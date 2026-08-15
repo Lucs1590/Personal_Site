@@ -4,7 +4,7 @@
 a,
 button {
   font-family: var(--font-primary);
-  color: var(--color-white);
+  color: var(--color-page-text);
 }
 
 /* ============================
@@ -15,17 +15,18 @@ button {
   top: 0;
   z-index: 1000;
   padding: 0.5rem 0.75rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-soft);
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Glass / blur effect once the user has scrolled */
 .navbar-wrapper.nav-sticky {
-  /* Opaque fallback for browsers without backdrop-filter support */
-  background: rgba(30, 30, 30, 0.88);
+  background: var(--color-surface-strong);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-elevated);
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 /* Hide navbar when scrolling down */
@@ -46,6 +47,10 @@ button {
    Language button
    ============================ */
 .lang-btn {
+  flex-shrink: 0;
+}
+
+.theme-btn {
   flex-shrink: 0;
 }
 
@@ -114,7 +119,7 @@ button {
 }
 
 .hamburger-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-hover-bg);
 }
 
 .hamburger-btn:focus-visible {
@@ -126,7 +131,7 @@ button {
   display: block;
   width: 22px;
   height: 2px;
-  background-color: var(--color-white);
+  background-color: var(--color-page-text);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -166,7 +171,7 @@ button {
 }
 
 .mobile-menu li {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .mobile-nav-link {
@@ -181,12 +186,16 @@ button {
    Responsive – mobile breakpoint
    ============================ */
 @media (max-width: 991px) {
+  .theme-btn {
+    margin-left: auto;
+  }
+
   .nav-list {
     display: none;
   }
 
   .hamburger-btn {
     display: flex;
+    margin-left: 0;
   }
 }
-

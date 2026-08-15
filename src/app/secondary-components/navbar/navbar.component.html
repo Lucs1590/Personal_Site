@@ -5,6 +5,14 @@
     <button translate class="btn btn-outline-secondary btn-sm lang-btn" (click)="utilsService.useLanguage()"
       aria-label="Change Language">lang</button>
 
+    <!-- Theme toggle -->
+    <button
+      class="btn btn-outline-secondary btn-sm theme-btn"
+      (click)="toggleTheme()"
+      [attr.aria-label]="(isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate">
+      {{ (isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate }}
+    </button>
+
     <!-- Desktop navigation links -->
     <ul class="nav-list" role="list">
       @for (item of itemsList; track trackByItemRef($index, item)) {
