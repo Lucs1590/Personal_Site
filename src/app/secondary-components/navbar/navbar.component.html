@@ -18,9 +18,9 @@
     <ul class="nav-list" role="list">
       @for (item of itemsList; track trackByItemRef($index, item)) {
       <li role="listitem">
-        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
-          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav" (click)="closeMenu()">
-          {{item.name | async}}
+        <a translate [routerLink]="item?.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item?.ref) ? 'page' : null" class="itemnav" (click)="closeMenu()">
+          {{item?.name | async}}
         </a>
       </li>
       }
@@ -42,10 +42,10 @@
     <ul role="list">
       @for (item of itemsList; track trackByItemRef($index, item)) {
       <li role="listitem">
-        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
-          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav mobile-nav-link"
+        <a translate [routerLink]="item?.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item?.ref) ? 'page' : null" class="itemnav mobile-nav-link"
           (click)="closeMenu()">
-          {{item.name | async}}
+          {{item?.name | async}}
         </a>
       </li>
       }
