@@ -40,8 +40,12 @@ export class ThemeService {
   }
 
   private readStoredTheme(): ThemeName | null {
-    const stored = localStorage.getItem(this.storageKey);
-    return stored === 'dark' || stored === 'light' ? stored : null;
+    try {
+      const stored = localStorage.getItem(this.storageKey);
+      return stored === 'dark' || stored === 'light' ? stored : null;
+    } catch {
+      return null;
+    }
   }
 
   private persistTheme(theme: ThemeName): void {
