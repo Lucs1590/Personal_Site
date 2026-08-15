@@ -6,13 +6,14 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { MenuItem } from 'src/app/models/menu-item.model';
 import { AsyncPipe } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateDirective, TranslatePipe, RouterLink, RouterLinkActive, AsyncPipe]
+  imports: [TranslateDirective, TranslatePipe, RouterLink, RouterLinkActive, AsyncPipe, FaIconComponent]
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   utilsService = inject(UtilsService);

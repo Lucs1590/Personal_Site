@@ -52,6 +52,14 @@ button {
 
 .theme-btn {
   flex-shrink: 0;
+  width: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn fa-icon {
+  font-size: 0.95rem;
 }
 
 /* ============================

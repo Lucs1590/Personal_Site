@@ -259,8 +259,8 @@ a.disabled {
 }
 
 .filter-select option {
-    background-color: #2a2a2a;
-    color: var(--color-white);
+    background-color: var(--color-surface-strong);
+    color: var(--color-page-text);
 }
 
 /* Responsive Design */
