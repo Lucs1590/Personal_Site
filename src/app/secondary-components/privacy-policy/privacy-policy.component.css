@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5 {
 p {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
-    color: white;
+    color: var(--color-page-text);
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
@@ -35,4 +35,8 @@ a:visited {
 
 .privacy-policy-section {
     margin-bottom: 2rem;
+}
+
+[data-theme='light'] .privacy-policy-container {
+    background-color: var(--color-surface);
 }

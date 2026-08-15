@@ -252,3 +252,27 @@
         font-size: 1.4rem;
     }
 }
+
+[data-theme='light'] .contact-description {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] .info-label {
+    color: rgba(0, 0, 0, 0.52);
+}
+
+[data-theme='light'] .form-label {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme='light'] .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .required-note {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+[data-theme='light'] .success-description {
+    color: rgba(0, 0, 0, 0.7);
+}

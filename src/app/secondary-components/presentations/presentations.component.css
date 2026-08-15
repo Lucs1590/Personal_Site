@@ -271,3 +271,23 @@
         padding: 1rem;
     }
 }
+
+[data-theme='light'] .presentations-page-description {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] .card-meta {
+    color: rgba(0, 0, 0, 0.58);
+}
+
+[data-theme='light'] .card-title {
+    color: rgba(0, 0, 0, 0.88);
+}
+
+[data-theme='light'] .card-description {
+    color: rgba(0, 0, 0, 0.74);
+}
+
+[data-theme='light'] .card-visibility--private {
+    color: rgba(0, 0, 0, 0.58);
+}

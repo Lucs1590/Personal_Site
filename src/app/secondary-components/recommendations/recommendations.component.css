@@ -196,3 +196,38 @@ a.author-name:focus {
         padding: 1rem;
     }
 }
+
+[data-theme='light'] .card-quote-icon {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .card-text {
+    color: rgba(0, 0, 0, 0.82);
+}
+
+[data-theme='light'] .read-more-btn {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='light'] .read-more-btn:hover,
+[data-theme='light'] .read-more-btn:focus {
+    color: rgba(0, 0, 0, 0.9);
+    outline-color: rgba(0, 0, 0, 0.32);
+}
+
+[data-theme='light'] .author-name {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+[data-theme='light'] a.author-name:hover,
+[data-theme='light'] a.author-name:focus {
+    color: rgba(0, 0, 0, 0.98);
+}
+
+[data-theme='light'] .author-role {
+    color: rgba(0, 0, 0, 0.62);
+}
+
+[data-theme='light'] .author-relationship {
+    color: rgba(0, 0, 0, 0.48);
+}
