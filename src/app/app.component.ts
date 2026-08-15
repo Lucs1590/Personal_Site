@@ -21,8 +21,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  async ngOnInit(): Promise<void> {
+  constructor() {
     this.themeService.initializeTheme();
+  }
+
+  async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();
     this.seoService.initializeDefaultMetadata();
     this.setupCanonicalUrlUpdates();
