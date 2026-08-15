@@ -194,7 +194,7 @@ export const books = [
   {
     "author": "Carlos Drummond de Andrade",
     "title": "Receita de Ano Novo",
-    "description": "Mais um sucesso imediato para o Natal e as festas de fim de ano. Nesta antologia, organizada por Pedro e Luis Mauricio Drummond, estão reunidos os melhores textos de Drummond sobre festas de fim de ano, o espírito natalino e a esperança que todos temos de um próspero ano novo. <br />Em poemas bem-humorados e cheios de alegria, melancólicos ou reflexivos, está o melhor do poeta mineiro e sua visão sobre um período do ano em que rimos e choramos.",
+    "description": "Mais um sucesso imediato para o Natal e as festas de fim de ano. Nesta antologia, organizada por Pedro e Luis Mauricio Drummond, estão reunidos os melhores textos de Drummond sobre festas de fim de ano, o esp��rito natalino e a esperança que todos temos de um próspero ano novo. <br />Em poemas bem-humorados e cheios de alegria, melancólicos ou reflexivos, está o melhor do poeta mineiro e sua visão sobre um período do ano em que rimos e choramos.",
     "rating": 5,
     "user_read_at": "2026-02-01T00:00:00.000Z",
     "user_review": "PT-BR<br />Bom, breve e belo. Gostei muito de ler esse livro para aprender mais sobre o estilo literário do autor e pela época do ano, que muito convém. Gostei de refletir sobre o que o livro nos trás e sobre toda brasilidade envolvida no ano que há de raiar.<br />------------<br />EN<br />Good, brief, and beautiful. I really enjoyed reading this book to learn more about the author’s literary style and also because of the time of year, which suits it perfectly. I liked reflecting on what the book brings to us and on all the Brazilianness involved in the year that is about to dawn.",
