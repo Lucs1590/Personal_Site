@@ -34,8 +34,6 @@ export class ThemeService {
   private applyTheme(theme: ThemeName): void {
     this.currentTheme = theme;
     this.document.documentElement.setAttribute('data-theme', theme);
-    this.document.body.classList.remove('theme-dark', 'theme-light');
-    this.document.body.classList.add(`theme-${theme}`);
     this.persistTheme(theme);
   }
 
