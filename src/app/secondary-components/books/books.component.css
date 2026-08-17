@@ -17,7 +17,8 @@ body {
 /* SEÇÃO SUPERIOR     */
 /* ======================= */
 .top-section {
-    background: var(--color-white);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border-soft);
     border-radius: 20px;
     padding: 2rem 3rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
@@ -41,7 +42,7 @@ body {
 .logo {
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    color: #333;
+    color: var(--color-page-text);
     letter-spacing: 1px;
     margin: 0;
 }
@@ -94,7 +95,7 @@ body {
     font-family: var(--font-display);
     font-size: 2.25rem;
     line-height: 1.1;
-    color: #333;
+    color: var(--color-page-text);
     margin: 0;
     padding-top: 1rem;
 }
@@ -102,7 +103,7 @@ body {
 .book-progress-info {
     margin-top: 1rem;
     padding: 0.75rem 1rem;
-    background-color: #f7f3ed;
+    background-color: var(--color-surface);
     border-radius: 8px;
     border-left: 4px solid var(--color-primary, #e67e22);
 }
@@ -110,7 +111,7 @@ body {
 .book-progress-info .pages-info {
     font-family: var(--font-primary);
     font-size: 1rem;
-    color: #555;
+    color: var(--color-text-muted);
     font-weight: 600;
 }
 
@@ -134,7 +135,7 @@ body {
     border: 1px solid var(--color-text-light, #ddd);
     font-family: var(--font-primary);
     font-size: 0.9rem;
-    background-color: #fcfcfc;
+    background-color: var(--color-surface);
 }
 
 /* Coluna 2: Livro */
@@ -199,7 +200,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: var(--color-border);
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -212,7 +213,7 @@ body {
 }
 
 .carousel-indicators .indicator:hover {
-    background-color: #999;
+    background-color: var(--color-text-gray);
 }
 
 .current-book-display::after {
@@ -245,7 +246,7 @@ body {
     font-family: 'Merriweather', 'Georgia', serif;
     font-size: 0.9rem;
     line-height: 1.7;
-    color: #555;
+    color: var(--color-text-muted);
     max-height: 22rem;
     overflow-y: auto;
     padding-right: 5px;
@@ -309,7 +310,8 @@ body {
 /* SEÇÃO INFERIOR          */
 /* ======================= */
 .bottom-section {
-    background: var(--color-white);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border-soft);
     padding: 2rem 3rem;
     margin-top: -10px;
     position: relative;
@@ -362,13 +364,13 @@ body {
 }
 
 .book-cover-wrapper::before {
-    background: #EAE2D8;
+    background: var(--color-bg-darker);
     transform: translate(6px, 6px);
     z-index: 3;
 }
 
 .book-cover-wrapper::after {
-    background: #F9F5F0;
+    background: var(--color-surface);
     transform: translate(3px, 3px);
     z-index: 4;
 }
@@ -460,7 +462,7 @@ body {
     font-family: var(--font-primary);
     font-weight: 700;
     font-size: 1rem;
-    color: #333;
+    color: var(--color-page-text);
     margin: 0 0 0.25rem;
     white-space: nowrap;
     overflow: hidden;
@@ -510,7 +512,7 @@ body {
     border: 1px solid var(--color-text-light, #ddd);
     font-family: var(--font-primary);
     font-size: 0.9rem;
-    background-color: #fcfcfc;
+    background-color: var(--color-surface);
 }
 
 .filters .search-bar {
@@ -535,7 +537,7 @@ body {
     border: 1px solid var(--color-text-light, #ddd);
     font-family: var(--font-primary);
     font-size: 0.9rem;
-    background-color: #fcfcfc;
+    background-color: var(--color-surface);
 }
 
 .checkbox-control {
@@ -684,7 +686,7 @@ body {
         font-family: var(--font-display);
         font-size: 1.5rem;
         font-weight: 600;
-        color: #333;
+        color: var(--color-page-text);
         display: block;
         text-align: center;
         margin-bottom: 0.5rem;

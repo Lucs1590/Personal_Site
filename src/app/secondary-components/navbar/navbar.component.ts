@@ -1,20 +1,23 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { TranslateService, TranslateDirective } from '@ngx-translate/core';
+import { TranslateService, TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 import { firstValueFrom, Subject, takeUntil } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { MenuItem } from 'src/app/models/menu-item.model';
 import { AsyncPipe } from '@angular/common';
+import { ThemeService } from 'src/app/services/theme.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateDirective, RouterLink, RouterLinkActive, AsyncPipe]
+  imports: [TranslateDirective, TranslatePipe, RouterLink, RouterLinkActive, AsyncPipe, FaIconComponent]
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   utilsService = inject(UtilsService);
+  themeService = inject(ThemeService);
   private translate = inject(TranslateService);
   private router = inject(Router);
   private el = inject(ElementRef);
@@ -22,6 +25,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private cdr = inject(ChangeDetectorRef);
 
   mobile = false;
+  private allItems: MenuItem[] = [];
   itemsList: MenuItem[] = [];
   menuOpen = false;
   isNavHidden = false;
@@ -44,6 +48,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
+    this.mobile = window.innerWidth <= 991;
     this.refreshMenu();
     await this.utilsService.setLanguage();
     this.refreshMenu();
@@ -92,6 +97,15 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     this.cdr.markForCheck();
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+    this.cdr.markForCheck();
+  }
+
+  get isLightTheme(): boolean {
+    return this.themeService.currentTheme === 'light';
   }
 
   closeMenu(): void {
@@ -148,7 +162,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private defineMenu(): void {
-    this.itemsList = [
+    this.allItems = [
       {
         name: firstValueFrom(this.translate.get('nav.home')),
         ref: ['/home'],
@@ -189,10 +203,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private filterItems(): void {
-    if (!this.itemsList) return;
+    if (!this.allItems.length) return;
     this.itemsList = this.mobile
-      ? this.itemsList.filter(item => item.mobile)
-      : this.itemsList.filter(item => item.desktop);
+      ? this.allItems.filter(item => item.mobile)
+      : this.allItems.filter(item => item.desktop);
   }
 
   isActive(route: string[]): boolean {

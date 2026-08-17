@@ -8,6 +8,14 @@
     --color-bg-dark: rgba(40, 40, 40, 0.7);
     --color-bg-darker: rgba(50, 50, 50, 0.8);
     --color-border: #555;
+    --color-page-bg: #111111;
+    --color-page-text: #f5f5f5;
+    --color-surface: rgba(30, 30, 30, 0.7);
+    --color-surface-strong: rgba(30, 30, 30, 0.88);
+    --color-border-soft: rgba(255, 255, 255, 0.1);
+    --color-text-muted: rgba(255, 255, 255, 0.65);
+    --color-hover-bg: rgba(255, 255, 255, 0.1);
+    --shadow-elevated: 0 2px 16px rgba(0, 0, 0, 0.35);
     --font-primary: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     --font-heading: 'Anton', 'Poppins', sans-serif;
     --font-display: 'Montserrat', 'Anton', 'Poppins', sans-serif;
@@ -15,8 +23,34 @@
     --transition-medium: 0.5s ease;
 }
 
-* {
-    padding: 0;
+[data-theme='light'] {
+    --color-white: #1a1a1a;
+    --color-text-light: #3f3f3f;
+    --color-text-gray: #535353;
+    --color-text-dark-gray: #676767;
+    --color-bg-dark: rgba(245, 245, 245, 0.95);
+    --color-bg-darker: rgba(230, 230, 230, 0.95);
+    --color-border: #d5d5d5;
+    --color-page-bg: #f6f7fb;
+    --color-page-text: #161616;
+    --color-surface: rgba(255, 255, 255, 0.88);
+    --color-surface-strong: rgba(255, 255, 255, 0.96);
+    --color-border-soft: rgba(0, 0, 0, 0.12);
+    --color-text-muted: rgba(0, 0, 0, 0.7);
+    --color-hover-bg: rgba(0, 0, 0, 0.08);
+    --shadow-elevated: 0 2px 16px rgba(0, 0, 0, 0.14);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
     margin: 0;
 }
 
@@ -24,6 +58,32 @@ html,
 body {
     height: 100%;
     overflow-x: hidden;
+}
+
+body {
+    background-color: var(--color-page-bg);
+    color: var(--color-page-text);
+    font-family: var(--font-primary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+[data-theme='light'] .bg-dark {
+    background-color: var(--color-surface) !important;
+}
+
+[data-theme='light'] .text-white,
+[data-theme='light'] .text-light {
+    color: var(--color-page-text) !important;
+}
+
+[data-theme='light'] .btn-outline-secondary {
+    color: var(--color-page-text);
+    border-color: var(--color-border);
+}
+
+[data-theme='light'] .btn-outline-secondary:hover {
+    background: var(--color-hover-bg);
+    color: var(--color-page-text);
 }
 
 @media (prefers-reduced-motion: reduce) {

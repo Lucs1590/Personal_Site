@@ -5,13 +5,22 @@
     <button translate class="btn btn-outline-secondary btn-sm lang-btn" (click)="utilsService.useLanguage()"
       aria-label="Change Language">lang</button>
 
+    <!-- Theme toggle -->
+    <button
+      class="btn btn-outline-secondary btn-sm theme-btn"
+      (click)="toggleTheme()"
+      [attr.aria-label]="(isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate">
+      <fa-icon [icon]="isLightTheme ? ['fas', 'moon'] : ['fas', 'sun']" aria-hidden="true"></fa-icon>
+      <span class="visually-hidden">{{ (isLightTheme ? 'nav.theme_dark' : 'nav.theme_light') | translate }}</span>
+    </button>
+
     <!-- Desktop navigation links -->
     <ul class="nav-list" role="list">
       @for (item of itemsList; track trackByItemRef($index, item)) {
       <li role="listitem">
-        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
-          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav" (click)="closeMenu()">
-          {{item.name | async}}
+        <a translate [routerLink]="item?.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item?.ref) ? 'page' : null" class="itemnav" (click)="closeMenu()">
+          {{item?.name | async}}
         </a>
       </li>
       }
@@ -33,10 +42,10 @@
     <ul role="list">
       @for (item of itemsList; track trackByItemRef($index, item)) {
       <li role="listitem">
-        <a translate [routerLink]="item.ref" [routerLinkActive]="'active-page'"
-          [attr.aria-current]="isActive(item.ref) ? 'page' : null" class="itemnav mobile-nav-link"
+        <a translate [routerLink]="item?.ref" [routerLinkActive]="'active-page'"
+          [attr.aria-current]="isActive(item?.ref) ? 'page' : null" class="itemnav mobile-nav-link"
           (click)="closeMenu()">
-          {{item.name | async}}
+          {{item?.name | async}}
         </a>
       </li>
       }

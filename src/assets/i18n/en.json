@@ -20,7 +20,9 @@
     "books": "Books",
     "privacy_policy": "Privacy Policy",
     "presentations": "Presentations",
-    "contact": "Contact"
+    "contact": "Contact",
+    "theme_light": "Light mode",
+    "theme_dark": "Dark mode"
   },
   "not_found": {
     "sub": "Something went wrong...",

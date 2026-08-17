@@ -6,6 +6,7 @@ import { Renderer2 } from '@angular/core';
 
 import { NavbarComponent } from './navbar.component';
 import { UtilsService } from 'src/app/services/utils.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 function simulateKeyboardClick(element: HTMLElement, key = 'Enter'): void {
   element.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
@@ -16,12 +17,18 @@ describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
   let mockUtilsService: jasmine.SpyObj<UtilsService>;
+  let mockThemeService: jasmine.SpyObj<ThemeService>;
 
   beforeEach(async () => {
     mockUtilsService = jasmine.createSpyObj<UtilsService>(
       'UtilsService',
       { setLanguage: Promise.resolve(), useLanguage: undefined },
       { currentLang: 'en' }
+    );
+    mockThemeService = jasmine.createSpyObj<ThemeService>(
+      'ThemeService',
+      { toggleTheme: undefined },
+      { currentTheme: 'dark' }
     );
 
     await TestBed.configureTestingModule({
@@ -36,7 +43,8 @@ describe('NavbarComponent', () => {
         NavbarComponent
       ],
       providers: [
-        { provide: UtilsService, useValue: mockUtilsService }
+        { provide: UtilsService, useValue: mockUtilsService },
+        { provide: ThemeService, useValue: mockThemeService }
       ]
     })
       .compileComponents();

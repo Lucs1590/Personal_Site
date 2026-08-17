@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { CanonicalService } from './services/canonical.service';
 import { SeoService } from './services/seo.service';
 import { Subject, takeUntil } from 'rxjs';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,13 @@ export class AppComponent implements OnInit, OnDestroy {
   private canonicalService = inject(CanonicalService);
   private utilsService = inject(UtilsService);
   private seoService = inject(SeoService);
+  private themeService = inject(ThemeService);
 
   private readonly destroy$ = new Subject<void>();
+
+  constructor() {
+    this.themeService.initializeTheme();
+  }
 
   async ngOnInit(): Promise<void> {
     await this.utilsService.setLanguage();

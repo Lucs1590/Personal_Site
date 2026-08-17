@@ -20,7 +20,9 @@
     "books": "Livros",
     "privacy_policy": "Política de Privacidade",
     "presentations": "Apresentações",
-    "contact": "Contato"
+    "contact": "Contato",
+    "theme_light": "Modo claro",
+    "theme_dark": "Modo escuro"
   },
   "not_found": {
     "sub": "Ops...",

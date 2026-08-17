@@ -46,24 +46,24 @@
             <div class="row">
                 @for (repo of filteredRepos; track trackByRepoName(repo)) {
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card project-card" (mouseover)="showProjectInfo(repo.name)"
-                        (mouseout)="hideProjectInfo(repo.name)">
+                    <div class="card project-card" (mouseover)="showProjectInfo(repo?.name)"
+                        (mouseout)="hideProjectInfo(repo?.name)">
                         @if (repo.imageUrl) {
-                        <img [src]="repo.imageUrl" class="card-img-top" [alt]="repo.name">
+                        <img [src]="repo?.imageUrl" class="card-img-top" [alt]="repo?.name">
                         }
                         <div class="card-body">
                             <h5 class="card-title">{{ repo.name }}</h5>
-                            <p class="card-text">{{ repo.description }}</p>
+                            <p class="card-text">{{ repo?.description }}</p>
                             <div class="tags">
-                                @for (tag of repo.topics; track trackByTag($index, tag)) {
+                                @for (tag of repo?.topics; track trackByTag($index)) {
                                 <span class="badge bg-primary text-light me-1">
                                     {{ tag }}
                                 </span>
                                 }
                             </div>
-                            <div class="additional-info" [ngClass]="{'d-none': !repo.showInfo}">
-                                <p>Status: {{ repo.status }}</p>
-                                <p>Key Features: {{ repo.keyFeatures }}</p>
+                            <div class="additional-info" [ngClass]="{'d-none': !repo?.showInfo}">
+                                <p>Status: {{ repo?.status }}</p>
+                                <p>Key Features: {{ repo?.keyFeatures }}</p>
                             </div>
                             <a [routerLink]="['/portfolio', 1]" class="btn btn-outline-primary mt-3">
                                 View Details

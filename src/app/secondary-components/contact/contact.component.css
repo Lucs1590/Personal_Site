@@ -14,7 +14,7 @@
 .contact-description {
     font-size: 1rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-text-muted);
     margin-bottom: 2.5rem;
     max-width: 640px;
 }
@@ -74,7 +74,7 @@
 .info-label {
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -95,8 +95,8 @@
 
 /* ── Form column ── */
 .contact-form-wrapper {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border-soft);
     border-radius: 0.75rem;
     padding: 2rem;
 }
@@ -109,7 +109,7 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-light);
     margin-bottom: 0.5rem;
     letter-spacing: 0.02em;
 }
@@ -121,8 +121,8 @@
 
 .form-control {
     width: 100%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border-soft);
     border-radius: 0.5rem;
     color: var(--color-white);
     font-size: 0.9rem;
@@ -132,7 +132,7 @@
 }
 
 .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(0, 0, var(--color-text-muted), 0.7);
 }
 
 .form-control:focus {
@@ -165,7 +165,7 @@
 
 .required-note {
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--color-text-muted);
     margin-bottom: 1.5rem;
 }
 
@@ -223,7 +223,7 @@
 
 .success-description {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-text-muted);
     line-height: 1.7;
     max-width: 420px;
 }

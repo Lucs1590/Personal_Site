@@ -9,7 +9,7 @@ registerLocaleData(localePt, 'pt');
 registerLocaleData(localePt, 'pt-BR');
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faInfoCircle, faCalendar, faLink, faBookOpen, faFilePdf, faBookmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faCalendar, faLink, faBookOpen, faFilePdf, faBookmark, faEnvelope, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faMedium, faDev, faResearchgate, faStackOverflow, faTwitter, faLinkedin, faInstagram, faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -120,6 +120,8 @@ export class AppModule {
       faFilePdf,
       faBookmark,
       faEnvelope,
+      faMoon,
+      faSun,
       faGithub,
       faMedium,
       faDev,
