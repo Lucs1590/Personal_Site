@@ -1,5 +1,5 @@
 a.disabled {
-    color: gray !important;
+    color: var(--color-text-muted) !important;
     cursor: not-allowed;
     text-decoration: underline;
     animation: none !important;
@@ -25,5 +25,5 @@ a.disabled {
 .icon:hover {
     transform: scale(1.25);
     transition-duration: 0.5s;
-    color: #E69C24 !important;
+    color: var(--color-primary) !important;
 }

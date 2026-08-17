@@ -1,8 +1,9 @@
 
 #welcome{
     position: absolute;
-    background-color: #ddd;
-    border: 1px solid green;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-secondary);
     padding: 20px;
     font-size: 20px;
+    color: var(--color-page-text);
   }

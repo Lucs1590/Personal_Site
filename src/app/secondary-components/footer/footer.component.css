@@ -61,7 +61,7 @@ footer {
 .footer-social-link:hover,
 .footer-social-link:focus-visible {
   color: var(--color-primary);
-  background: rgba(230, 156, 36, 0.12);
+  background: var(--color-primary-soft);
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -81,7 +81,7 @@ footer {
   min-height: 36px;
   padding: 0.25rem 0.4rem;
   border-radius: 4px;
-  text-decoration: underline 0.2rem rgba(0, 0, 0, 0);
+  text-decoration: underline 0.2rem transparent;
   transition: text-decoration-color 600ms, color 300ms;
 }
 
