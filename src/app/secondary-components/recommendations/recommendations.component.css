@@ -145,7 +145,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--color-border-soft);
+    border-color: var(--color-border-soft);
     color: var(--color-text-muted);
     font-size: 1.25rem;
     font-weight: 600;
