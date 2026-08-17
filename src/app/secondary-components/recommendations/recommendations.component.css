@@ -40,8 +40,8 @@
 .recommendation-card {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border-soft);
     border-radius: 0.75rem;
     padding: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -53,7 +53,7 @@
 .recommendation-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--color-border-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -83,7 +83,7 @@
 .card-quote-icon {
     font-size: 3rem;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--color-border-soft);
     margin-bottom: 0.5rem;
     font-family: Georgia, serif;
 }
@@ -93,7 +93,7 @@
     flex: 1;
     font-size: 0.9rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-muted);
     margin-bottom: 0.75rem;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -104,7 +104,7 @@
     background: none;
     border: none;
     padding: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-text-muted);
     font-size: 0.8rem;
     cursor: pointer;
     text-decoration: underline;
@@ -114,8 +114,8 @@
 
 .read-more-btn:hover,
 .read-more-btn:focus {
-    color: rgba(255, 255, 255, 0.9);
-    outline: 2px solid rgba(255, 255, 255, 0.4);
+    color: var(--color-hover-bg);
+    outline: 2px solid var(--color-hover-bg);
     outline-offset: 2px;
     border-radius: 2px;
 }
@@ -127,7 +127,7 @@
     gap: 0.75rem;
     margin-top: auto;
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border-soft);
     background: transparent;
 }
 
@@ -138,7 +138,7 @@
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--color-border-soft);
 }
 
 .author-avatar--fallback {
@@ -146,7 +146,7 @@
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-muted);
     font-size: 1.25rem;
     font-weight: 600;
 }
@@ -161,7 +161,7 @@
 .author-name {
     font-size: 0.9rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--color-text-light);
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -171,12 +171,12 @@
 a.author-name:hover,
 a.author-name:focus {
     text-decoration: underline;
-    color: #fff;
+    color: var(--color-white);
 }
 
 .author-role {
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--color-text-light);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -184,7 +184,7 @@ a.author-name:focus {
 
 .author-relationship {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--color-text-muted);
     font-style: italic;
     white-space: nowrap;
     overflow: hidden;
@@ -195,39 +195,4 @@ a.author-name:focus {
     .recommendation-card {
         padding: 1rem;
     }
-}
-
-[data-theme='light'] .card-quote-icon {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-[data-theme='light'] .card-text {
-    color: rgba(0, 0, 0, 0.82);
-}
-
-[data-theme='light'] .read-more-btn {
-    color: rgba(0, 0, 0, 0.6);
-}
-
-[data-theme='light'] .read-more-btn:hover,
-[data-theme='light'] .read-more-btn:focus {
-    color: rgba(0, 0, 0, 0.9);
-    outline-color: rgba(0, 0, 0, 0.32);
-}
-
-[data-theme='light'] .author-name {
-    color: rgba(0, 0, 0, 0.9);
-}
-
-[data-theme='light'] a.author-name:hover,
-[data-theme='light'] a.author-name:focus {
-    color: rgba(0, 0, 0, 0.98);
-}
-
-[data-theme='light'] .author-role {
-    color: rgba(0, 0, 0, 0.62);
-}
-
-[data-theme='light'] .author-relationship {
-    color: rgba(0, 0, 0, 0.48);
 }
