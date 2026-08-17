@@ -113,7 +113,7 @@ a.disabled {
 }
 
 .title-link {
-    color: var(--color-white);
+    color: var(--color-text-light);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -243,7 +243,6 @@ a.disabled {
 
 .filter-select {
     background-color: var(--color-bg-dark);
-    color: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: 0.5rem 1rem;
@@ -253,7 +252,6 @@ a.disabled {
 
 .filter-select:focus {
     background-color: var(--color-bg-darker);
-    color: var(--color-white);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.25);
 }
