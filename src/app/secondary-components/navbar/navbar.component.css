@@ -46,11 +46,13 @@ button {
    ============================ */
 .lang-btn {
   flex-shrink: 0;
+  height: 2rem;
 }
 
 .theme-btn {
   flex-shrink: 0;
   width: 2.5rem;
+  height: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
