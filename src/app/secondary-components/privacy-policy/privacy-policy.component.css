@@ -17,19 +17,19 @@ a {
     text-decoration: none;
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
-    color: #E69C24;
+    color: var(--color-primary);
 }
 
 a:visited {
     font-family: 'Open Sans', 'Roboto Condensed', 'Lato', sans-serif;
     font-weight: 300;
-    color: #E69C24;
+    color: var(--color-primary);
 }
 
 /* Define any additional styles needed for the component */
 .privacy-policy-container {
     padding: 2rem;
-    background-color: #333;
+    background-color: var(--color-surface-strong);
     border-radius: 0.5rem;
 }
 

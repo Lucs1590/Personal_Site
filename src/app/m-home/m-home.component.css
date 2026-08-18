@@ -31,7 +31,7 @@ h5 {
 
 hr {
     width: 5rem;
-    border-top: 0.35rem solid rgba(255, 255, 255, 0.6);
+    border-top: 0.35rem solid var(--color-border-soft);
     margin-bottom: 2rem;
 }
 
@@ -75,7 +75,7 @@ a:visited {
     clip-path: polygon(0 0, 100% 0, 100% 55%, 0 55%);
     transform: translate(-0.02em, -0.01em);
     opacity: 0.9;
-    text-shadow: 1.5px 0 0 rgba(255, 0, 0, 0.85);
+    text-shadow: 1.5px 0 0 rgba(var(--color-accent-rgb), 0.85);
     transform-origin: center;
     animation: layerChroma1 520ms linear infinite;
     mix-blend-mode: screen;
@@ -92,7 +92,7 @@ a:visited {
     clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
     transform: translate(0.01em, 0.02em);
     opacity: 0.9;
-    text-shadow: -1.5px 0 0 rgba(0, 0, 255, 0.85);
+    text-shadow: -1.5px 0 0 rgba(var(--color-primary-rgb), 0.85);
     transform-origin: center;
     animation: layerChroma2 520ms linear infinite;
     mix-blend-mode: screen;
@@ -149,7 +149,7 @@ a:visited {
 @keyframes layerChroma1 {
     0% {
         transform: translateX(-0.6px) translateY(-0.2px) skewX(-0.2deg);
-        text-shadow: 1.5px 0 0 rgba(255, 0, 0, 0.85);
+        text-shadow: 1.5px 0 0 rgba(var(--color-accent-rgb), 0.85);
         opacity: 0.95;
     }
 
@@ -177,7 +177,7 @@ a:visited {
 @keyframes layerChroma2 {
     0% {
         transform: translateX(0.6px) translateY(0.2px) skewX(0.2deg);
-        text-shadow: -1.5px 0 0 rgba(0, 0, 255, 0.85);
+        text-shadow: -1.5px 0 0 rgba(var(--color-primary-rgb), 0.85);
         opacity: 0.95;
     }
 

@@ -4,13 +4,14 @@ h2 {
 }
 
 a.disabled {
-    color: gray;
+    color: var(--color-text-muted);
     cursor: not-allowed;
     text-decoration: underline;
 }
 
 .new-info-alert {
-    background-color: #C3CAD2;
+    background-color: var(--color-secondary-soft);
+    border: 1px solid var(--color-border-secondary);
     min-height: 3rem;
     vertical-align: middle;
     display: flex;
@@ -79,7 +80,7 @@ a.disabled {
 }
 
 .publication-card {
-    background-color: var(--color-bg-dark);
+    background-color: var(--color-surface);
     border-left: 4px solid var(--color-primary);
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -91,7 +92,7 @@ a.disabled {
 }
 
 .publication-card:hover {
-    background-color: var(--color-bg-darker);
+    background-color: var(--color-surface-hover);
     box-shadow: 0 4px 16px rgba(var(--color-primary-rgb), 0.2);
     transform: translateY(-2px);
 }
@@ -153,33 +154,33 @@ a.disabled {
 }
 
 .type-conference {
-    background-color: rgba(52, 152, 219, 0.2);
-    color: #5dade2;
-    border: 1px solid rgba(52, 152, 219, 0.5);
+    background-color: var(--color-secondary-soft);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-border-secondary);
 }
 
 .type-journal {
-    background-color: rgba(46, 204, 113, 0.2);
-    color: #58d68d;
-    border: 1px solid rgba(46, 204, 113, 0.5);
+    background-color: var(--color-highlight-soft);
+    color: var(--color-highlight);
+    border: 1px solid var(--color-border-highlight);
 }
 
 .type-preprint {
-    background-color: rgba(241, 196, 15, 0.2);
-    color: #f4d03f;
-    border: 1px solid rgba(241, 196, 15, 0.5);
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border-primary);
 }
 
 .type-thesis {
-    background-color: rgba(155, 89, 182, 0.2);
-    color: #af7ac5;
-    border: 1px solid rgba(155, 89, 182, 0.5);
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+    border: 1px solid var(--color-border-accent);
 }
 
 .type-dataset {
-    background-color: rgba(230, 126, 34, 0.2);
-    color: #eb984e;
-    border: 1px solid rgba(230, 126, 34, 0.5);
+    background-color: var(--color-secondary-soft);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-border-secondary);
 }
 
 .type-blog {
@@ -217,7 +218,7 @@ a.disabled {
 
 .pub-link-btn:hover {
     background-color: var(--color-primary);
-    color: #1a1a1a;
+    color: var(--color-dark);
     transform: translateY(-1px);
 }
 
@@ -242,7 +243,7 @@ a.disabled {
 }
 
 .filter-select {
-    background-color: var(--color-bg-dark);
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: 0.5rem 1rem;
@@ -251,7 +252,7 @@ a.disabled {
 }
 
 .filter-select:focus {
-    background-color: var(--color-bg-darker);
+    background-color: var(--color-surface-hover);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.25);
 }

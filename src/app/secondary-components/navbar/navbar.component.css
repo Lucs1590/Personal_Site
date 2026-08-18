@@ -46,11 +46,13 @@ button {
    ============================ */
 .lang-btn {
   flex-shrink: 0;
+  height: 2rem;
 }
 
 .theme-btn {
   flex-shrink: 0;
   width: 2.5rem;
+  height: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +81,7 @@ button {
   display: inline-block;
   padding: 0.4rem;
   font-size: 0.95rem;
-  text-decoration: underline 0.2rem rgba(0, 0, 0, 0);
+  text-decoration: underline 0.2rem transparent;
   transition: text-decoration-color 600ms, color 300ms;
   border-radius: 4px;
 }

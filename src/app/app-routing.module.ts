@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './secondary-components/not-found/not-found.component';
 import { PublicationsComponent } from './secondary-components/publications/publications.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SeparadorComponent } from './separador/separador.component';
 import { PrivacyPolicyComponent } from './secondary-components/privacy-policy/privacy-policy.component';
-import { ProjectDetailComponent } from './secondary-components/project-detail/project-detail.component';
 import { RecommendationsComponent } from './secondary-components/recommendations/recommendations.component';
 import { BooksComponent } from './secondary-components/books/books.component';
 import { PresentationsComponent } from './secondary-components/presentations/presentations.component';
@@ -15,8 +13,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SeparadorComponent, title: 'Lucas de Brito Silva' },
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
-  { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
-  { path: 'portfolio/project/:id', component: ProjectDetailComponent, title: 'Lucas Brito - Project Detail' },
   { path: 'privacy-policy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
   { path: 'recommendations', component: RecommendationsComponent, title: 'Lucas Brito - Recommendations' },
   { path: 'books', component: BooksComponent, title: 'Lucas Brito - Books' },

@@ -75,7 +75,7 @@
        DARK THEME — DEFAULT
 
        The original palette's #212529 becomes the actual
-       foundation of the dark interface instead of #111.
+       foundation of the dark interface instead of generic black.
        ===================================================== */
 
     --color-page-bg: #212529;
