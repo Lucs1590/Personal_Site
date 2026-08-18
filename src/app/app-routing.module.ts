@@ -15,8 +15,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SeparadorComponent, title: 'Lucas de Brito Silva' },
   { path: 'publications', component: PublicationsComponent, title: 'Lucas Brito - Publications' },
-  { path: 'portfolio', component: PortfolioComponent, title: 'Lucas Brito - Portfolio' },
-  { path: 'portfolio/project/:id', component: ProjectDetailComponent, title: 'Lucas Brito - Project Detail' },
   { path: 'privacy-policy', component: PrivacyPolicyComponent, title: 'Lucas Brito - Privacy Policy' },
   { path: 'recommendations', component: RecommendationsComponent, title: 'Lucas Brito - Recommendations' },
   { path: 'books', component: BooksComponent, title: 'Lucas Brito - Books' },
