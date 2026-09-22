@@ -1,13 +1,13 @@
 export const books = [
   {
-    "author": "Wilzy Adorno",
-    "title": "Cultuando em família",
-    "description": "Em tempos nos quais o coração das famílias está disperso e os altares domésticos quase esquecidos, Cultuando em família surge como um chamado urgente à restauração da adoração no lugar mais o lar. Ancorado nas Escrituras, este livro convida pais e filhos a redescobrirem o culto doméstico, não como uma obrigação religiosa, mas como um caminho de cura, edificação e avivamento espiritual.<br />Ao longo de 52 roteiros semanais, preparados com simplicidade e profundidade, cada família é conduzida a transformar sua casa em um verdadeiro altar de adoração a Deus. Reflexões práticas, perguntas que despertam o diálogo e atividades que aproximam corações tornam essa jornada leve, intencional e transformadora. Mais do que um guia, esta obra é um sopro de vida sobre lares cansados e corações sedentos. Um convite para reacender o sacerdócio no coração dos pais e formar filhos enraizados na Palavra. A cada semana, o coração dos pais se volta aos filhos, e o dos filhos aos pais, estendendo os frutos do culto para além daquele momento.<br />Esta obra ensinará você a tornar sua casa um altar vivo, onde a Palavra governa, o amor floresce e a presença de Deus transforma gerações.",
+    "author": "Oliver Burkeman",
+    "title": "4000 semanas – Gestão do tempo para mortais",
+    "description": "A vida de um ser humano é absurda e insultuosamente curta.<br /><br />Quem chegar aos 80 anos terá vivido pouco mais de 4.000 semanas.<br /><br />Para quem tem 40 anos agora, restam-lhe apenas 2.000.<br /><br />Nunca há tempo para tudo. Vivemos dominados por listas de afazeres intermináveis e caixas de email ingeríveis e andamos obcecados com a ideia quimérica de equilibrar a vida laboral com a vida pessoal, ao mesmo tempo que tentamos combater as milhentas distrações que nos desviam daquele que nos parece o mais importante objetivo: otimizar o nosso dia de forma a sermos mais produtivos e eficientes.<br /><br />Enquanto corremos atras deste unicórnio da modernidade – fazer mais em menos tempo -, conseguimos pouco mais do que aumentar o nível de ansiedade e adiar, mais uma vez, o nosso bem-estar e aquilo que dá verdadeiro sentido à vida. De caminho, são poucos os que conseguem resolver o maior desafio: como gerir o (pouco) tempo que temos e construir a vida que queremos viver durante as nossas irrepetíveis 4.000 semanas.<br /><br />A partir dos ensinamentos de filósofos e pensadores antigos e contemporâneos, Olive Burkeman reflete sobre a nossa relação com o tempo e a produtividade e convida o leitor a rejeitar a fixação moderna em «conseguir fazer tudo.» Com humor e sentido crítico, 4000 semanas é um livro de gestão de tempo para mortais que nos instiga a questionar as nossas escolhas, individuais e coletivas, e nos encoraja a olhar para o tempo, a produtividade e o trabalho de uma forma radicalmente diferente. Para o nosso bem",
     "rating": 0,
     "user_review": "",
-    "link": "https://www.goodreads.com/review/show/8739098059?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1751661739l/237926204._SX318_.jpg",
-    "num_pages": 214,
+    "link": "https://www.goodreads.com/review/show/8047400815?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1676282792l/112976761._SY475_.jpg",
+    "num_pages": 248,
     "shelves": [
       "currently-reading"
     ]
@@ -26,14 +26,14 @@ export const books = [
     ]
   },
   {
-    "author": "Oliver Burkeman",
-    "title": "4000 semanas – Gestão do tempo para mortais",
-    "description": "A vida de um ser humano é absurda e insultuosamente curta.<br /><br />Quem chegar aos 80 anos terá vivido pouco mais de 4.000 semanas.<br /><br />Para quem tem 40 anos agora, restam-lhe apenas 2.000.<br /><br />Nunca há tempo para tudo. Vivemos dominados por listas de afazeres intermináveis e caixas de email ingeríveis e andamos obcecados com a ideia quimérica de equilibrar a vida laboral com a vida pessoal, ao mesmo tempo que tentamos combater as milhentas distrações que nos desviam daquele que nos parece o mais importante objetivo: otimizar o nosso dia de forma a sermos mais produtivos e eficientes.<br /><br />Enquanto corremos atras deste unicórnio da modernidade – fazer mais em menos tempo -, conseguimos pouco mais do que aumentar o nível de ansiedade e adiar, mais uma vez, o nosso bem-estar e aquilo que dá verdadeiro sentido à vida. De caminho, são poucos os que conseguem resolver o maior desafio: como gerir o (pouco) tempo que temos e construir a vida que queremos viver durante as nossas irrepetíveis 4.000 semanas.<br /><br />A partir dos ensinamentos de filósofos e pensadores antigos e contemporâneos, Olive Burkeman reflete sobre a nossa relação com o tempo e a produtividade e convida o leitor a rejeitar a fixação moderna em «conseguir fazer tudo.» Com humor e sentido crítico, 4000 semanas é um livro de gestão de tempo para mortais que nos instiga a questionar as nossas escolhas, individuais e coletivas, e nos encoraja a olhar para o tempo, a produtividade e o trabalho de uma forma radicalmente diferente. Para o nosso bem",
+    "author": "Wilzy Adorno",
+    "title": "Cultuando em família",
+    "description": "Em tempos nos quais o coração das famílias está disperso e os altares domésticos quase esquecidos, Cultuando em família surge como um chamado urgente à restauração da adoração no lugar mais o lar. Ancorado nas Escrituras, este livro convida pais e filhos a redescobrirem o culto doméstico, não como uma obrigação religiosa, mas como um caminho de cura, edificação e avivamento espiritual.<br />Ao longo de 52 roteiros semanais, preparados com simplicidade e profundidade, cada família é conduzida a transformar sua casa em um verdadeiro altar de adoração a Deus. Reflexões práticas, perguntas que despertam o diálogo e atividades que aproximam corações tornam essa jornada leve, intencional e transformadora. Mais do que um guia, esta obra é um sopro de vida sobre lares cansados e corações sedentos. Um convite para reacender o sacerdócio no coração dos pais e formar filhos enraizados na Palavra. A cada semana, o coração dos pais se volta aos filhos, e o dos filhos aos pais, estendendo os frutos do culto para além daquele momento.<br />Esta obra ensinará você a tornar sua casa um altar vivo, onde a Palavra governa, o amor floresce e a presença de Deus transforma gerações.",
     "rating": 0,
     "user_review": "",
-    "link": "https://www.goodreads.com/review/show/8047400815?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1676282792l/112976761._SY475_.jpg",
-    "num_pages": 248,
+    "link": "https://www.goodreads.com/review/show/8739098059?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1751661739l/237926204._SX318_.jpg",
+    "num_pages": 214,
     "shelves": [
       "currently-reading"
     ]
