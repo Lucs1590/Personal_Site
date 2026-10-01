@@ -1,18 +1,5 @@
 export const books = [
   {
-    "author": "Oliver Burkeman",
-    "title": "4000 semanas – Gestão do tempo para mortais",
-    "description": "A vida de um ser humano é absurda e insultuosamente curta.<br /><br />Quem chegar aos 80 anos terá vivido pouco mais de 4.000 semanas.<br /><br />Para quem tem 40 anos agora, restam-lhe apenas 2.000.<br /><br />Nunca há tempo para tudo. Vivemos dominados por listas de afazeres intermináveis e caixas de email ingeríveis e andamos obcecados com a ideia quimérica de equilibrar a vida laboral com a vida pessoal, ao mesmo tempo que tentamos combater as milhentas distrações que nos desviam daquele que nos parece o mais importante objetivo: otimizar o nosso dia de forma a sermos mais produtivos e eficientes.<br /><br />Enquanto corremos atras deste unicórnio da modernidade – fazer mais em menos tempo -, conseguimos pouco mais do que aumentar o nível de ansiedade e adiar, mais uma vez, o nosso bem-estar e aquilo que dá verdadeiro sentido à vida. De caminho, são poucos os que conseguem resolver o maior desafio: como gerir o (pouco) tempo que temos e construir a vida que queremos viver durante as nossas irrepetíveis 4.000 semanas.<br /><br />A partir dos ensinamentos de filósofos e pensadores antigos e contemporâneos, Olive Burkeman reflete sobre a nossa relação com o tempo e a produtividade e convida o leitor a rejeitar a fixação moderna em «conseguir fazer tudo.» Com humor e sentido crítico, 4000 semanas é um livro de gestão de tempo para mortais que nos instiga a questionar as nossas escolhas, individuais e coletivas, e nos encoraja a olhar para o tempo, a produtividade e o trabalho de uma forma radicalmente diferente. Para o nosso bem",
-    "rating": 0,
-    "user_review": "",
-    "link": "https://www.goodreads.com/review/show/8047400815?utm_medium=api&utm_source=rss",
-    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1676282792l/112976761._SY475_.jpg",
-    "num_pages": 248,
-    "shelves": [
-      "currently-reading"
-    ]
-  },
-  {
     "author": "Timothy J. Keller",
     "title": "Como integrar fé e trabalho",
     "description": "Como Deus nos chama a expressar sentido e propósito por meio de nosso trabalho e carreira profissional.<br /><br />Tim Keller tem ensinado e aconselhado por mais de vinte anos estudantes, jovens profissionais e líderes experientes sobre o tema trabalho e chamado cristão. Agora ele disponibiliza suas ideias para leitores do mundo inteiro neste livro, que oferece perspectivas bíblicas sobre questões prementes como:<br /><br />• Qual é o propósito do trabalho? <br />• Como posso encontrar sentido e servir às pessoas em um ambiente de trabalho impiedoso e voltado para resultado?<br />• Como usar minhas habilidades em uma vocação que tenha sentido e propósito? <br />• Posso manter-me fiel a meus valores e ainda assim crescer profissionalmente? <br />• Como fazer as difíceis escolhas que devem ser feitas ao longo de uma carreira de sucesso?",
@@ -21,6 +8,19 @@ export const books = [
     "link": "https://www.goodreads.com/review/show/6232352527?utm_medium=api&utm_source=rss",
     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1448888150l/28014993._SX318_.jpg",
     "num_pages": 240,
+    "shelves": [
+      "currently-reading"
+    ]
+  },
+  {
+    "author": "Oliver Burkeman",
+    "title": "4000 semanas – Gestão do tempo para mortais",
+    "description": "A vida de um ser humano é absurda e insultuosamente curta.<br /><br />Quem chegar aos 80 anos terá vivido pouco mais de 4.000 semanas.<br /><br />Para quem tem 40 anos agora, restam-lhe apenas 2.000.<br /><br />Nunca há tempo para tudo. Vivemos dominados por listas de afazeres intermináveis e caixas de email ingeríveis e andamos obcecados com a ideia quimérica de equilibrar a vida laboral com a vida pessoal, ao mesmo tempo que tentamos combater as milhentas distrações que nos desviam daquele que nos parece o mais importante objetivo: otimizar o nosso dia de forma a sermos mais produtivos e eficientes.<br /><br />Enquanto corremos atras deste unicórnio da modernidade – fazer mais em menos tempo -, conseguimos pouco mais do que aumentar o nível de ansiedade e adiar, mais uma vez, o nosso bem-estar e aquilo que dá verdadeiro sentido à vida. De caminho, são poucos os que conseguem resolver o maior desafio: como gerir o (pouco) tempo que temos e construir a vida que queremos viver durante as nossas irrepetíveis 4.000 semanas.<br /><br />A partir dos ensinamentos de filósofos e pensadores antigos e contemporâneos, Olive Burkeman reflete sobre a nossa relação com o tempo e a produtividade e convida o leitor a rejeitar a fixação moderna em «conseguir fazer tudo.» Com humor e sentido crítico, 4000 semanas é um livro de gestão de tempo para mortais que nos instiga a questionar as nossas escolhas, individuais e coletivas, e nos encoraja a olhar para o tempo, a produtividade e o trabalho de uma forma radicalmente diferente. Para o nosso bem",
+    "rating": 0,
+    "user_review": "",
+    "link": "https://www.goodreads.com/review/show/8047400815?utm_medium=api&utm_source=rss",
+    "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1676282792l/112976761._SY475_.jpg",
+    "num_pages": 248,
     "shelves": [
       "currently-reading"
     ]
